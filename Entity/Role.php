@@ -22,6 +22,11 @@ class Role
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $translationKey;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class Role
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getTranslationKey(): ?string
+    {
+        return $this->translationKey;
+    }
+
+    public function setTranslationKey(string $translationKey): self
+    {
+        $this->translationKey = $translationKey;
 
         return $this;
     }
