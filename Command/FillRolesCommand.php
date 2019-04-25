@@ -38,18 +38,27 @@ class FillRolesCommand extends Command
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StefanwiegmannUserBundle:Role');
 
-      $role = $repo->findOneByName('ROLE_APP_ADMIN');
+      $roles = array();
+      array_push($roles, array('name' => 'ROLE_APP_ADMIN'));
+      array_push($roles, array('name' => 'ROLE_USER_ADMIN'));
+      array_push($roles, array('name' => 'ROLE_USER_REGISTER'));
+      array_push($roles, array('name' => 'ROLE_USER_VIEW'));
 
-      if(!$role){
-          $role = new Role;
+      foreach ($roles as &$item){
+
+        $role = $repo->findOneByName($item['name']);
+
+        if(!$role){
+            $role = new Role;
+        }
+
+        $role->setName($item['name']);
+        $role->setTranslationKey('name.'.\strtolower($item['name']));
+
+        $em->persist($role);
+        $em->flush();
+
+        $output->writeln('Role '.$role->getName().' created or updated!');
       }
-
-      $role->setName('ROLE_APP_ADMIN');
-      $role->setTranslationKey('name.role_app_admin');
-
-      $em->persist($role);
-      $em->flush();
-
-      $output->writeln('Role '.$role->getName().' created or update!');
     }
 }

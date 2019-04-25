@@ -40,24 +40,45 @@ class CreateAdminCommand extends Command
     {
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StefanwiegmannUserBundle:User');
+      $roleRepo = $em->getRepository('StefanwiegmannUserBundle:Role');
 
+      // get all roles to assign
+      $roles = $roleRepo->findAll();
+      $roleNames = array();
+
+      foreach ($roles as &$item){
+        array_push($roleNames, $item->getName());
+      }
+
+      // create if user does not exist or remove all UserRoles
       $user = $repo->findOneByUsername('admin');
 
       if(!$user){
           $user = new User;
+      }else{
+          foreach ($user->getUserRole() as &$item){
+            $user->removeUserRole($item);
+          }
       }
 
+      // set values
       $user->setUsername('admin');
       $user->setFirstname('admin');
       $user->setLastname('admin');
+      $user->setEmail('admin@admin.net');
       $user->setPassword($this->passwordEncoder->encodePassword(
                    $user,
                    'password'
                ));
+      $user->setRoles($roleNames);
+      foreach ($roles as &$item){
+        $user->addUserRole($item);
+      }
 
+      // persist
       $em->persist($user);
       $em->flush();
 
-      $output->writeln('User admin created or update!');
+      $output->writeln('User admin created or updated!');
     }
 }

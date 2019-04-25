@@ -2,6 +2,8 @@
 
 namespace App\Stefanwiegmann\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -48,6 +50,28 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Role", inversedBy="users")
+     * @ORM\JoinTable(name="sw_user_user_role")
+     */
+    private $UserRole;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", mappedBy="User")
+     */
+    private $groups;
+
+    public function __construct()
+    {
+        $this->UserRole = new ArrayCollection();
+        $this->groups = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +178,72 @@ class User implements UserInterface
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Role[]
+     */
+    public function getUserRole(): Collection
+    {
+        return $this->UserRole;
+    }
+
+    public function addUserRole(Role $userRole): self
+    {
+        if (!$this->UserRole->contains($userRole)) {
+            $this->UserRole[] = $userRole;
+        }
+
+        return $this;
+    }
+
+    public function removeUserRole(Role $userRole): self
+    {
+        if ($this->UserRole->contains($userRole)) {
+            $this->UserRole->removeElement($userRole);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Group[]
+     */
+    public function getGroups(): Collection
+    {
+        return $this->groups;
+    }
+
+    public function addGroup(Group $group): self
+    {
+        if (!$this->groups->contains($group)) {
+            $this->groups[] = $group;
+            $group->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroup(Group $group): self
+    {
+        if ($this->groups->contains($group)) {
+            $this->groups->removeElement($group);
+            $group->removeUser($this);
+        }
 
         return $this;
     }
