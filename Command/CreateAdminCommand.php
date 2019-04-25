@@ -3,11 +3,11 @@
 namespace App\Stefanwiegmann\UserBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
-// use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use App\Stefanwiegmann\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class CreateAdminCommand extends Command
 {
@@ -15,11 +15,13 @@ class CreateAdminCommand extends Command
     protected static $defaultName = 'user:create-admin';
 
     private $container;
+    private $passwordEncoder;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container, UserPasswordEncoderInterface $passwordEncoder)
     {
         parent::__construct();
         $this->container = $container;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     protected function configure()
@@ -36,16 +38,26 @@ class CreateAdminCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-      // $em = $this->getDoctrine ()->getManager ();
       $em = $this->container->get('doctrine')->getManager();
-        $admin = new User;
-        $admin->setUsername('admin');
-        $admin->setPassword('password');
+      $repo = $em->getRepository('StefanwiegmannUserBundle:User');
 
-        $em->persist($admin);
-        $em->flush();
+      $user = $repo->findOneByUsername('admin');
 
-      $output->write('You are about to ');
-      $output->write('create a user.');
+      if(!$user){
+          $user = new User;
+      }
+
+      $user->setUsername('admin');
+      $user->setFirstname('admin');
+      $user->setLastname('admin');
+      $user->setPassword($this->passwordEncoder->encodePassword(
+                   $user,
+                   'password'
+               ));
+
+      $em->persist($user);
+      $em->flush();
+
+      $output->writeln('User admin created or update!');
     }
 }
