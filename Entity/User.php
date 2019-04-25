@@ -60,7 +60,7 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Role", inversedBy="users")
      * @ORM\JoinTable(name="sw_user_user_role")
      */
-    private $UserRole;
+    private $userRole;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", mappedBy="User")
@@ -69,7 +69,7 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->UserRole = new ArrayCollection();
+        $this->userRole = new ArrayCollection();
         $this->groups = new ArrayCollection();
     }
 
@@ -199,13 +199,13 @@ class User implements UserInterface
      */
     public function getUserRole(): Collection
     {
-        return $this->UserRole;
+        return $this->userRole;
     }
 
     public function addUserRole(Role $userRole): self
     {
-        if (!$this->UserRole->contains($userRole)) {
-            $this->UserRole[] = $userRole;
+        if (!$this->userRole->contains($userRole)) {
+            $this->userRole[] = $userRole;
         }
 
         return $this;
@@ -213,8 +213,8 @@ class User implements UserInterface
 
     public function removeUserRole(Role $userRole): self
     {
-        if ($this->UserRole->contains($userRole)) {
-            $this->UserRole->removeElement($userRole);
+        if ($this->userRole->contains($userRole)) {
+            $this->userRole->removeElement($userRole);
         }
 
         return $this;

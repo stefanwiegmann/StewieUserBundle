@@ -41,6 +41,10 @@ class CreateAdminCommand extends Command
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StefanwiegmannUserBundle:User');
       $roleRepo = $em->getRepository('StefanwiegmannUserBundle:Role');
+      $groupRepo = $em->getRepository('StefanwiegmannUserBundle:Group');
+
+      // get all groups to assigne
+      $groups = $groupRepo->findAll();
 
       // get all roles to assign
       $roles = $roleRepo->findAll();
@@ -56,8 +60,12 @@ class CreateAdminCommand extends Command
       if(!$user){
           $user = new User;
       }else{
-          foreach ($user->getUserRole() as &$item){
-            $user->removeUserRole($item);
+          foreach ($user->getUserRole() as &$role){
+            $user->removeUserRole($role);
+          }
+          foreach ($groups as &$group){
+            $group->removeUser($user);
+            $em->persist($group);
           }
       }
 
@@ -71,8 +79,12 @@ class CreateAdminCommand extends Command
                    'password'
                ));
       $user->setRoles($roleNames);
-      foreach ($roles as &$item){
-        $user->addUserRole($item);
+      foreach ($roles as &$role){
+        $user->addUserRole($role);
+      }
+      foreach ($groups as &$group){
+        $group->addUser($user);
+        $em->persist($group);
       }
 
       // persist
