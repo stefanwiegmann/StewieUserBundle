@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+{% trans_default_domain 'UserBundle' %}
+
+{% block menuBlock %}
+  <div class="card" id="menuBlock">
+    <div class="card-header">
+      {% block menuTitle %}{{ 'header.menu'|trans }}{% endblock menuTitle %}
+    </div>
+    <ul class="nav flex-column">
+      {% block menuContent %}
+      <li class="nav-item active"><a class="nav-link" href="#">user A</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">user B</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">user C</a></li>
+      {% endblock menuContent %}
+    </ul>
+  </div>
+{% endblock menuBlock %}

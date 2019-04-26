@@ -1,0 +1,13 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'UserBundle' %}
+
+{% block filterTitle %}{{ 'header.filter'|trans }}{% endblock filterTitle %}
+
+{% block filterContent %}
+{#{ form_start(filterForm) }#}
+{#{ form_row(filterForm.userRole) }#}
+{#{ form_end(filterForm) }#}
+{% endblock filterContent %}
+
+{% block pageTitle %}{{ 'header.list'|trans }}{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
