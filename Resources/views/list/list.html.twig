@@ -11,3 +11,45 @@
 
 {% block pageTitle %}{{ 'header.list'|trans }}{% endblock pageTitle %}
 {% block pageMenu %}{% endblock pageMenu %}
+
+{% block content %}
+{# total items count #}
+<!-- <div class="count">
+    {#{ users.sort }#}
+</div> -->
+<table class="table table-striped">
+<thead> <tr>
+  <th>{{ knp_pagination_sortable(userList, '#', 'u.id') }}</th>
+  <th>{{ knp_pagination_sortable(userList, 'label.username'|trans, 'u.username') }}
+    {% if userList.isSorted('u.username') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ knp_pagination_sortable(userList, 'label.realName'|trans, ['u.firstName', 'u.lastName']) }}
+    {% if userList.isSorted('u.firstName+u.lastName') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ 'label.roles'|trans }}</th>
+  <th>{{ knp_pagination_sortable(userList, 'label.lastLogin'|trans, 'u.lastLogin') }}
+    {% if userList.isSorted('u.lastLogin') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ 'label.status'|trans }}</th>
+  <th>{{ 'label.actions'|trans }}</th>
+</tr> </thead>
+{% for item in userList %}
+<tr>
+  <td>{{ item.id }}</td>
+  <td>{{ item.username }}</td>
+  <td>{{ item.firstName }} {{ item.lastName }}</td>
+  <td>{% for role in item.userRole %}
+       {{ role.translationKey|trans({},'Role') }}{% if not loop.last %},{% endif %}
+    {% endfor %}</td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+      {#{ knp_pagination_render(users) }#}
+{% endblock content %}
