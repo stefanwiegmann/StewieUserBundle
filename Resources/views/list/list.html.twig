@@ -39,7 +39,7 @@
   <td>{{ item.username }}</td>
   <td>{{ item.firstName }} {{ item.lastName }}</td>
   <td>{% for role in item.userRole %}
-       {{ role.translationKey|trans({},'Role') }}{% if not loop.last %},{% endif %}
+       {{ role.translationKey|trans }}{% if not loop.last %},{% endif %}
     {% endfor %}</td>
   <td>
   </td>
@@ -51,5 +51,5 @@
 {% endfor %}
 </table>
 {# display navigation #}
-      {#{ knp_pagination_render(users) }#}
+      {{ knp_pagination_render(userList) }}
 {% endblock content %}

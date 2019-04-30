@@ -25,7 +25,7 @@ class ListController extends Controller
             $this->container->getParameter('max_rows')/*limit per page*/
         );
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
-        // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
+        $pagination->setTemplate('@stefanwiegmann_user/default/pagination.html.twig');
 
       return $this->render('@stefanwiegmann_user/list/list.html.twig', [
           'userList' => $pagination,
