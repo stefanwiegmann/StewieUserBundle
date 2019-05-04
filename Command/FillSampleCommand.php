@@ -92,7 +92,7 @@ class FillSampleCommand extends Command
         }
 
         // set values
-        $user->setUsername($item['firstname'].'.'.$item['lastname'].'@stefanwiegmann.de');
+        $user->setUsername(substr($item['firstname'],0,3).substr($item['lastname'],0,3));
         $user->setFirstname($item['firstname']);
         $user->setLastname($item['lastname']);
         $user->setEmail($item['firstname'].'.'.$item['lastname'].'@stefanwiegmann.de');
