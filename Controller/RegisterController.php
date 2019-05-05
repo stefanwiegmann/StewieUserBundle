@@ -17,7 +17,7 @@ class RegisterController extends Controller
     /**
     * @Route("/user/register", name="sw_user_register")
     */
-    public function register(Request $request)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
       //create new user
       $user = new User;
@@ -33,17 +33,41 @@ class RegisterController extends Controller
           $user = $form->getData();
 
           // set default values
+          $encoded = $encoder->encodePassword($user, 'dgehdyrhfuiykhju');
+
+          $user->setPassword($encoded);
           $user->setUsername($user->getEmail());
-          $user->setPassword($this->passwordEncoder->encodePassword(
-                       $user,
-                       'password'
-                   ));
 
           // save user
-          $em->persist($user);
-          $em->flush();
+          // $em->persist($user);
+          // $em->flush();
 
-          return $this->redirectToRoute('sw_user_list');
+          // send email
+          $message = (new \Swift_Message('Your Registration'))
+              // ->setFrom($this->container->getParameter( 'mailer_address' ))
+              ->setFrom('admin@mindpool.net')
+              ->setTo($user->getEmail())
+              ->setBody(
+                  $this->renderView(
+                      // app/Resources/views/Emails/registration.html.twig
+                      '@stefanwiegmann_user/emails/registration.html.twig',
+                      array('name' => $user->getFirstName().' '.$user->getLastName()
+                      )),
+                  'text/html'
+              )
+              //  If you also want to include a plaintext version of the message
+              // ->addPart(
+              //     $this->renderView(
+              //         '@stefanwiegmann_user/emails/registration.txt.twig',
+              //         array('name' => $user->getFirstName().' '.$user->getLastName()
+              //         )),
+              //     'text/plain'
+              // )
+          ;
+
+          $this->get('mailer')->send($message);
+
+          // return $this->redirectToRoute('sw_user_list');
         }
 
       return $this->render('@stefanwiegmann_user/register/register.html.twig', [
@@ -51,4 +75,5 @@ class RegisterController extends Controller
           'form' => $form->createView(),
       ]);
     }
+
 }
