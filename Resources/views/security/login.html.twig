@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-{% trans_default_domain 'SWUser' %}
+{% trans_default_domain 'SWUserBundle' %}
 
 {% block menuBlock %}{% endblock menuBlock %}
 {% block filterBlock %}{% endblock filterBlock %}
@@ -11,7 +11,7 @@
 <div class="row justify-content-md-center">
     <div class="col-md-auto">
       <!-- <div class="container-fluid"> -->
-        <h1 class="h3 mb-3 font-weight-normal">{{ 'header.login'|trans({}, 'SWUser') }}</h1>
+        <h1 class="h3 mb-3 font-weight-normal">{{ 'header.login'|trans }}</h1>
 
         <form method="post">
             {% if error %}

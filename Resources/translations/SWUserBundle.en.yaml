@@ -1,5 +1,6 @@
 header.filter: 'User Filter'
 header.list: 'User List'
+header.login: 'Login'
 header.menu: 'User Menu'
 label.actions: 'Actions'
 label.lastLogin: 'Last Login'
