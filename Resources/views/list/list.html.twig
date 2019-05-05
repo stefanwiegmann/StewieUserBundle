@@ -46,6 +46,11 @@
   <td>
   </td>
   <td>
+    {% if is_granted('ROLE_USER_ADMIN') %}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_edit', {'id': item.id}) }}"><i class="far fa-edit"></i></a>
+    {#% else %#}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_edit', {'id': item.id}) }}"><i class="far fa-eye"></i></a>
+    {% endif %}
   </td>
 </tr>
 {% endfor %}
