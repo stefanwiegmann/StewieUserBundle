@@ -5,8 +5,8 @@ namespace App\Stefanwiegmann\UserBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-// use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+// use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Stefanwiegmann\UserBundle\Form\Type\UserType;
 
@@ -14,7 +14,7 @@ use App\Stefanwiegmann\UserBundle\Form\Type\UserType;
   * @IsGranted("ROLE_USER_ADMIN")
   */
 
-class EditController extends Controller
+class EditController extends AbstractController
 {
     /**
     * @Route("/user/edit/{id}", name="sw_user_edit")
