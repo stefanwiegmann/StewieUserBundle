@@ -1,0 +1,28 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}{{ 'header.request'|trans }}{% endblock pageTitle %}
+{% block pageMenu %}
+{% endblock pageMenu %}
+
+{% block content %}
+<!-- actual form -->
+{{ form_start(form) }}
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        {{ form_label(form.email) }}
+      </div>
+      <div class="col-sm-10">
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+      </div>
+    </div>
+    
+        {{ form_widget(form.submit) }}
+
+
+{{ form_end(form) }}
+{% endblock content %}

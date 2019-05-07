@@ -67,6 +67,16 @@ class User implements UserInterface
      */
     private $groups;
 
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true, unique=true)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $tokenDate;
+
     public function __construct()
     {
         $this->userRole = new ArrayCollection();
@@ -244,6 +254,30 @@ class User implements UserInterface
             $this->groups->removeElement($group);
             $group->removeUser($this);
         }
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    public function getTokenDate(): ?\DateTimeInterface
+    {
+        return $this->tokenDate;
+    }
+
+    public function setTokenDate(?\DateTimeInterface $tokenDate): self
+    {
+        $this->tokenDate = $tokenDate;
 
         return $this;
     }
