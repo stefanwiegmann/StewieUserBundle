@@ -1,0 +1,13 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+{% block menuBlock %}{% endblock menuBlock %}
+
+{% block pageTitle %}{{ 'header.expiredToken'|trans }}{% endblock pageTitle %}
+{% block pageMenu %}
+{% endblock pageMenu %}
+
+{% block content %}
+The provided token is expired!
+{% endblock content %}

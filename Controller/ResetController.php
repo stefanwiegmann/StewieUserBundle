@@ -10,13 +10,59 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Stefanwiegmann\UserBundle\Form\Type\ResetType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 // use App\Stefanwiegmann\UserBundle\Entity\User;
-// use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ResetController extends Controller
 {
     /**
-    * @Route("/user/request", name="sw_user_request")
+    * @Route("/user/reset/{token}", name="sw_user_reset")
+    */
+    public function reset($token, Request $request, UserPasswordEncoderInterface $encoder)
+    {
+      //get user
+      $em = $this->container->get('doctrine')->getManager();
+      $repo = $em->getRepository('StefanwiegmannUserBundle:User');
+      $user = $repo->findOneByToken($token);
+
+      // exeption if token unknown
+      if(!$user){
+
+        return $this->render('@stefanwiegmann_user/reset/unknown.html.twig', [
+            'token' => $token,
+        ]);
+      }
+
+      // create form
+      $form = $this->createForm(ResetType::class, $user);
+
+      // handle form
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $user = $form->getData();
+
+          $password = $form->get('password')->getData();
+
+          $encoded = $encoder->encodePassword($user, $password);
+
+          $user->setPassword($encoded);
+          // save user
+          $em->persist($user);
+          $em->flush();
+
+          return $this->render('@stefanwiegmann_user/reset/success.html.twig');
+        }
+
+      return $this->render('@stefanwiegmann_user/reset/reset.html.twig', [
+          'user' => $user,
+          'form' => $form->createView(),
+      ]);
+    }
+
+    /**
+    * @Route("/user/request/reset", name="sw_user_request_reset")
     */
     public function request(Request $request)
     {
@@ -50,29 +96,28 @@ class ResetController extends Controller
           $em->flush();
 
           // send email
-          $message = (new \Swift_Message('Your Registration'))
+          $message = (new \Swift_Message('Your Password Request'))
               // ->setFrom($this->container->getParameter( 'mailer_address' ))
               ->setFrom('admin@mindpool.net')
               ->setTo($user->getEmail())
               ->setBody(
                   $this->renderView(
-                      // app/Resources/views/Emails/registration.html.twig
                       '@stefanwiegmann_user/emails/request.html.twig',
                       array('name' => $user->getFirstName().' '.$user->getLastName()
                       )),
                   'text/html'
               )
               //  If you also want to include a plaintext version of the message
-              // ->addPart(
-              //     $this->renderView(
-              //         '@stefanwiegmann_user/emails/registration.txt.twig',
-              //         array('name' => $user->getFirstName().' '.$user->getLastName()
-              //         )),
-              //     'text/plain'
-              // )
+              ->addPart(
+                  $this->renderView(
+                      '@stefanwiegmann_user/emails/request.txt.twig',
+                      array('name' => $user->getFirstName().' '.$user->getLastName()
+                      )),
+                  'text/plain'
+              )
           ;
 
-          // $this->get('mailer')->send($message);
+          $this->get('mailer')->send($message);
 
           // return $this->redirectToRoute('sw_user_list');
         }
