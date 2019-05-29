@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block menuTitle %}{{ 'header.profileMenu'|trans }}{% endblock menuTitle %}
+
+{% block menuContent %}
+<li class="nav-item {% if app.request.attributes.get('_route') == 'sw_user_profile' %} active{% endif %}">
+  <a class="nav-link" href="{{ path('sw_user_profile') }}">{{ 'header.name'|trans }}</a></li>
+<li class="nav-item {% if app.request.attributes.get('_route') == 'sw_user_profile' %} active{% endif %}">
+  <a class="nav-link" href="{{ path('sw_user_profile') }}">{{ 'header.email'|trans }}</a></li>
+<li class="nav-item {% if app.request.attributes.get('_route') == 'sw_user_profile' %} active{% endif %}">
+  <a class="nav-link" href="{{ path('sw_user_profile') }}">{{ 'header.password'|trans }}</a></li>
+{% endblock menuContent %}
