@@ -1,0 +1,51 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterTitle %}{{ 'header.filter'|trans }}{% endblock filterTitle %}
+
+{% block filterContent %}
+{#{ form_start(filterForm) }#}
+{#{ form_row(filterForm.userRole) }#}
+{#{ form_end(filterForm) }#}
+{% endblock filterContent %}
+
+{% block pageTitle %}{{ 'header.groupList'|trans }}{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
+
+{% block content %}
+{# total items count #}
+<!-- <div class="count">
+    {#{ users.sort }#}
+</div> -->
+<table class="table table-striped">
+<thead> <tr>
+  <th>{{ knp_pagination_sortable(groupList, '#', 'u.id') }}</th>
+  <th>{{ knp_pagination_sortable(groupList, 'label.name'|trans, 'g.name') }}
+    {% if groupList.isSorted('g.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ 'label.roles'|trans }}</th>
+  <th>{{ 'label.status'|trans }}</th>
+  <th>{{ 'label.actions'|trans }}</th>
+</tr> </thead>
+{% for item in groupList %}
+<tr>
+  <td>{{ item.id }}</td>
+  <td>{{ item.name }}</td>
+  <td>{% for role in item.groupRole %}
+       {{ role.translationKey|trans }}{% if not loop.last %},{% endif %}
+    {% endfor %}</td>
+  <td>
+  </td>
+  <td>
+    {% if is_granted('ROLE_USER_ADMIN') %}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_group_edit', {'id': item.id}) }}"><i class="far fa-edit"></i></a>
+    {#% else %#}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_group_edit', {'id': item.id}) }}"><i class="far fa-eye"></i></a>
+    {% endif %}
+  </td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+      {{ knp_pagination_render(groupList) }}
+{% endblock content %}
