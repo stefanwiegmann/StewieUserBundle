@@ -39,8 +39,8 @@ class RegisterController extends Controller
           $user->setUsername($user->getEmail());
 
           // save user
-          // $em->persist($user);
-          // $em->flush();
+          $em->persist($user);
+          $em->flush();
 
           // send email
           $message = (new \Swift_Message('Your Registration'))
