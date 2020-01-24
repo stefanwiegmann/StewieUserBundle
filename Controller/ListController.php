@@ -5,7 +5,8 @@ namespace App\Stefanwiegmann\UserBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+// use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
@@ -14,7 +15,7 @@ use Knp\Component\Pager\PaginatorInterface;
   * @IsGranted("ROLE_USER_VIEW")
   */
 
-class ListController extends Controller
+class ListController extends AbstractController
 {
     /**
     * @Route("/user/list/{page}", defaults={"page": 1}

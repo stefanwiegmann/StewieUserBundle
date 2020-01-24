@@ -5,7 +5,7 @@ namespace App\Stefanwiegmann\UserBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+// use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -14,7 +14,7 @@ use App\Stefanwiegmann\UserBundle\Form\Type\ResetType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 // use App\Stefanwiegmann\UserBundle\Entity\User;
 
-class ResetController extends Controller
+class ResetController extends AbstractController
 {
     /**
     * @Route("/user/reset/{token}", name="sw_user_reset")
