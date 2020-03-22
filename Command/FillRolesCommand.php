@@ -38,13 +38,11 @@ class FillRolesCommand extends Command
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StefanwiegmannUserBundle:Role');
 
-      $roles = array();
-      array_push($roles, array('name' => 'ROLE_APP_ADMIN'));
-      array_push($roles, array('name' => 'ROLE_USER_ADMIN'));
-      array_push($roles, array('name' => 'ROLE_USER_REGISTER'));
-      array_push($roles, array('name' => 'ROLE_USER_VIEW'));
+      $contents = file_get_contents($this->container->getParameter('kernel.project_dir')."/src/Stefanwiegmann/UserBundle/Data/roles.json");
+      $contents = utf8_encode($contents);
+      $results = json_decode($contents, true);
 
-      foreach ($roles as &$item){
+      foreach ($results as &$item){
 
         $role = $repo->findOneByName($item['name']);
 
@@ -53,12 +51,37 @@ class FillRolesCommand extends Command
         }
 
         $role->setName($item['name']);
-        $role->setTranslationKey('name.'.\strtolower($item['name']));
+        $role->setTranslationKey($item['translationKey']);
 
         $em->persist($role);
         $em->flush();
 
         $output->writeln('Role '.$role->getName().' created or updated!');
-      }
+        }
+
+      // $roles = array();
+      // array_push($roles, array('name' => 'ROLE_APP_ADMIN'));
+      // array_push($roles, array('name' => 'ROLE_USER_ADMIN'));
+      // array_push($roles, array('name' => 'ROLE_USER_REGISTER'));
+      // array_push($roles, array('name' => 'ROLE_USER_VIEW'));
+      //
+      // foreach ($roles as &$item){
+      //
+      //   $role = $repo->findOneByName($item['name']);
+      //
+      //   if(!$role){
+      //       $role = new Role;
+      //   }
+      //
+      //   $role->setName($item['name']);
+      //   $role->setTranslationKey('name.'.\strtolower($item['name']));
+      //
+      //   $em->persist($role);
+      //   $em->flush();
+      //
+      //   $output->writeln('Role '.$role->getName().' created or updated!');
+      // }
+      $output->writeln('All Roles created or updated!');
+      return 1;
     }
 }

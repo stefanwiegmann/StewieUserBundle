@@ -1,0 +1,22 @@
+{
+    "admin": {
+        "id": "1",
+        "name": "ROLE_APP_ADMIN",
+        "translationKey": "name.role_app_admin"
+      },
+    "user_admin": {
+        "id": "2",
+        "name": "ROLE_USER_ADMIN",
+        "translationKey": "name.role_user_admin"
+      },
+    "user_register": {
+        "id": "3",
+        "name": "ROLE_USER_REGISTER",
+        "translationKey": "name.role_user_register"
+      },
+    "user_view": {
+        "id": "4",
+        "name": "ROLE_USER_VIEW",
+        "translationKey": "name.role_user_view"
+      }
+}
