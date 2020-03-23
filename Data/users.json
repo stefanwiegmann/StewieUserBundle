@@ -1,0 +1,149 @@
+{
+    "1": {
+        "static": true,
+        "username": "admin",
+        "password": "password",
+        "first_name": "Admin",
+        "last_name": "Admin",
+        "phone": "911",
+        "email": "admin@admin.org",
+        "groups": {
+          "1": "Admins",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_APP_ADMIN",
+          "2": "ROLE_USER_ADMIN",
+          "3": "ROLE_USER_REGISTER",
+          "4": "ROLE_USER_VIEW"
+        }
+      },
+    "2": {
+        "static": false,
+        "username": "loisgriffin",
+        "password": "etdyrhfytu",
+        "first_name": "Lois",
+        "last_name": "Griffin",
+        "phone": "456",
+        "email": "lois@griffin.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "3": {
+        "static": false,
+        "username": "briangriffin",
+        "password": "etdyrhfytu",
+        "first_name": "Brian",
+        "last_name": "Griffin",
+        "phone": "456",
+        "email": "brian@griffin.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "4": {
+        "static": false,
+        "username": "stewiegriffin",
+        "password": "dhfyrhtjyuj",
+        "first_name": "Stewie",
+        "last_name": "Griffin",
+        "phone": "123",
+        "email": "stewie@griffin.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "5": {
+        "static": false,
+        "username": "stansmith",
+        "password": "uthgjyikuo",
+        "first_name": "Stan",
+        "last_name": "Smith",
+        "phone": "768",
+        "email": "stan@smith.org",
+        "groups": {
+          "1": "American Dad",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "6": {
+        "static": false,
+        "username": "francinesmith",
+        "password": "ueyrhfyrht",
+        "first_name": "Francine",
+        "last_name": "Smith",
+        "phone": "4554356",
+        "email": "francine@smith.org",
+        "groups": {
+          "1": "American Dad",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "7": {
+        "static": false,
+        "username": "hayleysmith",
+        "password": "kjdhfjkhkwe",
+        "first_name": "Hayley",
+        "last_name": "Smith",
+        "phone": "493857",
+        "email": "hayley@smith.org",
+        "groups": {
+          "1": "American Dad",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "8": {
+        "static": false,
+        "username": "rogersmith",
+        "password": "twreuitywouyi",
+        "first_name": "Roger",
+        "last_name": "Smith",
+        "phone": "156574647523",
+        "email": "roger@smith.org",
+        "groups": {
+          "1": "American Dad",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "9": {
+        "static": false,
+        "username": "stevesmith",
+        "password": "twreuitywouyi",
+        "first_name": "Steve",
+        "last_name": "Smith",
+        "phone": "156574647523",
+        "email": "steve@smith.org",
+        "groups": {
+          "1": "American Dad",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      }
+}

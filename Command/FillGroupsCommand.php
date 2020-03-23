@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use App\Stefanwiegmann\UserBundle\Entity\Group;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Console\Input\InputOption;
 
 class FillGroupsCommand extends Command
 {
@@ -30,6 +31,9 @@ class FillGroupsCommand extends Command
           // the full command description shown when running the command with
           // the "--help" option
           ->setHelp('This command allows you to create groups...')
+
+          // add all or only static groups
+          ->addOption('all')
       ;
     }
 
@@ -39,33 +43,44 @@ class FillGroupsCommand extends Command
       $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
       $roleRepo = $em->getRepository('StefanwiegmannUserBundle:Role');
 
-      $groups = array();
-      array_push($groups, array('name' => 'Administrators'));
+      $contents = file_get_contents($this->container->getParameter('kernel.project_dir')."/src/Stefanwiegmann/UserBundle/Data/groups.json");
+      $contents = utf8_encode($contents);
+      $results = json_decode($contents, true);
 
-      foreach ($groups as &$item){
+      foreach ($results as &$item){
 
-        $group = $repo->findOneByName($item['name']);
+        if($item['static'] || $input->getOption('all')){
 
-        if(!$group){
-            $group = new Group;
-        }else{
-            foreach ($group->getGroupRole() as &$role){
-              $group->removeGroupRole($role);
+          $group = $repo->findOneByName($item['name']);
+
+            if(!$group){
+                $group = new Group;
+            }else{
+                foreach ($group->getGroupRole() as &$role){
+                  $group->removeGroupRole($role);
+                }
             }
+
+            $group->setName($item['name']);
+
+            foreach ($item['roles'] as &$role){
+              $role = $roleRepo->findOneByName($role);
+              $group->addGroupRole($role);
+            }
+            // get all roles to assign to Administrators
+            // $roles = $roleRepo->findAll();
+            // foreach ($roles as &$item){
+            //    $group->addGroupRole($item);
+            //   }
+
+            $em->persist($group);
+            $em->flush();
+
+            $output->writeln('Group '.$group->getName().' created or updated!');
+          }
         }
 
-        $group->setName($item['name']);
-
-        // get all roles to assign to Administrators
-        $roles = $roleRepo->findAll();
-        foreach ($roles as &$item){
-           $group->addGroupRole($item);
-          }
-
-        $em->persist($group);
-        $em->flush();
-
-        $output->writeln('Group '.$group->getName().' created or updated!');
+        $output->writeln('All Groups created or updated!');
+        return 1;
       }
-    }
 }

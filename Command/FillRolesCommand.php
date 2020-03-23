@@ -58,29 +58,7 @@ class FillRolesCommand extends Command
 
         $output->writeln('Role '.$role->getName().' created or updated!');
         }
-
-      // $roles = array();
-      // array_push($roles, array('name' => 'ROLE_APP_ADMIN'));
-      // array_push($roles, array('name' => 'ROLE_USER_ADMIN'));
-      // array_push($roles, array('name' => 'ROLE_USER_REGISTER'));
-      // array_push($roles, array('name' => 'ROLE_USER_VIEW'));
-      //
-      // foreach ($roles as &$item){
-      //
-      //   $role = $repo->findOneByName($item['name']);
-      //
-      //   if(!$role){
-      //       $role = new Role;
-      //   }
-      //
-      //   $role->setName($item['name']);
-      //   $role->setTranslationKey('name.'.\strtolower($item['name']));
-      //
-      //   $em->persist($role);
-      //   $em->flush();
-      //
-      //   $output->writeln('Role '.$role->getName().' created or updated!');
-      // }
+        
       $output->writeln('All Roles created or updated!');
       return 1;
     }

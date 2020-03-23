@@ -1,0 +1,38 @@
+{
+    "1": {
+        "static": true,
+        "name": "Admins",
+        "translationKey": "name.admins",
+        "roles": {
+          "1": "ROLE_APP_ADMIN",
+          "2": "ROLE_USER_ADMIN",
+          "3": "ROLE_USER_REGISTER",
+          "4": "ROLE_USER_VIEW"
+        }
+      },
+    "2": {
+        "static": true,
+        "name": "Users",
+        "translationKey": "name.users",
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "3": {
+        "static": false,
+        "name": "Family Guy",
+        "translationKey": "name.family_guy",
+        "roles": {
+          "1": "ROLE_USER_REGISTER",
+          "2": "ROLE_USER_VIEW"
+        }
+      },
+    "4": {
+        "static": false,
+        "name": "American Dad",
+        "translationKey": "name.american_dad",
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      }
+}

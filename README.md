@@ -31,3 +31,9 @@ return [
 ```
 
 ### Step 2: Settings
+
+### Step 3: Setup
+`php bin/console make:migration`
+`php bin/console doctrine:migrations:migrate`
+`bin/console user:fill-roles`
+`bin/console user:fill-groups --all`
