@@ -145,5 +145,261 @@
         "roles": {
           "1": "ROLE_USER_VIEW"
         }
+      },
+    "10": {
+        "static": false,
+        "username": "meggriffin",
+        "password": "etdyrhfytu",
+        "first_name": "Meg",
+        "last_name": "Griffin",
+        "phone": "456",
+        "email": "meg@griffin.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "11": {
+        "static": false,
+        "username": "chrisgriffin",
+        "password": "etdyrhfytu",
+        "first_name": "Chris",
+        "last_name": "Griffin",
+        "phone": "456",
+        "email": "chris@griffin.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "12": {
+        "static": false,
+        "username": "clevelandbrown",
+        "password": "etdyrhfytu",
+        "first_name": "CLeveland",
+        "last_name": "Brown",
+        "phone": "456",
+        "email": "clevelan@brown.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "13": {
+        "static": false,
+        "username": "glennquagmire",
+        "password": "etdyrhfytu",
+        "first_name": "Glenn",
+        "last_name": "Quagmire",
+        "phone": "456",
+        "email": "glenn@quagmire.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "14": {
+        "static": false,
+        "username": "joeswanson",
+        "password": "etdyrhfytu",
+        "first_name": "Joe",
+        "last_name": "Swanson",
+        "phone": "456",
+        "email": "joe@swanson.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "15": {
+        "static": false,
+        "username": "tomtucker",
+        "password": "etdyrhfytu",
+        "first_name": "Tom",
+        "last_name": "Tucker",
+        "phone": "456",
+        "email": "tom@tucker.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "16": {
+        "static": false,
+        "username": "dianesimmons",
+        "password": "etdyrhfytu",
+        "first_name": "Diane",
+        "last_name": "Simmons",
+        "phone": "456",
+        "email": "diane@simmons.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "17": {
+        "static": false,
+        "username": "jonathanweed",
+        "password": "etdyrhfytu",
+        "first_name": "Jonathan",
+        "last_name": "Weed",
+        "phone": "456",
+        "email": "jonathan@weed.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "18": {
+        "static": false,
+        "username": "lorettabrown",
+        "password": "etdyrhfytu",
+        "first_name": "Loretta",
+        "last_name": "Brown",
+        "phone": "456",
+        "email": "loretta@brown.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "19": {
+        "static": false,
+        "username": "bonnieswanson",
+        "password": "etdyrhfytu",
+        "first_name": "Bonnie",
+        "last_name": "Swanson`",
+        "phone": "456",
+        "email": "bonnie@swanson.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "20": {
+        "static": false,
+        "username": "kevinswanson",
+        "password": "etdyrhfytu",
+        "first_name": "Kevin",
+        "last_name": "Swanson",
+        "phone": "456",
+        "email": "kevin@swanson.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "21": {
+        "static": false,
+        "username": "jaketucker",
+        "password": "etdyrhfytu",
+        "first_name": "Jake",
+        "last_name": "Tucker",
+        "phone": "456",
+        "email": "jack@tucker.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "22": {
+        "static": false,
+        "username": "carterpewterschmidt",
+        "password": "etdyrhfytu",
+        "first_name": "Carter",
+        "last_name": "Pewterschmidt",
+        "phone": "456",
+        "email": "carter@pewterschmidt.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "23": {
+        "static": false,
+        "username": "babspewterschmidt",
+        "password": "etdyrhfytu",
+        "first_name": "Babs",
+        "last_name": "Pewterschmidt",
+        "phone": "456",
+        "email": "babs@pewterschmidt.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "24": {
+        "static": false,
+        "username": "mayoradamwest",
+        "password": "etdyrhfytu",
+        "first_name": "Adam",
+        "last_name": "West",
+        "phone": "456",
+        "email": "adam@west.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
+      },
+    "25": {
+        "static": false,
+        "username": "triciatakanawa",
+        "password": "etdyrhfytu",
+        "first_name": "Tricia",
+        "last_name": "Takanawa",
+        "phone": "456",
+        "email": "tricia@takanawa.org",
+        "groups": {
+          "1": "Family Guy",
+          "2": "Users"
+        },
+        "roles": {
+          "1": "ROLE_USER_VIEW"
+        }
       }
 }
