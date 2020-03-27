@@ -63,7 +63,7 @@ class User implements UserInterface
     private $userRole;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", mappedBy="User")
+     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", mappedBy="user")
      */
     private $groups;
 
