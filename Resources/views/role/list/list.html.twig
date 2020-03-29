@@ -37,7 +37,7 @@
     {% if is_granted('ROLE_USER_ADMIN') %}
       <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.listGroups'|trans }}" href="{{ path('sw_user_role_group_list', {'role': item.id}) }}"><i class="fas fa-users-cog"></i></a>
     {#% else %#}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.listUsers'|trans }}" href="{{ path('sw_user_group_edit', {'id': item.id}) }}"><i class="fas fa-user-cog"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.listUsers'|trans }}" href="{{ path('sw_user_role_user_list', {'role': item.id}) }}"><i class="fas fa-user-cog"></i></a>
     {% endif %}
   </td>
 </tr>

@@ -26,6 +26,9 @@
   <th>{{ knp_pagination_sortable(userList, 'label.realName'|trans, ['u.firstName', 'u.lastName']) }}
     {% if userList.isSorted('u.firstName+u.lastName') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
   </th>
+  <th>{{ knp_pagination_sortable(userList, 'label.email'|trans, 'u.email') }}
+    {% if userList.isSorted('u.email') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
   <th>{{ 'label.roles'|trans }}</th>
   <th>{{ knp_pagination_sortable(userList, 'label.lastLogin'|trans, 'u.lastLogin') }}
     {% if userList.isSorted('u.lastLogin') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
@@ -38,6 +41,7 @@
   <td>{{ item.id }}</td>
   <td>{{ item.username }}</td>
   <td>{{ item.firstName }} {{ item.lastName }}</td>
+  <td>{{ item.email }}</td>
   <td>{% for role in item.userRole %}
        {{ role.translationKey|trans }}{% if not loop.last %},{% endif %}
     {% endfor %}</td>
