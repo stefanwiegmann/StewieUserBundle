@@ -1,0 +1,20 @@
+{% trans_default_domain transdomain %}
+
+<div class="modal" tabindex="-1" role="dialog" id="removeModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="removeModalLabel">{{ 'header.remove'|trans }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'label.cancel'|trans }}</button>
+        <button id="removeModalButton" type="button" class="btn btn-danger">{{ 'label.remove'|trans }}</button>
+      </div>
+    </div>
+  </div>
+</div>

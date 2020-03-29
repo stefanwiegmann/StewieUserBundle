@@ -41,7 +41,7 @@
     {% if is_granted('ROLE_USER_ADMIN') %}
       <a data-toggle="tooltip" title="{{ 'tooltip.remove'|trans }}" href="#removeModal"><i
                   class="fas fa-trash" data-toggle="modal" data-target="#removeModal"
-                  data-confirmation="{{ 'confirmation.remove'|trans({'%firstname%': item.firstName, '%lastname%': item.lastName, '%user%': item.username}) }}"
+                  data-confirmation="{{ 'confirmation.remove'|trans({'%what%': item.username, '%from%': role.name}) }}"
                   data-role="{{ role.id }}" data-user="{{ item.id }}"></i></a>
     {% endif %}
   </td>
@@ -52,24 +52,8 @@
       {{ knp_pagination_render(userList) }}
 
 <!-- modal -->
-<div class="modal" tabindex="-1" role="dialog" id="removeModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="removeModalLabel">{{ 'header.remove'|trans }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'label.cancel'|trans }}</button>
-        <button id="removeModalButton" type="button" class="btn btn-danger">{{ 'label.remove'|trans }}</button>
-      </div>
-    </div>
-  </div>
-</div>
+{% include "@stefanwiegmann_user/modal/remove.html.twig" with {'transdomain': 'SWUserBundle'} %}
+
 {% endblock content %}
 
 
