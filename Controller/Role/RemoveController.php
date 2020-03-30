@@ -17,6 +17,46 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class RemoveController extends AbstractController
 {
   /**
+  * @Route("/user/role/group/remove", name="sw_user_role_group_remove")
+  */
+  public function groupAction(Request $request)
+  {
+
+    if($request->isXmlHttpRequest()) {
+
+      $groupId   = $request->request->get('groupId');
+      $roleId   = $request->request->get('roleId');
+
+      $groupRepo = $this->getDoctrine()
+        ->getRepository('StefanwiegmannUserBundle:Group');
+      $group = $groupRepo->findOneById($groupId);
+
+      $roleRepo = $this->getDoctrine()
+        ->getRepository('StefanwiegmannUserBundle:Role');
+      $role = $roleRepo->findOneById($roleId);
+
+      $em = $this->getDoctrine()->getManager();
+      $role->removeGroup($group);
+      $em->persist($role);
+      $em->flush();
+
+      // refresh roles for that user
+      $groupRepo->refreshRoles($group);
+
+      $this->addFlash(
+        'success',
+        $group->getName().' was removed from Role '.$role->getName().'!'
+        );
+
+      $response = array("code" => 100, "success" => true, "groupId" => $groupId, "roleId" => $roleId);
+      return new Response(json_encode($response));
+
+    } else {
+      return $this->redirectToRoute('sw_user_role_list');
+    }
+  }
+
+  /**
   * @Route("/user/role/user/remove", name="sw_user_role_user_remove")
   */
   public function userAction(Request $request)
@@ -40,6 +80,9 @@ class RemoveController extends AbstractController
       $em->persist($role);
       $em->flush();
 
+      // refresh roles for that user
+      $userRepo->refreshRoles($user);
+
       $this->addFlash(
         'success',
         $user->getFirstName().' '.$user->getLastName().' ('.$user->getUserName().') was removed from Role '.$role->getName().'!'
@@ -48,8 +91,8 @@ class RemoveController extends AbstractController
       $response = array("code" => 100, "success" => true, "userId" => $userId, "roleId" => $roleId);
       return new Response(json_encode($response));
 
-  } else {
-    return $this->redirectToRoute('sw_user_role_list');
+    } else {
+      return $this->redirectToRoute('sw_user_role_list');
+    }
   }
-}
 }

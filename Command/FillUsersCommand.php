@@ -114,7 +114,7 @@ class FillUsersCommand extends Command
           // }
 
           // persist
-          $user->setRoles($userRoles);
+          $user->setRoles(array_unique($userRoles));
           $em->persist($user);
           $em->flush();
 
