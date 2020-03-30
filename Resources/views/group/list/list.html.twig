@@ -24,6 +24,7 @@
     {% if groupList.isSorted('g.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
   </th>
   <th>{{ 'label.roles'|trans }}</th>
+  <th>{{ 'label.member_s'|trans }}</th>
   <th>{{ 'label.status'|trans }}</th>
   <th>{{ 'label.actions'|trans }}</th>
 </tr> </thead>
@@ -34,6 +35,7 @@
   <td>{% for role in item.groupRole %}
        {{ role.translationKey|trans }}{% if not loop.last %},{% endif %}
     {% endfor %}</td>
+    <td>{{ item.user|length }} {{ 'label.member_s'|trans }}</td>
   <td>
   </td>
   <td>
