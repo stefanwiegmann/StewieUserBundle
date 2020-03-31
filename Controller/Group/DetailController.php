@@ -14,10 +14,10 @@ use App\Stefanwiegmann\UserBundle\Form\Type\Group\DetailType;
   * @IsGranted("ROLE_USER_ADMIN")
   */
 
-class EditController extends AbstractController
+class DetailController extends AbstractController
 {
     /**
-    * @Route("/user/group/ediyretyeryet/{id}", name="sw_user_group_edit")
+    * @Route("/user/group/detail/{id}", name="sw_user_group_detail")
     */
     public function details($id, Request $request)
     {
@@ -42,7 +42,7 @@ class EditController extends AbstractController
           return $this->redirectToRoute('sw_user_group_list');
         }
 
-      return $this->render('@stefanwiegmann_user/group/edit/details.html.twig', [
+      return $this->render('@stefanwiegmann_user/group/edit/detail.html.twig', [
           'group' => $group,
           'form' => $form->createView(),
       ]);

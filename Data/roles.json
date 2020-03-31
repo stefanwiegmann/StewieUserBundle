@@ -2,21 +2,25 @@
     "1": {
         "id": "1",
         "name": "ROLE_APP_ADMIN",
-        "translationKey": "name.role_app_admin"
+        "translationKey": "name.role_app_admin",
+        "sort": 1000
       },
     "2": {
         "id": "2",
         "name": "ROLE_USER_ADMIN",
-        "translationKey": "name.role_user_admin"
+        "translationKey": "name.role_user_admin",
+        "sort": 2000
       },
     "3": {
         "id": "3",
         "name": "ROLE_USER_REGISTER",
-        "translationKey": "name.role_user_register"
+        "translationKey": "name.role_user_register",
+        "sort": 2001
       },
     "4": {
         "id": "4",
         "name": "ROLE_USER_VIEW",
-        "translationKey": "name.role_user_view"
+        "translationKey": "name.role_user_view",
+        "sort": 2002
       }
 }

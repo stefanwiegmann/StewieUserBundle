@@ -8,16 +8,16 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Stefanwiegmann\UserBundle\Form\Type\Group\DetailType;
+use App\Stefanwiegmann\UserBundle\Form\Type\Group\RoleType;
 
 /**
   * @IsGranted("ROLE_USER_ADMIN")
   */
 
-class EditController extends AbstractController
+class RoleController extends AbstractController
 {
     /**
-    * @Route("/user/group/ediyretyeryet/{id}", name="sw_user_group_edit")
+    * @Route("/user/group/role/{id}", name="sw_user_group_role")
     */
     public function details($id, Request $request)
     {
@@ -27,7 +27,7 @@ class EditController extends AbstractController
       $group = $repo->findOneById($id);
 
       // create form
-      $form = $this->createForm(DetailType::class, $group);
+      $form = $this->createForm(RoleType::class, $group);
 
       // handle form
       $form->handleRequest($request);
@@ -42,7 +42,7 @@ class EditController extends AbstractController
           return $this->redirectToRoute('sw_user_group_list');
         }
 
-      return $this->render('@stefanwiegmann_user/group/edit/details.html.twig', [
+      return $this->render('@stefanwiegmann_user/group/edit/role.html.twig', [
           'group' => $group,
           'form' => $form->createView(),
       ]);

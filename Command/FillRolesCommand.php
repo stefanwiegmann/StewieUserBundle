@@ -51,6 +51,7 @@ class FillRolesCommand extends Command
         }
 
         $role->setName($item['name']);
+        $role->setSort($item['sort']);
         $role->setTranslationKey($item['translationKey']);
 
         $em->persist($role);
@@ -58,7 +59,7 @@ class FillRolesCommand extends Command
 
         $output->writeln('Role '.$role->getName().' created or updated!');
         }
-        
+
       $output->writeln('All Roles created or updated!');
       return 1;
     }

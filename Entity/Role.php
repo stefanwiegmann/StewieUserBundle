@@ -30,6 +30,11 @@ class Role
     private $translationKey;
 
     /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $sort;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\User", mappedBy="userRole")
      */
     private $users;
@@ -43,6 +48,7 @@ class Role
     {
         $this->users = new ArrayCollection();
         $this->groups = new ArrayCollection();
+        $this->sort = 10000;
     }
 
     public function getId(): ?int
@@ -126,6 +132,18 @@ class Role
             $this->groups->removeElement($group);
             $group->removeGroupRole($this);
         }
+
+        return $this;
+    }
+
+    public function getSort(): ?int
+    {
+        return $this->sort;
+    }
+
+    public function setSort(int $sort): self
+    {
+        $this->sort = $sort;
 
         return $this;
     }

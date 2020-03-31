@@ -1,0 +1,101 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.edit'|trans }}</small> {{ group.name }}{% endblock pageTitle %}
+{% block pageMenu %}
+
+{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_group_detail', {'id': group.id}) }}">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.member_s'|trans }} <span class="badge badge-primary">{{group.user|length}}</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_group_role', {'id': group.id}) }}">{{ 'label.role_s'|trans }} <span class="badge badge-primary">{{group.groupRole|length}}</a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual table -->
+
+<table class="table table-striped">
+<thead> <tr>
+  <th>{{ knp_pagination_sortable(memberList, '#', 'u.id') }}</th>
+  <th>{{ knp_pagination_sortable(memberList, 'label.username'|trans, 'u.username') }}
+    {% if memberList.isSorted('u.username') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ knp_pagination_sortable(memberList, 'label.realName'|trans, ['u.firstName', 'u.lastName']) }}
+    {% if memberList.isSorted('u.firstName+u.lastName') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ knp_pagination_sortable(memberList, 'label.email'|trans, 'u.email') }}
+    {% if memberList.isSorted('u.email') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ 'label.actions'|trans }}</th>
+</tr> </thead>
+{% for item in memberList %}
+<tr>
+  <td>{{ item.id }}</td>
+  <td>{{ item.username }}</td>
+  <td>{{ item.firstName }} {{ item.lastName }}</td>
+  <td>{{ item.email }}</td>
+  <td>
+    {% if is_granted('ROLE_USER_ADMIN') %}
+      <a data-toggle="tooltip" title="{{ 'tooltip.remove'|trans }}" href="#removeModal"><i
+                  class="fas fa-trash" data-toggle="modal" data-target="#removeModal"
+                  data-confirmation="{{ 'confirmation.remove'|trans({'%what%': item.username, '%from%': group.name}) }}"
+                  data-group="{{ group.id }}" data-user="{{ item.id }}"></i></a>
+    {% endif %}
+  </td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+      {{ knp_pagination_render(memberList) }}
+
+<!-- modal -->
+{% include "@stefanwiegmann_user/modal/remove.html.twig" with {'transdomain': 'SWUserBundle'} %}
+
+{% endblock content %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+
+        // remove modal
+        var userId = 0;
+        var groupId = 0;
+        $('#removeModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            userId = button.data('user') // Extract info from data-* attributes
+            groupId = button.data('group') // Extract info from data-* attributes
+            confirmation = button.data('confirmation')
+            var modal = $(this)
+            modal.find('.modal-body').text(confirmation)
+        });
+
+        $('#removeModalButton').mouseup(function () {
+            $.ajax({
+                  type: "POST",
+                  url: "{{ path('sw_user_group_remove_member') }}",
+                  data: {userId: userId, groupId: groupId }
+              // })
+              // .done(function(response){
+              //   var responseObj = JSON.parse(response);
+              //     alert(responseObj.userId);
+              //     alert(responseObj.roleId);
+              });
+            window.location.href = '{{ path('sw_user_group_member', {'group': group.id}) }}';
+        });
+
+    </script>
+{% endblock javascripts %}

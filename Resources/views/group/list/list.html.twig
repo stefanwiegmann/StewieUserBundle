@@ -33,16 +33,16 @@
   <td>{{ item.id }}</td>
   <td>{{ item.name }}</td>
   <td>{% for role in item.groupRole %}
-       {{ role.translationKey|trans }}{% if not loop.last %},{% endif %}
+       {{ role.name|replace({'ROLE_': "", '_': " "}) }}{% if not loop.last %},{% endif %}
     {% endfor %}</td>
     <td>{{ item.user|length }} {{ 'label.member_s'|trans }}</td>
   <td>
   </td>
   <td>
     {% if is_granted('ROLE_USER_ADMIN') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_group_edit', {'id': item.id}) }}"><i class="far fa-edit"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_group_detail', {'id': item.id}) }}"><i class="far fa-edit"></i></a>
     {#% else %#}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_group_edit', {'id': item.id}) }}"><i class="far fa-eye"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_group_detail', {'id': item.id}) }}"><i class="far fa-eye"></i></a>
     {% endif %}
   </td>
 </tr>

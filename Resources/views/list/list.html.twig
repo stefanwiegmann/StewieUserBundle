@@ -43,7 +43,7 @@
   <td>{{ item.firstName }} {{ item.lastName }}</td>
   <td>{{ item.email }}</td>
   <td>{% for role in item.userRole %}
-       {{ role.translationKey|trans }}{% if not loop.last %},{% endif %}
+       {{ role.name|replace({'ROLE_': "", '_': " "}) }}{% if not loop.last %},{% endif %}
     {% endfor %}</td>
   <td>
   </td>
