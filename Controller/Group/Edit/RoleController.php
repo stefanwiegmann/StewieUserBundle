@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller\Group;
+namespace App\Stefanwiegmann\UserBundle\Controller\Group\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ use App\Stefanwiegmann\UserBundle\Form\Type\Group\RoleType;
 class RoleController extends AbstractController
 {
     /**
-    * @Route("/user/group/role/{id}", name="sw_user_group_role")
+    * @Route("/user/group/edit/role/{id}", name="sw_user_group_edit_role")
     */
     public function details($id, Request $request)
     {

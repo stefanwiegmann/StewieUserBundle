@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller\Group;
+namespace App\Stefanwiegmann\UserBundle\Controller\Group\View;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,10 +11,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
-  * @IsGranted("ROLE_USER_ADMIN")
+  * @IsGranted("ROLE_USER_VIEW")
   */
 
-class MemberController extends AbstractController
+class RoleController extends AbstractController
 {
     private $paginator;
 
@@ -24,10 +24,10 @@ class MemberController extends AbstractController
     }
 
     /**
-    * @Route("/user/group/member/{group}/{page}", defaults={"page": 1}
-    *     , requirements={"page": "\d+"}, name="sw_user_group_member")
+    * @Route("/user/group/view/role/{group}/{page}", defaults={"page": 1}
+    *     , requirements={"page": "\d+"}, name="sw_user_group_view_role")
     */
-    public function details($group, $page, Request $request)
+    public function roles($group, $page, Request $request)
     {
       //get group
       $em = $this->container->get('doctrine')->getManager();
@@ -44,9 +44,9 @@ class MemberController extends AbstractController
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
         $pagination->setTemplate('@stefanwiegmann_user/default/pagination.html.twig');
 
-      return $this->render('@stefanwiegmann_user/group/edit/member.html.twig', [
+      return $this->render('@stefanwiegmann_user/group/view/role.html.twig', [
           'group' => $group,
-          'memberList' => $pagination,
+          'roleList' => $pagination,
           'page' => $page,
       ]);
     }
@@ -54,12 +54,12 @@ class MemberController extends AbstractController
     public function getQuery($group){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:User');
+          ->getRepository('StefanwiegmannUserBundle:Role');
 
-        $query = $repository->createQueryBuilder('u')
-          ->andWhere(':groups MEMBER OF u.groups')
+        $query = $repository->createQueryBuilder('r')
+          ->andWhere(':groups MEMBER OF r.groups')
           ->setParameter('groups', $group)
-          ->orderBy('u.id', 'ASC');
+          ->orderBy('r.id', 'ASC');
 
           return $query
             ->getQuery();

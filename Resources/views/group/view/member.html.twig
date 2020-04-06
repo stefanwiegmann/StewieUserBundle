@@ -1,0 +1,54 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.group.view'|trans }}</small> {{ group.name }}{% endblock pageTitle %}
+{% block pageMenu %}
+
+{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_group_view_detail', {'id': group.id}) }}">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.member_s'|trans }} <span class="badge badge-primary">{{group.user|length}}</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_group_view_role', {'group': group.id}) }}">{{ 'label.role_s'|trans }} <span class="badge badge-primary">{{group.groupRole|length}}</a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual table -->
+
+<table class="table table-striped">
+<thead> <tr>
+  <th>{{ knp_pagination_sortable(memberList, '#', 'u.id') }}</th>
+  <th>{{ knp_pagination_sortable(memberList, 'label.username'|trans, 'u.username') }}
+    {% if memberList.isSorted('u.username') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ knp_pagination_sortable(memberList, 'label.realName'|trans, ['u.firstName', 'u.lastName']) }}
+    {% if memberList.isSorted('u.firstName+u.lastName') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ knp_pagination_sortable(memberList, 'label.email'|trans, 'u.email') }}
+    {% if memberList.isSorted('u.email') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+</tr> </thead>
+{% for item in memberList %}
+<tr>
+  <td>{{ item.id }}</td>
+  <td>{{ item.username }}</td>
+  <td>{{ item.firstName }} {{ item.lastName }}</td>
+  <td>{{ item.email }}</td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+      {{ knp_pagination_render(memberList) }}
+
+{% endblock content %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller\Group;
+namespace App\Stefanwiegmann\UserBundle\Controller\Group\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ use App\Stefanwiegmann\UserBundle\Form\Type\Group\DetailType;
 class DetailController extends AbstractController
 {
     /**
-    * @Route("/user/group/detail/{id}", name="sw_user_group_detail")
+    * @Route("/user/group/edit/detail/{id}", name="sw_user_group_edit_detail")
     */
     public function details($id, Request $request)
     {

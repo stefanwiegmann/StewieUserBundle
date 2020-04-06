@@ -3,7 +3,7 @@
 
 {% block filterBlock %}{% endblock filterBlock %}
 
-{% block pageTitle %}<small class="text-muted">{{ 'header.edit'|trans }}</small> {{ group.name }}{% endblock pageTitle %}
+{% block pageTitle %}<small class="text-muted">{{ 'header.group.edit'|trans }}</small> {{ group.name }}{% endblock pageTitle %}
 {% block pageMenu %}
 {{ form_start(form) }}
     {{ form_widget(form.submit) }}
@@ -14,10 +14,10 @@
 <!-- tab bar -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_group_detail', {'id': group.id}) }}">{{ 'label.details'|trans }}</a>
+        <a class="nav-link" href="{{ path('sw_user_group_edit_detail', {'id': group.id}) }}">{{ 'label.details'|trans }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_group_member', {'group': group.id}) }}">{{ 'label.member_s'|trans }}  <span class="badge badge-primary">{{group.user|length}}</a>
+        <a class="nav-link" href="{{ path('sw_user_group_edit_member', {'group': group.id}) }}">{{ 'label.member_s'|trans }}  <span class="badge badge-primary">{{group.user|length}}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link active" href="#">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{group.groupRole|length}}</a>
