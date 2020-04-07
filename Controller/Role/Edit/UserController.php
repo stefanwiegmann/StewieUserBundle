@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller\Role;
+namespace App\Stefanwiegmann\UserBundle\Controller\Role\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +14,7 @@ use Knp\Component\Pager\PaginatorInterface;
   * @IsGranted("ROLE_USER_ADMIN")
   */
 
-class GroupListController extends AbstractController
+class UserController extends AbstractController
 {
     private $paginator;
 
@@ -24,10 +24,10 @@ class GroupListController extends AbstractController
     }
 
     /**
-    * @Route("/user/role/group/list/{role}/{page}", defaults={"role": 0, "page": 1}
-    *     , requirements={"role": "\d+", "page": "\d+"}, name="sw_user_role_group_list")
+    * @Route("/user/role/edit/user/{role}/{page}", defaults={"role": 0, "page": 1}
+    *     , requirements={"role": "\d+", "page": "\d+"}, name="sw_user_role_edit_user")
     */
-    public function list($role, $page, Request $request)
+    public function user($role, $page, Request $request)
     {
       // get filter data
       if($role > 0){
@@ -48,9 +48,9 @@ class GroupListController extends AbstractController
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
         $pagination->setTemplate('@stefanwiegmann_user/default/pagination.html.twig');
 
-      return $this->render('@stefanwiegmann_user/role/list/group.html.twig', [
+      return $this->render('@stefanwiegmann_user/role/edit/user.html.twig', [
           'role' => $roleObject,
-          'groupList' => $pagination,
+          'userList' => $pagination,
           'page' => $page,
       ]);
     }
@@ -58,12 +58,12 @@ class GroupListController extends AbstractController
     public function getQuery($roleObject){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Group');
+          ->getRepository('StefanwiegmannUserBundle:User');
 
-        $query = $repository->createQueryBuilder('g')
-          ->andWhere(':roles MEMBER OF g.groupRole')
+        $query = $repository->createQueryBuilder('u')
+          ->andWhere(':roles MEMBER OF u.userRole')
           ->setParameter('roles', $roleObject)
-          ->orderBy('g.id', 'ASC');
+          ->orderBy('u.id', 'ASC');
 
           return $query
             ->getQuery();

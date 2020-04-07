@@ -8,7 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Stefanwiegmann\UserBundle\Form\Type\Group\DeleteType;
+// use App\Stefanwiegmann\UserBundle\Form\Type\Group\DeleteType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -28,7 +29,12 @@ class DeleteController extends AbstractController
     $group = $repo->findOneById($id);
 
     // create form
-    $form = $this->createForm(DeleteType::class, $group);
+    // $form = $this->createForm(DeleteType::class, $group);
+    $form = $this->createFormBuilder($group)
+            ->add('submit', SubmitType::class, array('label' => 'label.delete',
+            'translation_domain' => 'SWUserBundle',
+            'attr'=> array('class'=>'btn-danger'),))
+            ->getForm();
 
     // handle form
     $form->handleRequest($request);

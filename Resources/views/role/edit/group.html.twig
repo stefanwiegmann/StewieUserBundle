@@ -1,0 +1,49 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.role.edit'|trans }}</small> {{role.name}}{% endblock pageTitle %}
+{% block pageMenu %}
+  <a href="{{ app.request.headers.get('referer') }}" class="btn btn-link" role="button">{{ 'label.back'|trans }}</a>
+{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_role_edit_user', {'role': role.id}) }}">{{ 'label.user_s'|trans }} <span class="badge badge-primary">{{role.users|length}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.group_s'|trans }} <span class="badge badge-primary">{{role.groups|length}}</span></a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual table -->
+
+<table class="table table-striped">
+<thead> <tr>
+  <th>{{ knp_pagination_sortable(groupList, '#', 'g.id') }}</th>
+  <th>{{ knp_pagination_sortable(groupList, 'label.name'|trans, 'g.name') }}
+    {% if groupList.isSorted('g.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+  <th>{{ 'label.actions'|trans }}</th>
+</tr> </thead>
+{% for item in groupList %}
+<tr>
+  <td>{{ item.id }}</td>
+  <td>{{ item.name }}</td>
+  <td>
+    {% if is_granted('ROLE_USER_ADMIN') %}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.remove'|trans }}" href="{{ path('sw_user_role_remove_group', {'role': role.id, 'group': item.id}) }}"><i class="fas fa-trash"></i></a>
+    {% endif %}
+  </td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+      {{ knp_pagination_render(groupList) }}
+
+{% endblock content %}
