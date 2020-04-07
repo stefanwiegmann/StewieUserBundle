@@ -19,7 +19,7 @@ class RemoveController extends AbstractController
   /**
   * @Route("/user/group/remove/member", name="sw_user_group_remove_member")
   */
-  public function groupAction(Request $request)
+  public function memberAction(Request $request)
   {
 
     if($request->isXmlHttpRequest()) {

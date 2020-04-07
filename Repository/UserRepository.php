@@ -37,8 +37,15 @@ class UserRepository extends ServiceEntityRepository
 
         }
 
-      // set all roles
-      $user->setRoles(array_unique($roles));
+      // set all unique roles
+      $uniqueRoles = array();
+      foreach (array_unique($roles) as &$role){
+
+        array_push($uniqueRoles, $role);
+
+        }
+
+      $user->setRoles($uniqueRoles);
 
       $em->persist($user);
       $em->flush();

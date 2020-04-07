@@ -39,6 +39,9 @@ class RoleController extends AbstractController
           $em->persist($group);
           $em->flush();
 
+          // update affected user roles
+          $repo->refreshRoles($group);
+
           return $this->redirectToRoute('sw_user_group_list');
         }
 

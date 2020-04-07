@@ -41,7 +41,7 @@ class ListController extends AbstractController
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
         $pagination->setTemplate('@stefanwiegmann_user/default/pagination.html.twig');
 
-      return $this->render('@stefanwiegmann_user/group/list/list.html.twig', [
+      return $this->render('@stefanwiegmann_user/group/list.html.twig', [
           'groupList' => $pagination,
           'page' => $page,
       ]);

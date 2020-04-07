@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Form\Type;
+namespace App\Stefanwiegmann\UserBundle\Form\Type\Group;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 // use Symfony\Component\Form\Extension\Core\Type\DateType;
 // use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class GroupType extends AbstractType
+class CreateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,7 +29,7 @@ class GroupType extends AbstractType
                        return $er->createQueryBuilder('r')
                            ->orderBy('r.id', 'ASC');
                    },
-                   'choice_label' => 'translationKey',
+                   'choice_label' => 'name',
                    // 'choices_as_values' => true,
                    'label' => 'label.role',
                    'expanded' => true, 'multiple' => true,
@@ -37,7 +37,7 @@ class GroupType extends AbstractType
                    'choice_translation_domain' => 'SWUserBundle',
                  ))
 
-             ->add('submit', SubmitType::class, array('label' => 'label.update',
+             ->add('submit', SubmitType::class, array('label' => 'label.create',
              'translation_domain' => 'SWUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;

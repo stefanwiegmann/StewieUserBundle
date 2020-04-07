@@ -1,0 +1,42 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+{% block menuBlock %}{% endblock menuBlock %}
+
+{% block pageTitle %}<p></p>{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
+
+{% block main %}
+  <div class="container-fluid" id="main">
+
+    <div class="row justify-content-center">
+
+        <div class="card bg-light mx-auto" style="width: 24rem;">
+          <h5 class="card-header"><small class="text-muted">{{ 'header.group.delete'|trans }}</small> {{ group.name }}</h5>
+          <div class="card-body">
+            <h5 class="card-title">Are you sure?</h5>
+            <p class="card-text">This will also remove any permissions from users inherited through group memberships.</p>
+
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-3 text-center">
+                <!-- cancel -->
+                <a href="{{ app.request.headers.get('referer') }}" class="btn btn-secondary" role="button">{{ 'label.cancel'|trans }}</a>
+              </div>
+              <div class="col-md-auto">
+                <br>
+              </div>
+              <div class="col col-lg-3 text-center">
+                <!-- delete -->
+                  {{ form_start(form) }}
+                  {{ form_widget(form.submit) }}
+                  {{ form_end(form) }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </div><!-- row -->
+
+  </div><!-- main -->
+{% endblock main %}

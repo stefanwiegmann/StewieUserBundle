@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Stefanwiegmann\UserBundle\Form\Type\GroupType;
+use App\Stefanwiegmann\UserBundle\Form\Type\Group\CreateType;
 use App\Stefanwiegmann\UserBundle\Entity\Group;
 
 /**
@@ -26,7 +26,7 @@ class CreateController extends AbstractController
       $group = new Group;
 
       // create form
-      $form = $this->createForm(GroupType::class, $group);
+      $form = $this->createForm(CreateType::class, $group);
 
       // handle form
       $form->handleRequest($request);
@@ -42,7 +42,7 @@ class CreateController extends AbstractController
           return $this->redirectToRoute('sw_user_group_list');
         }
 
-      return $this->render('@stefanwiegmann_user/group/create/create.html.twig', [
+      return $this->render('@stefanwiegmann_user/group/create.html.twig', [
           'group' => $group,
           'form' => $form->createView(),
       ]);

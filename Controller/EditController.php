@@ -39,6 +39,9 @@ class EditController extends AbstractController
           $em->persist($user);
           $em->flush();
 
+          // update user roles
+          $repo->refreshRoles($user);
+
           return $this->redirectToRoute('sw_user_list');
         }
 
