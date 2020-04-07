@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 // use App\Stefanwiegmann\UserBundle\Form\Type\Role\RemoveType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
   * @IsGranted("ROLE_USER_ADMIN")
@@ -21,7 +22,7 @@ class RemoveController extends AbstractController
   /**
   * @Route("/user/role/remove/user/{role}/{user}", name="sw_user_role_remove_user")
   */
-  public function userAction($role, $user, Request $request)
+  public function userAction($role, $user, Request $request, TranslatorInterface $translator)
   {
     //get role
     $em = $this->container->get('doctrine')->getManager();
@@ -58,9 +59,14 @@ class RemoveController extends AbstractController
         return $this->redirectToRoute('sw_user_role_edit_user', array('role' => $role));
       }
 
-    return $this->render('@stefanwiegmann_user/role/edit/remove.html.twig', [
-        'object' => $roleObject->getName(),
-        'subject' => $userObject->getUsername(),
+    return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
+        'text' => $translator->trans('confirmation.role.remove', [
+          '%subject%' => $userObject->getUsername(),
+          '%object%' => $roleObject->getName()
+          ], 'SWUserBundle'),
+        'title' => "",
+        'header1' => $roleObject->getName(),
+        'header2' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
         'form' => $form->createView(),
     ]);
 
@@ -69,7 +75,7 @@ class RemoveController extends AbstractController
     /**
     * @Route("/user/role/remove/group/{role}/{group}", name="sw_user_role_remove_group")
     */
-    public function groupAction($role, $group, Request $request)
+    public function groupAction($role, $group, Request $request, TranslatorInterface $translator)
     {
       //get role
       $em = $this->container->get('doctrine')->getManager();
@@ -106,11 +112,16 @@ class RemoveController extends AbstractController
           return $this->redirectToRoute('sw_user_role_edit_group', array('role' => $role));
         }
 
-      return $this->render('@stefanwiegmann_user/role/edit/remove.html.twig', [
-          'object' => $roleObject->getName(),
-          'subject' => $groupObject->getName(),
-          'form' => $form->createView(),
-      ]);
+    return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
+        'text' => $translator->trans('confirmation.role.remove', [
+          '%subject%' => $groupObject->getName(),
+          '%object%' => $roleObject->getName()
+          ], 'SWUserBundle'),
+        'title' => "",
+        'header1' => $roleObject->getName(),
+        'header2' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
+        'form' => $form->createView(),
+    ]);
 
     }
 

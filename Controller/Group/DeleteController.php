@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 // use App\Stefanwiegmann\UserBundle\Form\Type\Group\DeleteType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
   * @IsGranted("ROLE_USER_ADMIN")
@@ -21,7 +22,7 @@ class DeleteController extends AbstractController
   /**
   * @Route("/user/group/delete/{id}", name="sw_user_group_delete")
   */
-  public function deleteAction($id, Request $request)
+  public function deleteAction($id, Request $request, TranslatorInterface $translator)
   {
     //get user
     $em = $this->container->get('doctrine')->getManager();
@@ -49,8 +50,13 @@ class DeleteController extends AbstractController
         return $this->redirectToRoute('sw_user_group_list');
       }
 
-    return $this->render('@stefanwiegmann_user/group/delete.html.twig', [
-        'group' => $group,
+    return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
+        'title' => $translator->trans('confirmation.delete', [
+          '%subject%' => $group->getName()
+          ], 'SWUserBundle'),
+        'text' => $translator->trans('confirmation.group.delete', [], 'SWUserBundle'),
+        'header1' => $group->getName(),
+        'header2' => $translator->trans('header.group.delete', [], 'SWUserBundle'),
         'form' => $form->createView(),
     ]);
 

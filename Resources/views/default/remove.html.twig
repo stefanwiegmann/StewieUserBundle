@@ -4,7 +4,7 @@
 {% block filterBlock %}{% endblock filterBlock %}
 {% block menuBlock %}{% endblock menuBlock %}
 
-{% block pageTitle %}<p></p>{% endblock pageTitle %}
+{% block pageTitle %}{% endblock pageTitle %}
 {% block pageMenu %}{% endblock pageMenu %}
 
 {% block main %}
@@ -13,10 +13,10 @@
     <div class="row justify-content-center">
 
         <div class="card bg-light mx-auto" style="width: 24rem;">
-          <h5 class="card-header"><small class="text-muted">{{ 'header.group.delete'|trans }}</small> {{ group.name }}</h5>
+          <h5 class="card-header"><small class="text-muted">{{ header2 }}</small> {{ header1 }}</h5>
           <div class="card-body">
-            <h5 class="card-title">Are you sure?</h5>
-            <p class="card-text">This will also remove any permissions from users inherited through group memberships.</p>
+            <h5 class="card-title">{{ title }}</h5>
+            <p class="card-text">{{ text }}</p>
 
             <div class="row justify-content-md-center">
               <div class="col col-lg-3 text-center">

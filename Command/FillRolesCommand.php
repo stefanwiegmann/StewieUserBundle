@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use App\Stefanwiegmann\UserBundle\Entity\Role;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Console\Input\InputOption;
 
 class FillRolesCommand extends Command
 {
@@ -30,6 +31,9 @@ class FillRolesCommand extends Command
           // the full command description shown when running the command with
           // the "--help" option
           ->setHelp('This command allows you to create roles...')
+
+          // add all or only static groups
+          ->addOption('all')
       ;
     }
 
