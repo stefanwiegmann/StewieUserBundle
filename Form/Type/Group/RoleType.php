@@ -24,12 +24,16 @@ class RoleType extends AbstractType
                       return $er->createQueryBuilder('r')
                           ->orderBy('r.sort', 'ASC');
                   },
-                  'choice_label' => 'name',
+                  'choice_label' => 'translationKey',
                   // 'choices_as_values' => true,
                   'label' => 'label.role',
                   'expanded' => true, 'multiple' => true,
                   'translation_domain' => 'SWUserBundle',
-                  'choice_translation_domain' => 'SWUserBundle',
+                  'choice_translation_domain' => $groupRole->getTranslationDomain(),
+                  // 'choice_translation_domain' =>
+                  // function($role) {
+                  //   return $role->getTranslationDomain();
+                  // },
                 ))
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',
