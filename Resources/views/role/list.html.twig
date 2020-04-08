@@ -24,7 +24,7 @@
 {% for item in roleList %}
 <tr>
   <td>{{ item.id }}</td>
-  <td>{{ item.translationKey|trans({}, item.translationDomain) }}</td>
+  <td>{{ item.translationKey|trans({}, 'Roles') }}</td>
   <td>{{ item.groups|length }} {{ 'label.group_s'|trans }}</td>
   <td>{{ item.users|length }} {{ 'label.user_s'|trans }}</td>
   <td>

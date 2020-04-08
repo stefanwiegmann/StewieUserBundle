@@ -3,7 +3,7 @@
 
 {% block filterBlock %}{% endblock filterBlock %}
 
-{% block pageTitle %}<small class="text-muted">{{ 'header.role.edit'|trans }}</small> {{ role.translationKey|trans({}, role.translationDomain) }}{% endblock pageTitle %}
+{% block pageTitle %}<small class="text-muted">{{ 'header.role.edit'|trans }}</small> {{ role.translationKey|trans({}, 'Roles') }}{% endblock pageTitle %}
 {% block pageMenu %}
   <a href="{{ app.request.headers.get('referer') }}" class="btn btn-link" role="button">{{ 'label.back'|trans }}</a>
 {% endblock pageMenu %}

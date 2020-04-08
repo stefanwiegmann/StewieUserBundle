@@ -29,11 +29,7 @@ class RoleType extends AbstractType
                   'label' => 'label.role',
                   'expanded' => true, 'multiple' => true,
                   'translation_domain' => 'SWUserBundle',
-                  'choice_translation_domain' => $groupRole->getTranslationDomain(),
-                  // 'choice_translation_domain' =>
-                  // function($role) {
-                  //   return $role->getTranslationDomain();
-                  // },
+                  'choice_translation_domain' => 'Roles',
                 ))
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',

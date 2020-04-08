@@ -59,7 +59,7 @@ class UserType extends AbstractType
                    'label' => 'label.role',
                    'expanded' => true, 'multiple' => true,
                    'translation_domain' => 'SWUserBundle',
-                   'choice_translation_domain' => 'SWUserBundle',
+                   'choice_translation_domain' => 'Roles',
                  ))
 
             // ->add('imageFile', FileType::class, array(

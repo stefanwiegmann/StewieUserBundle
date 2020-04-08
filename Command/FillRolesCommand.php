@@ -57,7 +57,6 @@ class FillRolesCommand extends Command
         $role->setName($item['name']);
         $role->setSort($item['sort']);
         $role->setTranslationKey($item['translationKey']);
-        $role->setTranslationDomain($item['translationDomain']);
 
         $em->persist($role);
         $em->flush();

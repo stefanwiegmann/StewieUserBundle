@@ -30,11 +30,6 @@ class Role
     private $translationKey;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $translationDomain;
-
-    /**
      * @ORM\Column(type="integer", nullable=false)
      */
     private $sort;
@@ -149,18 +144,6 @@ class Role
     public function setSort(int $sort): self
     {
         $this->sort = $sort;
-
-        return $this;
-    }
-
-    public function getTranslationDomain(): ?string
-    {
-        return $this->translationDomain;
-    }
-
-    public function setTranslationDomain(string $translationDomain): self
-    {
-        $this->translationDomain = $translationDomain;
 
         return $this;
     }

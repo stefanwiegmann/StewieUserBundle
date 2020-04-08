@@ -62,10 +62,10 @@ class RemoveController extends AbstractController
     return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
         'text' => $translator->trans('confirmation.role.remove', [
           '%subject%' => $userObject->getUsername(),
-          '%object%' => $roleObject->getName()
+          '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')
           ], 'SWUserBundle'),
         'title' => "",
-        'header1' => $roleObject->getName(),
+        'header1' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
         'header2' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
         'form' => $form->createView(),
     ]);
@@ -115,10 +115,10 @@ class RemoveController extends AbstractController
     return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
         'text' => $translator->trans('confirmation.role.remove', [
           '%subject%' => $groupObject->getName(),
-          '%object%' => $roleObject->getName()
+          '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')
           ], 'SWUserBundle'),
         'title' => "",
-        'header1' => $roleObject->getName(),
+        'header1' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
         'header2' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
         'form' => $form->createView(),
     ]);

@@ -2,36 +2,31 @@
     "1": {
         "id": "1",
         "name": "ROLE_APP_ADMIN",
-        "translationKey": "name.role.app_admin",
-        "translationDomain": "SWUserBundle",
+        "translationKey": "name.role_app_admin",
         "sort": 1000
       },
     "2": {
         "id": "2",
         "name": "ROLE_USER_ADMIN",
-        "translationKey": "name.role.user_admin",
-        "translationDomain": "SWUserBundle",
+        "translationKey": "name.role_user_admin",
         "sort": 2000
       },
     "3": {
         "id": "3",
         "name": "ROLE_USER_REGISTER",
-        "translationKey": "name.role.user_register",
-        "translationDomain": "SWUserBundle",
+        "translationKey": "name.role_user_register",
         "sort": 2001
       },
     "4": {
         "id": "4",
         "name": "ROLE_USER_VIEW",
-        "translationKey": "name.role.user_view",
-        "translationDomain": "SWUserBundle",
+        "translationKey": "name.role_user_view",
         "sort": 2002
       },
     "5": {
         "id": "5",
         "name": "ROLE_USER_PROFILE_VIEW",
-        "translationKey": "name.role.user_profile_view",
-        "translationDomain": "SWUserBundle",
+        "translationKey": "name.role_user_profile_view",
         "sort": 2003
       }
 }

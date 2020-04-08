@@ -36,7 +36,7 @@
 {% for item in roleList %}
 <tr>
   <td>{{ item.id }}</td>
-  <td>{{ item.name }}</td>
+  <td>{{ item.translationKey|trans({}, 'Roles') }}</td>
 </tr>
 {% endfor %}
 </table>
