@@ -1,0 +1,43 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.user.edit'|trans }}</small> {{ user.username }}{% endblock pageTitle %}
+{% block pageMenu %}
+{{ form_start(form) }}
+    {{ form_widget(form.submit) }}
+{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_user_edit_detail', {'username': user.username}) }}">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">{{ 'label.group_s'|trans }}  <span class="badge badge-primary">{{user.groups|length}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_user_edit_role', {'username': user.username}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{user.userRole|length}}</a>
+      </li>
+    </ul>
+
+<br>
+
+<!-- actual form -->
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        <strong>{{ form_label(form.groups) }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ form_errors(form.groups) }}
+        {{ form_widget(form.groups) }}
+      </div>
+    </div>
+
+
+{{ form_end(form) }}
+{% endblock content %}

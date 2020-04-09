@@ -1,4 +1,7 @@
 <nav>
+<!-- if any pages -->
+{% if pageCount > 0 %}
+
 <ul class="pagination">
   {# Previous #}
   {% if current == 1 %}
@@ -67,4 +70,6 @@
     </li>
   {% endif %}
 </ul>
+
+{% endif %}
 </nav>

@@ -18,7 +18,7 @@ class GroupRepository extends ServiceEntityRepository
     }
 
     public function refreshRoles($group){
-      
+
       $em = $this->container->get('doctrine')->getManager();
       $userRepo = $em->getRepository('StefanwiegmannUserBundle:User');
 
@@ -29,6 +29,36 @@ class GroupRepository extends ServiceEntityRepository
         $userRepo->refreshRoles($user);
 
         }
+
+      return true;
+
+    }
+
+    public function updateUser($user){
+
+      $em = $this->container->get('doctrine')->getManager();
+      $groupRepo = $em->getRepository('StefanwiegmannUserBundle:Group');
+
+      $groups = $groupRepo->findAll();
+
+      // remove users from these groups
+      foreach ($groups as &$group){
+
+        // remove user from old groups
+        if ($group->getUser()->contains($user) && !$user->getGroups()->contains($group)) {
+            $group->removeUser($user);
+            $em->persist($group);
+          }
+
+        // add user to new groups
+        if (!$group->getUser()->contains($user) && $user->getGroups()->contains($group)) {
+            $group->addUser($user);
+            $em->persist($group);
+          }
+
+        }
+
+      $em->flush();
 
       return true;
 
