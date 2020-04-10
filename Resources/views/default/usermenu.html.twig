@@ -1,0 +1,19 @@
+<ul class="navbar-nav mr-auto my-2 my-lg-0">
+  {% if is_granted('ROLE_USER') %}
+  <li class="nav-item dropdown">
+     <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-display="static" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
+     <div class="dropdown-menu dropdown-menu-md-right">
+       <h6 class="dropdown-header">{{ 'header.usermenu'|trans({}, 'SWUserBundle') }}</h6>
+       <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">{{ app.user.username }}</a>
+       <div class="dropdown-divider"></div>
+       <a class="dropdown-item" href="{{ path('sw_user_profile') }}">{{ 'label.profile'|trans({}, 'SWUserBundle') }}</a>
+       <div class="dropdown-divider"></div>
+       <a class="dropdown-item" href="{{ path('sw_user_logout') }}">{{ 'label.logout'|trans({}, 'SWUserBundle') }} <span class="sr-only">(current)</span></a>
+     </div>
+   </li>
+  {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('sw_user_login') }}">{{ 'label.login'|trans({}, 'SWUserBundle') }} <span class="sr-only">(current)</span></a>
+    </li>
+  {% endif %}
+</ul>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller;
+namespace App\Stefanwiegmann\UserBundle\Controller\Profile;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,19 +8,19 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Stefanwiegmann\UserBundle\Form\Type\ProfileType;
+use App\Stefanwiegmann\UserBundle\Form\Type\Profile\PasswordType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
   * @IsGranted("IS_AUTHENTICATED_FULLY")
   */
 
-class ProfileController extends AbstractController
+class PasswordController extends AbstractController
 {
     /**
-    * @Route("/user/profile", name="sw_user_profile")
+    * @Route("/user/profile/password", name="sw_user_profile_password")
     */
-    public function profile(Request $request, UserPasswordEncoderInterface $encoder)
+    public function password(Request $request, UserPasswordEncoderInterface $encoder)
     {
       // $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -29,7 +29,7 @@ class ProfileController extends AbstractController
       $user = $this->getUser();
 
       // create form
-      $form = $this->createForm(ProfileType::class, $user);
+      $form = $this->createForm(PasswordType::class, $user);
 
       // handle form
       $form->handleRequest($request);
@@ -47,10 +47,15 @@ class ProfileController extends AbstractController
           $em->persist($user);
           $em->flush();
 
-          return $this->redirectToRoute('sw_user_list');
+          $this->addFlash(
+            'success',
+            'Your password was updated!'
+            );
+
+          return $this->redirectToRoute('sw_user_profile_password');
         }
 
-      return $this->render('@stefanwiegmann_user/profile/profile.html.twig', [
+      return $this->render('@stefanwiegmann_user/profile/password.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);
