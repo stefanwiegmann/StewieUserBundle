@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Stefanwiegmann\UserBundle\Form\Type\ResetType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 // use App\Stefanwiegmann\UserBundle\Entity\User;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class ResetController extends AbstractController
 {
@@ -64,7 +66,7 @@ class ResetController extends AbstractController
     /**
     * @Route("/user/request/reset", name="sw_user_request_reset")
     */
-    public function request(Request $request)
+    public function request(Request $request, MailerInterface $mailer)
     {
 
       // create form
@@ -96,30 +98,53 @@ class ResetController extends AbstractController
           $em->flush();
 
           // send email
-          $message = (new \Swift_Message('Your Password Request'))
-              // ->setFrom($this->container->getParameter( 'mailer_address' ))
-              ->setFrom('admin@mindpool.net')
-              ->setTo($user->getEmail())
-              ->setBody(
-                  $this->renderView(
-                      '@stefanwiegmann_user/emails/request.html.twig',
-                      array('name' => $user->getFirstName().' '.$user->getLastName()
-                      )),
-                  'text/html'
-              )
-              //  If you also want to include a plaintext version of the message
-              ->addPart(
-                  $this->renderView(
-                      '@stefanwiegmann_user/emails/request.txt.twig',
-                      array('name' => $user->getFirstName().' '.$user->getLastName()
-                      )),
-                  'text/plain'
-              )
-          ;
+          // $message = (new \Swift_Message('Your Password Request'))
+          //     // ->setFrom($this->container->getParameter( 'mailer_address' ))
+          //     ->setFrom('admin@mindpool.net')
+          //     ->setTo($user->getEmail())
+          //     ->setBody(
+          //         $this->renderView(
+          //             '@stefanwiegmann_user/emails/request.html.twig',
+          //             array('name' => $user->getFirstName().' '.$user->getLastName()
+          //             )),
+          //         'text/html'
+          //     )
+          //     //  If you also want to include a plaintext version of the message
+          //     ->addPart(
+          //         $this->renderView(
+          //             '@stefanwiegmann_user/emails/request.txt.twig',
+          //             array('name' => $user->getFirstName().' '.$user->getLastName()
+          //             )),
+          //         'text/plain'
+          //     )
+          // ;
+          $email = (new Email())
+           ->from('admin@mindpool.net')
+           ->to($user->getEmail())
+           //->cc('cc@example.com')
+           //->bcc('bcc@example.com')
+           //->replyTo('fabien@example.com')
+           //->priority(Email::PRIORITY_HIGH)
+           ->subject('Your Password Request')
+           ->text($this->renderView(
+                       '@stefanwiegmann_user/emails/request.txt.twig',
+                       array('name' => $user->getFirstName().' '.$user->getLastName()
+                       )),
+             )
+           ->html($this->renderView(
+                       '@stefanwiegmann_user/emails/request.html.twig',
+                       array('name' => $user->getFirstName().' '.$user->getLastName()
+                       ))
+                     );
 
-          $this->get('mailer')->send($message);
+          $mailer->send($email);
 
-          // return $this->redirectToRoute('sw_user_list');
+          $this->addFlash(
+            'success',
+            'A link was emailed to '.$user->getEmail().'!'
+            );
+
+          return $this->redirectToRoute('home');
         }
 
       return $this->render('@stefanwiegmann_user/reset/request.html.twig', [
