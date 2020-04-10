@@ -51,7 +51,7 @@ class GroupRepository extends ServiceEntityRepository
           }
 
         // add user to new groups
-        if (!$group->getUser()->contains($user) && $user->getGroups()->contains($group)) {
+        elseif (!$group->getUser()->contains($user) && $user->getGroups()->contains($group)) {
             $group->addUser($user);
             $em->persist($group);
           }
