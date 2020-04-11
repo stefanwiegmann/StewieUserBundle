@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Form\Type;
+namespace App\Stefanwiegmann\UserBundle\Form\Type\Reset;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,14 +18,6 @@ class ResetType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//       $builder->add('password', RepeatedType::class, [
-//     'type' => PasswordType::class,
-//     'invalid_message' => 'The password fields must match.',
-//     'options' => ['attr' => ['class' => 'password-field']],
-//     'required' => true,
-//     'first_options'  => ['label' => 'Password'],
-//     'second_options' => ['label' => 'Repeat Password'],
-// ]);
         $builder
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -34,10 +26,10 @@ class ResetType extends AbstractType
                 'required' => true,
                 'mapped' => false,
                 'translation_domain' => 'SWUserBundle',
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'label.password.first', 'translation_domain' => 'SWUserBundle'],
+                'second_options' => ['label' => 'label.password.second', 'translation_domain' => 'SWUserBundle'],
             ])
-            ->add('submit', SubmitType::class, array('label' => 'label.reset',
+            ->add('submit', SubmitType::class, array('label' => 'label.reset.password',
             'translation_domain' => 'SWUserBundle',
             'attr'=> array('class'=>'btn-primary'),))
         ;

@@ -1,13 +1,18 @@
 {% extends '@stefanwiegmann_user/default/layout.html.twig' %}
 {% trans_default_domain 'SWUserBundle' %}
 
-{% block filterBlock %}{% endblock filterBlock %}
-{% block menuBlock %}{% endblock menuBlock %}
+{% block main %}
+<br>
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <div class="container-fluid">
+        <h1 class="h3 mb-3 font-weight-normal">{{ 'header.reset.unknown'|trans }}</h1>
 
-{% block pageTitle %}{{ 'header.unknownToken'|trans }}{% endblock pageTitle %}
-{% block pageMenu %}
-{% endblock pageMenu %}
+        <div class="row justify-content-md-center">
+          {{ 'message.reset.unknown'|trans({'%token%': token}) }}
+        </div>
 
-{% block content %}
-A user with token {{token}} does not exist!
-{% endblock content %}
+      </div>
+    </div>
+</div>
+{% endblock main %}

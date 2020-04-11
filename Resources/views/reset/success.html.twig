@@ -1,13 +1,23 @@
 {% extends '@stefanwiegmann_user/default/layout.html.twig' %}
 {% trans_default_domain 'SWUserBundle' %}
 
-{% block filterBlock %}{% endblock filterBlock %}
-{% block menuBlock %}{% endblock menuBlock %}
+{% block main %}
+<br>
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <div class="container-fluid">
+        <h1 class="h3 mb-3 font-weight-normal">{{ 'header.reset.success'|trans }}</h1>
 
-{% block pageTitle %}{{ 'header.resetSuccess'|trans }}{% endblock pageTitle %}
-{% block pageMenu %}
-{% endblock pageMenu %}
+        <div class="row justify-content-md-center">
+          {{ 'message.reset.success'|trans }}
+        </div>
 
-{% block content %}
-Password reset successfully!
-{% endblock content %}
+        <br>
+        <div class="row justify-content-md-center">
+          <a class="nav-link" href="{{ path('sw_user_login') }}">{{ 'label.login'|trans }}</a>
+        </div>
+
+      </div>
+    </div>
+</div>
+{% endblock main %}

@@ -25,8 +25,8 @@ class PasswordType extends AbstractType
                  'required' => true,
                  // 'mapped' => false,
                  'translation_domain' => 'SWUserBundle',
-                 'first_options'  => ['label' => 'Password'],
-                 'second_options' => ['label' => 'Repeat Password'],
+                 'first_options'  => ['label' => 'label.password.first', 'translation_domain' => 'SWUserBundle'],
+                 'second_options' => ['label' => 'label.password.second', 'translation_domain' => 'SWUserBundle'],
              ])
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',
