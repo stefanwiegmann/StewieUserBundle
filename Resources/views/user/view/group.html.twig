@@ -1,0 +1,44 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.user.view'|trans }}</small> {{ user.username }}{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_user_view_detail', {'username': user.username}) }}">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">{{ 'label.group_s'|trans }}  <span class="badge badge-primary">{{user.groups|length}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_user_view_role', {'username': user.username}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{user.userRole|length}}</a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual table -->
+
+<table class="table table-striped">
+<thead> <tr>
+  <th>{{ knp_pagination_sortable(groupList, '#', 'g.id') }}</th>
+  <th>{{ knp_pagination_sortable(groupList, 'label.name'|trans, 'g.name') }}
+    {% if groupList.isSorted('g.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+</tr> </thead>
+{% for item in groupList %}
+<tr>
+  <td>{{ item.id }}</td>
+  <td>{{ item.name }}</td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+      {{ knp_pagination_render(groupList) }}
+
+{% endblock content %}

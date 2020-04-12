@@ -1,0 +1,75 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.user.view'|trans }}</small> {{ user.username }}{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_user_view_group', {'username': user.username}) }}">{{ 'label.group_s'|trans }}  <span class="badge badge-primary">{{user.groups|length}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_user_view_role', {'username': user.username}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{user.userRole|length}}</a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual form -->
+
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <strong>#</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ user.id }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <strong>{{ 'label.username'|trans }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ user.username }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <strong>{{ 'label.email'|trans }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ user.email }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <strong>{{ 'label.fullName'|trans }}</strong>
+      </div>
+      <div class="col-sm-auto">
+        {{ user.lastName }}
+      </div>
+      <div class="col-sm-auto">
+        {{ user.firstName }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <strong>{{ 'label.avatar'|trans }}</strong>
+      </div>
+      <div class="col-sm-10">
+        avatar
+      </div>
+    </div>
+
+{% endblock content %}
