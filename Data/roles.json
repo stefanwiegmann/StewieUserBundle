@@ -1,32 +1,62 @@
 {
-    "1": {
-        "id": "1",
-        "name": "ROLE_APP_ADMIN",
-        "translationKey": "name.role_app_admin",
+    "ROLE_ALLOWED_TO_SWITCH": {
+        "name": "ROLE_ALLOWED_TO_SWITCH",
+        "bundle": "Symfony",
+        "description": "Can impersonate other users.",
         "sort": 1000
       },
-    "2": {
-        "id": "2",
-        "name": "ROLE_USER_ADMIN",
-        "translationKey": "name.role_user_admin",
+    "ROLE_USER_ROLE_CREATE": {
+        "name": "ROLE_USER_ROLE_CREATE",
+        "bundle": "UserBundle",
+        "description": "Can create a role, but not edit.",
         "sort": 2000
       },
-    "3": {
-        "id": "3",
-        "name": "ROLE_USER_REGISTER",
-        "translationKey": "name.role_user_register",
+    "ROLE_USER_ROLE_EDIT": {
+        "name": "ROLE_USER_ROLE_EDIT",
+        "bundle": "UserBundle",
+        "description": "Can edit a role's name and assigned groups or users.",
         "sort": 2001
       },
-    "4": {
-        "id": "4",
-        "name": "ROLE_USER_VIEW",
-        "translationKey": "name.role_user_view",
+    "ROLE_USER_ROLE_VIEW": {
+        "name": "ROLE_USER_ROLE_VIEW",
+        "bundle": "UserBundle",
+        "description": "Can view a role and its assigned users and groups.",
         "sort": 2002
       },
-    "5": {
-        "id": "5",
-        "name": "ROLE_USER_PROFILE_VIEW",
-        "translationKey": "name.role_user_profile_view",
-        "sort": 2003
+    "ROLE_USER_USER_CREATE": {
+        "name": "ROLE_USER_USER_CREATE",
+        "bundle": "UserBundle",
+        "description": "Can create/register a new user, but not edit.",
+        "sort": 2010
+      },
+    "ROLE_USER_USER_EDIT": {
+        "name": "ROLE_USER_USER_EDIT",
+        "bundle": "UserBundle",
+        "description": "Can edit a user, including roles and groups.",
+        "sort": 2011
+      },
+    "ROLE_USER_USER_VIEW": {
+        "name": "ROLE_USER_USER_VIEW",
+        "bundle": "UserBundle",
+        "description": "Can view a user and its assigned groups and roles.",
+        "sort": 2012
+      },
+    "ROLE_USER_GROUP_CREATE": {
+        "name": "ROLE_USER_GROUP_CREATE",
+        "bundle": "UserBundle",
+        "description": "Can create a group name, but not edit.",
+        "sort": 2020
+      },
+    "ROLE_USER_GROUP_EDIT": {
+        "name": "ROLE_USER_GROUP_EDIT",
+        "bundle": "UserBundle",
+        "description": "Can edit a group name and assign users or roles.",
+        "sort": 2021
+      },
+    "ROLE_USER_GROUP_VIEW": {
+        "name": "ROLE_USER_GROUP_VIEW",
+        "bundle": "UserBundle",
+        "description": "Can view a group name and its users or roles.",
+        "sort": 2022
       }
 }

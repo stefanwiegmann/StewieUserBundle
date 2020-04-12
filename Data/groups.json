@@ -1,36 +1,31 @@
 {
-    "1": {
-        "static": true,
-        "name": "Admins",
-        "translationKey": "name.admins",
-        "roles": {
-          "1": "ROLE_APP_ADMIN",
-          "2": "ROLE_USER_ADMIN",
-          "3": "ROLE_USER_REGISTER",
-          "4": "ROLE_USER_VIEW"
-        }
+    "App Admin": {
+        "essential": true,
+        "name": "App Admin",
+        "description": "Can do anything.",
+        "roles": {}
       },
-    "2": {
-        "static": true,
-        "name": "Users",
-        "translationKey": "name.users",
+    "User Admin": {
+        "essential": true,
+        "name": "User Admin",
+        "description": "Can administrate users and groups, but not roles.",
         "roles": {
           "1": "ROLE_USER_VIEW"
         }
       },
-    "3": {
-        "static": false,
+    "Family Guy": {
+        "essential": false,
         "name": "Family Guy",
-        "translationKey": "name.family_guy",
+        "description": "Show characters from Family Guy.",
         "roles": {
           "1": "ROLE_USER_REGISTER",
           "2": "ROLE_USER_VIEW"
         }
       },
-    "4": {
-        "static": false,
+    "American Dad": {
+        "essential": false,
         "name": "American Dad",
-        "translationKey": "name.american_dad",
+        "description": "Show characters from American Dad.",
         "roles": {
           "1": "ROLE_USER_VIEW"
         }

@@ -20,7 +20,7 @@ class Role
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $name;
 
@@ -28,6 +28,11 @@ class Role
      * @ORM\Column(type="string", length=255)
      */
     private $translationKey;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
 
     /**
      * @ORM\Column(type="integer", nullable=false)
@@ -144,6 +149,18 @@ class Role
     public function setSort(int $sort): self
     {
         $this->sort = $sort;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
