@@ -1,6 +1,6 @@
 {
     "1": {
-        "static": true,
+        "essential": true,
         "username": "admin",
         "password": "password",
         "first_name": "Admin",
@@ -8,18 +8,12 @@
         "phone": "911",
         "email": "admin@admin.org",
         "groups": {
-          "1": "Admins",
-          "2": "Users"
+          "1": "App Admin"
         },
-        "roles": {
-          "1": "ROLE_APP_ADMIN",
-          "2": "ROLE_USER_ADMIN",
-          "3": "ROLE_USER_REGISTER",
-          "4": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "2": {
-        "static": false,
+        "essential": false,
         "username": "loisgriffin",
         "password": "etdyrhfytu",
         "first_name": "Lois",
@@ -28,14 +22,12 @@
         "email": "lois@griffin.org",
         "groups": {
           "1": "Family Guy",
-          "2": "Users"
+          "2": "User Admin"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "3": {
-        "static": false,
+        "essential": false,
         "username": "briangriffin",
         "password": "etdyrhfytu",
         "first_name": "Brian",
@@ -44,14 +36,12 @@
         "email": "brian@griffin.org",
         "groups": {
           "1": "Family Guy",
-          "2": "Users"
+          "2": "User Admin"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "4": {
-        "static": false,
+        "essential": false,
         "username": "stewiegriffin",
         "password": "dhfyrhtjyuj",
         "first_name": "Stewie",
@@ -60,14 +50,12 @@
         "email": "stewie@griffin.org",
         "groups": {
           "1": "Family Guy",
-          "2": "Users"
+          "2": "User Admin"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "5": {
-        "static": false,
+        "essential": false,
         "username": "stansmith",
         "password": "uthgjyikuo",
         "first_name": "Stan",
@@ -75,15 +63,12 @@
         "phone": "768",
         "email": "stan@smith.org",
         "groups": {
-          "1": "American Dad",
-          "2": "Users"
+          "1": "American Dad"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "6": {
-        "static": false,
+        "essential": false,
         "username": "francinesmith",
         "password": "ueyrhfyrht",
         "first_name": "Francine",
@@ -91,15 +76,12 @@
         "phone": "4554356",
         "email": "francine@smith.org",
         "groups": {
-          "1": "American Dad",
-          "2": "Users"
+          "1": "American Dad"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "7": {
-        "static": false,
+        "essential": false,
         "username": "hayleysmith",
         "password": "kjdhfjkhkwe",
         "first_name": "Hayley",
@@ -107,15 +89,12 @@
         "phone": "493857",
         "email": "hayley@smith.org",
         "groups": {
-          "1": "American Dad",
-          "2": "Users"
+          "1": "American Dad"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "8": {
-        "static": false,
+        "essential": false,
         "username": "rogersmith",
         "password": "twreuitywouyi",
         "first_name": "Roger",
@@ -123,15 +102,12 @@
         "phone": "156574647523",
         "email": "roger@smith.org",
         "groups": {
-          "1": "American Dad",
-          "2": "Users"
+          "1": "American Dad"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "9": {
-        "static": false,
+        "essential": false,
         "username": "stevesmith",
         "password": "twreuitywouyi",
         "first_name": "Steve",
@@ -139,15 +115,12 @@
         "phone": "156574647523",
         "email": "steve@smith.org",
         "groups": {
-          "1": "American Dad",
-          "2": "Users"
+          "1": "American Dad"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "10": {
-        "static": false,
+        "essential": false,
         "username": "meggriffin",
         "password": "etdyrhfytu",
         "first_name": "Meg",
@@ -156,14 +129,12 @@
         "email": "meg@griffin.org",
         "groups": {
           "1": "Family Guy",
-          "2": "Users"
+          "2": "User Admin"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "11": {
-        "static": false,
+        "essential": false,
         "username": "chrisgriffin",
         "password": "etdyrhfytu",
         "first_name": "Chris",
@@ -172,14 +143,12 @@
         "email": "chris@griffin.org",
         "groups": {
           "1": "Family Guy",
-          "2": "Users"
+          "2": "User Admin"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "12": {
-        "static": false,
+        "essential": false,
         "username": "clevelandbrown",
         "password": "etdyrhfytu",
         "first_name": "CLeveland",
@@ -188,14 +157,12 @@
         "email": "clevelan@brown.org",
         "groups": {
           "1": "Family Guy",
-          "2": "Users"
+          "2": "User Admin"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "13": {
-        "static": false,
+        "essential": false,
         "username": "glennquagmire",
         "password": "etdyrhfytu",
         "first_name": "Glenn",
@@ -203,15 +170,12 @@
         "phone": "456",
         "email": "glenn@quagmire.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "14": {
-        "static": false,
+        "essential": false,
         "username": "joeswanson",
         "password": "etdyrhfytu",
         "first_name": "Joe",
@@ -219,15 +183,12 @@
         "phone": "456",
         "email": "joe@swanson.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "15": {
-        "static": false,
+        "essential": false,
         "username": "tomtucker",
         "password": "etdyrhfytu",
         "first_name": "Tom",
@@ -235,15 +196,12 @@
         "phone": "456",
         "email": "tom@tucker.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "16": {
-        "static": false,
+        "essential": false,
         "username": "dianesimmons",
         "password": "etdyrhfytu",
         "first_name": "Diane",
@@ -251,15 +209,12 @@
         "phone": "456",
         "email": "diane@simmons.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "17": {
-        "static": false,
+        "essential": false,
         "username": "jonathanweed",
         "password": "etdyrhfytu",
         "first_name": "Jonathan",
@@ -267,15 +222,12 @@
         "phone": "456",
         "email": "jonathan@weed.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "18": {
-        "static": false,
+        "essential": false,
         "username": "lorettabrown",
         "password": "etdyrhfytu",
         "first_name": "Loretta",
@@ -283,15 +235,12 @@
         "phone": "456",
         "email": "loretta@brown.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "19": {
-        "static": false,
+        "essential": false,
         "username": "bonnieswanson",
         "password": "etdyrhfytu",
         "first_name": "Bonnie",
@@ -299,15 +248,12 @@
         "phone": "456",
         "email": "bonnie@swanson.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "20": {
-        "static": false,
+        "essential": false,
         "username": "kevinswanson",
         "password": "etdyrhfytu",
         "first_name": "Kevin",
@@ -315,15 +261,12 @@
         "phone": "456",
         "email": "kevin@swanson.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "21": {
-        "static": false,
+        "essential": false,
         "username": "jaketucker",
         "password": "etdyrhfytu",
         "first_name": "Jake",
@@ -331,15 +274,12 @@
         "phone": "456",
         "email": "jack@tucker.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "22": {
-        "static": false,
+        "essential": false,
         "username": "carterpewterschmidt",
         "password": "etdyrhfytu",
         "first_name": "Carter",
@@ -347,15 +287,12 @@
         "phone": "456",
         "email": "carter@pewterschmidt.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "23": {
-        "static": false,
+        "essential": false,
         "username": "babspewterschmidt",
         "password": "etdyrhfytu",
         "first_name": "Babs",
@@ -363,15 +300,12 @@
         "phone": "456",
         "email": "babs@pewterschmidt.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "24": {
-        "static": false,
+        "essential": false,
         "username": "mayoradamwest",
         "password": "etdyrhfytu",
         "first_name": "Adam",
@@ -379,15 +313,12 @@
         "phone": "456",
         "email": "adam@west.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       },
     "25": {
-        "static": false,
+        "essential": false,
         "username": "triciatakanawa",
         "password": "etdyrhfytu",
         "first_name": "Tricia",
@@ -395,11 +326,8 @@
         "phone": "456",
         "email": "tricia@takanawa.org",
         "groups": {
-          "1": "Family Guy",
-          "2": "Users"
+          "1": "Family Guy"
         },
-        "roles": {
-          "1": "ROLE_USER_VIEW"
-        }
+        "roles": {}
       }
 }

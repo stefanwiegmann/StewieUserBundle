@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Stefanwiegmann\UserBundle\Form\Type\Group\DetailType;
 
 /**
-  * @IsGranted("ROLE_USER_ADMIN")
+  * @IsGranted("ROLE_USER_GROUP_EDIT")
   */
 
 class DetailController extends AbstractController

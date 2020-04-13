@@ -58,14 +58,15 @@ class FillUsersCommand extends Command
 
         $userRoles = array();
 
-        if($item['static'] || $input->getOption('all')){
+        if($item['essential'] || $input->getOption('all')){
 
-          // create if user does not exist or remove all UserRoles
           $user = $repo->findOneByUsername($item['username']);
 
+          // create if user does not exist
           if(!$user){
               $user = new User;
           }else{
+             // or remove all UserRoles
               foreach ($user->getUserRole() as &$role){
                 $user->removeUserRole($role);
               }
@@ -103,20 +104,13 @@ class FillUsersCommand extends Command
              $em->persist($userGroup);
            }
 
-
-          // $user->setRoles($roleNames);
-          // foreach ($roles as &$role){
-          //   $user->addUserRole($role);
-          // }
-          // foreach ($groups as &$group){
-          //   $group->addUser($user);
-          //   $em->persist($group);
-          // }
-
           // persist
           $user->setRoles(array_unique($userRoles));
           $em->persist($user);
           $em->flush();
+
+          // update user roles
+          // $repo->refreshRoles($user);
 
           $output->writeln('User '.$user->getUsername().' created or updated!');
         }

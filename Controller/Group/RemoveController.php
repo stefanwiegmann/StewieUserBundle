@@ -13,7 +13,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
-  * @IsGranted("ROLE_USER_ADMIN")
+  * @IsGranted("ROLE_USER_GROUP_EDIT")
   */
 
 class RemoveController extends AbstractController

@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
-  * @IsGranted("ROLE_USER_VIEW")
+  * @IsGranted("ROLE_USER_GROUP_VIEW")
   */
 
 class MemberController extends AbstractController

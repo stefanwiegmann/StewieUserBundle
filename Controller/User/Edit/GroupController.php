@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Stefanwiegmann\UserBundle\Form\Type\User\GroupType;
 
 /**
-  * @IsGranted("ROLE_USER_ADMIN")
+  * @IsGranted("ROLE_USER_USER_EDIT")
   */
 
 class GroupController extends AbstractController

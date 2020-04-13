@@ -12,7 +12,7 @@ use App\Stefanwiegmann\UserBundle\Form\Type\Group\CreateType;
 use App\Stefanwiegmann\UserBundle\Entity\Group;
 
 /**
-  * @IsGranted("ROLE_USER_ADMIN")
+  * @IsGranted("ROLE_USER_GROUP_CREATE")
   */
 
 class CreateController extends AbstractController

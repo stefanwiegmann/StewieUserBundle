@@ -49,7 +49,7 @@ class FillGroupsCommand extends Command
 
       foreach ($results as &$item){
 
-        if($item['static'] || $input->getOption('all')){
+        if($item['essential'] || $input->getOption('all')){
 
           $group = $repo->findOneByName($item['name']);
 
@@ -62,16 +62,21 @@ class FillGroupsCommand extends Command
             }
 
             $group->setName($item['name']);
+            $group->setDescription($item['description']);
 
-            foreach ($item['roles'] as &$role){
-              $role = $roleRepo->findOneByName($role);
-              $group->addGroupRole($role);
-            }
+            if ($item['name'] == 'App Admin'){
             // get all roles to assign to Administrators
-            // $roles = $roleRepo->findAll();
-            // foreach ($roles as &$item){
-            //    $group->addGroupRole($item);
-            //   }
+              $roles = $roleRepo->findAll();
+              foreach ($roles as &$item){
+                 $group->addGroupRole($item);
+                }
+            }else{
+            // get roles from json file
+              foreach ($item['roles'] as &$role){
+                $role = $roleRepo->findOneByName($role);
+                $group->addGroupRole($role);
+              }
+            }
 
             $em->persist($group);
             $em->flush();

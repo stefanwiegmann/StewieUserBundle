@@ -30,6 +30,7 @@
     {% if userList.isSorted('u.email') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
   </th>
   <th>{{ 'label.roles'|trans }}</th>
+  <th>{{ 'label.groups'|trans }}</th>
   <th>{{ knp_pagination_sortable(userList, 'label.lastLogin'|trans, 'u.lastLogin') }}
     {% if userList.isSorted('u.lastLogin') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
   </th>
@@ -45,15 +46,23 @@
   <td>{% for role in item.userRole %}
        {{ role.name|replace({'ROLE_': "", '_': " "}) }}{% if not loop.last %},{% endif %}
     {% endfor %}</td>
+  <td>{% for group in item.groups %}
+       {{ group.name }}{% if not loop.last %},{% endif %}
+    {% endfor %}</td>
   <td>
   </td>
   <td>
   </td>
-  <td>
-    {% if is_granted('ROLE_USER_ADMIN') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_user_edit_detail', {'username': item.username}) }}"><i class="far fa-edit"></i></a>
-    {#% else %#}
+  <td class="text-center">
+    {% if is_granted('ROLE_USER_USER_VIEW') %}
       <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_user_view_detail', {'username': item.username}) }}"><i class="far fa-eye"></i></a>
+    {% endif %}
+    {% if is_granted('ROLE_USER_USER_EDIT') %}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_user_edit_detail', {'username': item.username}) }}"><i class="far fa-edit"></i></a>
+    {% endif %}
+    <!-- impersonate? -->
+    {% if is_granted('ROLE_ALLOWED_TO_SWITCH') %}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.impersonate'|trans }}" href="{{ path('home', {'_switch_user': item.username }) }}"><i class="fas fa-people-arrows"></i></a>
     {% endif %}
   </td>
 </tr>

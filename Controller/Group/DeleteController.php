@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
-  * @IsGranted("ROLE_USER_ADMIN")
+  * @IsGranted("ROLE_USER_GROUP_EDIT")
   */
 
 class DeleteController extends AbstractController
