@@ -66,7 +66,7 @@ class FillDataCommand extends Command
       $returnCode = $roleCommand->run($commandInput, $output);
       $returnCode = $groupCommand->run($commandInput, $output);
       $returnCode = $userCommand->run($commandInput, $output);
-      $output->writeln('Static data filled!');
+      $output->writeln('All data filled!');
 
       return 1;
     }

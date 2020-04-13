@@ -5,10 +5,12 @@ namespace App\Stefanwiegmann\UserBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Stefanwiegmann\UserBundle\Repository\GroupRepository")
  * @ORM\Table(name="sw_user_group")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Group
 {
@@ -23,6 +25,12 @@ class Group
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $name;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -124,6 +132,18 @@ class Group
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

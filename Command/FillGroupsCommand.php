@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use App\Stefanwiegmann\UserBundle\Entity\Group;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 class FillGroupsCommand extends Command
 {
@@ -47,6 +48,10 @@ class FillGroupsCommand extends Command
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 
+      $progressBar = new ProgressBar($output, count($results));
+      $output->writeln('Fill groups:');
+      $progressBar->start();
+
       foreach ($results as &$item){
 
         if($item['essential'] || $input->getOption('all')){
@@ -81,11 +86,14 @@ class FillGroupsCommand extends Command
             $em->persist($group);
             $em->flush();
 
-            $output->writeln('Group '.$group->getName().' created or updated!');
+            $progressBar->advance();
+            // $output->writeln('Group '.$group->getName().' created or updated!');
           }
         }
 
-        $output->writeln('All Groups created or updated!');
+        // $output->writeln('All Groups created or updated!');
+        $progressBar->finish();
+        $output->writeln('');
         return 1;
       }
 }

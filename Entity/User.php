@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass="App\Stefanwiegmann\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="sw_user_user")
+ * @ORM\HasLifecycleCallbacks()
  */
 class User implements UserInterface
 {
@@ -24,6 +25,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $username;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     */
+    private $usernameCanonical;
 
     /**
      * @ORM\Column(type="json")
@@ -57,6 +63,11 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $emailCanonical;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Role", inversedBy="users")
      * @ORM\JoinTable(name="sw_user_user_role")
      */
@@ -81,6 +92,15 @@ class User implements UserInterface
     {
         $this->userRole = new ArrayCollection();
         $this->groups = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCanonical()
+    {
+        $this->emailCanonical = strtolower($this->email);
+        $this->usernameCanonical = strtolower($this->username);
     }
 
     public function getId(): ?int
@@ -278,6 +298,30 @@ class User implements UserInterface
     public function setTokenDate(?\DateTimeInterface $tokenDate): self
     {
         $this->tokenDate = $tokenDate;
+
+        return $this;
+    }
+
+    public function getUsernameCanonical(): ?string
+    {
+        return $this->usernameCanonical;
+    }
+
+    public function setUsernameCanonical(string $usernameCanonical): self
+    {
+        $this->usernameCanonical = $usernameCanonical;
+
+        return $this;
+    }
+
+    public function getEmailCanonical(): ?string
+    {
+        return $this->emailCanonical;
+    }
+
+    public function setEmailCanonical(string $emailCanonical): self
+    {
+        $this->emailCanonical = $emailCanonical;
 
         return $this;
     }

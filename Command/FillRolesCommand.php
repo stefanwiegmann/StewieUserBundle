@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use App\Stefanwiegmann\UserBundle\Entity\Role;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 class FillRolesCommand extends Command
 {
@@ -46,6 +47,10 @@ class FillRolesCommand extends Command
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 
+      $progressBar = new ProgressBar($output, count($results));
+      $output->writeln('Fill roles:');
+      $progressBar->start();
+
       foreach ($results as &$item){
 
         $role = $repo->findOneByName($item['name']);
@@ -57,15 +62,18 @@ class FillRolesCommand extends Command
         $role->setName($item['name']);
         $role->setSort($item['sort']);
         $role->setDescription($item['description']);
-        $role->setTranslationKey('name.'.strtolower($item['name']));
+        // $role->setTranslationKey('name.'.strtolower($item['name']));
 
         $em->persist($role);
         $em->flush();
 
-        $output->writeln('Role '.$role->getName().' created or updated!');
+        $progressBar->advance();
+        // $output->writeln('Role '.$role->getName().' created or updated!');
         }
 
-      $output->writeln('All Roles created or updated!');
+      // $output->writeln('All Roles created or updated!');
+      $progressBar->finish();
+      $output->writeln('');
       return 1;
     }
 }

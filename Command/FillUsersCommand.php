@@ -9,6 +9,8 @@ use App\Stefanwiegmann\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Helper\ProgressBar;
+// use Doctrine\Common\Collections\ArrayCollection;
 
 class FillUsersCommand extends Command
 {
@@ -51,6 +53,10 @@ class FillUsersCommand extends Command
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 
+      $progressBar = new ProgressBar($output, count($results));
+      $output->writeln('Fill users:');
+      $progressBar->start();
+
       // get all groups to unassigne
       $groups = $groupRepo->findAll();
 
@@ -74,6 +80,8 @@ class FillUsersCommand extends Command
                 $group->removeUser($user);
                 $em->persist($group);
               }
+              // $user->userRole = new ArrayCollection();
+              // $user->groups = new ArrayCollection();
           }
 
           // set values
@@ -112,11 +120,14 @@ class FillUsersCommand extends Command
           // update user roles
           // $repo->refreshRoles($user);
 
-          $output->writeln('User '.$user->getUsername().' created or updated!');
+          $progressBar->advance();
+          // $output->writeln('User '.$user->getUsername().' created or updated!');
         }
       }
 
-      $output->writeln('All Users created or updated!');
+      // $output->writeln('All Users created or updated!');
+      $progressBar->finish();
+      $output->writeln('');
       return 1;
     }
 }

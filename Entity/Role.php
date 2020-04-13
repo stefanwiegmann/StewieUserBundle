@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Stefanwiegmann\UserBundle\Repository\RoleRepository")
  * @ORM\Table(name="sw_user_role")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Role
 {
@@ -23,6 +24,11 @@ class Role
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -54,6 +60,15 @@ class Role
         $this->users = new ArrayCollection();
         $this->groups = new ArrayCollection();
         $this->sort = 10000;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCanonical()
+    {
+        $this->translationKey = 'name.'.strtolower($this->name);
+        $this->slug = strtolower(str_replace('_','-',str_replace('ROLE_','',$this->name)));
     }
 
     public function getId(): ?int
@@ -161,6 +176,18 @@ class Role
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
