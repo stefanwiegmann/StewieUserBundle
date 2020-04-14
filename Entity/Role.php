@@ -46,12 +46,12 @@ class Role
     private $sort;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\User", mappedBy="userRole")
+     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\User", mappedBy="userRoles")
      */
     private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", mappedBy="groupRole")
+     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", mappedBy="groupRoles")
      */
     private $groups;
 
@@ -88,6 +88,18 @@ class Role
         return $this;
     }
 
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
     public function getTranslationKey(): ?string
     {
         return $this->translationKey;
@@ -96,6 +108,30 @@ class Role
     public function setTranslationKey(string $translationKey): self
     {
         $this->translationKey = $translationKey;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getSort(): ?int
+    {
+        return $this->sort;
+    }
+
+    public function setSort(int $sort): self
+    {
+        $this->sort = $sort;
 
         return $this;
     }
@@ -152,42 +188,6 @@ class Role
             $this->groups->removeElement($group);
             $group->removeGroupRole($this);
         }
-
-        return $this;
-    }
-
-    public function getSort(): ?int
-    {
-        return $this->sort;
-    }
-
-    public function setSort(int $sort): self
-    {
-        $this->sort = $sort;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
 
         return $this;
     }

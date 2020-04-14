@@ -3,8 +3,6 @@
 namespace App\Stefanwiegmann\UserBundle\Repository;
 
 use App\Stefanwiegmann\UserBundle\Entity\User;
-// use App\Stefanwiegmann\UserBundle\Entity\Role;
-// use App\Stefanwiegmann\UserBundle\Entity\Group;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -21,7 +19,7 @@ class UserRepository extends ServiceEntityRepository
       $roles = array();
 
       // get roles assigned to user
-      foreach ($user->getUserRole() as &$role){
+      foreach ($user->getUserRoles() as &$role){
 
         array_push($roles, $role->getName());
         }
@@ -29,7 +27,7 @@ class UserRepository extends ServiceEntityRepository
       // get roles assigned to any group of this user
       foreach ($user->getGroups() as &$group){
 
-        foreach ($group->getGroupRole() as &$role){
+        foreach ($group->getGroupRoles() as &$role){
 
           array_push($roles, $role->getName());
 

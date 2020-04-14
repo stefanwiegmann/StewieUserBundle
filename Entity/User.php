@@ -71,10 +71,11 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Role", inversedBy="users")
      * @ORM\JoinTable(name="sw_user_user_role")
      */
-    private $userRole;
+    private $userRoles;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", mappedBy="user")
+     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", inversedBy="users")
+     * @ORM\JoinTable(name="sw_user_user_group")
      */
     private $groups;
 
@@ -90,8 +91,9 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->userRole = new ArrayCollection();
+        $this->roles = new ArrayCollection();
         $this->groups = new ArrayCollection();
+        $this->userRoles = new ArrayCollection();
     }
 
     /**
@@ -102,6 +104,13 @@ class User implements UserInterface
         $this->emailCanonical = strtolower($this->email);
         $this->usernameCanonical = strtolower($this->username);
     }
+
+     public function clearAssociations()
+     {
+         $this->roles = new ArrayCollection();
+         $this->groups = new ArrayCollection();
+         $this->userRoles = new ArrayCollection();
+     }
 
     public function getId(): ?int
     {
@@ -324,5 +333,13 @@ class User implements UserInterface
         $this->emailCanonical = $emailCanonical;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Role[]
+     */
+    public function getUserRoles(): Collection
+    {
+        return $this->userRoles;
     }
 }

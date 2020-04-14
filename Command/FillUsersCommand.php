@@ -73,15 +73,7 @@ class FillUsersCommand extends Command
               $user = new User;
           }else{
              // or remove all UserRoles
-              foreach ($user->getUserRole() as &$role){
-                $user->removeUserRole($role);
-              }
-              foreach ($groups as &$group){
-                $group->removeUser($user);
-                $em->persist($group);
-              }
-              // $user->userRole = new ArrayCollection();
-              // $user->groups = new ArrayCollection();
+             $user->clearAssociations();
           }
 
           // set values
@@ -95,37 +87,22 @@ class FillUsersCommand extends Command
                    ));
 
            foreach ($item['roles'] as &$role){
-             $userRole = $roleRepo->findOneByName($role);
-             $user->addUserRole($userRole);
-             array_push($userRoles, $userRole->getName());
+             $user->addUserRole($roleRepo->findOneByName($role));
            }
 
            foreach ($item['groups'] as &$group){
-             // $output->writeln($groupRepo->findOneByName($group)->getId());
-             // $user->addGroup($groupRepo->findOneByName($group));
-             // $userGroup = $groupRepo->findOneByName($group);
-             $userGroup = $groupRepo->findOneByName($group);
-             $userGroup->addUser($user);
-             foreach ($userGroup->getGroupRole() as &$groupRole){
-               array_push($userRoles, $groupRole->getName());
-             }
-             $em->persist($userGroup);
+             $user->addGroup($groupRepo->findOneByName($group));
            }
 
           // persist
-          $user->setRoles(array_unique($userRoles));
+          $repo->refreshRoles($user);
           $em->persist($user);
           $em->flush();
 
-          // update user roles
-          // $repo->refreshRoles($user);
-
           $progressBar->advance();
-          // $output->writeln('User '.$user->getUsername().' created or updated!');
         }
       }
 
-      // $output->writeln('All Users created or updated!');
       $progressBar->finish();
       $output->writeln('');
       return 1;

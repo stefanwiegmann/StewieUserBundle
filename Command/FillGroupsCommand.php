@@ -61,7 +61,7 @@ class FillGroupsCommand extends Command
             if(!$group){
                 $group = new Group;
             }else{
-                foreach ($group->getGroupRole() as &$role){
+                foreach ($group->getGroupRoles() as &$role){
                   $group->removeGroupRole($role);
                 }
             }

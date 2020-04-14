@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller\Role\Edit;
+namespace App\Stefanwiegmann\UserBundle\Controller\Role\View;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
-  * @IsGranted("ROLE_USER_ROLE_EDIT")
+  * @IsGranted("ROLE_USER_ROLE_VIEW")
   */
 
 class UserController extends AbstractController
@@ -24,8 +24,8 @@ class UserController extends AbstractController
     }
 
     /**
-    * @Route("/user/role/edit/user/{slug}/{page}", defaults={"role": 0, "page": 1}
-    *     , requirements={"page": "\d+"}, name="sw_user_role_edit_user")
+    * @Route("/user/role/view/user/{slug}/{page}", defaults={"role": 0, "page": 1}
+    *     , requirements={"page": "\d+"}, name="sw_user_role_view_user")
     */
     public function user($slug, $page, Request $request)
     {
@@ -48,7 +48,7 @@ class UserController extends AbstractController
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
         $pagination->setTemplate('@stefanwiegmann_user/default/pagination.html.twig');
 
-      return $this->render('@stefanwiegmann_user/role/edit/user.html.twig', [
+      return $this->render('@stefanwiegmann_user/role/view/user.html.twig', [
           'role' => $roleObject,
           'userList' => $pagination,
           'page' => $page,

@@ -1,0 +1,70 @@
+{% extends '@stefanwiegmann_user/default/layout.html.twig' %}
+{% trans_default_domain 'SWUserBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.role.edit'|trans }}</small> {{ role.translationKey|trans({}, 'Roles') }}{% endblock pageTitle %}
+{% block pageMenu %}
+{{ form_start(form) }}
+    {{ form_widget(form.submit) }}
+{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_role_edit_user', {'slug': role.slug}) }}">{{ 'label.user_s'|trans }} <span class="badge badge-primary">{{role.users|length}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('sw_user_role_edit_group', {'slug': role.slug}) }}">{{ 'label.group_s'|trans }} <span class="badge badge-primary">{{role.groups|length}}</a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual form -->
+
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <strong>#</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ role.id }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <strong>{{ 'label.realName'|trans }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ role.name }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        <strong>{{ form_label(form.description) }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        <strong>{{ form_label(form.sort) }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ form_errors(form.sort) }}
+        {{ form_widget(form.sort) }}
+      </div>
+    </div>
+
+
+{{ form_end(form) }}
+{% endblock content %}

@@ -41,18 +41,17 @@ class Group
      * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Role", inversedBy="groups")
      * @ORM\JoinTable(name="sw_user_group_role")
      */
-    private $groupRole;
+    private $groupRoles;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\User", inversedBy="groups")
-     * @ORM\JoinTable(name="sw_user_group_user")
+     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\User", mappedBy="groups")
      */
-    private $user;
+    private $users;
 
     public function __construct()
     {
-        $this->groupRole = new ArrayCollection();
-        $this->user = new ArrayCollection();
+        $this->groupRoles = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -65,61 +64,21 @@ class Group
         return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Role[]
-     */
-    public function getGroupRole(): Collection
+    public function getSlug(): ?string
     {
-        return $this->groupRole;
+        return $this->slug;
     }
 
-    public function addGroupRole(Role $groupRole): self
+    public function setSlug(string $slug): self
     {
-        if (!$this->groupRole->contains($groupRole)) {
-            $this->groupRole[] = $groupRole;
-        }
-
-        return $this;
-    }
-
-    public function removeGroupRole(Role $groupRole): self
-    {
-        if ($this->groupRole->contains($groupRole)) {
-            $this->groupRole->removeElement($groupRole);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUser(): Collection
-    {
-        return $this->user;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
-        }
+        $this->slug = $slug;
 
         return $this;
     }
@@ -136,14 +95,56 @@ class Group
         return $this;
     }
 
-    public function getSlug(): ?string
+    /**
+     * @return Collection|Role[]
+     */
+    public function getGroupRoles(): Collection
     {
-        return $this->slug;
+        return $this->groupRoles;
     }
 
-    public function setSlug(string $slug): self
+    public function addGroupRole(Role $groupRole): self
     {
-        $this->slug = $slug;
+        if (!$this->groupRoles->contains($groupRole)) {
+            $this->groupRoles[] = $groupRole;
+        }
+
+        return $this;
+    }
+
+    public function removeGroupRole(Role $groupRole): self
+    {
+        if ($this->groupRoles->contains($groupRole)) {
+            $this->groupRoles->removeElement($groupRole);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addGroup($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeGroup($this);
+        }
 
         return $this;
     }

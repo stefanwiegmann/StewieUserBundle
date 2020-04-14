@@ -62,16 +62,13 @@ class FillRolesCommand extends Command
         $role->setName($item['name']);
         $role->setSort($item['sort']);
         $role->setDescription($item['description']);
-        // $role->setTranslationKey('name.'.strtolower($item['name']));
 
         $em->persist($role);
         $em->flush();
 
         $progressBar->advance();
-        // $output->writeln('Role '.$role->getName().' created or updated!');
         }
 
-      // $output->writeln('All Roles created or updated!');
       $progressBar->finish();
       $output->writeln('');
       return 1;

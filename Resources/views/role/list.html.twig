@@ -14,24 +14,29 @@
 <table class="table table-striped">
 <thead> <tr>
   <th>{{ knp_pagination_sortable(roleList, '#', 'r.id') }}</th>
-  <th>{{ knp_pagination_sortable(roleList, 'label.name'|trans, 'r.name') }}
+  <th>{{ knp_pagination_sortable(roleList, 'label.sort'|trans, 'r.sort') }}</th>
+  <th>{{ 'label.name'|trans }}</th>
+  <th>{{ knp_pagination_sortable(roleList, 'label.realName'|trans, 'r.name') }}
     {% if roleList.isSorted('r.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
   </th>
+  <th>{{ 'label.description'|trans }}</th>
   <th>{{ 'label.groups'|trans }}</th>
   <th>{{ 'label.users'|trans }}</th>
-  <th>{{ 'label.actions'|trans }}</th>
+  <th class="text-center">{{ 'label.actions'|trans }}</th>
 </tr> </thead>
 {% for item in roleList %}
 <tr>
   <td>{{ item.id }}</td>
+  <td>{{ item.sort }}</td>
   <td>{{ item.translationKey|trans({}, 'Roles') }}</td>
+  <td>{{ item.name }}</td>
+  <td>{{ item.description }}</td>
   <td>{{ item.groups|length }} {{ 'label.group_s'|trans }}</td>
   <td>{{ item.users|length }} {{ 'label.user_s'|trans }}</td>
-  <td>
-    {% if is_granted('ROLE_USER_ADMIN') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_role_edit_user', {'role': item.id}) }}"><i class="far fa-edit"></i></a>
-    {% elseif is_granted('ROLE_USER_VIEW') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_role_edit_user', {'role': item.id}) }}"><i class="far fa-eye"></i></a>
+  <td class="text-center">
+    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_role_view_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
+    {% if is_granted('ROLE_USER_ROLE_EDIT') %}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_role_edit_detail', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
     {% endif %}
   </td>
 </tr>

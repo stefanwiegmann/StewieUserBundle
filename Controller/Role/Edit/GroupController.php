@@ -24,17 +24,17 @@ class GroupController extends AbstractController
     }
 
     /**
-    * @Route("/user/role/edit/group/{role}/{page}", defaults={"role": 0, "page": 1}
-    *     , requirements={"role": "\d+", "page": "\d+"}, name="sw_user_role_edit_group")
+    * @Route("/user/role/edit/group/{slug}/{page}", defaults={"role": 0, "page": 1}
+    *     , requirements={"page": "\d+"}, name="sw_user_role_edit_group")
     */
-    public function list($role, $page, Request $request)
+    public function list($slug, $page, Request $request)
     {
       // get filter data
-      if($role > 0){
+      // if($role > 0){
         $repository = $this->getDoctrine()
           ->getRepository('StefanwiegmannUserBundle:Role');
-        $roleObject = $repository->findOneById($role);
-      }
+        $roleObject = $repository->findOneBySlug($slug);
+      // }
 
       //get data and paginate
       // $paginator  = $this->get('knp_paginator');
@@ -61,7 +61,7 @@ class GroupController extends AbstractController
           ->getRepository('StefanwiegmannUserBundle:Group');
 
         $query = $repository->createQueryBuilder('g')
-          ->andWhere(':roles MEMBER OF g.groupRole')
+          ->andWhere(':roles MEMBER OF g.groupRoles')
           ->setParameter('roles', $roleObject)
           ->orderBy('g.id', 'ASC');
 
