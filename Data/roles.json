@@ -5,12 +5,6 @@
         "description": "Can impersonate other users.",
         "sort": 1000
       },
-    "ROLE_USER_ROLE_CREATE": {
-        "name": "ROLE_USER_ROLE_CREATE",
-        "bundle": "UserBundle",
-        "description": "Can create a role, but not edit.",
-        "sort": 2000
-      },
     "ROLE_USER_ROLE_EDIT": {
         "name": "ROLE_USER_ROLE_EDIT",
         "bundle": "UserBundle",
@@ -26,37 +20,49 @@
     "ROLE_USER_USER_CREATE": {
         "name": "ROLE_USER_USER_CREATE",
         "bundle": "UserBundle",
-        "description": "Can create/register a new user, but not edit.",
-        "sort": 2010
+        "description": "Can create/register a new user, but not edit or delete.",
+        "sort": 2011
+      },
+    "ROLE_USER_USER_DELETE": {
+        "name": "ROLE_USER_USER_DELETE",
+        "bundle": "UserBundle",
+        "description": "Can delete a user, but not edit or create.",
+        "sort": 2012
       },
     "ROLE_USER_USER_EDIT": {
         "name": "ROLE_USER_USER_EDIT",
         "bundle": "UserBundle",
         "description": "Can edit a user, including roles and groups.",
-        "sort": 2011
+        "sort": 2013
       },
     "ROLE_USER_USER_VIEW": {
         "name": "ROLE_USER_USER_VIEW",
         "bundle": "UserBundle",
         "description": "Can view a user and its assigned groups and roles.",
-        "sort": 2012
+        "sort": 2014
       },
     "ROLE_USER_GROUP_CREATE": {
         "name": "ROLE_USER_GROUP_CREATE",
         "bundle": "UserBundle",
-        "description": "Can create a group name, but not edit.",
-        "sort": 2020
+        "description": "Can create a group name, but not edit or delete.",
+        "sort": 2021
+      },
+    "ROLE_USER_GROUP_DELETE": {
+        "name": "ROLE_USER_GROUP_DELETE",
+        "bundle": "UserBundle",
+        "description": "Can delete a group name, but not edit or create.",
+        "sort": 2022
       },
     "ROLE_USER_GROUP_EDIT": {
         "name": "ROLE_USER_GROUP_EDIT",
         "bundle": "UserBundle",
         "description": "Can edit a group name and assign users or roles.",
-        "sort": 2021
+        "sort": 2023
       },
     "ROLE_USER_GROUP_VIEW": {
         "name": "ROLE_USER_GROUP_VIEW",
         "bundle": "UserBundle",
         "description": "Can view a group name and its users or roles.",
-        "sort": 2022
+        "sort": 2024
       }
 }

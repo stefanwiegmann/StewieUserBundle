@@ -15,10 +15,10 @@
         <a class="nav-link active" href="#">{{ 'label.details'|trans }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_group_view_member', {'group': group.id}) }}">{{ 'label.member_s'|trans }}  <span class="badge badge-primary">{{group.user|length}}</a>
+        <a class="nav-link" href="{{ path('sw_user_group_view_member', {'slug': group.slug}) }}">{{ 'label.member_s'|trans }}  <span class="badge badge-primary">{{group.users|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_group_view_role', {'group': group.id}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{group.groupRole|length}}</a>
+        <a class="nav-link" href="{{ path('sw_user_group_view_role', {'slug': group.slug}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{group.groupRoles|length}}</a>
       </li>
     </ul>
 

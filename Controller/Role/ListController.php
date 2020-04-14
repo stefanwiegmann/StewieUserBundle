@@ -53,7 +53,7 @@ class ListController extends AbstractController
           ->getRepository('StefanwiegmannUserBundle:Role');
 
         $query = $repository->createQueryBuilder('r')
-          ->orderBy('r.id', 'ASC');
+          ->orderBy('r.sort', 'ASC');
 
           return $query
             ->getQuery();

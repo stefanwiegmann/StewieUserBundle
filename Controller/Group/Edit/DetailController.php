@@ -17,14 +17,14 @@ use App\Stefanwiegmann\UserBundle\Form\Type\Group\DetailType;
 class DetailController extends AbstractController
 {
     /**
-    * @Route("/user/group/edit/detail/{id}", name="sw_user_group_edit_detail")
+    * @Route("/user/group/edit/detail/{slug}", name="sw_user_group_edit_detail")
     */
-    public function details($id, Request $request)
+    public function details($slug, Request $request)
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
-      $group = $repo->findOneById($id);
+      $group = $repo->findOneBySlug($slug);
 
       // create form
       $form = $this->createForm(DetailType::class, $group);

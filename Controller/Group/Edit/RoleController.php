@@ -17,14 +17,14 @@ use App\Stefanwiegmann\UserBundle\Form\Type\Group\RoleType;
 class RoleController extends AbstractController
 {
     /**
-    * @Route("/user/group/edit/role/{id}", name="sw_user_group_edit_role")
+    * @Route("/user/group/edit/role/{slug}", name="sw_user_group_edit_role")
     */
-    public function details($id, Request $request)
+    public function details($slug, Request $request)
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
-      $group = $repo->findOneById($id);
+      $group = $repo->findOneBySlug($slug);
 
       // create form
       $form = $this->createForm(RoleType::class, $group);

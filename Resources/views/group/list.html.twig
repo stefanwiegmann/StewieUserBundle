@@ -11,7 +11,7 @@
 
 {% block pageTitle %}{{ 'header.group.list'|trans }}{% endblock pageTitle %}
 {% block pageMenu %}
-  {% if is_granted('ROLE_USER_ADMIN') %}
+  {% if is_granted('ROLE_USER_GROUP_CREATE') %}
     <a href="{{ path('sw_user_group_create') }}" class="btn btn-secondary" role="button">{{ 'label.group.create'|trans }}</a>
   {% endif %}
 {% endblock pageMenu %}
@@ -36,17 +36,15 @@
 <tr>
   <td>{{ item.id }}</td>
   <td>{{ item.name }}</td>
-  <td>{% for role in item.groupRole %}
-       {{ role.name|replace({'ROLE_': "", '_': " "}) }}{% if not loop.last %},{% endif %}
-    {% endfor %}</td>
-    <td>{{ item.user|length }} {{ 'label.member_s'|trans }}</td>
+    <td>{{ item.groupRoles|length }} {{ 'label.role_s'|trans }}</td>
+    <td>{{ item.users|length }} {{ 'label.member_s'|trans }}</td>
   <td>
   </td>
   <td>
-    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_group_view_detail', {'id': item.id}) }}"><i class="far fa-eye"></i></a>
-    {% if is_granted('ROLE_USER_ADMIN') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_group_edit_detail', {'id': item.id}) }}"><i class="far fa-edit"></i></a>
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('sw_user_group_delete', {'id': item.id}) }}"><i class="fas fa-trash"></i></a>
+    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('sw_user_group_view_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
+    {% if is_granted('ROLE_USER_GROUP_EDIT') %}
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('sw_user_group_edit_detail', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('sw_user_group_delete', {'slug': item.slug}) }}"><i class="fas fa-trash"></i></a>
     {% endif %}
   </td>
 </tr>

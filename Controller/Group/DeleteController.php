@@ -14,20 +14,20 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
-  * @IsGranted("ROLE_USER_GROUP_EDIT")
+  * @IsGranted("ROLE_USER_GROUP_DELETE")
   */
 
 class DeleteController extends AbstractController
 {
   /**
-  * @Route("/user/group/delete/{id}", name="sw_user_group_delete")
+  * @Route("/user/group/delete/{slug}", name="sw_user_group_delete")
   */
-  public function deleteAction($id, Request $request, TranslatorInterface $translator)
+  public function deleteAction($slug, Request $request, TranslatorInterface $translator)
   {
     //get user
     $em = $this->container->get('doctrine')->getManager();
     $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
-    $group = $repo->findOneById($id);
+    $group = $repo->findOneBySlug($slug);
 
     // create form
     // $form = $this->createForm(DeleteType::class, $group);

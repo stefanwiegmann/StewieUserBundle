@@ -23,18 +23,23 @@ class CreateType extends AbstractType
                'translation_domain' => 'SWUserBundle',
              ))
 
-             ->add('groupRole', EntityType::class, array(
+             ->add('description', TextType::class, array(
+               'label' => 'label.description',
+               'translation_domain' => 'SWUserBundle',
+             ))
+
+             ->add('groupRoles', EntityType::class, array(
                    'class' => 'StefanwiegmannUserBundle:Role',
                    'query_builder' => function (EntityRepository $er) {
                        return $er->createQueryBuilder('r')
-                           ->orderBy('r.id', 'ASC');
+                           ->orderBy('r.sort', 'ASC');
                    },
-                   'choice_label' => 'name',
+                   'choice_label' => 'translationKey',
                    // 'choices_as_values' => true,
                    'label' => 'label.role',
                    'expanded' => true, 'multiple' => true,
                    'translation_domain' => 'SWUserBundle',
-                   'choice_translation_domain' => 'SWUserBundle',
+                   'choice_translation_domain' => 'Roles',
                  ))
 
              ->add('submit', SubmitType::class, array('label' => 'label.create',

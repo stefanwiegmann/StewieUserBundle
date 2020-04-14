@@ -19,14 +19,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class RemoveController extends AbstractController
 {
   /**
-  * @Route("/user/group/remove/user/{group}/{user}", name="sw_user_group_remove_user")
+  * @Route("/user/group/remove/user/{slug}/{user}", name="sw_user_group_remove_user")
   */
-  public function userAction($group, $user, Request $request, TranslatorInterface $translator)
+  public function userAction($slug, $user, Request $request, TranslatorInterface $translator)
   {
     //get group
     $em = $this->container->get('doctrine')->getManager();
     $groupRepo = $em->getRepository('StefanwiegmannUserBundle:Group');
-    $groupObject = $groupRepo->findOneById($group);
+    $groupObject = $groupRepo->findOneBySlug($slug);
 
     //get user
     $em = $this->container->get('doctrine')->getManager();
@@ -54,17 +54,16 @@ class RemoveController extends AbstractController
         // update roles
         $userRepo->refreshRoles($userObject);
 
-        return $this->redirectToRoute('sw_user_group_edit_member', array('group' => $group));
+        return $this->redirectToRoute('sw_user_group_edit_member', array('slug' => $slug));
       }
 
-    return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
+    return $this->render('@stefanwiegmann_user/card/dangerForm.html.twig', [
         'text' => $translator->trans('confirmation.group.remove', [
           '%subject%' => $userObject->getUsername(),
           '%object%' => $groupObject->getName()
           ], 'SWUserBundle'),
-        'title' => "",
-        'header1' => $groupObject->getName(),
-        'header2' => $translator->trans('header.group.remove', [], 'SWUserBundle'),
+        'title' => $groupObject->getName(),
+        'mutedTitle' => $translator->trans('header.group.remove', [], 'SWUserBundle'),
         'form' => $form->createView(),
     ]);
 

@@ -14,13 +14,13 @@
 <!-- tab bar -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_group_edit_detail', {'id': group.id}) }}">{{ 'label.details'|trans }}</a>
+        <a class="nav-link" href="{{ path('sw_user_group_edit_detail', {'slug': group.slug}) }}">{{ 'label.details'|trans }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_group_edit_member', {'group': group.id}) }}">{{ 'label.member_s'|trans }}  <span class="badge badge-primary">{{group.user|length}}</a>
+        <a class="nav-link" href="{{ path('sw_user_group_edit_member', {'slug': group.slug}) }}">{{ 'label.member_s'|trans }}  <span class="badge badge-primary">{{group.users|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{group.groupRole|length}}</a>
+        <a class="nav-link active" href="#">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{group.groupRoles|length}}</a>
       </li>
     </ul>
 
@@ -30,11 +30,11 @@
 
     <div class="form-group row">
       <div class="col-sm-2 col-form-label">
-        <strong>{{ form_label(form.groupRole) }}</strong>
+        <strong>{{ form_label(form.groupRoles) }}</strong>
       </div>
       <div class="col-sm-10">
-        {{ form_errors(form.groupRole) }}
-        {{ form_widget(form.groupRole) }}
+        {{ form_errors(form.groupRoles) }}
+        {{ form_widget(form.groupRoles) }}
       </div>
     </div>
 

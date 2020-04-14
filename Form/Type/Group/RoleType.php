@@ -18,7 +18,7 @@ class RoleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('groupRole', EntityType::class, array(
+            ->add('groupRoles', EntityType::class, array(
                   'class' => 'StefanwiegmannUserBundle:Role',
                   'query_builder' => function (EntityRepository $er) {
                       return $er->createQueryBuilder('r')

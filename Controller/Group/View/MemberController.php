@@ -24,15 +24,15 @@ class MemberController extends AbstractController
     }
 
     /**
-    * @Route("/user/group/view/member/{group}/{page}", defaults={"page": 1}
+    * @Route("/user/group/view/member/{slug}/{page}", defaults={"page": 1}
     *     , requirements={"page": "\d+"}, name="sw_user_group_view_member")
     */
-    public function members($group, $page, Request $request)
+    public function members($slug, $page, Request $request)
     {
       //get group
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
-      $group = $repo->findOneById($group);
+      $group = $repo->findOneBySlug($slug);
 
       //get data and paginate
       $pagination = $this->paginator->paginate(

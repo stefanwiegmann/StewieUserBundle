@@ -56,17 +56,16 @@ class RemoveController extends AbstractController
         // update roles
         $userRepo->refreshRoles($userObject);
 
-        return $this->redirectToRoute('sw_user_role_edit_user', array('role' => $role));
+        return $this->redirectToRoute('sw_user_role_edit_user', array('slug' => $roleObject->getSlug()));
       }
 
-    return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
+    return $this->render('@stefanwiegmann_user/card/dangerForm.html.twig', [
         'text' => $translator->trans('confirmation.role.remove', [
           '%subject%' => $userObject->getUsername(),
           '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')
           ], 'SWUserBundle'),
-        'title' => "",
-        'header1' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
-        'header2' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
+        'title' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
+        'mutedTitle' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
         'form' => $form->createView(),
     ]);
 
@@ -109,17 +108,16 @@ class RemoveController extends AbstractController
           // update roles
           $groupRepo->refreshRoles($groupObject);
 
-          return $this->redirectToRoute('sw_user_role_edit_group', array('role' => $role));
+          return $this->redirectToRoute('sw_user_role_edit_group', array('slug' => $roleObject->getSlug()));
         }
 
-    return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
+    return $this->render('@stefanwiegmann_user/card/dangerForm.html.twig', [
         'text' => $translator->trans('confirmation.role.remove', [
           '%subject%' => $groupObject->getName(),
           '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')
           ], 'SWUserBundle'),
-        'title' => "",
-        'header1' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
-        'header2' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
+        'title' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
+        'mutedTitle' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
         'form' => $form->createView(),
     ]);
 

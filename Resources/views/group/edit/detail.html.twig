@@ -7,7 +7,9 @@
 {% block pageMenu %}
 {{ form_start(form) }}
     {{ form_widget(form.submit) }}
-    <a href="{{ path('sw_user_group_delete', {'id': group.id}) }}" class="btn btn-danger" role="button">{{ 'label.group.delete'|trans }}</a>
+    {% if is_granted('ROLE_USER_GROUP_DELETE') %}
+      <a href="{{ path('sw_user_group_delete', {'slug': group.slug}) }}" class="btn btn-danger" role="button">{{ 'label.group.delete'|trans }}</a>
+    {% endif %}
 {% endblock pageMenu %}
 
 {% block content %}
@@ -18,10 +20,10 @@
         <a class="nav-link active" href="#">{{ 'label.details'|trans }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_group_edit_member', {'group': group.id}) }}">{{ 'label.member_s'|trans }}  <span class="badge badge-primary">{{group.user|length}}</a>
+        <a class="nav-link" href="{{ path('sw_user_group_edit_member', {'slug': group.slug}) }}">{{ 'label.member_s'|trans }}  <span class="badge badge-primary">{{group.users|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_group_edit_role', {'id': group.id}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{group.groupRole|length}}</a>
+        <a class="nav-link" href="{{ path('sw_user_group_edit_role', {'slug': group.slug}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{group.groupRoles|length}}</a>
       </li>
     </ul>
 

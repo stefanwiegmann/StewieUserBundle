@@ -23,7 +23,7 @@ class GroupRepository extends ServiceEntityRepository
       $userRepo = $em->getRepository('StefanwiegmannUserBundle:User');
 
       // get users assigned to group and refresh
-      foreach ($group->getUser() as &$user){
+      foreach ($group->getUsers() as &$user){
 
         // set all roles
         $userRepo->refreshRoles($user);
@@ -45,13 +45,13 @@ class GroupRepository extends ServiceEntityRepository
       foreach ($groups as &$group){
 
         // remove user from old groups
-        if ($group->getUser()->contains($user) && !$user->getGroups()->contains($group)) {
+        if ($group->getUsers()->contains($user) && !$user->getGroups()->contains($group)) {
             $group->removeUser($user);
             $em->persist($group);
           }
 
         // add user to new groups
-        elseif (!$group->getUser()->contains($user) && $user->getGroups()->contains($group)) {
+        elseif (!$group->getUsers()->contains($user) && $user->getGroups()->contains($group)) {
             $group->addUser($user);
             $em->persist($group);
           }
