@@ -58,7 +58,7 @@ class GroupController extends AbstractController
           ->getRepository('StefanwiegmannUserBundle:Group');
 
         $query = $repository->createQueryBuilder('g')
-          ->andWhere(':users MEMBER OF g.user')
+          ->andWhere(':users MEMBER OF g.users')
           ->setParameter('users', $user)
           ->orderBy('g.id', 'ASC');
 

@@ -20,7 +20,7 @@
         <a class="nav-link" href="{{ path('sw_user_user_edit_group', {'username': user.username}) }}">{{ 'label.group_s'|trans }}  <span class="badge badge-primary">{{user.groups|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{user.userRole|length}}</a>
+        <a class="nav-link active" href="#">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{user.userRoles|length}}</a>
       </li>
     </ul>
 
@@ -30,11 +30,11 @@
 
     <div class="form-group row">
       <div class="col-sm-2 col-form-label">
-        <strong>{{ form_label(form.userRole) }}</strong>
+        <strong>{{ form_label(form.userRoles) }}</strong>
       </div>
       <div class="col-sm-10">
-        {{ form_errors(form.userRole) }}
-        {{ form_widget(form.userRole) }}
+        {{ form_errors(form.userRoles) }}
+        {{ form_widget(form.userRoles) }}
       </div>
     </div>
 
