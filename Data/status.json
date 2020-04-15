@@ -1,0 +1,22 @@
+{
+    "registered": {
+        "name": "registered",
+        "translationKey": "status.name.registered"
+      },
+    "enabled": {
+        "name": "enabled",
+        "translationKey": "status.name.enabled"
+      },
+    "disabled": {
+        "name": "disabled",
+        "translationKey": "status.name.disabled"
+      },
+    "locked": {
+        "name": "locked",
+        "translationKey": "status.name.locked"
+      },
+    "inactive": {
+        "name": "inactive",
+        "translationKey": "status.name.inactive"
+      }
+}

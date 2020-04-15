@@ -39,6 +39,7 @@ class FillDataCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+      $statusCommand = $this->getApplication()->find('user:fill-status');
       $roleCommand = $this->getApplication()->find('user:fill-roles');
       $groupCommand = $this->getApplication()->find('user:fill-groups');
       $userCommand = $this->getApplication()->find('user:fill-users');
@@ -63,6 +64,7 @@ class FillDataCommand extends Command
 
       $commandInput = new ArrayInput($arguments);
 
+      $returnCode = $statusCommand->run($commandInput, $output);
       $returnCode = $roleCommand->run($commandInput, $output);
       $returnCode = $groupCommand->run($commandInput, $output);
       $returnCode = $userCommand->run($commandInput, $output);
