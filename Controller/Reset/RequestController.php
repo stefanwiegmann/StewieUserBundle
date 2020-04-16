@@ -64,12 +64,14 @@ class RequestController extends AbstractController
            ->subject('Your Password Request')
            ->text($this->renderView(
                        '@stefanwiegmann_user/emails/request.txt.twig',
-                       array('name' => $user->getFirstName().' '.$user->getLastName()
+                       array('name' => $user->getFirstName().' '.$user->getLastName(),
+                              'token' => $user->getToken()
                        )),
              )
            ->html($this->renderView(
                        '@stefanwiegmann_user/emails/request.html.twig',
-                       array('name' => $user->getFirstName().' '.$user->getLastName()
+                       array('name' => $user->getFirstName().' '.$user->getLastName(),
+                              'token' => $user->getToken()
                        ))
                      );
 
