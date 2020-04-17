@@ -8,16 +8,18 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Stefanwiegmann\UserBundle\Form\Type\RegisterType;
+use App\Stefanwiegmann\UserBundle\Form\Type\Register\RegisterType;
 use App\Stefanwiegmann\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class RegisterController extends AbstractController
 {
     /**
     * @Route("/user/register", name="sw_user_register")
     */
-    public function register(Request $request, UserPasswordEncoderInterface $encoder)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, MailerInterface $mailer)
     {
       //create new user
       $user = new User;
@@ -33,41 +35,45 @@ class RegisterController extends AbstractController
           $user = $form->getData();
 
           // set default values
-          $encoded = $encoder->encodePassword($user, 'dgehdyrhfuiykhju');
+          $encoded = $encoder->encodePassword($user, sha1(random_bytes(5)));
 
           $user->setPassword($encoded);
           $user->setUsername($user->getEmail());
+
+          // set token
+          $token = sha1(random_bytes(32));
+          $user->setToken($token);
+          $user->setTokenDate(new \DateTime("now"));
 
           // save user
           $em->persist($user);
           $em->flush();
 
           // send email
-          $message = (new \Swift_Message('Your Registration'))
-              // ->setFrom($this->container->getParameter( 'mailer_address' ))
-              ->setFrom('admin@mindpool.net')
-              ->setTo($user->getEmail())
-              ->setBody(
-                  $this->renderView(
-                      // app/Resources/views/Emails/registration.html.twig
-                      '@stefanwiegmann_user/emails/registration.html.twig',
-                      array('name' => $user->getFirstName().' '.$user->getLastName()
-                      )),
-                  'text/html'
-              )
-              //  If you also want to include a plaintext version of the message
-              // ->addPart(
-              //     $this->renderView(
-              //         '@stefanwiegmann_user/emails/registration.txt.twig',
-              //         array('name' => $user->getFirstName().' '.$user->getLastName()
-              //         )),
-              //     'text/plain'
-              // )
-          ;
+          $email = (new Email())
+           ->to($user->getEmail())
+           ->subject('Your Registration')
+           ->text($this->renderView(
+                       '@stefanwiegmann_user/emails/registration.txt.twig',
+                       array('name' => $user->getFirstName().' '.$user->getLastName(),
+                              'token' => $user->getToken()
+                       )),
+             )
+           ->html($this->renderView(
+                       '@stefanwiegmann_user/emails/registration.html.twig',
+                       array('name' => $user->getFirstName().' '.$user->getLastName(),
+                              'token' => $user->getToken()
+                       ))
+                     );
 
-          $this->get('mailer')->send($message);
+          $mailer->send($email);
 
-          // return $this->redirectToRoute('sw_user_list');
+          $this->addFlash(
+            'success',
+            'A registration link was emailed to '.$user->getEmail().'!'
+            );
+
+          return $this->redirectToRoute('home');
         }
 
       return $this->render('@stefanwiegmann_user/register/register.html.twig', [

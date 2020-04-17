@@ -1,8 +1,8 @@
-<h3>You did it! You registered!</h3>
+<h3>Your Registration!</h3>
 
-Hi {{ name }}! You're successfully registered.
+<p>Hi {{ name }}! You registered successfully.</p>
 
 {# example, assuming you have a route named "login" #}
-To login, go to: <a href="{{ url('sw_user_login') }}">...</a>.
+<p>To complete your profile, please go to: <a href="{{ url('sw_user_registration', {'token': token }) }}">Complete Registration</a></p>
 
-Thanks!
+<p>Thanks! Your BundleDev Team</p>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Form\Type;
+namespace App\Stefanwiegmann\UserBundle\Form\Type\Register;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;

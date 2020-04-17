@@ -55,13 +55,7 @@ class RequestController extends AbstractController
 
           // send email
           $email = (new Email())
-           // ->from('admin@mindpool.net')
-           // ->from($_ENV['MAILER_FROM'])
            ->to($user->getEmail())
-           //->cc('cc@example.com')
-           //->bcc('bcc@example.com')
-           //->replyTo('fabien@example.com')
-           //->priority(Email::PRIORITY_HIGH)
            ->subject('Your Password Request')
            ->text($this->renderView(
                        '@stefanwiegmann_user/emails/request.txt.twig',
