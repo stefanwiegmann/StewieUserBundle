@@ -55,7 +55,8 @@ class RequestController extends AbstractController
 
           // send email
           $email = (new Email())
-           ->from('admin@mindpool.net')
+           // ->from('admin@mindpool.net')
+           // ->from($_ENV['MAILER_FROM'])
            ->to($user->getEmail())
            //->cc('cc@example.com')
            //->bcc('bcc@example.com')
