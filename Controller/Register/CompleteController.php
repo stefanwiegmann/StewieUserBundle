@@ -45,7 +45,7 @@ class CompleteController extends AbstractController
       }
 
       // create form
-      $form = $this->createForm(RegistrationType::class, $user);
+      $form = $this->createForm(CompleteType::class, $user);
 
       // handle form
       $form->handleRequest($request);
@@ -53,16 +53,21 @@ class CompleteController extends AbstractController
       if ($form->isSubmitted() && $form->isValid()) {
           $user = $form->getData();
 
-          // $password = $form->get('password')->getData();
-          //
-          // $encoded = $encoder->encodePassword($user, $password);
-          //
-          // $user->setPassword($encoded);
-          // // save user
-          // $em->persist($user);
-          // $em->flush();
+          // encode password
+          $password = $form->get('password')->getData();
+          $encoded = $encoder->encodePassword($user, $password);
 
-          return $this->render('@stefanwiegmann_user/reset/success.html.twig');
+          $user->setPassword($encoded);
+          // save user
+          $em->persist($user);
+          $em->flush();
+
+          $this->addFlash(
+            'success',
+            'Your profile was completed. You can log in with your crendentials'.'!'
+            );
+
+          return $this->redirectToRoute('home');
         }
 
       return $this->render('@stefanwiegmann_user/register/complete.html.twig', [
