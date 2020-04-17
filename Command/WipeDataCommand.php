@@ -96,6 +96,24 @@ class WipeDataCommand extends Command
       $progressBar->finish();
       $output->writeln('');
 
+      // wipe status
+      $output->writeln('Wiping status:');
+      $repo = $em->getRepository('StefanwiegmannUserBundle:Status');
+      $status = $repo->findAll();
+
+      $progressBar = new ProgressBar($output, count($status));
+      $progressBar->start();
+
+      foreach ($status as &$item){
+
+        $em->remove($item);
+        $progressBar->advance();
+        }
+
+      $em->flush();
+      $progressBar->finish();
+      $output->writeln('');
+
       // end of script
       $output->writeln('All data wiped!');
 

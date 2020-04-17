@@ -11,6 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity(repositoryClass="App\Stefanwiegmann\UserBundle\Repository\GroupRepository")
  * @ORM\Table(name="sw_user_group")
  * @ORM\HasLifecycleCallbacks()
+ * @Gedmo\Loggable(logEntryClass="App\Stefanwiegmann\UserBundle\Entity\UserLogEntry")
  */
 class Group
 {
@@ -22,6 +23,7 @@ class Group
     private $id;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $name;
@@ -33,6 +35,7 @@ class Group
     private $slug;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(type="string", length=255)
      */
     private $description;

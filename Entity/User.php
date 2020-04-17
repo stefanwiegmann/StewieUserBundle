@@ -6,11 +6,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Stefanwiegmann\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="sw_user_user")
  * @ORM\HasLifecycleCallbacks()
+ * @Gedmo\Loggable(logEntryClass="App\Stefanwiegmann\UserBundle\Entity\UserLogEntry")
  */
 class User implements UserInterface
 {
@@ -22,6 +24,7 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $username;
@@ -43,16 +46,19 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $firstName;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lastName;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $phone;
@@ -88,6 +94,22 @@ class User implements UserInterface
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $tokenDate;
+
+    /**
+     * @var \DateTime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @var \DateTime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
 
     public function __construct()
     {
@@ -341,5 +363,29 @@ class User implements UserInterface
     public function getUserRoles(): Collection
     {
         return $this->userRoles;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getUpdated(): ?\DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(\DateTimeInterface $updated): self
+    {
+        $this->updated = $updated;
+
+        return $this;
     }
 }
