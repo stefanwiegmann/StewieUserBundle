@@ -1,0 +1,22 @@
+{
+    "name" : "stefanwiegmann/userbundle",
+    "description" : "A user bundle for Symfony5",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Stefan Wiegmann",
+        "email" : "mail@stefanwiegmann.de"
+    }],
+    "keywords" : [
+        "user bundle symfony symfony5"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require": {
+    },
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "dev-master"
+        }
+    }
+}
