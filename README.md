@@ -49,7 +49,27 @@ return [
 ];
 ```
 
-### Step 2: Settings
+### Step 2: Settings and configuration
+
+Register services for the bundle in the `config/services.yaml` file of your project:
+
+```php
+// config.services.yaml
+
+// ...
+services:
+
+// ...
+
+    App\Stefanwiegmann\UserBundle\Controller\:
+        resource: '@StefanwiegmannUserBundle/Controller/*'
+        tags: ['controller.service_arguments']
+
+    App\Stefanwiegmann\UserBundle\Command\:
+        resource: '@StefanwiegmannUserBundle/Command/*'
+        tags: ['controller.service_arguments']
+
+```
 
 ### Step 3: Setup
 `php bin/console make:migration`
