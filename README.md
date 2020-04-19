@@ -10,10 +10,10 @@ User Bundle for Symfony 5
 
 This bundle is tested with and requires
 
-jquery-3.4.1
-popper-1.16.0
-bootstrap-4.4.1
-fontawesome-free-5.13.0
+- jquery-3.4.1
+- popper-1.16.0
+- bootstrap-4.4.1
+- fontawesome-free-5.13.0
 
 Make sure to include in your project.
 
@@ -21,12 +21,8 @@ Make sure to include in your project.
 
 Templates extend `layout.html.twig`. Make sure to provide this and define the follwoing blocks:
 
-main
-content
-
-The command requires you to have Composer installed globally, as explained
-in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
-of the Composer documentation.
+- main (security forms, register - usually public)
+- content (all other content, usually behind some firewall)
 
 ### Step 1: Install and enable the Bundle
 
