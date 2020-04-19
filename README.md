@@ -61,15 +61,15 @@ services:
 
 // ...
 
-    App\Stefanwiegmann\UserBundle\Controller\:
-        resource: '@StefanwiegmannUserBundle/Controller/*'
-        tags: ['controller.service_arguments']
-
-    App\Stefanwiegmann\UserBundle\Command\:
-        resource: '@StefanwiegmannUserBundle/Command/*'
-        tags: ['controller.service_arguments']
+  App\Stefanwiegmann\UserBundle\:
+      resource: '@StefanwiegmannUserBundle/*/*'
+      exclude: '@StefanwiegmannUserBundle/{Entity}'
+      tags: ['controller.service_arguments']
+      autowire: true
 
 ```
+
+Setup doctrine extensions and enable all defaults
 
 ### Step 3: Setup
 `php bin/console make:migration`
