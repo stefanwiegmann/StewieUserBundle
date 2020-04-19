@@ -44,7 +44,7 @@ class FillGroupsCommand extends Command
       $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
       $roleRepo = $em->getRepository('StefanwiegmannUserBundle:Role');
 
-      $contents = file_get_contents($this->container->getParameter('kernel.project_dir')."/src/Stefanwiegmann/UserBundle/Data/groups.json");
+      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StefanwiegmannUserBundle/Data')."/groups.json");
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 

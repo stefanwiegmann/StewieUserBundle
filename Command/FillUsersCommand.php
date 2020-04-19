@@ -49,7 +49,7 @@ class FillUsersCommand extends Command
       $roleRepo = $em->getRepository('StefanwiegmannUserBundle:Role');
       $groupRepo = $em->getRepository('StefanwiegmannUserBundle:Group');
 
-      $contents = file_get_contents($this->container->getParameter('kernel.project_dir')."/src/Stefanwiegmann/UserBundle/Data/users.json");
+      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StefanwiegmannUserBundle/Data')."/users.json");
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 
