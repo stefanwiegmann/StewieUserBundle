@@ -1,7 +1,7 @@
 {
-    "name" : "stefanwiegmann/userbundle",
-    "description" : "A user bundle for Symfony5",
-    "type" : "symfony-bundle",
+    "name": "stefanwiegmann/userbundle",
+    "type": "symfony-bundle",
+    "description": "A user bundle for Symfony5",
     "authors" : [{
         "name" : "Stefan Wiegmann",
         "email" : "mail@stefanwiegmann.de"

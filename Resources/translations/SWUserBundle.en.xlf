@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="SWUserBundle.en">
+    <unit id="Auh6o_P" name="confirmation.delete">
+      <segment>
+        <source>confirmation.delete</source>
+        <target>Please confirm removal of "%subject%"!</target>
+      </segment>
+    </unit>
+    <unit id="TnRjMdb" name="confirmation.group.delete">
+      <segment>
+        <source>confirmation.group.delete</source>
+        <target>This will remove permissions from users who inherited through this group.</target>
+      </segment>
+    </unit>
+    <unit id="fUUtaJ5" name="confirmation.group.remove">
+      <segment>
+        <source>confirmation.group.remove</source>
+        <target>Please confirm removal of "%subject%" from Group "%object%"!</target>
+      </segment>
+    </unit>
+    <unit id="zKH7lUQ" name="confirmation.remove">
+      <segment>
+        <source>confirmation.remove</source>
+        <target>Please confirm removal of "%subject%" from "%object%"</target>
+      </segment>
+    </unit>
+    <unit id="EmU8kT9" name="confirmation.role.remove">
+      <segment>
+        <source>confirmation.role.remove</source>
+        <target>Please confirm removal of "%subject%" from "%object%"!</target>
+      </segment>
+    </unit>
+    <unit id="bnOjSx1" name="header.edit">
+      <segment>
+        <source>header.edit</source>
+        <target>Edit</target>
+      </segment>
+    </unit>
+    <unit id="3Yf_iDq" name="header.email">
+      <segment>
+        <source>header.email</source>
+        <target>Email</target>
+      </segment>
+    </unit>
+    <unit id="L1HBUvV" name="header.filter">
+      <segment>
+        <source>header.filter</source>
+        <target>User Filter</target>
+      </segment>
+    </unit>
+    <unit id="53IHXt5" name="header.group.create">
+      <segment>
+        <source>header.group.create</source>
+        <target>Create Group</target>
+      </segment>
+    </unit>
+    <unit id="scoj4U7" name="header.groupCreate">
+      <segment>
+        <source>header.groupCreate</source>
+        <target>Create Group</target>
+      </segment>
+    </unit>
+    <unit id="27hPhtr" name="header.group.delete">
+      <segment>
+        <source>header.group.delete</source>
+        <target>Delete Group</target>
+      </segment>
+    </unit>
+    <unit id="_sxNWTm" name="header.group.edit">
+      <segment>
+        <source>header.group.edit</source>
+        <target>Edit Group</target>
+      </segment>
+    </unit>
+    <unit id="MpLYxqq" name="header.group.list">
+      <segment>
+        <source>header.group.list</source>
+        <target>Group List</target>
+      </segment>
+    </unit>
+    <unit id="04MUlmb" name="header.groupList">
+      <segment>
+        <source>header.groupList</source>
+        <target>Group List</target>
+      </segment>
+    </unit>
+    <unit id="LzpnndQ" name="header.group.remove">
+      <segment>
+        <source>header.group.remove</source>
+        <target>Remove from Group</target>
+      </segment>
+    </unit>
+    <unit id="jrINUXT" name="header.group.view">
+      <segment>
+        <source>header.group.view</source>
+        <target>View Group</target>
+      </segment>
+    </unit>
+    <unit id="1gn5wzp" name="header.list">
+      <segment>
+        <source>header.list</source>
+        <target>User List</target>
+      </segment>
+    </unit>
+    <unit id="uR6pE.2" name="header.login">
+      <segment>
+        <source>header.login</source>
+        <target>Login</target>
+      </segment>
+    </unit>
+    <unit id="M87R1QC" name="header.menu">
+      <segment>
+        <source>header.menu</source>
+        <target>User Menu</target>
+      </segment>
+    </unit>
+    <unit id="zzhB7sM" name="header.name">
+      <segment>
+        <source>header.name</source>
+        <target>Name</target>
+      </segment>
+    </unit>
+    <unit id="ufIVhvD" name="header.password">
+      <segment>
+        <source>header.password</source>
+        <target>Password</target>
+      </segment>
+    </unit>
+    <unit id="nS4S3k7" name="header.profile.edit">
+      <segment>
+        <source>header.profile.edit</source>
+        <target>Edit Profile</target>
+      </segment>
+    </unit>
+    <unit id="zpntOJq" name="header.profileMenu">
+      <segment>
+        <source>header.profileMenu</source>
+        <target>Profile</target>
+      </segment>
+    </unit>
+    <unit id="Xu1sYGp" name="header.profile">
+      <segment>
+        <source>header.profile</source>
+        <target>Your Profile</target>
+      </segment>
+    </unit>
+    <unit id="JgVD9qf" name="header.register">
+      <segment>
+        <source>header.register</source>
+        <target>Register New User</target>
+      </segment>
+    </unit>
+    <unit id="qT7zWkk" name="header.remove">
+      <segment>
+        <source>header.remove</source>
+        <target>Remove</target>
+      </segment>
+    </unit>
+    <unit id="owAjPlm" name="header.request">
+      <segment>
+        <source>header.request</source>
+        <target>Request Password</target>
+      </segment>
+    </unit>
+    <unit id="vBaPQ6W" name="header.reset.expired">
+      <segment>
+        <source>header.reset.expired</source>
+        <target>Expired Token</target>
+      </segment>
+    </unit>
+    <unit id="ggPL4c." name="header.reset.request">
+      <segment>
+        <source>header.reset.request</source>
+        <target>Reset Password</target>
+      </segment>
+    </unit>
+    <unit id="y4KNZw3" name="header.reset">
+      <segment>
+        <source>header.reset</source>
+        <target>Reset Password</target>
+      </segment>
+    </unit>
+    <unit id="4Z9jgw6" name="header.reset.success">
+      <segment>
+        <source>header.reset.success</source>
+        <target>Password reset successful</target>
+      </segment>
+    </unit>
+    <unit id="3wkGZv5" name="header.resetSuccess">
+      <segment>
+        <source>header.resetSuccess</source>
+        <target>Reset successful</target>
+      </segment>
+    </unit>
+    <unit id="GpJzXw8" name="header.reset.unknown">
+      <segment>
+        <source>header.reset.unknown</source>
+        <target>Unknown Token</target>
+      </segment>
+    </unit>
+    <unit id="6eeTMUa" name="header.role.edit">
+      <segment>
+        <source>header.role.edit</source>
+        <target>Edit Role</target>
+      </segment>
+    </unit>
+    <unit id="YcMhJcA" name="header.roleGroupList">
+      <segment>
+        <source>header.roleGroupList</source>
+        <target>Groups for</target>
+      </segment>
+    </unit>
+    <unit id="VOh9nXf" name="header.roleList">
+      <segment>
+        <source>header.roleList</source>
+        <target>Role List</target>
+      </segment>
+    </unit>
+    <unit id="3kYotY5" name="header.role.remove">
+      <segment>
+        <source>header.role.remove</source>
+        <target>Remove from Role</target>
+      </segment>
+    </unit>
+    <unit id="xN3k2k4" name="header.roleUserList">
+      <segment>
+        <source>header.roleUserList</source>
+        <target>Users for</target>
+      </segment>
+    </unit>
+    <unit id="vVycWBq" name="header.user.edit">
+      <segment>
+        <source>header.user.edit</source>
+        <target>Edit User</target>
+      </segment>
+    </unit>
+    <unit id="YfqUxwJ" name="header.user.view">
+      <segment>
+        <source>header.user.view</source>
+        <target>View User</target>
+      </segment>
+    </unit>
+    <unit id=".zG63Y8" name="header.usermenu">
+      <segment>
+        <source>header.usermenu</source>
+        <target>Logged in as</target>
+      </segment>
+    </unit>
+    <unit id="zldXQq6" name="label.actions">
+      <segment>
+        <source>label.actions</source>
+        <target>Actions</target>
+      </segment>
+    </unit>
+    <unit id="nWMH_Nr" name="label.avatar">
+      <segment>
+        <source>label.avatar</source>
+        <target>Avatar</target>
+      </segment>
+    </unit>
+    <unit id="ffSy64T" name="label.back">
+      <segment>
+        <source>label.back</source>
+        <target>Go Back</target>
+      </segment>
+    </unit>
+    <unit id="8yeGT7d" name="label.cancel">
+      <segment>
+        <source>label.cancel</source>
+        <target>Cancel</target>
+      </segment>
+    </unit>
+    <unit id="rnNsHUa" name="label.create">
+      <segment>
+        <source>label.create</source>
+        <target>Create</target>
+      </segment>
+    </unit>
+    <unit id="BiPY0TX" name="label.delete">
+      <segment>
+        <source>label.delete</source>
+        <target>Delete</target>
+      </segment>
+    </unit>
+    <unit id="RTuLp7T" name="label.details">
+      <segment>
+        <source>label.details</source>
+        <target>Details</target>
+      </segment>
+    </unit>
+    <unit id="D2N6_cP" name="label.email">
+      <segment>
+        <source>label.email</source>
+        <target>E-Mail</target>
+      </segment>
+    </unit>
+    <unit id="8X5Omlz" name="label.firstName">
+      <segment>
+        <source>label.firstName</source>
+        <target>First Name</target>
+      </segment>
+    </unit>
+    <unit id="6WvpQtu" name="label.fullName">
+      <segment>
+        <source>label.fullName</source>
+        <target>Full Name</target>
+      </segment>
+    </unit>
+    <unit id="N7WuXPg" name="label.group.create">
+      <segment>
+        <source>label.group.create</source>
+        <target>Create Group</target>
+      </segment>
+    </unit>
+    <unit id="GCqiOha" name="label.group.delete">
+      <segment>
+        <source>label.group.delete</source>
+        <target>Delete Group</target>
+      </segment>
+    </unit>
+    <unit id="Z85ZPQx" name="label.group">
+      <segment>
+        <source>label.group</source>
+        <target>Group</target>
+      </segment>
+    </unit>
+    <unit id="T9z.aEU" name="label.group_s">
+      <segment>
+        <source>label.group_s</source>
+        <target>Group(s)</target>
+      </segment>
+    </unit>
+    <unit id="mF8paCb" name="label.groups">
+      <segment>
+        <source>label.groups</source>
+        <target>Groups</target>
+      </segment>
+    </unit>
+    <unit id="BObCWn4" name="label.info">
+      <segment>
+        <source>label.info</source>
+        <target>Info</target>
+      </segment>
+    </unit>
+    <unit id="hO7mkmf" name="label.lastLogin">
+      <segment>
+        <source>label.lastLogin</source>
+        <target>Last Login</target>
+      </segment>
+    </unit>
+    <unit id="7RFIwZT" name="label.lastName">
+      <segment>
+        <source>label.lastName</source>
+        <target>Last Name</target>
+      </segment>
+    </unit>
+    <unit id="ZAtrhtu" name="label.login">
+      <segment>
+        <source>label.login</source>
+        <target>Login</target>
+      </segment>
+    </unit>
+    <unit id="hFijdzp" name="label.log">
+      <segment>
+        <source>label.log</source>
+        <target>Log</target>
+      </segment>
+    </unit>
+    <unit id="II4DGnv" name="label.logout">
+      <segment>
+        <source>label.logout</source>
+        <target>Logout</target>
+      </segment>
+    </unit>
+    <unit id="9R_Y0O5" name="label.member">
+      <segment>
+        <source>label.member</source>
+        <target>Member</target>
+      </segment>
+    </unit>
+    <unit id="e4a0zed" name="label.member_s">
+      <segment>
+        <source>label.member_s</source>
+        <target>Member(s)</target>
+      </segment>
+    </unit>
+    <unit id="ZGboQ6T" name="label.menu.groups">
+      <segment>
+        <source>label.menu.groups</source>
+        <target>Groups</target>
+      </segment>
+    </unit>
+    <unit id="vF0kGwb" name="label.menu.roles">
+      <segment>
+        <source>label.menu.roles</source>
+        <target>Roles</target>
+      </segment>
+    </unit>
+    <unit id="nRQ6xUy" name="label.menu.users">
+      <segment>
+        <source>label.menu.users</source>
+        <target>Users</target>
+      </segment>
+    </unit>
+    <unit id="ysOvPSq" name="label.name">
+      <segment>
+        <source>label.name</source>
+        <target>Name</target>
+      </segment>
+    </unit>
+    <unit id="9r80w9a" name="label.password.first">
+      <segment>
+        <source>label.password.first</source>
+        <target>Password</target>
+      </segment>
+    </unit>
+    <unit id="9pvowqn" name="label.password">
+      <segment>
+        <source>label.password</source>
+        <target>Password</target>
+      </segment>
+    </unit>
+    <unit id="jTzX8wo" name="label.password.second">
+      <segment>
+        <source>label.password.second</source>
+        <target>Repeat Password</target>
+      </segment>
+    </unit>
+    <unit id="U5tAZlY" name="label.profile">
+      <segment>
+        <source>label.profile</source>
+        <target>Profile</target>
+      </segment>
+    </unit>
+    <unit id="CUHo1Mc" name="label.realName">
+      <segment>
+        <source>label.realName</source>
+        <target>Real Name</target>
+      </segment>
+    </unit>
+    <unit id="j0i_RMV" name="label.register">
+      <segment>
+        <source>label.register</source>
+        <target>Register</target>
+      </segment>
+    </unit>
+    <unit id="Dhmyjrp" name="label.remove">
+      <segment>
+        <source>label.remove</source>
+        <target>Remove</target>
+      </segment>
+    </unit>
+    <unit id="3qtds2S" name="label.reset.email">
+      <segment>
+        <source>label.reset.email</source>
+        <target>Email</target>
+      </segment>
+    </unit>
+    <unit id="qoJktcC" name="label.reset.password">
+      <segment>
+        <source>label.reset.password</source>
+        <target>Reset Password</target>
+      </segment>
+    </unit>
+    <unit id="tXMGxv6" name="label.reset.request">
+      <segment>
+        <source>label.reset.request</source>
+        <target>Send Link</target>
+      </segment>
+    </unit>
+    <unit id="zDOFnPR" name="label.reset">
+      <segment>
+        <source>label.reset</source>
+        <target>Reset</target>
+      </segment>
+    </unit>
+    <unit id="O59lP5d" name="label.role">
+      <segment>
+        <source>label.role</source>
+        <target>Role</target>
+      </segment>
+    </unit>
+    <unit id="ybpC7wn" name="label.role_s">
+      <segment>
+        <source>label.role_s</source>
+        <target>Role(s)</target>
+      </segment>
+    </unit>
+    <unit id="iD6CNOO" name="label.roles">
+      <segment>
+        <source>label.roles</source>
+        <target>Roles</target>
+      </segment>
+    </unit>
+    <unit id="hzhzbqw" name="label.status">
+      <segment>
+        <source>label.status</source>
+        <target>Status</target>
+      </segment>
+    </unit>
+    <unit id="VgRvTep" name="label.update">
+      <segment>
+        <source>label.update</source>
+        <target>Update</target>
+      </segment>
+    </unit>
+    <unit id="88wlBkj" name="label.usermenu">
+      <segment>
+        <source>label.usermenu</source>
+        <target>Usermenu</target>
+      </segment>
+    </unit>
+    <unit id="LDhDPrF" name="label.username">
+      <segment>
+        <source>label.username</source>
+        <target>Username</target>
+      </segment>
+    </unit>
+    <unit id="hLEKOfv" name="label.user_s">
+      <segment>
+        <source>label.user_s</source>
+        <target>User(s)</target>
+      </segment>
+    </unit>
+    <unit id="jI3fm2M" name="label.users">
+      <segment>
+        <source>label.users</source>
+        <target>Users</target>
+      </segment>
+    </unit>
+    <unit id="O2X4xZH" name="label.user">
+      <segment>
+        <source>label.user</source>
+        <target>User</target>
+      </segment>
+    </unit>
+    <unit id="jxqTtR_" name="message.reset.expired">
+      <segment>
+        <source>message.reset.expired</source>
+        <target>The token "%token%" expired!</target>
+      </segment>
+    </unit>
+    <unit id="ljbkG1L" name="message.reset.success">
+      <segment>
+        <source>message.reset.success</source>
+        <target>Password was reset successful! Click below to login.</target>
+      </segment>
+    </unit>
+    <unit id="pRW6Laj" name="message.reset.unknown">
+      <segment>
+        <source>message.reset.unknown</source>
+        <target>A user with token "%token%" does not exist!</target>
+      </segment>
+    </unit>
+    <unit id="8QTbbdq" name="tooltip.create">
+      <segment>
+        <source>tooltip.create</source>
+        <target>Create</target>
+      </segment>
+    </unit>
+    <unit id="qWc975i" name="tooltip.delete">
+      <segment>
+        <source>tooltip.delete</source>
+        <target>Delete</target>
+      </segment>
+    </unit>
+    <unit id="nbcWSI3" name="tooltip.edit">
+      <segment>
+        <source>tooltip.edit</source>
+        <target>Edit</target>
+      </segment>
+    </unit>
+    <unit id="m.VPphW" name="tooltip.listGroups">
+      <segment>
+        <source>tooltip.listGroups</source>
+        <target>List Groups</target>
+      </segment>
+    </unit>
+    <unit id="A6Vtqhd" name="tooltip.listUsers">
+      <segment>
+        <source>tooltip.listUsers</source>
+        <target>List Users</target>
+      </segment>
+    </unit>
+    <unit id="q6jBep." name="tooltip.remove">
+      <segment>
+        <source>tooltip.remove</source>
+        <target>Remove</target>
+      </segment>
+    </unit>
+    <unit id="cLu0gUR" name="tooltip.view">
+      <segment>
+        <source>tooltip.view</source>
+        <target>View</target>
+      </segment>
+    </unit>
+    <unit id="GkhDscj" name="tooltip.impersonate">
+      <segment>
+        <source>tooltip.impersonate</source>
+        <target>Impersonate</target>
+      </segment>
+    </unit>
+    <unit id="wA6eo7a" name="label.impersonate.exit">
+      <segment>
+        <source>label.impersonate.exit</source>
+        <target>Switch Back</target>
+      </segment>
+    </unit>
+    <unit id="4cEApe1" name="label.description">
+      <segment>
+        <source>label.description</source>
+        <target>Description</target>
+      </segment>
+    </unit>
+    <unit id="qBfetHQ" name="label.sort">
+      <segment>
+        <source>label.sort</source>
+        <target>Sort</target>
+      </segment>
+    </unit>
+    <unit id="14.rha6" name="header.role.view">
+      <segment>
+        <source>header.role.view</source>
+        <target>View Role</target>
+      </segment>
+    </unit>
+    <unit id="kL5zriA" name="header.card.danger">
+      <segment>
+        <source>header.card.danger</source>
+        <target>Caution</target>
+      </segment>
+    </unit>
+    <unit id="TMT1Qgi" name="header.register.complete">
+      <segment>
+        <source>header.register.complete</source>
+        <target>Complete Registration</target>
+      </segment>
+    </unit>
+    <unit id="DzOPx3M" name="label.register.complete">
+      <segment>
+        <source>label.register.complete</source>
+        <target>Complete</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

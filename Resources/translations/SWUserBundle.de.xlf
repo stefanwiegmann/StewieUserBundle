@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Auh6o_P" resname="confirmation.delete">
+        <source>confirmation.delete</source>
+        <target>bestaetige bitte</target>
+      </trans-unit>
+      <trans-unit id="M87R1QC" resname="header.menu">
+        <source>header.menu</source>
+        <target>new_header.menu</target>
+      </trans-unit>
+      <trans-unit id="nRQ6xUy" resname="label.menu.users">
+        <source>label.menu.users</source>
+        <target>new_label.menu.users</target>
+      </trans-unit>
+      <trans-unit id="JgVD9qf" resname="header.register">
+        <source>header.register</source>
+        <target>new_header.register</target>
+      </trans-unit>
+      <trans-unit id="ZGboQ6T" resname="label.menu.groups">
+        <source>label.menu.groups</source>
+        <target>new_label.menu.groups</target>
+      </trans-unit>
+      <trans-unit id="vF0kGwb" resname="label.menu.roles">
+        <source>label.menu.roles</source>
+        <target>new_label.menu.roles</target>
+      </trans-unit>
+      <trans-unit id=".zG63Y8" resname="header.usermenu">
+        <source>header.usermenu</source>
+        <target>new_header.usermenu</target>
+      </trans-unit>
+      <trans-unit id="U5tAZlY" resname="label.profile">
+        <source>label.profile</source>
+        <target>new_label.profile</target>
+      </trans-unit>
+      <trans-unit id="wA6eo7a" resname="label.impersonate.exit">
+        <source>label.impersonate.exit</source>
+        <target>new_label.impersonate.exit</target>
+      </trans-unit>
+      <trans-unit id="II4DGnv" resname="label.logout">
+        <source>label.logout</source>
+        <target>new_label.logout</target>
+      </trans-unit>
+      <trans-unit id="ZAtrhtu" resname="label.login">
+        <source>label.login</source>
+        <target>new_label.login</target>
+      </trans-unit>
+      <trans-unit id="zpntOJq" resname="header.profileMenu">
+        <source>header.profileMenu</source>
+        <target>new_header.profileMenu</target>
+      </trans-unit>
+      <trans-unit id="zzhB7sM" resname="header.name">
+        <source>header.name</source>
+        <target>new_header.name</target>
+      </trans-unit>
+      <trans-unit id="3Yf_iDq" resname="header.email">
+        <source>header.email</source>
+        <target>new_header.email</target>
+      </trans-unit>
+      <trans-unit id="ufIVhvD" resname="header.password">
+        <source>header.password</source>
+        <target>new_header.password</target>
+      </trans-unit>
+      <trans-unit id="Xu1sYGp" resname="header.profile">
+        <source>header.profile</source>
+        <target>new_header.profile</target>
+      </trans-unit>
+      <trans-unit id="BObCWn4" resname="label.info">
+        <source>label.info</source>
+        <target>new_label.info</target>
+      </trans-unit>
+      <trans-unit id="nWMH_Nr" resname="label.avatar">
+        <source>label.avatar</source>
+        <target>new_label.avatar</target>
+      </trans-unit>
+      <trans-unit id="6WvpQtu" resname="label.fullName">
+        <source>label.fullName</source>
+        <target>new_label.fullName</target>
+      </trans-unit>
+      <trans-unit id="hFijdzp" resname="label.log">
+        <source>label.log</source>
+        <target>new_label.log</target>
+      </trans-unit>
+      <trans-unit id="nS4S3k7" resname="header.profile.edit">
+        <source>header.profile.edit</source>
+        <target>new_header.profile.edit</target>
+      </trans-unit>
+      <trans-unit id="RTuLp7T" resname="label.details">
+        <source>label.details</source>
+        <target>new_label.details</target>
+      </trans-unit>
+      <trans-unit id="9pvowqn" resname="label.password">
+        <source>label.password</source>
+        <target>new_label.password</target>
+      </trans-unit>
+      <trans-unit id="TMT1Qgi" resname="header.register.complete">
+        <source>header.register.complete</source>
+        <target>new_header.register.complete</target>
+      </trans-unit>
+      <trans-unit id="D2N6_cP" resname="label.email">
+        <source>label.email</source>
+        <target>new_label.email</target>
+      </trans-unit>
+      <trans-unit id="vBaPQ6W" resname="header.reset.expired">
+        <source>header.reset.expired</source>
+        <target>new_header.reset.expired</target>
+      </trans-unit>
+      <trans-unit id="jxqTtR_" resname="message.reset.expired">
+        <source>message.reset.expired</source>
+        <target>new_message.reset.expired</target>
+      </trans-unit>
+      <trans-unit id="ggPL4c." resname="header.reset.request">
+        <source>header.reset.request</source>
+        <target>new_header.reset.request</target>
+      </trans-unit>
+      <trans-unit id="y4KNZw3" resname="header.reset">
+        <source>header.reset</source>
+        <target>new_header.reset</target>
+      </trans-unit>
+      <trans-unit id="4Z9jgw6" resname="header.reset.success">
+        <source>header.reset.success</source>
+        <target>new_header.reset.success</target>
+      </trans-unit>
+      <trans-unit id="ljbkG1L" resname="message.reset.success">
+        <source>message.reset.success</source>
+        <target>new_message.reset.success</target>
+      </trans-unit>
+      <trans-unit id="GpJzXw8" resname="header.reset.unknown">
+        <source>header.reset.unknown</source>
+        <target>new_header.reset.unknown</target>
+      </trans-unit>
+      <trans-unit id="pRW6Laj" resname="message.reset.unknown">
+        <source>message.reset.unknown</source>
+        <target>new_message.reset.unknown</target>
+      </trans-unit>
+      <trans-unit id="uR6pE.2" resname="header.login">
+        <source>header.login</source>
+        <target>new_header.login</target>
+      </trans-unit>
+      <trans-unit id="owAjPlm" resname="header.request">
+        <source>header.request</source>
+        <target>new_header.request</target>
+      </trans-unit>
+      <trans-unit id="_sxNWTm" resname="header.group.edit">
+        <source>header.group.edit</source>
+        <target>new_header.group.edit</target>
+      </trans-unit>
+      <trans-unit id="GCqiOha" resname="label.group.delete">
+        <source>label.group.delete</source>
+        <target>new_label.group.delete</target>
+      </trans-unit>
+      <trans-unit id="e4a0zed" resname="label.member_s">
+        <source>label.member_s</source>
+        <target>new_label.member_s</target>
+      </trans-unit>
+      <trans-unit id="ybpC7wn" resname="label.role_s">
+        <source>label.role_s</source>
+        <target>new_label.role_s</target>
+      </trans-unit>
+      <trans-unit id="LDhDPrF" resname="label.username">
+        <source>label.username</source>
+        <target>new_label.username</target>
+      </trans-unit>
+      <trans-unit id="CUHo1Mc" resname="label.realName">
+        <source>label.realName</source>
+        <target>new_label.realName</target>
+      </trans-unit>
+      <trans-unit id="zldXQq6" resname="label.actions">
+        <source>label.actions</source>
+        <target>new_label.actions</target>
+      </trans-unit>
+      <trans-unit id="q6jBep." resname="tooltip.remove">
+        <source>tooltip.remove</source>
+        <target>new_tooltip.remove</target>
+      </trans-unit>
+      <trans-unit id="jrINUXT" resname="header.group.view">
+        <source>header.group.view</source>
+        <target>new_header.group.view</target>
+      </trans-unit>
+      <trans-unit id="ysOvPSq" resname="label.name">
+        <source>label.name</source>
+        <target>new_label.name</target>
+      </trans-unit>
+      <trans-unit id="53IHXt5" resname="header.group.create">
+        <source>header.group.create</source>
+        <target>new_header.group.create</target>
+      </trans-unit>
+      <trans-unit id="L1HBUvV" resname="header.filter">
+        <source>header.filter</source>
+        <target>new_header.filter</target>
+      </trans-unit>
+      <trans-unit id="MpLYxqq" resname="header.group.list">
+        <source>header.group.list</source>
+        <target>new_header.group.list</target>
+      </trans-unit>
+      <trans-unit id="N7WuXPg" resname="label.group.create">
+        <source>label.group.create</source>
+        <target>new_label.group.create</target>
+      </trans-unit>
+      <trans-unit id="iD6CNOO" resname="label.roles">
+        <source>label.roles</source>
+        <target>new_label.roles</target>
+      </trans-unit>
+      <trans-unit id="hzhzbqw" resname="label.status">
+        <source>label.status</source>
+        <target>new_label.status</target>
+      </trans-unit>
+      <trans-unit id="cLu0gUR" resname="tooltip.view">
+        <source>tooltip.view</source>
+        <target>new_tooltip.view</target>
+      </trans-unit>
+      <trans-unit id="nbcWSI3" resname="tooltip.edit">
+        <source>tooltip.edit</source>
+        <target>new_tooltip.edit</target>
+      </trans-unit>
+      <trans-unit id="qWc975i" resname="tooltip.delete">
+        <source>tooltip.delete</source>
+        <target>new_tooltip.delete</target>
+      </trans-unit>
+      <trans-unit id="6eeTMUa" resname="header.role.edit">
+        <source>header.role.edit</source>
+        <target>new_header.role.edit</target>
+      </trans-unit>
+      <trans-unit id="hLEKOfv" resname="label.user_s">
+        <source>label.user_s</source>
+        <target>new_label.user_s</target>
+      </trans-unit>
+      <trans-unit id="T9z.aEU" resname="label.group_s">
+        <source>label.group_s</source>
+        <target>new_label.group_s</target>
+      </trans-unit>
+      <trans-unit id="ffSy64T" resname="label.back">
+        <source>label.back</source>
+        <target>new_label.back</target>
+      </trans-unit>
+      <trans-unit id="VOh9nXf" resname="header.roleList">
+        <source>header.roleList</source>
+        <target>new_header.roleList</target>
+      </trans-unit>
+      <trans-unit id="qBfetHQ" resname="label.sort">
+        <source>label.sort</source>
+        <target>new_label.sort</target>
+      </trans-unit>
+      <trans-unit id="4cEApe1" resname="label.description">
+        <source>label.description</source>
+        <target>new_label.description</target>
+      </trans-unit>
+      <trans-unit id="mF8paCb" resname="label.groups">
+        <source>label.groups</source>
+        <target>new_label.groups</target>
+      </trans-unit>
+      <trans-unit id="jI3fm2M" resname="label.users">
+        <source>label.users</source>
+        <target>new_label.users</target>
+      </trans-unit>
+      <trans-unit id="14.rha6" resname="header.role.view">
+        <source>header.role.view</source>
+        <target>new_header.role.view</target>
+      </trans-unit>
+      <trans-unit id="vVycWBq" resname="header.user.edit">
+        <source>header.user.edit</source>
+        <target>new_header.user.edit</target>
+      </trans-unit>
+      <trans-unit id="BiPY0TX" resname="label.delete">
+        <source>label.delete</source>
+        <target>new_label.delete</target>
+      </trans-unit>
+      <trans-unit id="YfqUxwJ" resname="header.user.view">
+        <source>header.user.view</source>
+        <target>new_header.user.view</target>
+      </trans-unit>
+      <trans-unit id="1gn5wzp" resname="header.list">
+        <source>header.list</source>
+        <target>new_header.list</target>
+      </trans-unit>
+      <trans-unit id="hO7mkmf" resname="label.lastLogin">
+        <source>label.lastLogin</source>
+        <target>new_label.lastLogin</target>
+      </trans-unit>
+      <trans-unit id="GkhDscj" resname="tooltip.impersonate">
+        <source>tooltip.impersonate</source>
+        <target>new_tooltip.impersonate</target>
+      </trans-unit>
+      <trans-unit id="kL5zriA" resname="header.card.danger">
+        <source>header.card.danger</source>
+        <target>new_header.card.danger</target>
+      </trans-unit>
+      <trans-unit id="8yeGT7d" resname="label.cancel">
+        <source>label.cancel</source>
+        <target>new_label.cancel</target>
+      </trans-unit>
+      <trans-unit id="TnRjMdb" resname="confirmation.group.delete">
+        <source>confirmation.group.delete</source>
+        <target>new_confirmation.group.delete</target>
+      </trans-unit>
+      <trans-unit id="27hPhtr" resname="header.group.delete">
+        <source>header.group.delete</source>
+        <target>new_header.group.delete</target>
+      </trans-unit>
+      <trans-unit id="fUUtaJ5" resname="confirmation.group.remove">
+        <source>confirmation.group.remove</source>
+        <target>new_confirmation.group.remove</target>
+      </trans-unit>
+      <trans-unit id="LzpnndQ" resname="header.group.remove">
+        <source>header.group.remove</source>
+        <target>new_header.group.remove</target>
+      </trans-unit>
+      <trans-unit id="EmU8kT9" resname="confirmation.role.remove">
+        <source>confirmation.role.remove</source>
+        <target>new_confirmation.role.remove</target>
+      </trans-unit>
+      <trans-unit id="3kYotY5" resname="header.role.remove">
+        <source>header.role.remove</source>
+        <target>new_header.role.remove</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

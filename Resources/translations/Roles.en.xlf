@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="Roles.en">
+    <unit id="9RyLZQi" name="name.role_allowed_to_switch">
+      <segment>
+        <source>name.role_allowed_to_switch</source>
+        <target>Switch User</target>
+      </segment>
+    </unit>
+    <unit id="L7VJ0kB" name="name.role_user_role_create">
+      <segment>
+        <source>name.role_user_role_create</source>
+        <target>Create Role</target>
+      </segment>
+    </unit>
+    <unit id="lbuBEUi" name="name.role_user_role_edit">
+      <segment>
+        <source>name.role_user_role_edit</source>
+        <target>name.role_user_role_edit</target>
+      </segment>
+    </unit>
+    <unit id="YdDvzpc" name="name.role_user_role_view">
+      <segment>
+        <source>name.role_user_role_view</source>
+        <target>name.role_user_role_view</target>
+      </segment>
+    </unit>
+    <unit id="5xJoOCM" name="name.role_user_user_create">
+      <segment>
+        <source>name.role_user_user_create</source>
+        <target>name.role_user_user_create</target>
+      </segment>
+    </unit>
+    <unit id="KrxpESH" name="name.role_user_user_delete">
+      <segment>
+        <source>name.role_user_user_delete</source>
+        <target>name.role_user_user_delete</target>
+      </segment>
+    </unit>
+    <unit id="5Usnhya" name="name.role_user_user_edit">
+      <segment>
+        <source>name.role_user_user_edit</source>
+        <target>name.role_user_user_edit</target>
+      </segment>
+    </unit>
+    <unit id="yUAtT_A" name="name.role_user_user_view">
+      <segment>
+        <source>name.role_user_user_view</source>
+        <target>name.role_user_user_view</target>
+      </segment>
+    </unit>
+    <unit id="R2pG0d5" name="name.role_user_group_create">
+      <segment>
+        <source>name.role_user_group_create</source>
+        <target>name.role_user_group_create</target>
+      </segment>
+    </unit>
+    <unit id="v5nAkhv" name="name.role_user_group_delete">
+      <segment>
+        <source>name.role_user_group_delete</source>
+        <target>name.role_user_group_delete</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>
