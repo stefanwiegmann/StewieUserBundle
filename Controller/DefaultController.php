@@ -14,7 +14,7 @@ class DefaultController extends AbstractController
     */
     public function default()
     {
-      return $this->render('@stefanwiegmann_user/default/index.html.twig', [
+      return $this->render('@StefanwiegmannUser/default/index.html.twig', [
           'headline' => 'User Default',
           'content' => 'hello user',
       ]);

@@ -57,7 +57,7 @@ class RemoveController extends AbstractController
         return $this->redirectToRoute('sw_user_group_edit_member', array('slug' => $slug));
       }
 
-    return $this->render('@stefanwiegmann_user/card/dangerForm.html.twig', [
+    return $this->render('@StefanwiegmannUser/card/dangerForm.html.twig', [
         'text' => $translator->trans('confirmation.group.remove', [
           '%subject%' => $userObject->getUsername(),
           '%object%' => $groupObject->getName()

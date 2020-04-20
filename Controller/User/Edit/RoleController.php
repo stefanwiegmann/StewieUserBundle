@@ -45,7 +45,7 @@ class RoleController extends AbstractController
           return $this->redirectToRoute('sw_user_user_edit_role', ['username' => $user->getUsername()]);
         }
 
-      return $this->render('@stefanwiegmann_user/user/edit/role.html.twig', [
+      return $this->render('@StefanwiegmannUser/user/edit/role.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

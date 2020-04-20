@@ -31,7 +31,7 @@ class ResetController extends AbstractController
       // exeption if token unknown
       if(!$user){
 
-        return $this->render('@stefanwiegmann_user/reset/unknown.html.twig', [
+        return $this->render('@StefanwiegmannUser/reset/unknown.html.twig', [
             'token' => $token,
         ]);
       }
@@ -39,7 +39,7 @@ class ResetController extends AbstractController
       // TODO exeption if token expired
       if(date_diff(new \DateTime("now"),$user->getTokenDate())->format('%a') > 2){
 
-        return $this->render('@stefanwiegmann_user/reset/expired.html.twig', [
+        return $this->render('@StefanwiegmannUser/reset/expired.html.twig', [
             'token' => $token,
         ]);
       }
@@ -62,10 +62,10 @@ class ResetController extends AbstractController
           $em->persist($user);
           $em->flush();
 
-          return $this->render('@stefanwiegmann_user/reset/success.html.twig');
+          return $this->render('@StefanwiegmannUser/reset/success.html.twig');
         }
 
-      return $this->render('@stefanwiegmann_user/reset/reset.html.twig', [
+      return $this->render('@StefanwiegmannUser/reset/reset.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

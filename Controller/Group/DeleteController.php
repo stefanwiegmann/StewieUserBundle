@@ -50,7 +50,7 @@ class DeleteController extends AbstractController
         return $this->redirectToRoute('sw_user_group_list');
       }
 
-    return $this->render('@stefanwiegmann_user/default/remove.html.twig', [
+    return $this->render('@StefanwiegmannUser/default/remove.html.twig', [
         'title' => $translator->trans('confirmation.delete', [
           '%subject%' => $group->getName()
           ], 'SWUserBundle'),

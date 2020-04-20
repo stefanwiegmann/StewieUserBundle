@@ -25,7 +25,7 @@ class DetailController extends AbstractController
           ->getRepository('StefanwiegmannUserBundle:Role');
         $roleObject = $repository->findOneBySlug($slug);
 
-      return $this->render('@stefanwiegmann_user/role/view/detail.html.twig', [
+      return $this->render('@StefanwiegmannUser/role/view/detail.html.twig', [
           'role' => $roleObject,
       ]);
     }

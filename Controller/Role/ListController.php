@@ -39,9 +39,9 @@ class ListController extends AbstractController
             // $this->container->getParameter('max_rows')/*limit per page*/
         );
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
-        $pagination->setTemplate('@stefanwiegmann_user/default/pagination.html.twig');
+        $pagination->setTemplate('@StefanwiegmannUser/default/pagination.html.twig');
 
-      return $this->render('@stefanwiegmann_user/role/list.html.twig', [
+      return $this->render('@StefanwiegmannUser/role/list.html.twig', [
           'roleList' => $pagination,
           'page' => $page,
       ]);

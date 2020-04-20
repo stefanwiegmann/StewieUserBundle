@@ -49,7 +49,7 @@ class GroupController extends AbstractController
           return $this->redirectToRoute('sw_user_user_edit_group', ['username' => $user->getUsername()]);
         }
 
-      return $this->render('@stefanwiegmann_user/user/edit/group.html.twig', [
+      return $this->render('@StefanwiegmannUser/user/edit/group.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

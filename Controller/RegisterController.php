@@ -54,13 +54,13 @@ class RegisterController extends AbstractController
            ->to($user->getEmail())
            ->subject('Your Registration')
            ->text($this->renderView(
-                       '@stefanwiegmann_user/emails/registration.txt.twig',
+                       '@StefanwiegmannUser/emails/registration.txt.twig',
                        array('name' => $user->getFirstName().' '.$user->getLastName(),
                               'token' => $user->getToken()
                        )),
              )
            ->html($this->renderView(
-                       '@stefanwiegmann_user/emails/registration.html.twig',
+                       '@StefanwiegmannUser/emails/registration.html.twig',
                        array('name' => $user->getFirstName().' '.$user->getLastName(),
                               'token' => $user->getToken()
                        ))
@@ -76,7 +76,7 @@ class RegisterController extends AbstractController
           return $this->redirectToRoute('home');
         }
 
-      return $this->render('@stefanwiegmann_user/register/register.html.twig', [
+      return $this->render('@StefanwiegmannUser/register/register.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

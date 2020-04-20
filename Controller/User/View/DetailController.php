@@ -26,7 +26,7 @@ class DetailController extends AbstractController
       $repo = $em->getRepository('StefanwiegmannUserBundle:User');
       $user = $repo->findOneByUsername($username);
 
-      return $this->render('@stefanwiegmann_user/user/view/detail.html.twig', [
+      return $this->render('@StefanwiegmannUser/user/view/detail.html.twig', [
           'user' => $user,
       ]);
     }

@@ -58,13 +58,13 @@ class RequestController extends AbstractController
            ->to($user->getEmail())
            ->subject('Your Password Request')
            ->text($this->renderView(
-                       '@stefanwiegmann_user/emails/request.txt.twig',
+                       '@StefanwiegmannUser/emails/request.txt.twig',
                        array('name' => $user->getFirstName().' '.$user->getLastName(),
                               'token' => $user->getToken()
                        )),
              )
            ->html($this->renderView(
-                       '@stefanwiegmann_user/emails/request.html.twig',
+                       '@StefanwiegmannUser/emails/request.html.twig',
                        array('name' => $user->getFirstName().' '.$user->getLastName(),
                               'token' => $user->getToken()
                        ))
@@ -80,7 +80,7 @@ class RequestController extends AbstractController
           return $this->redirectToRoute('home');
         }
 
-      return $this->render('@stefanwiegmann_user/reset/request.html.twig', [
+      return $this->render('@StefanwiegmannUser/reset/request.html.twig', [
           'form' => $form->createView(),
       ]);
     }

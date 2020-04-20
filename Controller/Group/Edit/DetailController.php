@@ -42,7 +42,7 @@ class DetailController extends AbstractController
           return $this->redirectToRoute('sw_user_group_list');
         }
 
-      return $this->render('@stefanwiegmann_user/group/edit/detail.html.twig', [
+      return $this->render('@StefanwiegmannUser/group/edit/detail.html.twig', [
           'group' => $group,
           'form' => $form->createView(),
       ]);

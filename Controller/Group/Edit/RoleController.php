@@ -45,7 +45,7 @@ class RoleController extends AbstractController
           return $this->redirectToRoute('sw_user_group_list');
         }
 
-      return $this->render('@stefanwiegmann_user/group/edit/role.html.twig', [
+      return $this->render('@StefanwiegmannUser/group/edit/role.html.twig', [
           'group' => $group,
           'form' => $form->createView(),
       ]);

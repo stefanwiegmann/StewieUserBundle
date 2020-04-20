@@ -26,7 +26,7 @@ class DetailController extends AbstractController
       $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
       $group = $repo->findOneBySlug($slug);
 
-      return $this->render('@stefanwiegmann_user/group/view/detail.html.twig', [
+      return $this->render('@StefanwiegmannUser/group/view/detail.html.twig', [
           'group' => $group,
       ]);
     }

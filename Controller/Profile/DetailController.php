@@ -55,7 +55,7 @@ class DetailController extends AbstractController
           return $this->redirectToRoute('sw_user_profile');
         }
 
-      return $this->render('@stefanwiegmann_user/profile/detail.html.twig', [
+      return $this->render('@StefanwiegmannUser/profile/detail.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

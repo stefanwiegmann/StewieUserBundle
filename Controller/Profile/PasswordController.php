@@ -55,7 +55,7 @@ class PasswordController extends AbstractController
           return $this->redirectToRoute('sw_user_profile_password');
         }
 
-      return $this->render('@stefanwiegmann_user/profile/password.html.twig', [
+      return $this->render('@StefanwiegmannUser/profile/password.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

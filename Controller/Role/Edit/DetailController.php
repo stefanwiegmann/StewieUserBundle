@@ -47,7 +47,7 @@ class DetailController extends AbstractController
             return $this->redirectToRoute('sw_user_role_edit_detail', ['slug' => $slug]);
           }
 
-      return $this->render('@stefanwiegmann_user/role/edit/detail.html.twig', [
+      return $this->render('@StefanwiegmannUser/role/edit/detail.html.twig', [
           'role' => $roleObject,
           'form' => $form->createView(),
       ]);

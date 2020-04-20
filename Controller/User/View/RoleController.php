@@ -43,9 +43,9 @@ class RoleController extends AbstractController
             $this->getParameter('max_rows')/*limit per page*/
         );
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
-        $pagination->setTemplate('@stefanwiegmann_user/default/pagination.html.twig');
+        $pagination->setTemplate('@StefanwiegmannUser/default/pagination.html.twig');
 
-      return $this->render('@stefanwiegmann_user/user/view/role.html.twig', [
+      return $this->render('@StefanwiegmannUser/user/view/role.html.twig', [
           'user' => $user,
           'roleList' => $pagination,
           'page' => $page,

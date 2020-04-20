@@ -75,6 +75,50 @@ twig:
   form_themes: ['bootstrap_4_layout.html.twig']
 ```
 
+Add minimum security configuration
+
+```php
+// config/security.yaml
+security:
+    encoders:
+        App\Stefanwiegmann\UserBundle\Entity\User:
+            algorithm: argon2i
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Stefanwiegmann\UserBundle\Entity\User
+                property: username
+    // ...
+    firewalls:
+      // ...
+      main:
+        anonymous: true
+        guard:
+            authenticators:
+                - App\Stefanwiegmann\UserBundle\Security\LoginFormAuthenticator
+        logout:
+            path:   sw_user_logout
+
+        switch_user: true
+        // ...
+    // ...
+    
+    // add some sane inheritance for logged in users without any groups assigned
+    role_hierarchy:
+        ROLE_USER: [ROLE_USER_USER_VIEW, ROLE_USER_ROLE_VIEW, ROLE_USER_GROUP_VIEW]
+        // ...
+
+    // make sure to leave login accessible for anybody (at least)
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        // ...
+
+```
+
 Setup doctrine extensions and enable all defaults
 
 ### Step 3: Fill some data
