@@ -104,7 +104,7 @@ security:
         switch_user: true
         // ...
     // ...
-    
+
     // add some sane inheritance for logged in users without any groups assigned
     role_hierarchy:
         ROLE_USER: [ROLE_USER_USER_VIEW, ROLE_USER_ROLE_VIEW, ROLE_USER_GROUP_VIEW]
@@ -116,7 +116,17 @@ security:
     access_control:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         // ...
+```
+Add these paramaters:
 
+```php
+// config/services.yaml
+parameters:
+    locale: 'en'
+    max_rows: 10
+    from_email: 'from@somedomain.org'
+    // ...
+// ...
 ```
 
 Setup doctrine extensions and enable all defaults
