@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Stefanwiegmann\UserBundle\Repository\UserRepository")
@@ -117,6 +119,11 @@ class User implements UserInterface
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="user_avatar", fileNameProperty="imageName", size="imageSize")
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     mimeTypes = {"image/png", "image/jpeg", "image/gif"},
+     *     mimeTypesMessage = "Please upload a valid JPG, GIF or PNG"
+     * )
      *
      * @var File|null
      */

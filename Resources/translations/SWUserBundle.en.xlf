@@ -643,5 +643,17 @@
         <target>Complete</target>
       </segment>
     </unit>
+    <unit id="XhS3Bkw" name="form.label.delete">
+      <segment>
+        <source>form.label.delete</source>
+        <target>form.label.delete</target>
+      </segment>
+    </unit>
+    <unit id="aP9j_4L" name="download">
+      <segment>
+        <source>download</source>
+        <target>download</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

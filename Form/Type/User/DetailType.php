@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 // use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -39,10 +40,21 @@ class DetailType extends AbstractType
                'translation_domain' => 'SWUserBundle',
              ))
 
-             ->add('imageFile', VichImageType::class, array(
-               'label' => 'label.avatar',
-               'translation_domain' => 'SWUserBundle',
-             ))
+             // ->add('imageFile', FileType::class, array(
+             //   'label' => 'label.avatar',
+             //   'required' => false,
+             //   'translation_domain' => 'SWUserBundle',
+             // ))
+
+             ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'download_label' => 'Download',
+                'download_uri' => true,
+                'image_uri' => true,
+                'imagine_pattern' => 'thumb_filter',
+                'asset_helper' => true,
+              ])
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',
              'translation_domain' => 'SWUserBundle',
