@@ -36,9 +36,9 @@ class DetailController extends AbstractController
           $user = $form->getData();
 
           // // check if avatar was removed
-          if(!$user->getImageFile()){
-            $user->setImageName('');
-            $user->setImageSize(0);
+          if(!$user->getAvatarFile()){
+            $user->setAvatarName('');
+            $user->setAvatarSize(0);
           }
 
           // save user

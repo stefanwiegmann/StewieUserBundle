@@ -118,7 +118,7 @@ class User implements UserInterface
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="user_avatar", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="user_avatar_user", fileNameProperty="avatarName", size="avatarSize")
      * @Assert\File(
      *     maxSize = "2048k",
      *     mimeTypes = {"image/png", "image/jpeg", "image/gif"},
@@ -127,21 +127,21 @@ class User implements UserInterface
      *
      * @var File|null
      */
-    private $imageFile;
+    private $avatarFile;
 
     /**
      * @ORM\Column(type="string")
      *
      * @var string|null
      */
-    private $imageName;
+    private $avatarName;
 
     /**
      * @ORM\Column(type="integer")
      *
      * @var int|null
      */
-    private $imageSize;
+    private $avatarSize;
 
     /**
      * @ORM\Column(type="datetime")
@@ -157,42 +157,42 @@ class User implements UserInterface
      * must be able to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $avatarFile
      */
-    public function setImageFile(?File $imageFile = null): void
+    public function setAvatarFile(?File $avatarFile = null): void
     {
-        $this->imageFile = $imageFile;
+        $this->avatarFile = $avatarFile;
 
-        if (null !== $imageFile) {
+        if (null !== $avatarFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
 
-    public function getImageFile(): ?File
+    public function getAvatarFile(): ?File
     {
-        return $this->imageFile;
+        return $this->avatarFile;
     }
 
-    public function setImageName(?string $imageName): void
+    public function setAvatarName(?string $avatarName): void
     {
-        $this->imageName = $imageName;
+        $this->avatarName = $avatarName;
     }
 
-    public function getImageName(): ?string
+    public function getAvatarName(): ?string
     {
-        return $this->imageName;
+        return $this->avatarName;
     }
 
-    public function setImageSize(?int $imageSize): void
+    public function setAvatarSize(?int $avatarSize): void
     {
-        $this->imageSize = $imageSize;
+        $this->avatarSize = $avatarSize;
     }
 
-    public function getImageSize(): ?int
+    public function getAvatarSize(): ?int
     {
-        return $this->imageSize;
+        return $this->avatarSize;
     }
 
     /**

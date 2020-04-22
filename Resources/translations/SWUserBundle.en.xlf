@@ -646,13 +646,19 @@
     <unit id="XhS3Bkw" name="form.label.delete">
       <segment>
         <source>form.label.delete</source>
-        <target>form.label.delete</target>
+        <target>Delete</target>
       </segment>
     </unit>
     <unit id="aP9j_4L" name="download">
       <segment>
         <source>download</source>
         <target>download</target>
+      </segment>
+    </unit>
+    <unit id="gJeQ7fV" name="labal.avatar">
+      <segment>
+        <source>labal.avatar</source>
+        <target>labal.avatar</target>
       </segment>
     </unit>
   </file>

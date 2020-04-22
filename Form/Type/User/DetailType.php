@@ -40,20 +40,16 @@ class DetailType extends AbstractType
                'translation_domain' => 'SWUserBundle',
              ))
 
-             // ->add('imageFile', FileType::class, array(
-             //   'label' => 'label.avatar',
-             //   'required' => false,
-             //   'translation_domain' => 'SWUserBundle',
-             // ))
-
-             ->add('imageFile', VichImageType::class, [
+             ->add('avatarFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => true,
-                'download_label' => 'Download',
-                'download_uri' => true,
+                'download_label' => 'label.download',
+                'download_uri' => false,
                 'image_uri' => true,
-                'imagine_pattern' => 'thumb_filter',
+                'imagine_pattern' => 'user_medium_filter',
                 'asset_helper' => true,
+                'label' => 'label.avatar',
+                'translation_domain' => 'SWUserBundle',
               ])
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',
