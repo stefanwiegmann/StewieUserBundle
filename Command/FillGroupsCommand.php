@@ -9,6 +9,8 @@ use App\Stefanwiegmann\UserBundle\Entity\Group;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
+use App\Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Symfony\Component\HttpFoundation\File\File;
 
 class FillGroupsCommand extends Command
 {
@@ -16,11 +18,13 @@ class FillGroupsCommand extends Command
     protected static $defaultName = 'user:fill-groups';
 
     private $container;
+    private $avatarGenerator;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container, AvatarGenerator $avatarGenerator)
     {
         parent::__construct();
         $this->container = $container;
+        $this->avatarGenerator = $avatarGenerator;
     }
 
     protected function configure()
@@ -68,6 +72,7 @@ class FillGroupsCommand extends Command
 
             $group->setName($item['name']);
             $group->setDescription($item['description']);
+            $group->setAvatarName($this->avatarGenerator->create($group));
 
             if ($item['name'] == 'App Admin'){
             // get all roles to assign to Administrators

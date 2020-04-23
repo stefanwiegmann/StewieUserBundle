@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Stefanwiegmann\UserBundle\Form\Type\Group\CreateType;
 use App\Stefanwiegmann\UserBundle\Entity\Group;
+use App\Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
   * @IsGranted("ROLE_USER_GROUP_CREATE")
@@ -20,7 +22,7 @@ class CreateController extends AbstractController
     /**
     * @Route("/user/group/create", name="sw_user_group_create")
     */
-    public function create(Request $request)
+    public function create(Request $request, AvatarGenerator $avatarGenerator)
     {
       //create group
       $group = new Group;
@@ -33,6 +35,9 @@ class CreateController extends AbstractController
 
       if ($form->isSubmitted() && $form->isValid()) {
           $group = $form->getData();
+
+          // set avatar
+          $group->setAvatarName($avatarGenerator->create($group));
 
           // save user
           $em = $this->container->get('doctrine')->getManager();

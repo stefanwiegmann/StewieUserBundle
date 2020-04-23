@@ -61,5 +61,17 @@
         <target>name.role_user_group_delete</target>
       </segment>
     </unit>
+    <unit id="DLAj_eO" name="name.role_user_group_edit">
+      <segment>
+        <source>name.role_user_group_edit</source>
+        <target>name.role_user_group_edit</target>
+      </segment>
+    </unit>
+    <unit id="vcBSddK" name="name.role_user_group_view">
+      <segment>
+        <source>name.role_user_group_view</source>
+        <target>name.role_user_group_view</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

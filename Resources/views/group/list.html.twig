@@ -34,7 +34,11 @@
 </tr> </thead>
 {% for item in groupList %}
 <tr>
-  <td>{{ item.id }}</td>
+  <td>{{ item.id }}
+    {% if vich_uploader_asset(item, 'avatarFile') %}
+      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('user_thumb_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
+    {% endif %}
+  </td>
   <td>{{ item.name }}</td>
     <td>{{ item.groupRoles|length }} {{ 'label.role_s'|trans }}</td>
     <td>{{ item.users|length }} {{ 'label.member_s'|trans }}</td>

@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Stefanwiegmann\UserBundle\Form\Type\User\DetailType;
+use App\Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
   * @IsGranted("ROLE_USER_USER_EDIT")
@@ -19,8 +21,9 @@ class DetailController extends AbstractController
     /**
     * @Route("/user/user/edit/detail/{username}", name="sw_user_user_edit_detail")
     */
-    public function details($username, Request $request)
+    public function details($username, Request $request, AvatarGenerator $avatarGenerator)
     {
+
       //get user
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StefanwiegmannUserBundle:User');
@@ -35,10 +38,11 @@ class DetailController extends AbstractController
       if ($form->isSubmitted() && $form->isValid()) {
           $user = $form->getData();
 
-          // // check if avatar was removed
+          // // set avatar if old avatar was removed
           if(!$user->getAvatarFile()){
-            $user->setAvatarName('');
-            $user->setAvatarSize(0);
+            // $avatar = new File($avatarGenerator->create($user->getUsername()));
+            $user->setAvatarName($avatarGenerator->create($user));
+            // $user->setAvatarSize(0);
           }
 
           // save user

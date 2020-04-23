@@ -26,7 +26,11 @@
 </tr> </thead>
 {% for item in roleList %}
 <tr>
-  <td>{{ item.id }}</td>
+  <td>{{ item.id }}
+    {% if vich_uploader_asset(item, 'avatarFile') %}
+      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('user_thumb_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
+    {% endif %}
+  </td>
   <td>{{ item.sort }}</td>
   <td>{{ item.translationKey|trans({}, 'Roles') }}</td>
   <td>{{ item.name }}</td>

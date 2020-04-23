@@ -9,6 +9,8 @@ use App\Stefanwiegmann\UserBundle\Entity\Role;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
+use App\Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Symfony\Component\HttpFoundation\File\File;
 
 class FillRolesCommand extends Command
 {
@@ -16,11 +18,13 @@ class FillRolesCommand extends Command
     protected static $defaultName = 'user:fill-roles';
 
     private $container;
+    private $avatarGenerator;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container, AvatarGenerator $avatarGenerator)
     {
         parent::__construct();
         $this->container = $container;
+        $this->avatarGenerator = $avatarGenerator;
     }
 
     protected function configure()
@@ -62,6 +66,7 @@ class FillRolesCommand extends Command
         $role->setName($item['name']);
         $role->setSort($item['sort']);
         $role->setDescription($item['description']);
+        $role->setAvatarName($this->avatarGenerator->create($role));
 
         $em->persist($role);
         $em->flush();

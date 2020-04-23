@@ -13,13 +13,15 @@ use App\Stefanwiegmann\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use App\Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Symfony\Component\HttpFoundation\File\File;
 
 class RegisterController extends AbstractController
 {
     /**
     * @Route("/user/register", name="sw_user_register")
     */
-    public function register(Request $request, UserPasswordEncoderInterface $encoder, MailerInterface $mailer)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, MailerInterface $mailer, AvatarGenerator $avatarGenerator)
     {
       //create new user
       $user = new User;
@@ -44,6 +46,9 @@ class RegisterController extends AbstractController
           $token = sha1(random_bytes(32));
           $user->setToken($token);
           $user->setTokenDate(new \DateTime("now"));
+
+          // set avatar
+          $user->setAvatarName($avatarGenerator->create($user));
 
           // save user
           $em->persist($user);

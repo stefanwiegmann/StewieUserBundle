@@ -195,7 +195,18 @@ class User implements UserInterface
         return $this->avatarSize;
     }
 
+    public function __construct()
+    {
+        $this->roles = new ArrayCollection();
+        $this->groups = new ArrayCollection();
+        $this->userRoles = new ArrayCollection();
+        $this->avatarSize = 0;
+        $this->updatedAt = new \DateTimeImmutable();
+
+    }
+
     /**
+     * @ORM\PreUpdate
      * @ORM\PrePersist
      */
     public function setCanonical()
@@ -210,13 +221,6 @@ class User implements UserInterface
          $this->groups = new ArrayCollection();
          $this->userRoles = new ArrayCollection();
      }
-
-    public function __construct()
-    {
-        $this->roles = new ArrayCollection();
-        $this->groups = new ArrayCollection();
-        $this->userRoles = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

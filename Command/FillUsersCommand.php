@@ -10,6 +10,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
+use App\Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Symfony\Component\HttpFoundation\File\File;
 // use Doctrine\Common\Collections\ArrayCollection;
 
 class FillUsersCommand extends Command
@@ -19,12 +21,14 @@ class FillUsersCommand extends Command
 
     private $container;
     private $passwordEncoder;
+    private $avatarGenerator;
 
-    public function __construct(ContainerInterface $container, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(ContainerInterface $container, UserPasswordEncoderInterface $passwordEncoder, AvatarGenerator $avatarGenerator)
     {
         parent::__construct();
         $this->container = $container;
         $this->passwordEncoder = $passwordEncoder;
+        $this->avatarGenerator = $avatarGenerator;
     }
 
     protected function configure()
@@ -81,6 +85,7 @@ class FillUsersCommand extends Command
           $user->setFirstname($item['first_name']);
           $user->setLastname($item['last_name']);
           $user->setEmail($item['email']);
+          $user->setAvatarName($this->avatarGenerator->create($user));
           $user->setPassword($this->passwordEncoder->encodePassword(
                        $user,
                        $item['password']
