@@ -129,6 +129,96 @@ parameters:
 // ...
 ```
 
+Add mappings to vich_uploader config:
+
+```php
+// config/packages/vich_uploader.yaml
+vich_uploader:
+    // ...
+
+    mappings:
+
+        user_avatar_user:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/uploads/avatar/group'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+            # namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        user_avatar_group:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/uploads/avatar/group'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        user_avatar_role:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/uploads/avatar/role'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        // ...
+```
+
+Add paths and filters to liip_imagine config:
+
+```php
+// config/packages/liip_imagine.yaml
+liip_imagine:
+    // ...
+
+    loaders:
+        default:
+            filesystem:
+                data_root:
+                  - '%kernel.project_dir%/uploads/avatar/user'
+                  - '%kernel.project_dir%/uploads/avatar/group'
+                  - '%kernel.project_dir%/uploads/avatar/role'
+    // ...
+
+    filter_sets:
+        // ...
+
+        user_thumb_filter:
+            filters:
+                thumbnail:
+                    size: [32, 32]
+                    mode: outbound
+        user_medium_filter:
+            filters:
+                thumbnail:
+                    size: [200, 200]
+                    mode: outbound
+        user_large_filter:
+            filters:
+                thumbnail:
+                    size: [400, 400]
+                    mode: outbound
+        // ...
+```
+
+Create stefanwiegmann_user config:
+
+```php
+// config/packages/stefanwiegmann_user.yaml
+stefanwiegmann_user:
+
+    redirects:
+        login: 'home'
+        register: 'home'
+
+    paths:
+        uploads: '%kernel.project_dir%/uploads'
+```
+
 Setup doctrine extensions and enable all defaults
 
 ### Step 3: Fill some data

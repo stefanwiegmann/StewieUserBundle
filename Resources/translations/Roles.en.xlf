@@ -16,61 +16,61 @@
     <unit id="lbuBEUi" name="name.role_user_role_edit">
       <segment>
         <source>name.role_user_role_edit</source>
-        <target>name.role_user_role_edit</target>
+        <target>Edit Role</target>
       </segment>
     </unit>
     <unit id="YdDvzpc" name="name.role_user_role_view">
       <segment>
         <source>name.role_user_role_view</source>
-        <target>name.role_user_role_view</target>
+        <target>View Role</target>
       </segment>
     </unit>
     <unit id="5xJoOCM" name="name.role_user_user_create">
       <segment>
         <source>name.role_user_user_create</source>
-        <target>name.role_user_user_create</target>
+        <target>Create User</target>
       </segment>
     </unit>
     <unit id="KrxpESH" name="name.role_user_user_delete">
       <segment>
         <source>name.role_user_user_delete</source>
-        <target>name.role_user_user_delete</target>
+        <target>Delete User</target>
       </segment>
     </unit>
     <unit id="5Usnhya" name="name.role_user_user_edit">
       <segment>
         <source>name.role_user_user_edit</source>
-        <target>name.role_user_user_edit</target>
+        <target>Edit User</target>
       </segment>
     </unit>
     <unit id="yUAtT_A" name="name.role_user_user_view">
       <segment>
         <source>name.role_user_user_view</source>
-        <target>name.role_user_user_view</target>
+        <target>View User</target>
       </segment>
     </unit>
     <unit id="R2pG0d5" name="name.role_user_group_create">
       <segment>
         <source>name.role_user_group_create</source>
-        <target>name.role_user_group_create</target>
+        <target>Create Group</target>
       </segment>
     </unit>
     <unit id="v5nAkhv" name="name.role_user_group_delete">
       <segment>
         <source>name.role_user_group_delete</source>
-        <target>name.role_user_group_delete</target>
+        <target>Delete Group</target>
       </segment>
     </unit>
     <unit id="DLAj_eO" name="name.role_user_group_edit">
       <segment>
         <source>name.role_user_group_edit</source>
-        <target>name.role_user_group_edit</target>
+        <target>Edit Group</target>
       </segment>
     </unit>
     <unit id="vcBSddK" name="name.role_user_group_view">
       <segment>
         <source>name.role_user_group_view</source>
-        <target>name.role_user_group_view</target>
+        <target>View Group</target>
       </segment>
     </unit>
   </file>

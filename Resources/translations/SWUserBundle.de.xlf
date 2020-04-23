@@ -1,322 +1,473 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
-    <header>
-      <tool tool-id="symfony" tool-name="Symfony"/>
-    </header>
-    <body>
-      <trans-unit id="Auh6o_P" resname="confirmation.delete">
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="de">
+  <file id="SWUserBundle.de">
+    <unit id="Auh6o_P" name="confirmation.delete">
+      <segment>
         <source>confirmation.delete</source>
         <target>bestaetige bitte</target>
-      </trans-unit>
-      <trans-unit id="M87R1QC" resname="header.menu">
+      </segment>
+    </unit>
+    <unit id="M87R1QC" name="header.menu">
+      <segment>
         <source>header.menu</source>
         <target>new_header.menu</target>
-      </trans-unit>
-      <trans-unit id="nRQ6xUy" resname="label.menu.users">
+      </segment>
+    </unit>
+    <unit id="nRQ6xUy" name="label.menu.users">
+      <segment>
         <source>label.menu.users</source>
         <target>new_label.menu.users</target>
-      </trans-unit>
-      <trans-unit id="JgVD9qf" resname="header.register">
+      </segment>
+    </unit>
+    <unit id="JgVD9qf" name="header.register">
+      <segment>
         <source>header.register</source>
         <target>new_header.register</target>
-      </trans-unit>
-      <trans-unit id="ZGboQ6T" resname="label.menu.groups">
+      </segment>
+    </unit>
+    <unit id="ZGboQ6T" name="label.menu.groups">
+      <segment>
         <source>label.menu.groups</source>
         <target>new_label.menu.groups</target>
-      </trans-unit>
-      <trans-unit id="vF0kGwb" resname="label.menu.roles">
+      </segment>
+    </unit>
+    <unit id="vF0kGwb" name="label.menu.roles">
+      <segment>
         <source>label.menu.roles</source>
         <target>new_label.menu.roles</target>
-      </trans-unit>
-      <trans-unit id=".zG63Y8" resname="header.usermenu">
+      </segment>
+    </unit>
+    <unit id=".zG63Y8" name="header.usermenu">
+      <segment>
         <source>header.usermenu</source>
         <target>new_header.usermenu</target>
-      </trans-unit>
-      <trans-unit id="U5tAZlY" resname="label.profile">
+      </segment>
+    </unit>
+    <unit id="U5tAZlY" name="label.profile">
+      <segment>
         <source>label.profile</source>
         <target>new_label.profile</target>
-      </trans-unit>
-      <trans-unit id="wA6eo7a" resname="label.impersonate.exit">
+      </segment>
+    </unit>
+    <unit id="wA6eo7a" name="label.impersonate.exit">
+      <segment>
         <source>label.impersonate.exit</source>
         <target>new_label.impersonate.exit</target>
-      </trans-unit>
-      <trans-unit id="II4DGnv" resname="label.logout">
+      </segment>
+    </unit>
+    <unit id="II4DGnv" name="label.logout">
+      <segment>
         <source>label.logout</source>
         <target>new_label.logout</target>
-      </trans-unit>
-      <trans-unit id="ZAtrhtu" resname="label.login">
+      </segment>
+    </unit>
+    <unit id="ZAtrhtu" name="label.login">
+      <segment>
         <source>label.login</source>
         <target>new_label.login</target>
-      </trans-unit>
-      <trans-unit id="zpntOJq" resname="header.profileMenu">
+      </segment>
+    </unit>
+    <unit id="zpntOJq" name="header.profileMenu">
+      <segment>
         <source>header.profileMenu</source>
         <target>new_header.profileMenu</target>
-      </trans-unit>
-      <trans-unit id="zzhB7sM" resname="header.name">
+      </segment>
+    </unit>
+    <unit id="zzhB7sM" name="header.name">
+      <segment>
         <source>header.name</source>
         <target>new_header.name</target>
-      </trans-unit>
-      <trans-unit id="3Yf_iDq" resname="header.email">
+      </segment>
+    </unit>
+    <unit id="3Yf_iDq" name="header.email">
+      <segment>
         <source>header.email</source>
         <target>new_header.email</target>
-      </trans-unit>
-      <trans-unit id="ufIVhvD" resname="header.password">
+      </segment>
+    </unit>
+    <unit id="ufIVhvD" name="header.password">
+      <segment>
         <source>header.password</source>
         <target>new_header.password</target>
-      </trans-unit>
-      <trans-unit id="Xu1sYGp" resname="header.profile">
+      </segment>
+    </unit>
+    <unit id="Xu1sYGp" name="header.profile">
+      <segment>
         <source>header.profile</source>
         <target>new_header.profile</target>
-      </trans-unit>
-      <trans-unit id="BObCWn4" resname="label.info">
+      </segment>
+    </unit>
+    <unit id="BObCWn4" name="label.info">
+      <segment>
         <source>label.info</source>
         <target>new_label.info</target>
-      </trans-unit>
-      <trans-unit id="nWMH_Nr" resname="label.avatar">
+      </segment>
+    </unit>
+    <unit id="nWMH_Nr" name="label.avatar">
+      <segment>
         <source>label.avatar</source>
         <target>new_label.avatar</target>
-      </trans-unit>
-      <trans-unit id="6WvpQtu" resname="label.fullName">
+      </segment>
+    </unit>
+    <unit id="6WvpQtu" name="label.fullName">
+      <segment>
         <source>label.fullName</source>
         <target>new_label.fullName</target>
-      </trans-unit>
-      <trans-unit id="hFijdzp" resname="label.log">
+      </segment>
+    </unit>
+    <unit id="hFijdzp" name="label.log">
+      <segment>
         <source>label.log</source>
         <target>new_label.log</target>
-      </trans-unit>
-      <trans-unit id="nS4S3k7" resname="header.profile.edit">
+      </segment>
+    </unit>
+    <unit id="nS4S3k7" name="header.profile.edit">
+      <segment>
         <source>header.profile.edit</source>
         <target>new_header.profile.edit</target>
-      </trans-unit>
-      <trans-unit id="RTuLp7T" resname="label.details">
+      </segment>
+    </unit>
+    <unit id="RTuLp7T" name="label.details">
+      <segment>
         <source>label.details</source>
         <target>new_label.details</target>
-      </trans-unit>
-      <trans-unit id="9pvowqn" resname="label.password">
+      </segment>
+    </unit>
+    <unit id="9pvowqn" name="label.password">
+      <segment>
         <source>label.password</source>
         <target>new_label.password</target>
-      </trans-unit>
-      <trans-unit id="TMT1Qgi" resname="header.register.complete">
+      </segment>
+    </unit>
+    <unit id="TMT1Qgi" name="header.register.complete">
+      <segment>
         <source>header.register.complete</source>
         <target>new_header.register.complete</target>
-      </trans-unit>
-      <trans-unit id="D2N6_cP" resname="label.email">
+      </segment>
+    </unit>
+    <unit id="D2N6_cP" name="label.email">
+      <segment>
         <source>label.email</source>
         <target>new_label.email</target>
-      </trans-unit>
-      <trans-unit id="vBaPQ6W" resname="header.reset.expired">
+      </segment>
+    </unit>
+    <unit id="vBaPQ6W" name="header.reset.expired">
+      <segment>
         <source>header.reset.expired</source>
         <target>new_header.reset.expired</target>
-      </trans-unit>
-      <trans-unit id="jxqTtR_" resname="message.reset.expired">
+      </segment>
+    </unit>
+    <unit id="jxqTtR_" name="message.reset.expired">
+      <segment>
         <source>message.reset.expired</source>
         <target>new_message.reset.expired</target>
-      </trans-unit>
-      <trans-unit id="ggPL4c." resname="header.reset.request">
+      </segment>
+    </unit>
+    <unit id="ggPL4c." name="header.reset.request">
+      <segment>
         <source>header.reset.request</source>
         <target>new_header.reset.request</target>
-      </trans-unit>
-      <trans-unit id="y4KNZw3" resname="header.reset">
+      </segment>
+    </unit>
+    <unit id="y4KNZw3" name="header.reset">
+      <segment>
         <source>header.reset</source>
         <target>new_header.reset</target>
-      </trans-unit>
-      <trans-unit id="4Z9jgw6" resname="header.reset.success">
+      </segment>
+    </unit>
+    <unit id="4Z9jgw6" name="header.reset.success">
+      <segment>
         <source>header.reset.success</source>
         <target>new_header.reset.success</target>
-      </trans-unit>
-      <trans-unit id="ljbkG1L" resname="message.reset.success">
+      </segment>
+    </unit>
+    <unit id="ljbkG1L" name="message.reset.success">
+      <segment>
         <source>message.reset.success</source>
         <target>new_message.reset.success</target>
-      </trans-unit>
-      <trans-unit id="GpJzXw8" resname="header.reset.unknown">
+      </segment>
+    </unit>
+    <unit id="GpJzXw8" name="header.reset.unknown">
+      <segment>
         <source>header.reset.unknown</source>
         <target>new_header.reset.unknown</target>
-      </trans-unit>
-      <trans-unit id="pRW6Laj" resname="message.reset.unknown">
+      </segment>
+    </unit>
+    <unit id="pRW6Laj" name="message.reset.unknown">
+      <segment>
         <source>message.reset.unknown</source>
         <target>new_message.reset.unknown</target>
-      </trans-unit>
-      <trans-unit id="uR6pE.2" resname="header.login">
+      </segment>
+    </unit>
+    <unit id="uR6pE.2" name="header.login">
+      <segment>
         <source>header.login</source>
         <target>new_header.login</target>
-      </trans-unit>
-      <trans-unit id="owAjPlm" resname="header.request">
+      </segment>
+    </unit>
+    <unit id="owAjPlm" name="header.request">
+      <segment>
         <source>header.request</source>
         <target>new_header.request</target>
-      </trans-unit>
-      <trans-unit id="_sxNWTm" resname="header.group.edit">
+      </segment>
+    </unit>
+    <unit id="_sxNWTm" name="header.group.edit">
+      <segment>
         <source>header.group.edit</source>
         <target>new_header.group.edit</target>
-      </trans-unit>
-      <trans-unit id="GCqiOha" resname="label.group.delete">
+      </segment>
+    </unit>
+    <unit id="GCqiOha" name="label.group.delete">
+      <segment>
         <source>label.group.delete</source>
         <target>new_label.group.delete</target>
-      </trans-unit>
-      <trans-unit id="e4a0zed" resname="label.member_s">
+      </segment>
+    </unit>
+    <unit id="e4a0zed" name="label.member_s">
+      <segment>
         <source>label.member_s</source>
         <target>new_label.member_s</target>
-      </trans-unit>
-      <trans-unit id="ybpC7wn" resname="label.role_s">
+      </segment>
+    </unit>
+    <unit id="ybpC7wn" name="label.role_s">
+      <segment>
         <source>label.role_s</source>
         <target>new_label.role_s</target>
-      </trans-unit>
-      <trans-unit id="LDhDPrF" resname="label.username">
+      </segment>
+    </unit>
+    <unit id="LDhDPrF" name="label.username">
+      <segment>
         <source>label.username</source>
         <target>new_label.username</target>
-      </trans-unit>
-      <trans-unit id="CUHo1Mc" resname="label.realName">
+      </segment>
+    </unit>
+    <unit id="CUHo1Mc" name="label.realName">
+      <segment>
         <source>label.realName</source>
         <target>new_label.realName</target>
-      </trans-unit>
-      <trans-unit id="zldXQq6" resname="label.actions">
+      </segment>
+    </unit>
+    <unit id="zldXQq6" name="label.actions">
+      <segment>
         <source>label.actions</source>
         <target>new_label.actions</target>
-      </trans-unit>
-      <trans-unit id="q6jBep." resname="tooltip.remove">
+      </segment>
+    </unit>
+    <unit id="q6jBep." name="tooltip.remove">
+      <segment>
         <source>tooltip.remove</source>
         <target>new_tooltip.remove</target>
-      </trans-unit>
-      <trans-unit id="jrINUXT" resname="header.group.view">
+      </segment>
+    </unit>
+    <unit id="jrINUXT" name="header.group.view">
+      <segment>
         <source>header.group.view</source>
         <target>new_header.group.view</target>
-      </trans-unit>
-      <trans-unit id="ysOvPSq" resname="label.name">
+      </segment>
+    </unit>
+    <unit id="ysOvPSq" name="label.name">
+      <segment>
         <source>label.name</source>
         <target>new_label.name</target>
-      </trans-unit>
-      <trans-unit id="53IHXt5" resname="header.group.create">
+      </segment>
+    </unit>
+    <unit id="53IHXt5" name="header.group.create">
+      <segment>
         <source>header.group.create</source>
         <target>new_header.group.create</target>
-      </trans-unit>
-      <trans-unit id="L1HBUvV" resname="header.filter">
+      </segment>
+    </unit>
+    <unit id="L1HBUvV" name="header.filter">
+      <segment>
         <source>header.filter</source>
         <target>new_header.filter</target>
-      </trans-unit>
-      <trans-unit id="MpLYxqq" resname="header.group.list">
+      </segment>
+    </unit>
+    <unit id="MpLYxqq" name="header.group.list">
+      <segment>
         <source>header.group.list</source>
         <target>new_header.group.list</target>
-      </trans-unit>
-      <trans-unit id="N7WuXPg" resname="label.group.create">
+      </segment>
+    </unit>
+    <unit id="N7WuXPg" name="label.group.create">
+      <segment>
         <source>label.group.create</source>
         <target>new_label.group.create</target>
-      </trans-unit>
-      <trans-unit id="iD6CNOO" resname="label.roles">
+      </segment>
+    </unit>
+    <unit id="iD6CNOO" name="label.roles">
+      <segment>
         <source>label.roles</source>
         <target>new_label.roles</target>
-      </trans-unit>
-      <trans-unit id="hzhzbqw" resname="label.status">
+      </segment>
+    </unit>
+    <unit id="hzhzbqw" name="label.status">
+      <segment>
         <source>label.status</source>
         <target>new_label.status</target>
-      </trans-unit>
-      <trans-unit id="cLu0gUR" resname="tooltip.view">
+      </segment>
+    </unit>
+    <unit id="cLu0gUR" name="tooltip.view">
+      <segment>
         <source>tooltip.view</source>
         <target>new_tooltip.view</target>
-      </trans-unit>
-      <trans-unit id="nbcWSI3" resname="tooltip.edit">
+      </segment>
+    </unit>
+    <unit id="nbcWSI3" name="tooltip.edit">
+      <segment>
         <source>tooltip.edit</source>
         <target>new_tooltip.edit</target>
-      </trans-unit>
-      <trans-unit id="qWc975i" resname="tooltip.delete">
+      </segment>
+    </unit>
+    <unit id="qWc975i" name="tooltip.delete">
+      <segment>
         <source>tooltip.delete</source>
         <target>new_tooltip.delete</target>
-      </trans-unit>
-      <trans-unit id="6eeTMUa" resname="header.role.edit">
+      </segment>
+    </unit>
+    <unit id="6eeTMUa" name="header.role.edit">
+      <segment>
         <source>header.role.edit</source>
         <target>new_header.role.edit</target>
-      </trans-unit>
-      <trans-unit id="hLEKOfv" resname="label.user_s">
+      </segment>
+    </unit>
+    <unit id="hLEKOfv" name="label.user_s">
+      <segment>
         <source>label.user_s</source>
         <target>new_label.user_s</target>
-      </trans-unit>
-      <trans-unit id="T9z.aEU" resname="label.group_s">
+      </segment>
+    </unit>
+    <unit id="T9z.aEU" name="label.group_s">
+      <segment>
         <source>label.group_s</source>
         <target>new_label.group_s</target>
-      </trans-unit>
-      <trans-unit id="ffSy64T" resname="label.back">
+      </segment>
+    </unit>
+    <unit id="ffSy64T" name="label.back">
+      <segment>
         <source>label.back</source>
         <target>new_label.back</target>
-      </trans-unit>
-      <trans-unit id="VOh9nXf" resname="header.roleList">
+      </segment>
+    </unit>
+    <unit id="VOh9nXf" name="header.roleList">
+      <segment>
         <source>header.roleList</source>
         <target>new_header.roleList</target>
-      </trans-unit>
-      <trans-unit id="qBfetHQ" resname="label.sort">
+      </segment>
+    </unit>
+    <unit id="qBfetHQ" name="label.sort">
+      <segment>
         <source>label.sort</source>
         <target>new_label.sort</target>
-      </trans-unit>
-      <trans-unit id="4cEApe1" resname="label.description">
+      </segment>
+    </unit>
+    <unit id="4cEApe1" name="label.description">
+      <segment>
         <source>label.description</source>
         <target>new_label.description</target>
-      </trans-unit>
-      <trans-unit id="mF8paCb" resname="label.groups">
+      </segment>
+    </unit>
+    <unit id="mF8paCb" name="label.groups">
+      <segment>
         <source>label.groups</source>
         <target>new_label.groups</target>
-      </trans-unit>
-      <trans-unit id="jI3fm2M" resname="label.users">
+      </segment>
+    </unit>
+    <unit id="jI3fm2M" name="label.users">
+      <segment>
         <source>label.users</source>
         <target>new_label.users</target>
-      </trans-unit>
-      <trans-unit id="14.rha6" resname="header.role.view">
+      </segment>
+    </unit>
+    <unit id="14.rha6" name="header.role.view">
+      <segment>
         <source>header.role.view</source>
         <target>new_header.role.view</target>
-      </trans-unit>
-      <trans-unit id="vVycWBq" resname="header.user.edit">
+      </segment>
+    </unit>
+    <unit id="vVycWBq" name="header.user.edit">
+      <segment>
         <source>header.user.edit</source>
         <target>new_header.user.edit</target>
-      </trans-unit>
-      <trans-unit id="BiPY0TX" resname="label.delete">
+      </segment>
+    </unit>
+    <unit id="BiPY0TX" name="label.delete">
+      <segment>
         <source>label.delete</source>
         <target>new_label.delete</target>
-      </trans-unit>
-      <trans-unit id="YfqUxwJ" resname="header.user.view">
+      </segment>
+    </unit>
+    <unit id="YfqUxwJ" name="header.user.view">
+      <segment>
         <source>header.user.view</source>
         <target>new_header.user.view</target>
-      </trans-unit>
-      <trans-unit id="1gn5wzp" resname="header.list">
+      </segment>
+    </unit>
+    <unit id="1gn5wzp" name="header.list">
+      <segment>
         <source>header.list</source>
         <target>new_header.list</target>
-      </trans-unit>
-      <trans-unit id="hO7mkmf" resname="label.lastLogin">
+      </segment>
+    </unit>
+    <unit id="hO7mkmf" name="label.lastLogin">
+      <segment>
         <source>label.lastLogin</source>
         <target>new_label.lastLogin</target>
-      </trans-unit>
-      <trans-unit id="GkhDscj" resname="tooltip.impersonate">
+      </segment>
+    </unit>
+    <unit id="GkhDscj" name="tooltip.impersonate">
+      <segment>
         <source>tooltip.impersonate</source>
         <target>new_tooltip.impersonate</target>
-      </trans-unit>
-      <trans-unit id="kL5zriA" resname="header.card.danger">
+      </segment>
+    </unit>
+    <unit id="kL5zriA" name="header.card.danger">
+      <segment>
         <source>header.card.danger</source>
         <target>new_header.card.danger</target>
-      </trans-unit>
-      <trans-unit id="8yeGT7d" resname="label.cancel">
+      </segment>
+    </unit>
+    <unit id="8yeGT7d" name="label.cancel">
+      <segment>
         <source>label.cancel</source>
         <target>new_label.cancel</target>
-      </trans-unit>
-      <trans-unit id="TnRjMdb" resname="confirmation.group.delete">
+      </segment>
+    </unit>
+    <unit id="TnRjMdb" name="confirmation.group.delete">
+      <segment>
         <source>confirmation.group.delete</source>
         <target>new_confirmation.group.delete</target>
-      </trans-unit>
-      <trans-unit id="27hPhtr" resname="header.group.delete">
+      </segment>
+    </unit>
+    <unit id="27hPhtr" name="header.group.delete">
+      <segment>
         <source>header.group.delete</source>
         <target>new_header.group.delete</target>
-      </trans-unit>
-      <trans-unit id="fUUtaJ5" resname="confirmation.group.remove">
+      </segment>
+    </unit>
+    <unit id="fUUtaJ5" name="confirmation.group.remove">
+      <segment>
         <source>confirmation.group.remove</source>
         <target>new_confirmation.group.remove</target>
-      </trans-unit>
-      <trans-unit id="LzpnndQ" resname="header.group.remove">
+      </segment>
+    </unit>
+    <unit id="LzpnndQ" name="header.group.remove">
+      <segment>
         <source>header.group.remove</source>
         <target>new_header.group.remove</target>
-      </trans-unit>
-      <trans-unit id="EmU8kT9" resname="confirmation.role.remove">
+      </segment>
+    </unit>
+    <unit id="EmU8kT9" name="confirmation.role.remove">
+      <segment>
         <source>confirmation.role.remove</source>
         <target>new_confirmation.role.remove</target>
-      </trans-unit>
-      <trans-unit id="3kYotY5" resname="header.role.remove">
+      </segment>
+    </unit>
+    <unit id="3kYotY5" name="header.role.remove">
+      <segment>
         <source>header.role.remove</source>
         <target>new_header.role.remove</target>
-      </trans-unit>
-    </body>
+      </segment>
+    </unit>
   </file>
 </xliff>
