@@ -37,6 +37,8 @@
       </div>
     </div>
 
+    <div class="border-top my-3"></div>
+
     <div class="form-group row">
       <div class="col-sm-2 col-form-label">
         <strong>{{ form_label(form.username) }}</strong>
@@ -57,6 +59,24 @@
       </div>
     </div>
 
+    <div class="border-top my-3"></div>
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        <strong>{{ 'label.fullName'|trans }}</strong>
+      </div>
+      <div class="col-sm-auto">
+        {{ form_errors(form.firstName) }}
+        {{ form_widget(form.firstName, {'attr': {'placeholder': 'label.firstName'} }) }}
+      </div>
+      <div class="col-sm-auto">
+        {{ form_errors(form.lastName) }}
+        {{ form_widget(form.lastName, {'attr': {'placeholder': 'label.lastName'} }) }}
+      </div>
+    </div>
+
+    <div class="border-top my-3"></div>
+
     <div class="form-group row">
       <div class="col-sm-2 col-form-label">
         <strong>{{ form_label(form.avatarFile) }}</strong>
@@ -73,20 +93,6 @@
         {% if vich_uploader_asset(user, 'avatarFile') %}
           {{ form_widget(form.avatarFile.delete) }}
         {% endif %}
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-sm-2 col-form-label">
-        <strong>{{ 'label.fullName'|trans }}</strong>
-      </div>
-      <div class="col-sm-auto">
-        {{ form_errors(form.firstName) }}
-        {{ form_widget(form.firstName, {'attr': {'placeholder': 'label.firstName'} }) }}
-      </div>
-      <div class="col-sm-auto">
-        {{ form_errors(form.lastName) }}
-        {{ form_widget(form.lastName, {'attr': {'placeholder': 'label.lastName'} }) }}
       </div>
     </div>
 

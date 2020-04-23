@@ -5,7 +5,13 @@
         {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
           {{ app.user.username }}
         {% else %}
-          <i class="fas fa-user"></i>
+
+          {% if vich_uploader_asset(app.user, 'avatarFile') %}
+            <img src="{{ vich_uploader_asset(app.user, 'avatarFile') | imagine_filter('user_thumb_filter') }}" alt="{{ app.user.username }}"  class="rounded-lg"/>
+          {% else %}
+            <i class="fas fa-user"></i>
+          {% endif %}
+
         {% endif %}
      </a>
      <div class="dropdown-menu dropdown-menu-md-right">

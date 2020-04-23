@@ -36,7 +36,11 @@
 </tr> </thead>
 {% for item in groupList %}
 <tr>
-  <td>{{ item.id }}</td>
+  <td>{{ item.id }}
+    {% if vich_uploader_asset(item, 'avatarFile') %}
+      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('user_thumb_filter') }}" alt="{{ 'label.avatar'|trans }}" />
+    {% endif %}
+  </td>
   <td>{{ item.name }}</td>
   <td>
     {% if is_granted('ROLE_USER_ROLE_EDIT') %}

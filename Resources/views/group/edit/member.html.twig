@@ -42,7 +42,11 @@
 </tr> </thead>
 {% for item in memberList %}
 <tr>
-  <td>{{ item.id }}</td>
+  <td>{{ item.id }}
+    {% if vich_uploader_asset(item, 'avatarFile') %}
+      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('user_thumb_filter') }}" alt="{{ 'label.avatar'|trans }}" />
+    {% endif %}
+  </td>
   <td>{{ item.username }}</td>
   <td>{{ item.firstName }} {{ item.lastName }}</td>
   <td>{{ item.email }}</td>
