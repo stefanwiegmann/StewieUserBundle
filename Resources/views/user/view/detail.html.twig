@@ -33,6 +33,8 @@
       </div>
     </div>
 
+    <div class="border-top my-3"></div>
+
     <div class="form-group row">
       <div class="col-sm-2">
         <strong>{{ 'label.username'|trans }}</strong>
@@ -51,6 +53,8 @@
       </div>
     </div>
 
+    <div class="border-top my-3"></div>
+
     <div class="form-group row">
       <div class="col-sm-2">
         <strong>{{ 'label.fullName'|trans }}</strong>
@@ -63,12 +67,16 @@
       </div>
     </div>
 
+    <div class="border-top my-3"></div>
+
     <div class="form-group row">
       <div class="col-sm-2">
         <strong>{{ 'label.avatar'|trans }}</strong>
       </div>
       <div class="col-sm-10">
-        avatar
+        {% if vich_uploader_asset(user, 'avatarFile') %}
+          <img src="{{ vich_uploader_asset(user, 'avatarFile') | imagine_filter('user_medium_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
+        {% endif %}
       </div>
     </div>
 

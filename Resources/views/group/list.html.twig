@@ -12,15 +12,12 @@
 {% block pageTitle %}{{ 'header.group.list'|trans }}{% endblock pageTitle %}
 {% block pageMenu %}
   {% if is_granted('ROLE_USER_GROUP_CREATE') %}
-    <a href="{{ path('sw_user_group_create') }}" class="btn btn-secondary" role="button">{{ 'label.group.create'|trans }}</a>
+    <a href="{{ path('sw_user_group_create') }}" class="btn btn-primary" role="button">{{ 'label.group.create'|trans }}</a>
   {% endif %}
 {% endblock pageMenu %}
 
 {% block content %}
-{# total items count #}
-<!-- <div class="count">
-    {#{ users.sort }#}
-</div> -->
+<!-- actual table -->
 <table class="table table-striped">
 <thead> <tr>
   <th>{{ knp_pagination_sortable(groupList, '#', 'u.id') }}</th>

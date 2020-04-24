@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller;
+namespace App\Stefanwiegmann\UserBundle\Controller\Register;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +23,16 @@ class RegisterController extends AbstractController
     */
     public function register(Request $request, UserPasswordEncoderInterface $encoder, MailerInterface $mailer, AvatarGenerator $avatarGenerator)
     {
+      if(!$this->getParameter('register')){
+
+        $this->addFlash(
+          'warning',
+          'Registration is disabled!'
+          );
+
+        return $this->redirectToRoute('home');
+      }
+
       //create new user
       $user = new User;
 

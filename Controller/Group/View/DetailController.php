@@ -17,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class DetailController extends AbstractController
 {
     /**
-    * @Route("/user/group/view/details/{slug}", name="sw_user_group_view_detail")
+    * @Route("/user/group/view/detail/{slug}", name="sw_user_group_view_detail")
     */
     public function details($slug, Request $request)
     {

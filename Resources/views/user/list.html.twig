@@ -10,7 +10,11 @@
 {% endblock filterContent %}
 
 {% block pageTitle %}{{ 'header.list'|trans }}{% endblock pageTitle %}
-{% block pageMenu %}{% endblock pageMenu %}
+{% block pageMenu %}
+  {% if is_granted('ROLE_USER_USER_CREATE') %}
+    <a href="{{ path('sw_user_group_create') }}" class="btn btn-primary" role="button">{{ 'label.group.create'|trans }}</a>
+  {% endif %}
+{% endblock pageMenu %}
 
 {% block content %}
 {# total items count #}
