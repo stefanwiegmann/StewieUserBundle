@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Entity;
+namespace Stefanwiegmann\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Stefanwiegmann\UserBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="Stefanwiegmann\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="sw_user_user")
  * @ORM\HasLifecycleCallbacks()
- * @Gedmo\Loggable(logEntryClass="App\Stefanwiegmann\UserBundle\Entity\UserLogEntry")
+ * @Gedmo\Loggable(logEntryClass="Stefanwiegmann\UserBundle\Entity\UserLogEntry")
  * @Vich\Uploadable
  */
 class User implements UserInterface
@@ -78,13 +78,13 @@ class User implements UserInterface
     private $emailCanonical;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Role", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="Stefanwiegmann\UserBundle\Entity\Role", inversedBy="users")
      * @ORM\JoinTable(name="sw_user_user_role")
      */
     private $userRoles;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Stefanwiegmann\UserBundle\Entity\Group", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="Stefanwiegmann\UserBundle\Entity\Group", inversedBy="users")
      * @ORM\JoinTable(name="sw_user_user_group")
      */
     private $groups;

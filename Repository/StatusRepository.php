@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Repository;
+namespace Stefanwiegmann\UserBundle\Repository;
 
-use App\Stefanwiegmann\UserBundle\Entity\Status;
+use Stefanwiegmann\UserBundle\Entity\Status;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

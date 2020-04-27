@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Command;
+namespace Stefanwiegmann\UserBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use App\Stefanwiegmann\UserBundle\Entity\Status;
+use Stefanwiegmann\UserBundle\Entity\Status;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;

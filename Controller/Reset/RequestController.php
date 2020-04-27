@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller\Reset;
+namespace Stefanwiegmann\UserBundle\Controller\Reset;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,9 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-// use App\Stefanwiegmann\UserBundle\Form\Type\Reset\ResetType;
+// use Stefanwiegmann\UserBundle\Form\Type\Reset\ResetType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-// use App\Stefanwiegmann\UserBundle\Entity\User;
+// use Stefanwiegmann\UserBundle\Entity\User;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 

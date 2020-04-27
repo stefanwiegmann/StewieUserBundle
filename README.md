@@ -25,7 +25,7 @@ in the `config/bundles.yaml` file of your project:
 // ...
 return [
             // ...
-            App\Stefanwiegmann\UserBundle\StefanwiegmannUserBundle::class => ['all' => true],
+            Stefanwiegmann\UserBundle\StefanwiegmannUserBundle::class => ['all' => true],
 ];
 ```
 
@@ -41,7 +41,7 @@ services:
 
 // ...
 
-  App\Stefanwiegmann\UserBundle\:
+  Stefanwiegmann\UserBundle\:
       resource: '@StefanwiegmannUserBundle/*/*'
       exclude: '@StefanwiegmannUserBundle/{Entity}'
       tags: ['controller.service_arguments']
@@ -81,14 +81,14 @@ Add minimum security configuration
 // config/security.yaml
 security:
     encoders:
-        App\Stefanwiegmann\UserBundle\Entity\User:
+        Stefanwiegmann\UserBundle\Entity\User:
             algorithm: argon2i
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Stefanwiegmann\UserBundle\Entity\User
+                class: Stefanwiegmann\UserBundle\Entity\User
                 property: username
     // ...
     firewalls:
@@ -97,7 +97,7 @@ security:
         anonymous: true
         guard:
             authenticators:
-                - App\Stefanwiegmann\UserBundle\Security\LoginFormAuthenticator
+                - Stefanwiegmann\UserBundle\Security\LoginFormAuthenticator
         logout:
             path:   sw_user_logout
 

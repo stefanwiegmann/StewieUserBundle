@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Service;
+namespace Stefanwiegmann\UserBundle\Service;
 
 // use Symfony\Component\HttpFoundation\File\UploadedFile;
 // use Vich\UploaderBundle\Entity\File as VichFile;
@@ -13,17 +13,17 @@ class AvatarGenerator
     public function create($object){
 
       switch (ClassUtils::getClass($object)) {
-          case "App\Stefanwiegmann\UserBundle\Entity\User":
+          case "Stefanwiegmann\UserBundle\Entity\User":
               // Get string from object
               $string = $object->getUsername();
               $path = '/srv/http/dev/uploads/avatar/user/';
               break;
-          case "App\Stefanwiegmann\UserBundle\Entity\Group":
+          case "Stefanwiegmann\UserBundle\Entity\Group":
               // Get string from object
               $string = $object->getName();
               $path = '/srv/http/dev/uploads/avatar/group/';
               break;
-          case "App\Stefanwiegmann\UserBundle\Entity\Role":
+          case "Stefanwiegmann\UserBundle\Entity\Role":
               // Get string from object
               $string = $object->getName();
               $path = '/srv/http/dev/uploads/avatar/role/';
@@ -40,7 +40,7 @@ class AvatarGenerator
       $pixels = array();
 
       switch (ClassUtils::getClass($object)) {
-          case "App\Stefanwiegmann\UserBundle\Entity\User":
+          case "Stefanwiegmann\UserBundle\Entity\User":
               // Make it a symmetrical 5x5 multidimensional array
               for ($i = 0; $i < 5; $i++) {
                   $pixels[0][$i] = hexdec(substr($hash, ($i * 5) + 0 + 6, 1))%2 === 0;
@@ -50,7 +50,7 @@ class AvatarGenerator
                   $pixels[4][$i] = hexdec(substr($hash, ($i * 5) + 0 + 6, 1))%2 === 0;
               }
               break;
-          case "App\Stefanwiegmann\UserBundle\Entity\Group":
+          case "Stefanwiegmann\UserBundle\Entity\Group":
               // Make it a symmetrical 5x5 multidimensional array
               for ($i = 0; $i < 5; $i++) {
                   $pixels[$i][0] = hexdec(substr($hash, ($i * 5) + 0 + 6, 1))%2 === 0;
@@ -60,7 +60,7 @@ class AvatarGenerator
                   $pixels[$i][4] = hexdec(substr($hash, ($i * 5) + 0 + 6, 1))%2 === 0;
               }
               break;
-          case "App\Stefanwiegmann\UserBundle\Entity\Role":
+          case "Stefanwiegmann\UserBundle\Entity\Role":
               // Make it a random 5x5 multidimensional array
               for ($i = 0; $i < 5; $i++) {
                   for ($j = 0; $j < 5; $j++) {

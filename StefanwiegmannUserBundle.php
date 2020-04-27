@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle;
+namespace Stefanwiegmann\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 // use Symfony\Component\DependencyInjection\ContainerBuilder;

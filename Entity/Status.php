@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Entity;
+namespace Stefanwiegmann\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Stefanwiegmann\UserBundle\Repository\StatusRepository")
+ * @ORM\Entity(repositoryClass="Stefanwiegmann\UserBundle\Repository\StatusRepository")
  * @ORM\Table(name="sw_user_status")
  */
 class Status

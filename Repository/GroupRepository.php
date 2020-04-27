@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Repository;
+namespace Stefanwiegmann\UserBundle\Repository;
 
-use App\Stefanwiegmann\UserBundle\Entity\Group;
+use Stefanwiegmann\UserBundle\Entity\Group;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\DependencyInjection\ContainerInterface;

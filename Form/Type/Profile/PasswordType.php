@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Form\Type\Profile;
+namespace Stefanwiegmann\UserBundle\Form\Type\Profile;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use App\Stefanwiegmann\UserBundle\Entity\Role;
+use Stefanwiegmann\UserBundle\Entity\Role;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

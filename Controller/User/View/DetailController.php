@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stefanwiegmann\UserBundle\Controller\User\View;
+namespace Stefanwiegmann\UserBundle\Controller\User\View;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-// use App\Stefanwiegmann\UserBundle\Form\Type\User\DetailType;
+// use Stefanwiegmann\UserBundle\Form\Type\User\DetailType;
 
 /**
   * @IsGranted("ROLE_USER_USER_VIEW")
