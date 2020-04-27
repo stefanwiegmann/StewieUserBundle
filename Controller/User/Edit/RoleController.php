@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\User\Edit;
+namespace Stewie\UserBundle\Controller\User\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Stefanwiegmann\UserBundle\Form\Type\User\RoleType;
+use Stewie\UserBundle\Form\Type\User\RoleType;
 
 /**
   * @IsGranted("ROLE_USER_USER_EDIT")
@@ -23,7 +23,7 @@ class RoleController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StefanwiegmannUserBundle:User');
+      $repo = $em->getRepository('StewieUserBundle:User');
       $user = $repo->findOneByUsername($username);
 
       // create form

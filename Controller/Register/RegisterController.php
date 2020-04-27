@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Register;
+namespace Stewie\UserBundle\Controller\Register;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Stefanwiegmann\UserBundle\Form\Type\Register\RegisterType;
-use Stefanwiegmann\UserBundle\Entity\User;
+use Stewie\UserBundle\Form\Type\Register\RegisterType;
+use Stewie\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
-use Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 
 class RegisterController extends AbstractController

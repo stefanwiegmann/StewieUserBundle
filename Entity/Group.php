@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Entity;
+namespace Stewie\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="Stefanwiegmann\UserBundle\Repository\GroupRepository")
+ * @ORM\Entity(repositoryClass="Stewie\UserBundle\Repository\GroupRepository")
  * @ORM\Table(name="sw_user_group")
  * @ORM\HasLifecycleCallbacks()
- * @Gedmo\Loggable(logEntryClass="Stefanwiegmann\UserBundle\Entity\UserLogEntry")
+ * @Gedmo\Loggable(logEntryClass="Stewie\UserBundle\Entity\UserLogEntry")
  * @Vich\Uploadable
  */
 class Group
@@ -45,13 +45,13 @@ class Group
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Stefanwiegmann\UserBundle\Entity\Role", inversedBy="groups")
+     * @ORM\ManyToMany(targetEntity="Stewie\UserBundle\Entity\Role", inversedBy="groups")
      * @ORM\JoinTable(name="sw_user_group_role")
      */
     private $groupRoles;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Stefanwiegmann\UserBundle\Entity\User", mappedBy="groups")
+     * @ORM\ManyToMany(targetEntity="Stewie\UserBundle\Entity\User", mappedBy="groups")
      */
     private $users;
 

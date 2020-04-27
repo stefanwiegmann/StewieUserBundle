@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Group\View;
+namespace Stewie\UserBundle\Controller\Group\View;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +31,7 @@ class RoleController extends AbstractController
     {
       //get group
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
+      $repo = $em->getRepository('StewieUserBundle:Group');
       $group = $repo->findOneBySlug($slug);
 
       //get data and paginate
@@ -54,7 +54,7 @@ class RoleController extends AbstractController
     public function getQuery($group){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Role');
+          ->getRepository('StewieUserBundle:Role');
 
         $query = $repository->createQueryBuilder('r')
           ->andWhere(':groups MEMBER OF r.groups')

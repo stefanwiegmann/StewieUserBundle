@@ -1,14 +1,14 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Role\Edit;
+namespace Stewie\UserBundle\Controller\Role\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Stefanwiegmann\UserBundle\Form\Type\Role\DetailType;
-use Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Stewie\UserBundle\Form\Type\Role\DetailType;
+use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
@@ -25,7 +25,7 @@ class DetailController extends AbstractController
     {
       // get role
         $em = $this->container->get('doctrine')->getManager();
-        $repository = $em->getRepository('StefanwiegmannUserBundle:Role');
+        $repository = $em->getRepository('StewieUserBundle:Role');
         $roleObject = $repository->findOneBySlug($slug);
 
         // create form

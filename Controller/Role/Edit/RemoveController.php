@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Role\Edit;
+namespace Stewie\UserBundle\Controller\Role\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-// use Stefanwiegmann\UserBundle\Form\Type\Role\RemoveType;
+// use Stewie\UserBundle\Form\Type\Role\RemoveType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -26,12 +26,12 @@ class RemoveController extends AbstractController
   {
     //get role
     $em = $this->container->get('doctrine')->getManager();
-    $roleRepo = $em->getRepository('StefanwiegmannUserBundle:Role');
+    $roleRepo = $em->getRepository('StewieUserBundle:Role');
     $roleObject = $roleRepo->findOneById($role);
 
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $userRepo = $em->getRepository('StefanwiegmannUserBundle:User');
+    $userRepo = $em->getRepository('StewieUserBundle:User');
     $userObject = $userRepo->findOneById($user);
 
     // create form
@@ -78,12 +78,12 @@ class RemoveController extends AbstractController
     {
       //get role
       $em = $this->container->get('doctrine')->getManager();
-      $roleRepo = $em->getRepository('StefanwiegmannUserBundle:Role');
+      $roleRepo = $em->getRepository('StewieUserBundle:Role');
       $roleObject = $roleRepo->findOneById($role);
 
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $groupRepo = $em->getRepository('StefanwiegmannUserBundle:Group');
+      $groupRepo = $em->getRepository('StewieUserBundle:Group');
       $groupObject = $groupRepo->findOneById($group);
 
       // create form

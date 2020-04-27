@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Register;
+namespace Stewie\UserBundle\Controller\Register;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,9 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Stefanwiegmann\UserBundle\Form\Type\Register\CompleteType;
+use Stewie\UserBundle\Form\Type\Register\CompleteType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-// use Stefanwiegmann\UserBundle\Entity\User;
+// use Stewie\UserBundle\Entity\User;
 // use Symfony\Component\Mailer\MailerInterface;
 // use Symfony\Component\Mime\Email;
 
@@ -25,7 +25,7 @@ class CompleteController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StefanwiegmannUserBundle:User');
+      $repo = $em->getRepository('StewieUserBundle:User');
       $user = $repo->findOneByToken($token);
 
       // exeption if token unknown

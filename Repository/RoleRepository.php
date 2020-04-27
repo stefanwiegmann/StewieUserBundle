@@ -1,8 +1,8 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Repository;
+namespace Stewie\UserBundle\Repository;
 
-use Stefanwiegmann\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\Role;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 

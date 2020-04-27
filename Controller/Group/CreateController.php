@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Group;
+namespace Stewie\UserBundle\Controller\Group;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,9 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Stefanwiegmann\UserBundle\Form\Type\Group\CreateType;
-use Stefanwiegmann\UserBundle\Entity\Group;
-use Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Stewie\UserBundle\Form\Type\Group\CreateType;
+use Stewie\UserBundle\Entity\Group;
+use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**

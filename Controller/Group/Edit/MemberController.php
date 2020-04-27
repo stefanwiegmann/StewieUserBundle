@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Group\Edit;
+namespace Stewie\UserBundle\Controller\Group\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +31,7 @@ class MemberController extends AbstractController
     {
       //get group
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
+      $repo = $em->getRepository('StewieUserBundle:Group');
       $group = $repo->findOneBySlug($slug);
 
       //get data and paginate
@@ -54,7 +54,7 @@ class MemberController extends AbstractController
     public function getQuery($group){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:User');
+          ->getRepository('StewieUserBundle:User');
 
         $query = $repository->createQueryBuilder('u')
           ->andWhere(':groups MEMBER OF u.groups')

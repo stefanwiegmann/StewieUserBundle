@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Command;
+namespace Stewie\UserBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -44,7 +44,7 @@ class WipeDataCommand extends Command
 
       // wipe users
       $output->writeln('Wiping users:');
-      $repo = $em->getRepository('StefanwiegmannUserBundle:User');
+      $repo = $em->getRepository('StewieUserBundle:User');
       $users = $repo->findAll();
 
       $progressBar = new ProgressBar($output, count($users));
@@ -62,7 +62,7 @@ class WipeDataCommand extends Command
 
       // wipe groups
       $output->writeln('Wiping groups:');
-      $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
+      $repo = $em->getRepository('StewieUserBundle:Group');
       $groups = $repo->findAll();
 
       $progressBar = new ProgressBar($output, count($groups));
@@ -80,7 +80,7 @@ class WipeDataCommand extends Command
 
       // wipe roles
       $output->writeln('Wiping roles:');
-      $repo = $em->getRepository('StefanwiegmannUserBundle:Role');
+      $repo = $em->getRepository('StewieUserBundle:Role');
       $roles = $repo->findAll();
 
       $progressBar = new ProgressBar($output, count($roles));
@@ -98,7 +98,7 @@ class WipeDataCommand extends Command
 
       // wipe status
       $output->writeln('Wiping status:');
-      $repo = $em->getRepository('StefanwiegmannUserBundle:Status');
+      $repo = $em->getRepository('StewieUserBundle:Status');
       $status = $repo->findAll();
 
       $progressBar = new ProgressBar($output, count($status));

@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Group\Edit;
+namespace Stewie\UserBundle\Controller\Group\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,8 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Stefanwiegmann\UserBundle\Form\Type\Group\DetailType;
-use Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Stewie\UserBundle\Form\Type\Group\DetailType;
+use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
@@ -25,7 +25,7 @@ class DetailController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
+      $repo = $em->getRepository('StewieUserBundle:Group');
       $group = $repo->findOneBySlug($slug);
 
       // create form

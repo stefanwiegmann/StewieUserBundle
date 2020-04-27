@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Group;
+namespace Stewie\UserBundle\Controller\Group;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,7 +50,7 @@ class ListController extends AbstractController
     public function getQuery(){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Group');
+          ->getRepository('StewieUserBundle:Group');
 
         $query = $repository->createQueryBuilder('g')
           ->orderBy('g.id', 'ASC');

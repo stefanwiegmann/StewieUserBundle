@@ -25,7 +25,7 @@ in the `config/bundles.yaml` file of your project:
 // ...
 return [
             // ...
-            Stefanwiegmann\UserBundle\StefanwiegmannUserBundle::class => ['all' => true],
+            Stewie\UserBundle\StewieUserBundle::class => ['all' => true],
 ];
 ```
 
@@ -41,9 +41,9 @@ services:
 
 // ...
 
-  Stefanwiegmann\UserBundle\:
-      resource: '@StefanwiegmannUserBundle/*/*'
-      exclude: '@StefanwiegmannUserBundle/{Entity}'
+  Stewie\UserBundle\:
+      resource: '@StewieUserBundle/*/*'
+      exclude: '@StewieUserBundle/{Entity}'
       tags: ['controller.service_arguments']
       autowire: true
 
@@ -55,7 +55,7 @@ Register routes:
 // config/routes.yaml
 // ...
 stefanwiegmann_user:
-    resource: "@StefanwiegmannUserBundle/Controller/"
+    resource: "@StewieUserBundle/Controller/"
     type:     annotation
     prefix:   "{_locale}/"
     defaults:
@@ -81,14 +81,14 @@ Add minimum security configuration
 // config/security.yaml
 security:
     encoders:
-        Stefanwiegmann\UserBundle\Entity\User:
+        Stewie\UserBundle\Entity\User:
             algorithm: argon2i
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: Stefanwiegmann\UserBundle\Entity\User
+                class: Stewie\UserBundle\Entity\User
                 property: username
     // ...
     firewalls:
@@ -97,7 +97,7 @@ security:
         anonymous: true
         guard:
             authenticators:
-                - Stefanwiegmann\UserBundle\Security\LoginFormAuthenticator
+                - Stewie\UserBundle\Security\LoginFormAuthenticator
         logout:
             path:   sw_user_logout
 

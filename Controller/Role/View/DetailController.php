@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Role\View;
+namespace Stewie\UserBundle\Controller\Role\View;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +22,7 @@ class DetailController extends AbstractController
     {
       // get role
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Role');
+          ->getRepository('StewieUserBundle:Role');
         $roleObject = $repository->findOneBySlug($slug);
 
       return $this->render('@StefanwiegmannUser/role/view/detail.html.twig', [

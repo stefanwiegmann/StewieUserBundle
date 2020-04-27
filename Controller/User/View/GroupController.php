@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\User\View;
+namespace Stewie\UserBundle\Controller\User\View;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-// use Stefanwiegmann\UserBundle\Form\Type\User\GroupType;
+// use Stewie\UserBundle\Form\Type\User\GroupType;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
@@ -32,7 +32,7 @@ class GroupController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StefanwiegmannUserBundle:User');
+      $repo = $em->getRepository('StewieUserBundle:User');
       $user = $repo->findOneByUsername($username);
 
       //get data and paginate
@@ -55,7 +55,7 @@ class GroupController extends AbstractController
     public function getQuery($user){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Group');
+          ->getRepository('StewieUserBundle:Group');
 
         $query = $repository->createQueryBuilder('g')
           ->andWhere(':users MEMBER OF g.users')

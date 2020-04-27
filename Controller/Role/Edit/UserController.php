@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Role\Edit;
+namespace Stewie\UserBundle\Controller\Role\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class UserController extends AbstractController
       // get filter data
       // if($role > 0){
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Role');
+          ->getRepository('StewieUserBundle:Role');
         $roleObject = $repository->findOneBySlug($slug);
       // }
 
@@ -58,7 +58,7 @@ class UserController extends AbstractController
     public function getQuery($roleObject){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:User');
+          ->getRepository('StewieUserBundle:User');
 
         $query = $repository->createQueryBuilder('u')
           ->andWhere(':roles MEMBER OF u.userRoles')

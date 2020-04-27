@@ -1,8 +1,8 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Repository;
+namespace Stewie\UserBundle\Repository;
 
-use Stefanwiegmann\UserBundle\Entity\Group;
+use Stewie\UserBundle\Entity\Group;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -20,7 +20,7 @@ class GroupRepository extends ServiceEntityRepository
     public function refreshRoles($group){
 
       $em = $this->container->get('doctrine')->getManager();
-      $userRepo = $em->getRepository('StefanwiegmannUserBundle:User');
+      $userRepo = $em->getRepository('StewieUserBundle:User');
 
       // get users assigned to group and refresh
       foreach ($group->getUsers() as &$user){
@@ -37,7 +37,7 @@ class GroupRepository extends ServiceEntityRepository
     public function updateUser($user){
 
       $em = $this->container->get('doctrine')->getManager();
-      $groupRepo = $em->getRepository('StefanwiegmannUserBundle:Group');
+      $groupRepo = $em->getRepository('StewieUserBundle:Group');
 
       $groups = $groupRepo->findAll();
 

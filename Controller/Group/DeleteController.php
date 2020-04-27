@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Group;
+namespace Stewie\UserBundle\Controller\Group;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-// use Stefanwiegmann\UserBundle\Form\Type\Group\DeleteType;
+// use Stewie\UserBundle\Form\Type\Group\DeleteType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -26,7 +26,7 @@ class DeleteController extends AbstractController
   {
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $repo = $em->getRepository('StefanwiegmannUserBundle:Group');
+    $repo = $em->getRepository('StewieUserBundle:Group');
     $group = $repo->findOneBySlug($slug);
 
     // create form

@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Role;
+namespace Stewie\UserBundle\Controller\Role;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,7 +50,7 @@ class ListController extends AbstractController
     public function getQuery(){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Role');
+          ->getRepository('StewieUserBundle:Role');
 
         $query = $repository->createQueryBuilder('r')
           ->orderBy('r.sort', 'ASC');

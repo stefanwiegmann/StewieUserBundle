@@ -1,16 +1,16 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Command;
+namespace Stewie\UserBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Stefanwiegmann\UserBundle\Entity\User;
+use Stewie\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
-use Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 // use Doctrine\Common\Collections\ArrayCollection;
 
@@ -49,11 +49,11 @@ class FillUsersCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StefanwiegmannUserBundle:User');
-      $roleRepo = $em->getRepository('StefanwiegmannUserBundle:Role');
-      $groupRepo = $em->getRepository('StefanwiegmannUserBundle:Group');
+      $repo = $em->getRepository('StewieUserBundle:User');
+      $roleRepo = $em->getRepository('StewieUserBundle:Role');
+      $groupRepo = $em->getRepository('StewieUserBundle:Group');
 
-      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StefanwiegmannUserBundle/Data')."/users.json");
+      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieUserBundle/Data')."/users.json");
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 

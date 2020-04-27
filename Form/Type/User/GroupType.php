@@ -1,11 +1,11 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Form\Type\User;
+namespace Stewie\UserBundle\Form\Type\User;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Stefanwiegmann\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\Role;
 use Doctrine\ORM\EntityRepository;
 // use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +19,7 @@ class GroupType extends AbstractType
     {
         $builder
             ->add('groups', EntityType::class, array(
-                  'class' => 'StefanwiegmannUserBundle:Group',
+                  'class' => 'StewieUserBundle:Group',
                   'query_builder' => function (EntityRepository $er) {
                       return $er->createQueryBuilder('g')
                           ->orderBy('g.name', 'ASC');

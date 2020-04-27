@@ -1,5 +1,5 @@
 {
-    "name": "stefanwiegmann/user-bundle",
+    "name": "stewieg/user-bundle",
     "type": "symfony-bundle",
     "description": "A user bundle for Symfony5",
     "authors" : [{
@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Stefanwiegmann\\UserBundle\\": ""
+            "Stewie\\UserBundle\\": ""
         }
     },
     "extra" : {

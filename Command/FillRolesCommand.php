@@ -1,15 +1,15 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Command;
+namespace Stewie\UserBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Stefanwiegmann\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\Role;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
-use Stefanwiegmann\UserBundle\Service\AvatarGenerator;
+use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 
 class FillRolesCommand extends Command
@@ -45,9 +45,9 @@ class FillRolesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StefanwiegmannUserBundle:Role');
+      $repo = $em->getRepository('StewieUserBundle:Role');
 
-      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StefanwiegmannUserBundle/Data')."/roles.json");
+      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieUserBundle/Data')."/roles.json");
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 

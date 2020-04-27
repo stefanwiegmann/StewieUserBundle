@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Role\View;
+namespace Stewie\UserBundle\Controller\Role\View;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class GroupController extends AbstractController
       // get filter data
       // if($role > 0){
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Role');
+          ->getRepository('StewieUserBundle:Role');
         $roleObject = $repository->findOneBySlug($slug);
       // }
 
@@ -58,7 +58,7 @@ class GroupController extends AbstractController
     public function getQuery($roleObject){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StefanwiegmannUserBundle:Group');
+          ->getRepository('StewieUserBundle:Group');
 
         $query = $repository->createQueryBuilder('g')
           ->andWhere(':roles MEMBER OF g.groupRoles')

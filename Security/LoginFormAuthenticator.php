@@ -1,8 +1,8 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Security;
+namespace Stewie\UserBundle\Security;
 
-use Stefanwiegmann\UserBundle\Entity\User;
+use Stewie\UserBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

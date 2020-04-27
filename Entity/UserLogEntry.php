@@ -1,12 +1,12 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Entity;
+namespace Stewie\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Loggable\Entity\MappedSuperclass\AbstractLogEntry as LogEntry;
 
 /**
- * Stefanwiegmann\UserBundle\Entity\UserLogEntry
+ * Stewie\UserBundle\Entity\UserLogEntry
  *
  * @ORM\Table(
  *     name="sw_user_log_entries",

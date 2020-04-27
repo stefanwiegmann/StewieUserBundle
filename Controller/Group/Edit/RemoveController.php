@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Controller\Group\Edit;
+namespace Stewie\UserBundle\Controller\Group\Edit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,12 +25,12 @@ class RemoveController extends AbstractController
   {
     //get group
     $em = $this->container->get('doctrine')->getManager();
-    $groupRepo = $em->getRepository('StefanwiegmannUserBundle:Group');
+    $groupRepo = $em->getRepository('StewieUserBundle:Group');
     $groupObject = $groupRepo->findOneBySlug($slug);
 
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $userRepo = $em->getRepository('StefanwiegmannUserBundle:User');
+    $userRepo = $em->getRepository('StewieUserBundle:User');
     $userObject = $userRepo->findOneById($user);
 
     // create form
@@ -81,11 +81,11 @@ class RemoveController extends AbstractController
       $userId   = $request->request->get('userId');
 
       $groupRepo = $this->getDoctrine()
-        ->getRepository('StefanwiegmannUserBundle:Group');
+        ->getRepository('StewieUserBundle:Group');
       $group = $groupRepo->findOneById($groupId);
 
       $userRepo = $this->getDoctrine()
-        ->getRepository('StefanwiegmannUserBundle:User');
+        ->getRepository('StewieUserBundle:User');
       $user = $userRepo->findOneById($userId);
 
       $em = $this->getDoctrine()->getManager();

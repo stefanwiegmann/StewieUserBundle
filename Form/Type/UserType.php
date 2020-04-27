@@ -1,11 +1,11 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle\Form\Type;
+namespace Stewie\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Stefanwiegmann\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\Role;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -49,7 +49,7 @@ class UserType extends AbstractType
              //    'choice_translation_domain' => 'SWUserBundle',
              //    'translation_domain' => 'SWUserBundle',))
              ->add('userRole', EntityType::class, array(
-                   'class' => 'StefanwiegmannUserBundle:Role',
+                   'class' => 'StewieUserBundle:Role',
                    'query_builder' => function (EntityRepository $er) {
                        return $er->createQueryBuilder('r')
                            ->orderBy('r.id', 'ASC');

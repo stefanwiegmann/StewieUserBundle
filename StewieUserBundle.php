@@ -1,11 +1,11 @@
 <?php
 
-namespace Stefanwiegmann\UserBundle;
+namespace Stewie\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 // use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class StefanwiegmannUserBundle extends Bundle
+class StewieUserBundle extends Bundle
 {
     // public function build(ContainerBuilder $container)
     // {
