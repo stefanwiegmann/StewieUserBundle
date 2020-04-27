@@ -9,7 +9,7 @@ use Gedmo\Loggable\Entity\MappedSuperclass\AbstractLogEntry as LogEntry;
  * Stewie\UserBundle\Entity\UserLogEntry
  *
  * @ORM\Table(
- *     name="sw_user_log_entries",
+ *     name="stewie_user_log_entries",
  *     options={"row_format":"DYNAMIC"},
  *  indexes={
  *      @ORM\Index(name="log_class_lookup_idx", columns={"object_class"}),

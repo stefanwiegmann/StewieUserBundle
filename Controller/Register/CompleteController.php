@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class CompleteController extends AbstractController
 {
     /**
-    * @Route("/user/registration/{token}", name="sw_user_registration")
+    * @Route("/user/registration/{token}", name="stewie_user_registration")
     */
     public function registration($token, Request $request, UserPasswordEncoderInterface $encoder)
     {
@@ -31,7 +31,7 @@ class CompleteController extends AbstractController
       // exeption if token unknown
       if(!$user){
 
-        return $this->render('@StefanwiegmannUser/reset/unknown.html.twig', [
+        return $this->render('@StewieUser/reset/unknown.html.twig', [
             'token' => $token,
         ]);
       }
@@ -39,7 +39,7 @@ class CompleteController extends AbstractController
       // TODO exeption if token expired
       if(date_diff(new \DateTime("now"),$user->getTokenDate())->format('%a') > 2){
 
-        return $this->render('@StefanwiegmannUser/reset/expired.html.twig', [
+        return $this->render('@StewieUser/reset/expired.html.twig', [
             'token' => $token,
         ]);
       }
@@ -70,7 +70,7 @@ class CompleteController extends AbstractController
           return $this->redirectToRoute('home');
         }
 
-      return $this->render('@StefanwiegmannUser/register/complete.html.twig', [
+      return $this->render('@StewieUser/register/complete.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

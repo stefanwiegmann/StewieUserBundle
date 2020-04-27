@@ -19,7 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class RemoveController extends AbstractController
 {
   /**
-  * @Route("/user/group/remove/user/{slug}/{user}", name="sw_user_group_remove_user")
+  * @Route("/user/group/remove/user/{slug}/{user}", name="stewie_user_group_remove_user")
   */
   public function userAction($slug, $user, Request $request, TranslatorInterface $translator)
   {
@@ -54,10 +54,10 @@ class RemoveController extends AbstractController
         // update roles
         $userRepo->refreshRoles($userObject);
 
-        return $this->redirectToRoute('sw_user_group_edit_member', array('slug' => $slug));
+        return $this->redirectToRoute('stewie_user_group_edit_member', array('slug' => $slug));
       }
 
-    return $this->render('@StefanwiegmannUser/card/dangerForm.html.twig', [
+    return $this->render('@StewieUser/card/dangerForm.html.twig', [
         'text' => $translator->trans('confirmation.group.remove', [
           '%subject%' => $userObject->getUsername(),
           '%object%' => $groupObject->getName()
@@ -70,7 +70,7 @@ class RemoveController extends AbstractController
   }
 
   /**
-  * @Route("/user/group/remove/member", name="sw_user_group_remove_member")
+  * @Route("/user/group/remove/member", name="stewie_user_group_remove_member")
   */
   public function memberAction(Request $request)
   {
@@ -105,7 +105,7 @@ class RemoveController extends AbstractController
       return new Response(json_encode($response));
 
     } else {
-      return $this->redirectToRoute('sw_user_group_list');
+      return $this->redirectToRoute('stewie_user_group_list');
     }
   }
 

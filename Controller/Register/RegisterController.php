@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\File\File;
 class RegisterController extends AbstractController
 {
     /**
-    * @Route("/user/register", name="sw_user_register")
+    * @Route("/user/register", name="stewie_user_register")
     */
     public function register(Request $request, UserPasswordEncoderInterface $encoder, MailerInterface $mailer, AvatarGenerator $avatarGenerator)
     {
@@ -69,13 +69,13 @@ class RegisterController extends AbstractController
            ->to($user->getEmail())
            ->subject('Your Registration')
            ->text($this->renderView(
-                       '@StefanwiegmannUser/emails/registration.txt.twig',
+                       '@StewieUser/emails/registration.txt.twig',
                        array('name' => $user->getFirstName().' '.$user->getLastName(),
                               'token' => $user->getToken()
                        )),
              )
            ->html($this->renderView(
-                       '@StefanwiegmannUser/emails/registration.html.twig',
+                       '@StewieUser/emails/registration.html.twig',
                        array('name' => $user->getFirstName().' '.$user->getLastName(),
                               'token' => $user->getToken()
                        ))
@@ -91,7 +91,7 @@ class RegisterController extends AbstractController
           return $this->redirectToRoute('home');
         }
 
-      return $this->render('@StefanwiegmannUser/register/register.html.twig', [
+      return $this->render('@StewieUser/register/register.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

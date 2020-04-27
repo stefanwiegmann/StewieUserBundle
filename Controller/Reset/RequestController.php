@@ -20,7 +20,7 @@ class RequestController extends AbstractController
 {
 
     /**
-    * @Route("/user/request/reset", name="sw_user_request_reset")
+    * @Route("/user/request/reset", name="stewie_user_request_reset")
     */
     public function request(Request $request, MailerInterface $mailer)
     {
@@ -58,13 +58,13 @@ class RequestController extends AbstractController
            ->to($user->getEmail())
            ->subject('Your Password Request')
            ->text($this->renderView(
-                       '@StefanwiegmannUser/emails/request.txt.twig',
+                       '@StewieUser/emails/request.txt.twig',
                        array('name' => $user->getFirstName().' '.$user->getLastName(),
                               'token' => $user->getToken()
                        )),
              )
            ->html($this->renderView(
-                       '@StefanwiegmannUser/emails/request.html.twig',
+                       '@StewieUser/emails/request.html.twig',
                        array('name' => $user->getFirstName().' '.$user->getLastName(),
                               'token' => $user->getToken()
                        ))
@@ -80,7 +80,7 @@ class RequestController extends AbstractController
           return $this->redirectToRoute('home');
         }
 
-      return $this->render('@StefanwiegmannUser/reset/request.html.twig', [
+      return $this->render('@StewieUser/reset/request.html.twig', [
           'form' => $form->createView(),
       ]);
     }

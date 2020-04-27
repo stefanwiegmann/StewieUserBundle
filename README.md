@@ -99,7 +99,7 @@ security:
             authenticators:
                 - Stewie\UserBundle\Security\LoginFormAuthenticator
         logout:
-            path:   sw_user_logout
+            path:   stewie_user_logout
 
         switch_user: true
         // ...
@@ -250,5 +250,5 @@ Templates extend `layout.html.twig`. Make sure to provide this and define the fo
 You can include a usermenu into your nav like this:
 
 ```php
-  {% embed "@StefanwiegmannUser/default/usermenu.html.twig" %}{% endembed %}
+  {% embed "@StewieUser/default/usermenu.html.twig" %}{% endembed %}
 ```

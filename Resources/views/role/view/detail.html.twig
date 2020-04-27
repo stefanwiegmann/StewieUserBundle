@@ -1,4 +1,4 @@
-{% extends '@StefanwiegmannUser/default/layout.html.twig' %}
+{% extends '@StewieUser/default/layout.html.twig' %}
 {% trans_default_domain 'SWUserBundle' %}
 
 {% block filterBlock %}{% endblock filterBlock %}
@@ -14,10 +14,10 @@
         <a class="nav-link active" href="#">{{ 'label.details'|trans }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_role_view_user', {'slug': role.slug}) }}">{{ 'label.user_s'|trans }} <span class="badge badge-primary">{{role.users|length}}</a>
+        <a class="nav-link" href="{{ path('stewie_user_role_view_user', {'slug': role.slug}) }}">{{ 'label.user_s'|trans }} <span class="badge badge-primary">{{role.users|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_role_view_group', {'slug': role.slug}) }}">{{ 'label.group_s'|trans }} <span class="badge badge-primary">{{role.groups|length}}</a>
+        <a class="nav-link" href="{{ path('stewie_user_role_view_group', {'slug': role.slug}) }}">{{ 'label.group_s'|trans }} <span class="badge badge-primary">{{role.groups|length}}</a>
       </li>
     </ul>
 

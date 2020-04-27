@@ -18,7 +18,7 @@ use Stewie\UserBundle\Form\Type\Profile\DetailType;
 class DetailController extends AbstractController
 {
     /**
-    * @Route("/user/profile", name="sw_user_profile")
+    * @Route("/user/profile", name="stewie_user_profile")
     */
     public function profile(Request $request)
     {
@@ -52,10 +52,10 @@ class DetailController extends AbstractController
             'Your profile was updated!'
             );
 
-          return $this->redirectToRoute('sw_user_profile');
+          return $this->redirectToRoute('stewie_user_profile');
         }
 
-      return $this->render('@StefanwiegmannUser/profile/detail.html.twig', [
+      return $this->render('@StewieUser/profile/detail.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

@@ -17,7 +17,7 @@ use Stewie\UserBundle\Form\Type\Group\RoleType;
 class RoleController extends AbstractController
 {
     /**
-    * @Route("/user/group/edit/role/{slug}", name="sw_user_group_edit_role")
+    * @Route("/user/group/edit/role/{slug}", name="stewie_user_group_edit_role")
     */
     public function details($slug, Request $request)
     {
@@ -42,10 +42,10 @@ class RoleController extends AbstractController
           // update affected user roles
           $repo->refreshRoles($group);
 
-          return $this->redirectToRoute('sw_user_group_list');
+          return $this->redirectToRoute('stewie_user_group_list');
         }
 
-      return $this->render('@StefanwiegmannUser/group/edit/role.html.twig', [
+      return $this->render('@StewieUser/group/edit/role.html.twig', [
           'group' => $group,
           'form' => $form->createView(),
       ]);

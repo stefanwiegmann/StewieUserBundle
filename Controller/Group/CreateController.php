@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\File\File;
 class CreateController extends AbstractController
 {
     /**
-    * @Route("/user/group/create", name="sw_user_group_create")
+    * @Route("/user/group/create", name="stewie_user_group_create")
     */
     public function create(Request $request, AvatarGenerator $avatarGenerator)
     {
@@ -44,10 +44,10 @@ class CreateController extends AbstractController
           $em->persist($group);
           $em->flush();
 
-          return $this->redirectToRoute('sw_user_group_list');
+          return $this->redirectToRoute('stewie_user_group_list');
         }
 
-      return $this->render('@StefanwiegmannUser/group/create.html.twig', [
+      return $this->render('@StewieUser/group/create.html.twig', [
           'group' => $group,
           'form' => $form->createView(),
       ]);

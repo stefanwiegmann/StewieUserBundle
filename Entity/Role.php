@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Stewie\UserBundle\Repository\RoleRepository")
- * @ORM\Table(name="sw_user_role")
+ * @ORM\Table(name="stewie_user_role")
  * @ORM\HasLifecycleCallbacks()
  * @Gedmo\Loggable(logEntryClass="Stewie\UserBundle\Entity\UserLogEntry")
  * @Vich\Uploadable

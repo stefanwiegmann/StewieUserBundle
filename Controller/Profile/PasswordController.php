@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class PasswordController extends AbstractController
 {
     /**
-    * @Route("/user/profile/password", name="sw_user_profile_password")
+    * @Route("/user/profile/password", name="stewie_user_profile_password")
     */
     public function password(Request $request, UserPasswordEncoderInterface $encoder)
     {
@@ -52,10 +52,10 @@ class PasswordController extends AbstractController
             'Your password was updated!'
             );
 
-          return $this->redirectToRoute('sw_user_profile_password');
+          return $this->redirectToRoute('stewie_user_profile_password');
         }
 
-      return $this->render('@StefanwiegmannUser/profile/password.html.twig', [
+      return $this->render('@StewieUser/profile/password.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

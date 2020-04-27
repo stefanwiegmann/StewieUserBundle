@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Stewie\UserBundle\Repository\GroupRepository")
- * @ORM\Table(name="sw_user_group")
+ * @ORM\Table(name="stewie_user_group")
  * @ORM\HasLifecycleCallbacks()
  * @Gedmo\Loggable(logEntryClass="Stewie\UserBundle\Entity\UserLogEntry")
  * @Vich\Uploadable
@@ -46,7 +46,7 @@ class Group
 
     /**
      * @ORM\ManyToMany(targetEntity="Stewie\UserBundle\Entity\Role", inversedBy="groups")
-     * @ORM\JoinTable(name="sw_user_group_role")
+     * @ORM\JoinTable(name="stewie_user_group_role")
      */
     private $groupRoles;
 

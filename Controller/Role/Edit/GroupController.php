@@ -25,7 +25,7 @@ class GroupController extends AbstractController
 
     /**
     * @Route("/user/role/edit/group/{slug}/{page}", defaults={"role": 0, "page": 1}
-    *     , requirements={"page": "\d+"}, name="sw_user_role_edit_group")
+    *     , requirements={"page": "\d+"}, name="stewie_user_role_edit_group")
     */
     public function list($slug, $page, Request $request)
     {
@@ -46,9 +46,9 @@ class GroupController extends AbstractController
             // $this->container->getParameter('max_rows')/*limit per page*/
         );
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
-        $pagination->setTemplate('@StefanwiegmannUser/default/pagination.html.twig');
+        $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
 
-      return $this->render('@StefanwiegmannUser/role/edit/group.html.twig', [
+      return $this->render('@StewieUser/role/edit/group.html.twig', [
           'role' => $roleObject,
           'groupList' => $pagination,
           'page' => $page,

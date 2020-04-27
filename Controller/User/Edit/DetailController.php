@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\File\File;
 class DetailController extends AbstractController
 {
     /**
-    * @Route("/user/user/edit/detail/{username}", name="sw_user_user_edit_detail")
+    * @Route("/user/user/edit/detail/{username}", name="stewie_user_user_edit_detail")
     */
     public function details($username, Request $request, AvatarGenerator $avatarGenerator)
     {
@@ -54,10 +54,10 @@ class DetailController extends AbstractController
             $user->getUsername().' was updated!'
             );
 
-          return $this->redirectToRoute('sw_user_user_edit_detail', ['username' => $user->getUsername()]);
+          return $this->redirectToRoute('stewie_user_user_edit_detail', ['username' => $user->getUsername()]);
         }
 
-      return $this->render('@StefanwiegmannUser/user/edit/detail.html.twig', [
+      return $this->render('@StewieUser/user/edit/detail.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

@@ -19,7 +19,7 @@ use Symfony\Component\Mime\Email;
 class ResetController extends AbstractController
 {
     /**
-    * @Route("/user/reset/{token}", name="sw_user_reset")
+    * @Route("/user/reset/{token}", name="stewie_user_reset")
     */
     public function reset($token, Request $request, UserPasswordEncoderInterface $encoder)
     {
@@ -31,7 +31,7 @@ class ResetController extends AbstractController
       // exeption if token unknown
       if(!$user){
 
-        return $this->render('@StefanwiegmannUser/reset/unknown.html.twig', [
+        return $this->render('@StewieUser/reset/unknown.html.twig', [
             'token' => $token,
         ]);
       }
@@ -39,7 +39,7 @@ class ResetController extends AbstractController
       // TODO exeption if token expired
       if(date_diff(new \DateTime("now"),$user->getTokenDate())->format('%a') > 2){
 
-        return $this->render('@StefanwiegmannUser/reset/expired.html.twig', [
+        return $this->render('@StewieUser/reset/expired.html.twig', [
             'token' => $token,
         ]);
       }
@@ -62,10 +62,10 @@ class ResetController extends AbstractController
           $em->persist($user);
           $em->flush();
 
-          return $this->render('@StefanwiegmannUser/reset/success.html.twig');
+          return $this->render('@StewieUser/reset/success.html.twig');
         }
 
-      return $this->render('@StefanwiegmannUser/reset/reset.html.twig', [
+      return $this->render('@StewieUser/reset/reset.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

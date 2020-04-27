@@ -16,7 +16,7 @@ class DetailController extends AbstractController
 {
 
     /**
-    * @Route("/user/role/view/detail/{slug}", name="sw_user_role_view_detail")
+    * @Route("/user/role/view/detail/{slug}", name="stewie_user_role_view_detail")
     */
     public function view($slug, Request $request)
     {
@@ -25,7 +25,7 @@ class DetailController extends AbstractController
           ->getRepository('StewieUserBundle:Role');
         $roleObject = $repository->findOneBySlug($slug);
 
-      return $this->render('@StefanwiegmannUser/role/view/detail.html.twig', [
+      return $this->render('@StewieUser/role/view/detail.html.twig', [
           'role' => $roleObject,
       ]);
     }

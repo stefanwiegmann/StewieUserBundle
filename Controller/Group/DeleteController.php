@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class DeleteController extends AbstractController
 {
   /**
-  * @Route("/user/group/delete/{slug}", name="sw_user_group_delete")
+  * @Route("/user/group/delete/{slug}", name="stewie_user_group_delete")
   */
   public function deleteAction($slug, Request $request, TranslatorInterface $translator)
   {
@@ -47,10 +47,10 @@ class DeleteController extends AbstractController
         $em->remove($group);
         $em->flush();
 
-        return $this->redirectToRoute('sw_user_group_list');
+        return $this->redirectToRoute('stewie_user_group_list');
       }
 
-    return $this->render('@StefanwiegmannUser/default/remove.html.twig', [
+    return $this->render('@StewieUser/default/remove.html.twig', [
         'title' => $translator->trans('confirmation.delete', [
           '%subject%' => $group->getName()
           ], 'SWUserBundle'),

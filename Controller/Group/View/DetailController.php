@@ -17,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class DetailController extends AbstractController
 {
     /**
-    * @Route("/user/group/view/detail/{slug}", name="sw_user_group_view_detail")
+    * @Route("/user/group/view/detail/{slug}", name="stewie_user_group_view_detail")
     */
     public function details($slug, Request $request)
     {
@@ -26,7 +26,7 @@ class DetailController extends AbstractController
       $repo = $em->getRepository('StewieUserBundle:Group');
       $group = $repo->findOneBySlug($slug);
 
-      return $this->render('@StefanwiegmannUser/group/view/detail.html.twig', [
+      return $this->render('@StewieUser/group/view/detail.html.twig', [
           'group' => $group,
       ]);
     }

@@ -6,9 +6,16 @@ namespace Stewie\UserBundle\Service;
 // use Vich\UploaderBundle\Entity\File as VichFile;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Util\ClassUtils;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class AvatarGenerator
+class AvatarGenerator extends AbstractController
 {
+    // private $uploadPath;
+    //
+    // public function __construct($uploadPath)
+    // {
+    //     $this->uploadPath = $uploadPath;
+    // }
 
     public function create($object){
 
@@ -16,17 +23,20 @@ class AvatarGenerator
           case "Stewie\UserBundle\Entity\User":
               // Get string from object
               $string = $object->getUsername();
-              $path = '/srv/http/dev/uploads/avatar/user/';
+              // $path = $uploadPath.'user/';
+              $path = $this->getParameter('kernel.project_dir').'/uploads/avatar/user/';
               break;
           case "Stewie\UserBundle\Entity\Group":
               // Get string from object
               $string = $object->getName();
-              $path = '/srv/http/dev/uploads/avatar/group/';
+              // $path = $uploadPath.'group/';
+              $path = $this->getParameter('kernel.project_dir').'/uploads/avatar/group/';
               break;
           case "Stewie\UserBundle\Entity\Role":
               // Get string from object
               $string = $object->getName();
-              $path = '/srv/http/dev/uploads/avatar/role/';
+              // $path = $uploadPath.'role/';
+              $path = $this->getParameter('kernel.project_dir').'/uploads/avatar/role/';
               break;
           default:
              return false;

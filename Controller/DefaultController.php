@@ -10,11 +10,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class DefaultController extends AbstractController
 {
     /**
-    * @Route("/user", name="user_default")
+    * @Route("/user", name="stewie_user_default")
     */
     public function default()
     {
-      return $this->render('@StefanwiegmannUser/default/index.html.twig', [
+      return $this->render('@StewieUser/default/index.html.twig', [
           'headline' => 'User Default',
           'content' => 'hello user',
       ]);

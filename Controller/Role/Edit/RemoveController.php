@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RemoveController extends AbstractController
 {
   /**
-  * @Route("/user/role/remove/user/{role}/{user}", name="sw_user_role_remove_user")
+  * @Route("/user/role/remove/user/{role}/{user}", name="stewie_user_role_remove_user")
   */
   public function userAction($role, $user, Request $request, TranslatorInterface $translator)
   {
@@ -56,10 +56,10 @@ class RemoveController extends AbstractController
         // update roles
         $userRepo->refreshRoles($userObject);
 
-        return $this->redirectToRoute('sw_user_role_edit_user', array('slug' => $roleObject->getSlug()));
+        return $this->redirectToRoute('stewie_user_role_edit_user', array('slug' => $roleObject->getSlug()));
       }
 
-    return $this->render('@StefanwiegmannUser/card/dangerForm.html.twig', [
+    return $this->render('@StewieUser/card/dangerForm.html.twig', [
         'text' => $translator->trans('confirmation.role.remove', [
           '%subject%' => $userObject->getUsername(),
           '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')
@@ -72,7 +72,7 @@ class RemoveController extends AbstractController
   }
 
     /**
-    * @Route("/user/role/remove/group/{role}/{group}", name="sw_user_role_remove_group")
+    * @Route("/user/role/remove/group/{role}/{group}", name="stewie_user_role_remove_group")
     */
     public function groupAction($role, $group, Request $request, TranslatorInterface $translator)
     {
@@ -108,10 +108,10 @@ class RemoveController extends AbstractController
           // update roles
           $groupRepo->refreshRoles($groupObject);
 
-          return $this->redirectToRoute('sw_user_role_edit_group', array('slug' => $roleObject->getSlug()));
+          return $this->redirectToRoute('stewie_user_role_edit_group', array('slug' => $roleObject->getSlug()));
         }
 
-    return $this->render('@StefanwiegmannUser/card/dangerForm.html.twig', [
+    return $this->render('@StewieUser/card/dangerForm.html.twig', [
         'text' => $translator->trans('confirmation.role.remove', [
           '%subject%' => $groupObject->getName(),
           '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')

@@ -17,7 +17,7 @@ use Stewie\UserBundle\Form\Type\User\RoleType;
 class RoleController extends AbstractController
 {
     /**
-    * @Route("/user/user/edit/role/{username}", name="sw_user_user_edit_role")
+    * @Route("/user/user/edit/role/{username}", name="stewie_user_user_edit_role")
     */
     public function details($username, Request $request)
     {
@@ -42,10 +42,10 @@ class RoleController extends AbstractController
           // update affected user roles
           $repo->refreshRoles($user);
 
-          return $this->redirectToRoute('sw_user_user_edit_role', ['username' => $user->getUsername()]);
+          return $this->redirectToRoute('stewie_user_user_edit_role', ['username' => $user->getUsername()]);
         }
 
-      return $this->render('@StefanwiegmannUser/user/edit/role.html.twig', [
+      return $this->render('@StewieUser/user/edit/role.html.twig', [
           'user' => $user,
           'form' => $form->createView(),
       ]);

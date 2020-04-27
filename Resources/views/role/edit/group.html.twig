@@ -1,4 +1,4 @@
-{% extends '@StefanwiegmannUser/default/layout.html.twig' %}
+{% extends '@StewieUser/default/layout.html.twig' %}
 {% trans_default_domain 'SWUserBundle' %}
 
 {% block filterBlock %}{% endblock filterBlock %}
@@ -13,10 +13,10 @@
 <!-- tab bar -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_role_edit_detail', {'slug': role.slug}) }}">{{ 'label.details'|trans }}</a>
+        <a class="nav-link" href="{{ path('stewie_user_role_edit_detail', {'slug': role.slug}) }}">{{ 'label.details'|trans }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_role_edit_user', {'slug': role.slug}) }}">{{ 'label.user_s'|trans }} <span class="badge badge-primary">{{role.users|length}}</a>
+        <a class="nav-link" href="{{ path('stewie_user_role_edit_user', {'slug': role.slug}) }}">{{ 'label.user_s'|trans }} <span class="badge badge-primary">{{role.users|length}}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link active" href="#">{{ 'label.group_s'|trans }} <span class="badge badge-primary">{{role.groups|length}}</span></a>
@@ -44,7 +44,7 @@
   <td>{{ item.name }}</td>
   <td>
     {% if is_granted('ROLE_USER_ROLE_EDIT') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.remove'|trans }}" href="{{ path('sw_user_role_remove_group', {'role': role.id, 'group': item.id}) }}"><i class="fas fa-trash"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.remove'|trans }}" href="{{ path('stewie_user_role_remove_group', {'role': role.id, 'group': item.id}) }}"><i class="fas fa-trash"></i></a>
     {% endif %}
   </td>
 </tr>

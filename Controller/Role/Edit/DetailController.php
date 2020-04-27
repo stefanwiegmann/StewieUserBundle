@@ -19,7 +19,7 @@ class DetailController extends AbstractController
 {
 
     /**
-    * @Route("/user/role/edit/detail/{slug}", name="sw_user_role_edit_detail")
+    * @Route("/user/role/edit/detail/{slug}", name="stewie_user_role_edit_detail")
     */
     public function edit($slug, Request $request, AvatarGenerator $avatarGenerator)
     {
@@ -53,10 +53,10 @@ class DetailController extends AbstractController
               $roleObject->getName().' was updated!'
               );
 
-            return $this->redirectToRoute('sw_user_role_edit_detail', ['slug' => $slug]);
+            return $this->redirectToRoute('stewie_user_role_edit_detail', ['slug' => $slug]);
           }
 
-      return $this->render('@StefanwiegmannUser/role/edit/detail.html.twig', [
+      return $this->render('@StewieUser/role/edit/detail.html.twig', [
           'role' => $roleObject,
           'form' => $form->createView(),
       ]);

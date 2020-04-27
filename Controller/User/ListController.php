@@ -26,7 +26,7 @@ class ListController extends AbstractController
 
     /**
     * @Route("/user/list/{page}", defaults={"page": 1}
-    *     , requirements={"page": "\d+"}, name="sw_user_list")
+    *     , requirements={"page": "\d+"}, name="stewie_user_list")
     */
     public function list($page, Request $request)
     {
@@ -40,9 +40,9 @@ class ListController extends AbstractController
             // $this->container->getParameter('max_rows')/*limit per page*/
         );
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
-        $pagination->setTemplate('@StefanwiegmannUser/default/pagination.html.twig');
+        $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
 
-      return $this->render('@StefanwiegmannUser/user/list.html.twig', [
+      return $this->render('@StewieUser/user/list.html.twig', [
           'userList' => $pagination,
           'page' => $page,
       ]);

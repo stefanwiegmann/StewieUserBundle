@@ -1,4 +1,4 @@
-{% extends '@StefanwiegmannUser/default/layout.html.twig' %}
+{% extends '@StewieUser/default/layout.html.twig' %}
 {% trans_default_domain 'SWUserBundle' %}
 
 {% block filterBlock %}{% endblock filterBlock %}
@@ -14,13 +14,13 @@
 <!-- tab bar -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_user_edit_detail', {'username': user.username}) }}">{{ 'label.details'|trans }}</a>
+        <a class="nav-link" href="{{ path('stewie_user_user_edit_detail', {'username': user.username}) }}">{{ 'label.details'|trans }}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">{{ 'label.group_s'|trans }}  <span class="badge badge-primary">{{user.groups|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('sw_user_user_edit_role', {'username': user.username}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{user.userRoles|length}}</a>
+        <a class="nav-link" href="{{ path('stewie_user_user_edit_role', {'username': user.username}) }}">{{ 'label.role_s'|trans }}  <span class="badge badge-primary">{{user.userRoles|length}}</a>
       </li>
     </ul>
 

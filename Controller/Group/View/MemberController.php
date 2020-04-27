@@ -25,7 +25,7 @@ class MemberController extends AbstractController
 
     /**
     * @Route("/user/group/view/member/{slug}/{page}", defaults={"page": 1}
-    *     , requirements={"page": "\d+"}, name="sw_user_group_view_member")
+    *     , requirements={"page": "\d+"}, name="stewie_user_group_view_member")
     */
     public function members($slug, $page, Request $request)
     {
@@ -42,9 +42,9 @@ class MemberController extends AbstractController
             $this->getParameter('max_rows')/*limit per page*/
         );
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
-        $pagination->setTemplate('@StefanwiegmannUser/default/pagination.html.twig');
+        $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
 
-      return $this->render('@StefanwiegmannUser/group/view/member.html.twig', [
+      return $this->render('@StewieUser/group/view/member.html.twig', [
           'group' => $group,
           'memberList' => $pagination,
           'page' => $page,

@@ -25,7 +25,7 @@ class UserController extends AbstractController
 
     /**
     * @Route("/user/role/view/user/{slug}/{page}", defaults={"role": 0, "page": 1}
-    *     , requirements={"page": "\d+"}, name="sw_user_role_view_user")
+    *     , requirements={"page": "\d+"}, name="stewie_user_role_view_user")
     */
     public function user($slug, $page, Request $request)
     {
@@ -46,9 +46,9 @@ class UserController extends AbstractController
             // $this->container->getParameter('max_rows')/*limit per page*/
         );
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
-        $pagination->setTemplate('@StefanwiegmannUser/default/pagination.html.twig');
+        $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
 
-      return $this->render('@StefanwiegmannUser/role/view/user.html.twig', [
+      return $this->render('@StewieUser/role/view/user.html.twig', [
           'role' => $roleObject,
           'userList' => $pagination,
           'page' => $page,
