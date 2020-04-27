@@ -1,5 +1,5 @@
 {
-    "name": "stewieg/user-bundle",
+    "name": "stewie/user-bundle",
     "type": "symfony-bundle",
     "description": "A user bundle for Symfony5",
     "authors" : [{
