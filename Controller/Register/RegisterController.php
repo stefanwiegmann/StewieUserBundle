@@ -23,7 +23,7 @@ class RegisterController extends AbstractController
     */
     public function register(Request $request, UserPasswordEncoderInterface $encoder, MailerInterface $mailer, AvatarGenerator $avatarGenerator)
     {
-      if(!$this->getParameter('register')){
+      if(!$this->getParameter('stewie_user.register')){
 
         $this->addFlash(
           'warning',

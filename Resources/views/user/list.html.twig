@@ -11,8 +11,8 @@
 
 {% block pageTitle %}{{ 'header.list'|trans }}{% endblock pageTitle %}
 {% block pageMenu %}
-  {% if is_granted('ROLE_USER_USER_CREATE') %}
-    <a href="{{ path('stewie_user_group_create') }}" class="btn btn-primary" role="button">{{ 'label.group.create'|trans }}</a>
+  {% if stewie_user_register %}
+    <a href="{{ path('stewie_user_register') }}" class="btn btn-primary" role="button">{{ 'header.register'|trans }}</a>
   {% endif %}
 {% endblock pageMenu %}
 

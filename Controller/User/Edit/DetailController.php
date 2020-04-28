@@ -38,16 +38,12 @@ class DetailController extends AbstractController
       if ($form->isSubmitted() && $form->isValid()) {
           $user = $form->getData();
 
-          // // set avatar if old avatar was removed
-          if(!$user->getAvatarFile()){
-            // $avatar = new File($avatarGenerator->create($user->getUsername()));
-            $user->setAvatarName($avatarGenerator->create($user));
-            // $user->setAvatarSize(0);
-          }
-
           // save user
           $em->persist($user);
           $em->flush();
+
+          // set null to avoid error on serialize
+          $user->setAvatarFile(null);
 
           $this->addFlash(
             'success',

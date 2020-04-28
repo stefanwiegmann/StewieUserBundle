@@ -91,7 +91,7 @@
         {{ form_errors(form.avatarFile) }}
         {{ form_widget(form.avatarFile.file) }}
         {% if vich_uploader_asset(user, 'avatarFile') %}
-          {{ form_widget(form.avatarFile.delete) }}
+          {#{ form_widget(form.avatarFile.delete) }#}
         {% endif %}
       </div>
     </div>

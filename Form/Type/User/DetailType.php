@@ -42,7 +42,7 @@ class DetailType extends AbstractType
 
              ->add('avatarFile', VichImageType::class, [
                 'required' => false,
-                'allow_delete' => true,
+                'allow_delete' => false,
                 'download_label' => 'label.download',
                 'download_uri' => false,
                 'image_uri' => true,
