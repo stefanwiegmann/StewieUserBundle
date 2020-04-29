@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\File\File;
 class FillRolesCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'user:fill-roles';
+    protected static $defaultName = 'stewie:user:fill-roles';
 
     private $container;
     private $avatarGenerator;

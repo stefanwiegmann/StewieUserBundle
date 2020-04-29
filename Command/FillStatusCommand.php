@@ -13,7 +13,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 class FillStatusCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'user:fill-status';
+    protected static $defaultName = 'stewie:user:fill-status';
 
     private $container;
 

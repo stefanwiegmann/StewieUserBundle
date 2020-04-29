@@ -12,7 +12,7 @@ use Symfony\Component\Console\Input\InputOption;
 class FillDataCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'user:fill-data';
+    protected static $defaultName = 'stewie:user:fill-data';
 
     private $container;
 
@@ -39,10 +39,10 @@ class FillDataCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-      $statusCommand = $this->getApplication()->find('user:fill-status');
-      $roleCommand = $this->getApplication()->find('user:fill-roles');
-      $groupCommand = $this->getApplication()->find('user:fill-groups');
-      $userCommand = $this->getApplication()->find('user:fill-users');
+      $statusCommand = $this->getApplication()->find('stewie:user:fill-status');
+      $roleCommand = $this->getApplication()->find('stewie:user:fill-roles');
+      $groupCommand = $this->getApplication()->find('stewie:user:fill-groups');
+      $userCommand = $this->getApplication()->find('stewie:user:fill-users');
       // $noInput = new ArrayInput();
 
       if($input->getOption('all')){

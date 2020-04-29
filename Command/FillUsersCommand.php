@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\File\File;
 class FillUsersCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'user:fill-users';
+    protected static $defaultName = 'stewie:user:fill-users';
 
     private $container;
     private $passwordEncoder;

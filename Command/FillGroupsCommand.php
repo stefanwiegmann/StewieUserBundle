@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\File\File;
 class FillGroupsCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'user:fill-groups';
+    protected static $defaultName = 'stewie:user:fill-groups';
 
     private $container;
     private $avatarGenerator;

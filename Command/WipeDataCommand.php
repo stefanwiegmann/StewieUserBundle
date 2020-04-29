@@ -13,7 +13,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 class WipeDataCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'user:wipe-data';
+    protected static $defaultName = 'stewie:user:wipe-data';
 
     private $container;
 
