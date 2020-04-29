@@ -63,10 +63,18 @@ class ConfigureCommand extends Command
       $progressBar->advance(); // step 1
 
       // create upload folders
-      $filesystem->mirror($path.'Resources/upload/', 'upload/');
+      $filesystem->mirror($path.'Resources/uploads/', 'uploads/');
       $progressBar->advance(); // step 2
 
       // make sure upload folders are in .gitignore
+      $filename = ".gitignore";
+      $lines = file($filename);//file in to an array
+      $i = 1;
+      foreach ($lines as &$line) {
+        $i++;
+        $output->writeln($i.':'.$line);
+      }
+
       $progressBar->advance(); // step 3
 
       // copy bundle config
