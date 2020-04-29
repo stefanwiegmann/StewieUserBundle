@@ -5,14 +5,10 @@ namespace Stewie\UserBundle\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-// use Stewie\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-// use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
-// use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
-// use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -67,13 +63,42 @@ class ConfigureCommand extends Command
       $progressBar->advance(); // step 2
 
       // make sure upload folders are in .gitignore
+      $filesystem->remove('.gitignore.new');
+      $filesystem->touch('.gitignore.new');
       $filename = ".gitignore";
-      $lines = file($filename);//file in to an array
-      $i = 1;
+      $lines = file($filename);
+      $location = 'outside';
+
       foreach ($lines as &$line) {
-        $i++;
-        $output->writeln($i.':'.$line);
+        // find start of section
+        if(substr($line,0,27) == '###> stewie/user-bundle ###'){
+          $location = 'inside';
+        }
+
+        // copy over, if other content
+        if($location == 'outside'){
+          $filesystem->appendToFile('.gitignore.new', $line);
+        }
+
+        // find end of section
+        if(substr($line,0,27) == "###< stewie/user-bundle ###"){
+          $location = 'outside';
+        }
       }
+
+      // add new gitignore directives
+      $filesystem->appendToFile('.gitignore.new', "\n###> stewie/user-bundle ###\n");
+      $filesystem->appendToFile('.gitignore.new', "/uploads/avatar/group/*\n");
+      $filesystem->appendToFile('.gitignore.new', "/uploads/avatar/user/*\n");
+      $filesystem->appendToFile('.gitignore.new', "/uploads/avatar/role/*\n");
+      $filesystem->appendToFile('.gitignore.new', "!/uploads/avatar/group/.gitkeep\n");
+      $filesystem->appendToFile('.gitignore.new', "!/uploads/avatar/user/.gitkeep\n");
+      $filesystem->appendToFile('.gitignore.new', "!/uploads/avatar/role/.gitkeep\n");
+      $filesystem->appendToFile('.gitignore.new', "###< stewie/user-bundle ###\n");
+
+      // overwrite file
+      $filesystem->remove('.gitignore');
+      $filesystem->rename('.gitignore.new', '.gitignore');
 
       $progressBar->advance(); // step 3
 
