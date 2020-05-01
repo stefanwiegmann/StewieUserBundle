@@ -1,0 +1,7 @@
+    # stewie_user
+    Stewie\UserBundle\:
+        resource: '@StewieUserBundle/*/*'
+        exclude: '@StewieUserBundle/{Entity}'
+        tags: ['controller.service_arguments']
+        autowire: true
+    # stewie_user end

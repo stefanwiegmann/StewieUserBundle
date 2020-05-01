@@ -14,6 +14,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Yaml\Yaml;
 
 class ConfigureCommand extends Command
 {
@@ -64,7 +65,7 @@ class ConfigureCommand extends Command
             case 'n':
                 return 0;
             case 'ALL':
-                $progressBar = new ProgressBar($output, 4);
+                $progressBar = new ProgressBar($output, 5);
                 break;
             default:
                 $progressBar = new ProgressBar($output, 2);
@@ -87,19 +88,138 @@ class ConfigureCommand extends Command
 
         }
 
-        // // step 3
-        // updateGitIgnore($filesystem);
-        // $progressBar->advance();
+        // create missing folders
+        if($decision == 'b' || $decision == 'ALL'){
 
-        // // copy bundle config
-        // $filesystem->copy($path.'Resources/config/packages/stewie_user.yaml', 'config/packages/stewie_user.yaml', true);
-        // $progressBar->advance(); // step 4
+            $this->updateBundleConfig($filesystem, $bundlePath);
+            $progressBar->advance();
+
+        }
+
+        // copy routes from bundle
+        if($decision == 'R' || $decision == 'ALL'){
+
+            $this->updateRoutes($filesystem, $bundlePath);
+            $progressBar->advance();
+
+        }
+
+        // copy service config from bundle
+        if($decision == 'S' || $decision == 'ALL'){
+
+            $this->updateServices($filesystem, $bundlePath);
+            $progressBar->advance();
+
+        }
 
         // finish and out
         $progressBar->finish();
         $output->writeln('');
         // $output->writeln($input->getArgument('what'));
         return 1;
+    }
+
+    protected function updateBundleConfig($filesystem, $bundlePath)
+    {
+        $original = 'config/packages/stewie_user.yaml';
+        $bundleFile = $bundlePath.'Resources/config/packages/stewie_user.yaml';
+        $filesystem->remove($original.'.old');
+        $filesystem->rename($original, $original.'.old');
+        $filesystem->copy($bundleFile, $original);
+
+        return true;
+    }
+
+    protected function updateServices($filesystem, $bundlePath)
+    {
+        $original = 'config/services.yaml';
+        $bundleFile = $bundlePath.'Resources/config/services.yaml';
+        $filesystem->remove($original.'.new');
+        $filesystem->touch($original.'.new');
+        $location = 'outside';
+        $originalLines = file($original);
+        $bundleLines = file($bundleFile);
+
+        // copy all lines but stewie_user lines
+        foreach ($originalLines as &$line) {
+
+            // find start of section
+            if(substr($line,0,17) == '    # stewie_user'){
+              $location = 'inside';
+            }
+
+            // copy over, if other content
+            if($location == 'outside'){
+              $filesystem->appendToFile($original.'.new', $line);
+            }
+
+            // find end of section
+            if(substr($line,0,21) == '    # stewie_user end'){
+              $location = 'outside';
+            }
+
+        }
+
+        // switch to bundle file and append
+        $filesystem->appendToFile($original.'.new', "\n");
+        foreach ($bundleLines as &$line) {
+
+            $filesystem->appendToFile($original.'.new', $line);
+
+        }
+        $filesystem->appendToFile($original.'.new', "\n");
+
+        $filesystem->remove($original.'.old');
+        $filesystem->rename($original, $original.'.old');
+        $filesystem->rename($original.'.new', $original);
+
+        return true;
+    }
+
+    protected function updateRoutes($filesystem, $bundlePath)
+    {
+        $original = 'config/routes.yaml';
+        $bundleFile = $bundlePath.'Resources/config/routes.yaml';
+        $filesystem->remove($original.'.new');
+        $filesystem->touch($original.'.new');
+        $location = 'outside';
+        $originalLines = file($original);
+        $bundleLines = file($bundleFile);
+
+        // copy all lines but stewie_user lines
+        foreach ($originalLines as &$line) {
+
+            // find start of section
+            if(substr($line,0,12) == 'stewie_user:'){
+              $location = 'inside';
+            }
+
+            // copy over, if other content
+            if($location == 'outside'){
+              $filesystem->appendToFile($original.'.new', $line);
+            }
+
+            // find end of section
+            if(substr($line,0,16) == "#stewie_user_end"){
+              $location = 'outside';
+            }
+
+        }
+
+        // switch to bundle file and append
+        $filesystem->appendToFile($original.'.new', "\n");
+        foreach ($bundleLines as &$line) {
+
+            $filesystem->appendToFile($original.'.new', $line);
+
+        }
+        $filesystem->appendToFile($original.'.new', "\n");
+
+        $filesystem->remove($original.'.old');
+        $filesystem->rename($original, $original.'.old');
+        $filesystem->rename($original.'.new', $original);
+
+        return true;
     }
 
     protected function updateFilesystem($filesystem, $bundlePath)
@@ -129,45 +249,4 @@ class ConfigureCommand extends Command
 
         return $path;
     }
-
-    // protected function updateGitIgnore($filesystem)
-    // {
-    //
-    // // make sure upload folders are in .gitignore
-    // $filesystem->remove('.gitignore.new');
-    // $filesystem->touch('.gitignore.new');
-    // $filename = ".gitignore";
-    // $lines = file($filename);
-    // $location = 'outside';
-    //
-    // // copy all lines but stewie_user lines
-    // foreach ($lines as &$line) {
-    //   // find start of section
-    //   if(substr($line,0,27) == '###> stewie/user-bundle ###'){
-    //     $location = 'inside';
-    //   }
-    //
-    //   // copy over, if other content
-    //   if($location == 'outside'){
-    //     $filesystem->appendToFile('.gitignore.new', $line);
-    //   }
-    //
-    //   // find end of section
-    //   if(substr($line,0,27) == $filesystem"###< stewie/user-bundle ###"){
-    //     $location = 'outside';
-    //   }
-    // }$filesystem
-    //
-    // // add new gitignore directives
-    // $filesystem->appendToFile('.gitignore.new', "\n###> stewie/user-bundle ###\n");
-    // $filesystem->appendToFile('.gitignore.new', "!/var/stewie/user-bundle/uploads/avatar/.gitkeep\n");
-    // $filesystem->appendToFile('.gitignore.new', "###< stewie/user-bundle ###\n");
-    //
-    // // overwrite file
-    // $filesystem->remove('.gitignore');
-    // $filesystem->rename('.gitignore.new', '.gitignore');
-    //
-    // // and out
-    // return true;
-    // }
 }

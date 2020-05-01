@@ -1,0 +1,9 @@
+stewie_user:
+    resource: "@StewieUserBundle/Controller/"
+    type:     annotation
+    prefix:   "{_locale}/"
+    defaults:
+      _locale: en
+    requirements:
+      _locale: en|de
+#stewie_user_end
