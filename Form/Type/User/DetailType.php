@@ -46,7 +46,7 @@ class DetailType extends AbstractType
                 'download_label' => 'label.download',
                 'download_uri' => false,
                 'image_uri' => true,
-                'imagine_pattern' => 'user_medium_filter',
+                'imagine_pattern' => 'stewie_user_medium_filter',
                 'asset_helper' => true,
                 'label' => 'label.avatar',
                 'translation_domain' => 'SWUserBundle',

@@ -118,7 +118,7 @@ class User implements UserInterface
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="user_avatar_user", fileNameProperty="avatarName", size="avatarSize")
+     * @Vich\UploadableField(mapping="stewie_user_avatar", fileNameProperty="avatarName", size="avatarSize")
      * @Assert\File(
      *     maxSize = "2048k",
      *     mimeTypes = {"image/png", "image/jpeg", "image/gif"},
@@ -203,6 +203,11 @@ class User implements UserInterface
         $this->avatarSize = 0;
         $this->updatedAt = new \DateTimeImmutable();
 
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->usernameCanonical;
     }
 
     /**

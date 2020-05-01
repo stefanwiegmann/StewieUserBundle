@@ -83,7 +83,7 @@
       </div>
       <div class="col-sm-auto">
         {% if vich_uploader_asset(user, 'avatarFile') %}
-          <img src="{{ vich_uploader_asset(user, 'avatarFile') | imagine_filter('user_medium_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
+          <img src="{{ vich_uploader_asset(user, 'avatarFile') | imagine_filter('stewie_user_medium_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
         {% endif %}
       </div>
       <div class="col">

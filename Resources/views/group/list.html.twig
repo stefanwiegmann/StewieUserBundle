@@ -33,7 +33,7 @@
 <tr>
   <td>{{ item.id }}
     {% if vich_uploader_asset(item, 'avatarFile') %}
-      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('user_thumb_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
+      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('stewie_user_thumb_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
     {% endif %}
   </td>
   <td>{{ item.name }}</td>

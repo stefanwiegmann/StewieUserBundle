@@ -7,7 +7,7 @@
         {% else %}
 
           {% if vich_uploader_asset(app.user, 'avatarFile') %}
-            <img src="{{ vich_uploader_asset(app.user, 'avatarFile') | imagine_filter('user_thumb_filter') }}" alt="{{ app.user.username }}"  class="rounded-lg"/>
+            <img src="{{ vich_uploader_asset(app.user, 'avatarFile') | imagine_filter('stewie_user_thumb_filter') }}" alt="{{ app.user.username }}"  class="rounded-lg"/>
           {% else %}
             <i class="fas fa-user"></i>
           {% endif %}

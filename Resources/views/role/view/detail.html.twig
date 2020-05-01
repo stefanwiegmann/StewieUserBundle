@@ -72,7 +72,7 @@
       </div>
       <div class="col-sm-10">
         {% if vich_uploader_asset(role, 'avatarFile') %}
-          <img src="{{ vich_uploader_asset(role, 'avatarFile') | imagine_filter('user_medium_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
+          <img src="{{ vich_uploader_asset(role, 'avatarFile') | imagine_filter('stewie_user_medium_filter') }}" alt="{{ 'labal.avatar'|trans }}" />
         {% endif %}
       </div>
     </div>
