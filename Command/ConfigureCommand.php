@@ -48,67 +48,95 @@ class ConfigureCommand extends Command
       $progressBar->start();
 
       $filesystem = new Filesystem();
-      $path = '';
 
       // are we a vendor or the dev?
-      if($filesystem->exists('lib/stewie/user-bundle')){
-        $path = 'lib/stewie/user-bundle/';
-      }elseif($filesystem->exists('vendor/stewie/user-bundle')){
-        $path = 'vendor/stewie/user-bundle/';
-      }
-      $progressBar->advance(); // step 1
+      $bundlePath = $this->getBundlePath($filesystem);
+      $progressBar->advance();
 
-      // create upload folders
-      $filesystem->mirror($path.'Resources/uploads/', 'uploads/');
-      $progressBar->advance(); // step 2
+      // // create missing folders
+      $this->updateFilesystem($filesystem, $bundlePath);
+      $progressBar->advance();
 
-      // make sure upload folders are in .gitignore
-      $filesystem->remove('.gitignore.new');
-      $filesystem->touch('.gitignore.new');
-      $filename = ".gitignore";
-      $lines = file($filename);
-      $location = 'outside';
+      // // step 3
+      // updateGitIgnore($filesystem);
+      // $progressBar->advance();
 
-      foreach ($lines as &$line) {
-        // find start of section
-        if(substr($line,0,27) == '###> stewie/user-bundle ###'){
-          $location = 'inside';
-        }
-
-        // copy over, if other content
-        if($location == 'outside'){
-          $filesystem->appendToFile('.gitignore.new', $line);
-        }
-
-        // find end of section
-        if(substr($line,0,27) == "###< stewie/user-bundle ###"){
-          $location = 'outside';
-        }
-      }
-
-      // add new gitignore directives
-      $filesystem->appendToFile('.gitignore.new', "\n###> stewie/user-bundle ###\n");
-      $filesystem->appendToFile('.gitignore.new', "/uploads/avatar/group/*\n");
-      $filesystem->appendToFile('.gitignore.new', "/uploads/avatar/user/*\n");
-      $filesystem->appendToFile('.gitignore.new', "/uploads/avatar/role/*\n");
-      $filesystem->appendToFile('.gitignore.new', "!/uploads/avatar/group/.gitkeep\n");
-      $filesystem->appendToFile('.gitignore.new', "!/uploads/avatar/user/.gitkeep\n");
-      $filesystem->appendToFile('.gitignore.new', "!/uploads/avatar/role/.gitkeep\n");
-      $filesystem->appendToFile('.gitignore.new', "###< stewie/user-bundle ###\n");
-
-      // overwrite file
-      $filesystem->remove('.gitignore');
-      $filesystem->rename('.gitignore.new', '.gitignore');
-
-      $progressBar->advance(); // step 3
-
-      // copy bundle config
-      $filesystem->copy($path.'Resources/config/packages/stewie_user.yaml', 'config/packages/stewie_user.yaml', true);
-      $progressBar->advance(); // step 4
+      // // copy bundle config
+      // $filesystem->copy($path.'Resources/config/packages/stewie_user.yaml', 'config/packages/stewie_user.yaml', true);
+      // $progressBar->advance(); // step 4
 
       // finish and out
       $progressBar->finish();
       $output->writeln('');
       return 1;
     }
+
+    protected function updateFilesystem($filesystem, $bundlePath)
+    {
+
+        if(!$filesystem->exists('var/stewie/user-bundle/uploads/avatar/')){
+
+            $filesystem->mkdir('var/stewie/user-bundle/uploads/avatar/');
+
+        }
+
+        return true;
+    }
+
+    protected function getBundlePath($filesystem)
+    {
+
+        if($filesystem->exists('lib/stewie/user-bundle')){
+
+            $path = 'lib/stewie/user-bundle/';
+
+        }elseif($filesystem->exists('vendor/stewie/user-bundle')){
+
+            $path = 'vendor/stewie/user-bundle/';
+
+        }
+
+        return $path;
+    }
+
+    // protected function updateGitIgnore($filesystem)
+    // {
+    //
+    // // make sure upload folders are in .gitignore
+    // $filesystem->remove('.gitignore.new');
+    // $filesystem->touch('.gitignore.new');
+    // $filename = ".gitignore";
+    // $lines = file($filename);
+    // $location = 'outside';
+    //
+    // // copy all lines but stewie_user lines
+    // foreach ($lines as &$line) {
+    //   // find start of section
+    //   if(substr($line,0,27) == '###> stewie/user-bundle ###'){
+    //     $location = 'inside';
+    //   }
+    //
+    //   // copy over, if other content
+    //   if($location == 'outside'){
+    //     $filesystem->appendToFile('.gitignore.new', $line);
+    //   }
+    //
+    //   // find end of section
+    //   if(substr($line,0,27) == $filesystem"###< stewie/user-bundle ###"){
+    //     $location = 'outside';
+    //   }
+    // }$filesystem
+    //
+    // // add new gitignore directives
+    // $filesystem->appendToFile('.gitignore.new', "\n###> stewie/user-bundle ###\n");
+    // $filesystem->appendToFile('.gitignore.new', "!/var/stewie/user-bundle/uploads/avatar/.gitkeep\n");
+    // $filesystem->appendToFile('.gitignore.new', "###< stewie/user-bundle ###\n");
+    //
+    // // overwrite file
+    // $filesystem->remove('.gitignore');
+    // $filesystem->rename('.gitignore.new', '.gitignore');
+    //
+    // // and out
+    // return true;
+    // }
 }
