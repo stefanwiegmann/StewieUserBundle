@@ -5,8 +5,11 @@ namespace Stewie\UserBundle\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+// use Symfony\Component\Console\Question\ConfirmationQuestion;
+use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
+// use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
@@ -37,38 +40,66 @@ class ConfigureCommand extends Command
 
           // add all or only static groups
           ->addOption('all')
+
+          // double check what to do
+          // ->addArgument('what', InputArgument::REQUIRED, 'Type `Y` if you want all seetings to be updated.')
       ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        // what should be done?
+        $helper = $this->getHelper('question');
+        $question = new ChoiceQuestion(
+            'Please select what you want to have configured (defaults to nothing, backups will be made)',
+            ['n' => 'nothing', 'f' => 'Create needed folders', 'R' => 'Routing only', 'S' => 'Services only', 'b' => 'Bundle config file only', 'ALL' => 'All of the above'],
+            'n'
+        );
+        $question->setErrorMessage('%s is an invalid option.');
 
-      $progressBar = new ProgressBar($output, 4);
-      $output->writeln('Start configuration:');
-      $progressBar->start();
+        $decision = $helper->ask($input, $output, $question);
 
-      $filesystem = new Filesystem();
+        // setup
+        switch ($decision) {
+            case 'n':
+                return 0;
+            case 'ALL':
+                $progressBar = new ProgressBar($output, 4);
+                break;
+            default:
+                $progressBar = new ProgressBar($output, 2);
+        }
 
-      // are we a vendor or the dev?
-      $bundlePath = $this->getBundlePath($filesystem);
-      $progressBar->advance();
+        $output->writeln('Start configuration:');
+        $progressBar->start();
 
-      // // create missing folders
-      $this->updateFilesystem($filesystem, $bundlePath);
-      $progressBar->advance();
+        $filesystem = new Filesystem();
 
-      // // step 3
-      // updateGitIgnore($filesystem);
-      // $progressBar->advance();
+        // are we a vendor or the dev?
+        $bundlePath = $this->getBundlePath($filesystem);
+        $progressBar->advance();
 
-      // // copy bundle config
-      // $filesystem->copy($path.'Resources/config/packages/stewie_user.yaml', 'config/packages/stewie_user.yaml', true);
-      // $progressBar->advance(); // step 4
+        // create missing folders
+        if($decision == 'f' || $decision == 'ALL'){
 
-      // finish and out
-      $progressBar->finish();
-      $output->writeln('');
-      return 1;
+            $this->updateFilesystem($filesystem, $bundlePath);
+            $progressBar->advance();
+
+        }
+
+        // // step 3
+        // updateGitIgnore($filesystem);
+        // $progressBar->advance();
+
+        // // copy bundle config
+        // $filesystem->copy($path.'Resources/config/packages/stewie_user.yaml', 'config/packages/stewie_user.yaml', true);
+        // $progressBar->advance(); // step 4
+
+        // finish and out
+        $progressBar->finish();
+        $output->writeln('');
+        // $output->writeln($input->getArgument('what'));
+        return 1;
     }
 
     protected function updateFilesystem($filesystem, $bundlePath)
