@@ -1,3 +1,4 @@
+services:
     # stewie_user
     Stewie\UserBundle\:
         resource: '@StewieUserBundle/*/*'

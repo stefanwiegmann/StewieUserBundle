@@ -21,13 +21,13 @@ class ConfigureCommand extends Command
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'stewie:user:configure';
 
-    private $container;
-
-    public function __construct(ContainerInterface $container)
-    {
-        parent::__construct();
-        $this->container = $container;
-    }
+    // private $container;
+    //
+    // public function __construct(ContainerInterface $container)
+    // {
+    //     parent::__construct();
+    //     $this->container = $container;
+    // }
 
     protected function configure()
     {
@@ -225,9 +225,9 @@ class ConfigureCommand extends Command
     protected function updateFilesystem($filesystem, $bundlePath)
     {
 
-        if(!$filesystem->exists('var/stewie/user-bundle/uploads/avatar/')){
+        if(!$filesystem->exists('var/stewie/user-bundle/avatar/')){
 
-            $filesystem->mkdir('var/stewie/user-bundle/uploads/avatar/');
+            $filesystem->mkdir('var/stewie/user-bundle/avatar/');
 
         }
 
