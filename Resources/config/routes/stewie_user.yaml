@@ -1,4 +1,3 @@
-###> stewie/user-bundle ###
 stewie_user:
     resource: "@StewieUserBundle/Controller/"
     type:     annotation
@@ -7,4 +6,3 @@ stewie_user:
       _locale: en
     requirements:
       _locale: en|de
-###< stewie/user-bundle ###

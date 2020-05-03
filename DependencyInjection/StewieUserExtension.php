@@ -29,7 +29,6 @@ class StewieUserExtension extends Extension
 
         // load services
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
-        // $loader->load('security.xml');
+        $loader->load('commands.xml');
     }
 }

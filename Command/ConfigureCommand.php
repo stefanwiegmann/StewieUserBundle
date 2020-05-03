@@ -75,6 +75,8 @@ class ConfigureCommand extends Command
         $progressBar->start();
 
         $filesystem = new Filesystem();
+        $datetime = new \DateTime();
+        $snap = $datetime->format('YmdHis');
 
         // are we a vendor or the dev?
         $bundlePath = $this->getBundlePath($filesystem);
@@ -91,7 +93,7 @@ class ConfigureCommand extends Command
         // create missing folders
         if($decision == 'b' || $decision == 'ALL'){
 
-            $this->updateBundleConfig($filesystem, $bundlePath);
+            $this->updateBundleConfig($filesystem, $bundlePath, $snap);
             $progressBar->advance();
 
         }
@@ -99,7 +101,7 @@ class ConfigureCommand extends Command
         // copy routes from bundle
         if($decision == 'R' || $decision == 'ALL'){
 
-            $this->updateRoutes($filesystem, $bundlePath);
+            $this->updateRoutes($filesystem, $bundlePath, $snap);
             $progressBar->advance();
 
         }
@@ -107,7 +109,7 @@ class ConfigureCommand extends Command
         // copy service config from bundle
         if($decision == 'S' || $decision == 'ALL'){
 
-            $this->updateServices($filesystem, $bundlePath);
+            $this->updateServices($filesystem, $bundlePath, $snap);
             $progressBar->advance();
 
         }
@@ -119,18 +121,18 @@ class ConfigureCommand extends Command
         return 1;
     }
 
-    protected function updateBundleConfig($filesystem, $bundlePath)
+    protected function updateBundleConfig($filesystem, $bundlePath, $snap)
     {
         $original = 'config/packages/stewie_user.yaml';
         $bundleFile = $bundlePath.'Resources/config/packages/stewie_user.yaml';
         $filesystem->remove($original.'.old');
-        $filesystem->rename($original, $original.'.old');
+        $filesystem->rename($original, $original.'.'.$snap);
         $filesystem->copy($bundleFile, $original);
 
         return true;
     }
 
-    protected function updateServices($filesystem, $bundlePath)
+    protected function updateServices($filesystem, $bundlePath, $snap)
     {
         $original = 'config/services.yaml';
         $bundleFile = $bundlePath.'Resources/config/services.yaml';
@@ -144,7 +146,7 @@ class ConfigureCommand extends Command
         foreach ($originalLines as &$line) {
 
             // find start of section
-            if(substr($line,0,17) == '    # stewie_user'){
+            if(substr($line,0,27) == '###> stewie/user-bundle ###'){
               $location = 'inside';
             }
 
@@ -154,7 +156,7 @@ class ConfigureCommand extends Command
             }
 
             // find end of section
-            if(substr($line,0,21) == '    # stewie_user end'){
+            if(substr($line,0,27) == '###< stewie/user-bundle ###'){
               $location = 'outside';
             }
 
@@ -169,55 +171,20 @@ class ConfigureCommand extends Command
         }
         $filesystem->appendToFile($original.'.new', "\n");
 
-        $filesystem->remove($original.'.old');
-        $filesystem->rename($original, $original.'.old');
+        $filesystem->remove($original.'.'.$snap);
+        $filesystem->rename($original, $original.'.'.$snap);
         $filesystem->rename($original.'.new', $original);
 
         return true;
     }
 
-    protected function updateRoutes($filesystem, $bundlePath)
+    protected function updateRoutes($filesystem, $bundlePath, $snap)
     {
-        $original = 'config/routes.yaml';
-        $bundleFile = $bundlePath.'Resources/config/routes.yaml';
-        $filesystem->remove($original.'.new');
-        $filesystem->touch($original.'.new');
-        $location = 'outside';
-        $originalLines = file($original);
-        $bundleLines = file($bundleFile);
-
-        // copy all lines but stewie_user lines
-        foreach ($originalLines as &$line) {
-
-            // find start of section
-            if(substr($line,0,12) == 'stewie_user:'){
-              $location = 'inside';
-            }
-
-            // copy over, if other content
-            if($location == 'outside'){
-              $filesystem->appendToFile($original.'.new', $line);
-            }
-
-            // find end of section
-            if(substr($line,0,16) == "#stewie_user_end"){
-              $location = 'outside';
-            }
-
-        }
-
-        // switch to bundle file and append
-        $filesystem->appendToFile($original.'.new', "\n");
-        foreach ($bundleLines as &$line) {
-
-            $filesystem->appendToFile($original.'.new', $line);
-
-        }
-        $filesystem->appendToFile($original.'.new', "\n");
-
+        $original = 'config/routes/stewie_user.yaml';
+        $bundleFile = $bundlePath.'Resources/config/routes/stewie_user.yaml';
         $filesystem->remove($original.'.old');
-        $filesystem->rename($original, $original.'.old');
-        $filesystem->rename($original.'.new', $original);
+        $filesystem->rename($original, $original.'.'.$snap);
+        $filesystem->copy($bundleFile, $original);
 
         return true;
     }

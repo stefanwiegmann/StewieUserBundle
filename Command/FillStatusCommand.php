@@ -43,7 +43,7 @@ class FillStatusCommand extends Command
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StewieUserBundle:Status');
 
-      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieUserBundle/Data')."/status.json");
+      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieUserBundle/Resources/data')."/status.json");
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 

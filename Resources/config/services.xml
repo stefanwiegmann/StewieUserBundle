@@ -6,7 +6,7 @@
 
     <services>
 
-        <!-- security services -->
+        <!-- services -->
         <!-- <service id="stewie_user.command.configure" class="Stewie\UserBundle\Command\ConfigureCommand"/>
         <service id="stewie_user.command.fill_data" class="Stewie\UserBundle\Command\FillDataCommand"/>
         <service id="stewie_user.command.fill_groups" class="Stewie\UserBundle\Command\FillGroupsCommand"/>
@@ -14,20 +14,6 @@
         <service id="stewie_user.command.fill_users" class="Stewie\UserBundle\Command\FillUsersCommand"/>
         <service id="stewie_user.command.fill_status" class="Stewie\UserBundle\Command\FillStatusCommand"/>
         <service id="stewie_user.command.wipe_data" class="Stewie\UserBundle\Command\WipeDataCommand"/> -->
-
-        <service id="stewie_user.command.configure" class="Stewie\UserBundle\Command\ConfigureCommand" public="false">
-            <!-- <argument type="container" id="controller.service_arguments" /> -->
-            <!-- <argument>%controller.service_arguments%</argument> -->
-            <!-- <argument key="$container" type="service" id="symfony.component.dependency.injection.container_interface"/> -->
-            <tag name="console.command" command="stewie:user:configure" />
-        </service>
-
-        <service id="stewie_user.security.login_form_authenticator" class="Stewie\UserBundle\Secirty\LoginFormAuthenticator" public="false">
-            <!-- <argument type="container" id="controller.service_arguments" /> -->
-            <!-- <argument>%controller.service_arguments%</argument> -->
-            <!-- <argument key="$container" type="service" id="symfony.component.dependency.injection.container_interface"/> -->
-            <!-- <tag name="console.command" command="stewie:user:configure" /> -->
-        </service>
 
     </services>
 

@@ -48,7 +48,7 @@ class FillGroupsCommand extends Command
       $repo = $em->getRepository('StewieUserBundle:Group');
       $roleRepo = $em->getRepository('StewieUserBundle:Role');
 
-      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieUserBundle/Data')."/groups.json");
+      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieUserBundle/Resources/data')."/groups.json");
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 

@@ -47,7 +47,7 @@ class FillRolesCommand extends Command
       $em = $this->container->get('doctrine')->getManager();
       $repo = $em->getRepository('StewieUserBundle:Role');
 
-      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieUserBundle/Data')."/roles.json");
+      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieUserBundle/Resources/data')."/roles.json");
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 

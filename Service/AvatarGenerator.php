@@ -26,7 +26,7 @@ class AvatarGenerator extends AbstractController
               break;
           case "Stewie\UserBundle\Entity\Role":
               // Get string from object
-              $string = $object->getName();
+              $string = str_replace('ROLE_', '', $object->getName());
               break;
           default:
              return false;
