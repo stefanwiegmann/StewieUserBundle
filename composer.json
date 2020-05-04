@@ -34,6 +34,17 @@
             "Stewie\\UserBundle\\": ""
         }
     },
+    "scripts": {
+        "config-scripts": {
+            "stewie:user:configure": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@config-scripts"
+        ],
+        "post-update-cmd": [
+            "@config-scripts"
+        ]
+    },
     "extra" : {
     "branch-alias" : {
             "dev-master" : "1.0.x-dev"
