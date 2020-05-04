@@ -126,7 +126,9 @@ class ConfigureCommand extends Command
         $original = 'config/packages/stewie_user.yaml';
         $bundleFile = $bundlePath.'Resources/config/packages/stewie_user.yaml';
         $filesystem->remove($original.'.old');
-        $filesystem->rename($original, $original.'.'.$snap);
+        if($filesystem->exists($original)){
+            $filesystem->rename($original, $original.'.'.$snap);
+        }
         $filesystem->copy($bundleFile, $original);
 
         return true;
@@ -172,7 +174,9 @@ class ConfigureCommand extends Command
         $filesystem->appendToFile($original.'.new', "\n");
 
         $filesystem->remove($original.'.'.$snap);
-        $filesystem->rename($original, $original.'.'.$snap);
+        if($filesystem->exists($original)){
+            $filesystem->rename($original, $original.'.'.$snap);
+        }
         $filesystem->rename($original.'.new', $original);
 
         return true;
@@ -183,7 +187,9 @@ class ConfigureCommand extends Command
         $original = 'config/routes/stewie_user.yaml';
         $bundleFile = $bundlePath.'Resources/config/routes/stewie_user.yaml';
         $filesystem->remove($original.'.old');
-        $filesystem->rename($original, $original.'.'.$snap);
+        if($filesystem->exists($original)){
+            $filesystem->rename($original, $original.'.'.$snap);
+        }
         $filesystem->copy($bundleFile, $original);
 
         return true;
