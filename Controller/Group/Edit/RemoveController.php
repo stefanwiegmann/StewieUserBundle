@@ -36,7 +36,7 @@ class RemoveController extends AbstractController
     // create form
     $form = $this->createFormBuilder($groupObject)
             ->add('submit', SubmitType::class, array('label' => 'label.remove',
-            'translation_domain' => 'SWUserBundle',
+            'translation_domain' => 'StewieUserBundle',
             'attr'=> array('class'=>'btn-danger'),))
             ->getForm();
 
@@ -61,9 +61,9 @@ class RemoveController extends AbstractController
         'text' => $translator->trans('confirmation.group.remove', [
           '%subject%' => $userObject->getUsername(),
           '%object%' => $groupObject->getName()
-          ], 'SWUserBundle'),
+          ], 'StewieUserBundle'),
         'title' => $groupObject->getName(),
-        'mutedTitle' => $translator->trans('header.group.remove', [], 'SWUserBundle'),
+        'mutedTitle' => $translator->trans('header.group.remove', [], 'StewieUserBundle'),
         'form' => $form->createView(),
     ]);
 

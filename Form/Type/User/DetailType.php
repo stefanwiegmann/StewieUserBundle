@@ -22,22 +22,22 @@ class DetailType extends AbstractType
         $builder
              ->add('username', TextType::class, array(
                'label' => 'label.username',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('firstName', TextType::class, array(
                'label' => 'label.firstName',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('lastName', TextType::class, array(
                'label' => 'label.lastName',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('email', EmailType::class, array(
                'label' => 'label.email',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('avatarFile', VichImageType::class, [
@@ -49,11 +49,11 @@ class DetailType extends AbstractType
                 'imagine_pattern' => 'stewie_user_medium_filter',
                 'asset_helper' => true,
                 'label' => 'label.avatar',
-                'translation_domain' => 'SWUserBundle',
+                'translation_domain' => 'StewieUserBundle',
               ])
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',
-             'translation_domain' => 'SWUserBundle',
+             'translation_domain' => 'StewieUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;
     }

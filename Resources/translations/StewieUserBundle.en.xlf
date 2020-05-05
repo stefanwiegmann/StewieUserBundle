@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
-  <file id="SWUserBundle.en">
+  <file id="StewieUserBundle.en">
     <unit id="Auh6o_P" name="confirmation.delete">
       <segment>
         <source>confirmation.delete</source>
@@ -659,6 +659,18 @@
       <segment>
         <source>labal.avatar</source>
         <target>labal.avatar</target>
+      </segment>
+    </unit>
+    <unit id="lv.DEfQ" name="label.invite">
+      <segment>
+        <source>label.invite</source>
+        <target>Invite</target>
+      </segment>
+    </unit>
+    <unit id="avJUeno" name="header.invite">
+      <segment>
+        <source>header.invite</source>
+        <target>Invite User</target>
       </segment>
     </unit>
   </file>

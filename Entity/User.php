@@ -100,6 +100,16 @@ class User implements UserInterface
     private $tokenDate;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User", inversedBy="invited")
+     */
+    private $inviter;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Stewie\UserBundle\Entity\User", mappedBy="inviter")
+     */
+    private $invited;
+
+    /**
      * @var \DateTime $created
      *
      * @Gedmo\Timestampable(on="create")
@@ -202,6 +212,7 @@ class User implements UserInterface
         $this->userRoles = new ArrayCollection();
         $this->avatarSize = 0;
         $this->updatedAt = new \DateTimeImmutable();
+        $this->invited = new ArrayCollection();
 
     }
 
@@ -490,6 +501,49 @@ class User implements UserInterface
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getInviter(): ?self
+    {
+        return $this->inviter;
+    }
+
+    public function setInviter(?self $inviter): self
+    {
+        $this->inviter = $inviter;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getInvited(): Collection
+    {
+        return $this->invited;
+    }
+
+    public function addInvited(User $invited): self
+    {
+        if (!$this->invited->contains($invited)) {
+            $this->invited[] = $invited;
+            $invited->setInviter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvited(User $invited): self
+    {
+        if ($this->invited->contains($invited)) {
+            $this->invited->removeElement($invited);
+            // set the owning side to null (unless already changed)
+            if ($invited->getInviter() === $this) {
+                $invited->setInviter(null);
+            }
+        }
 
         return $this;
     }

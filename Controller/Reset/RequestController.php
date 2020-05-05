@@ -27,8 +27,8 @@ class RequestController extends AbstractController
 
       // create form
       $form = $this->createFormBuilder()
-        ->add('email', EmailType::class, ['label' => 'label.reset.email', 'translation_domain' => 'SWUserBundle'])
-        ->add('submit', SubmitType::class, ['label' => 'label.reset.request', 'translation_domain' => 'SWUserBundle'])
+        ->add('email', EmailType::class, ['label' => 'label.reset.email', 'translation_domain' => 'StewieUserBundle'])
+        ->add('submit', SubmitType::class, ['label' => 'label.reset.request', 'translation_domain' => 'StewieUserBundle'])
         ->getForm();
 
       // handle form

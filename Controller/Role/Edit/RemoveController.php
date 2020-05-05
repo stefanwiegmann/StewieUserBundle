@@ -38,7 +38,7 @@ class RemoveController extends AbstractController
     // $form = $this->createForm(DeleteType::class, $roleObject);
     $form = $this->createFormBuilder($roleObject)
             ->add('submit', SubmitType::class, array('label' => 'label.remove',
-            'translation_domain' => 'SWUserBundle',
+            'translation_domain' => 'StewieUserBundle',
             'attr'=> array('class'=>'btn-danger'),))
             ->getForm();
 
@@ -63,9 +63,9 @@ class RemoveController extends AbstractController
         'text' => $translator->trans('confirmation.role.remove', [
           '%subject%' => $userObject->getUsername(),
           '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')
-          ], 'SWUserBundle'),
+          ], 'StewieUserBundle'),
         'title' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
-        'mutedTitle' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
+        'mutedTitle' => $translator->trans('header.role.remove', [], 'StewieUserBundle'),
         'form' => $form->createView(),
     ]);
 
@@ -90,7 +90,7 @@ class RemoveController extends AbstractController
       // $form = $this->createForm(DeleteType::class, $roleObject);
       $form = $this->createFormBuilder($roleObject)
               ->add('submit', SubmitType::class, array('label' => 'label.remove',
-              'translation_domain' => 'SWUserBundle',
+              'translation_domain' => 'StewieUserBundle',
               'attr'=> array('class'=>'btn-danger'),))
               ->getForm();
 
@@ -115,9 +115,9 @@ class RemoveController extends AbstractController
         'text' => $translator->trans('confirmation.role.remove', [
           '%subject%' => $groupObject->getName(),
           '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')
-          ], 'SWUserBundle'),
+          ], 'StewieUserBundle'),
         'title' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
-        'mutedTitle' => $translator->trans('header.role.remove', [], 'SWUserBundle'),
+        'mutedTitle' => $translator->trans('header.role.remove', [], 'StewieUserBundle'),
         'form' => $form->createView(),
     ]);
 

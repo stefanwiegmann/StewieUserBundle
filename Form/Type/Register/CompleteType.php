@@ -19,17 +19,17 @@ class CompleteType extends AbstractType
 
              ->add('firstName', TextType::class, array(
                'label' => 'label.firstName',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('lastName', TextType::class, array(
                'label' => 'label.lastName',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('username', TextType::class, array(
                'label' => 'label.username',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('password', RepeatedType::class, [
@@ -38,13 +38,13 @@ class CompleteType extends AbstractType
                  // 'options' => ['attr' => ['class' => 'password-field']],
                  'required' => true,
                  'mapped' => false,
-                 'translation_domain' => 'SWUserBundle',
-                 'first_options'  => ['label' => 'label.password.first', 'translation_domain' => 'SWUserBundle'],
-                 'second_options' => ['label' => 'label.password.second', 'translation_domain' => 'SWUserBundle'],
+                 'translation_domain' => 'StewieUserBundle',
+                 'first_options'  => ['label' => 'label.password.first', 'translation_domain' => 'StewieUserBundle'],
+                 'second_options' => ['label' => 'label.password.second', 'translation_domain' => 'StewieUserBundle'],
              ])
 
              ->add('submit', SubmitType::class, array('label' => 'label.register.complete',
-             'translation_domain' => 'SWUserBundle',
+             'translation_domain' => 'StewieUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;
     }

@@ -20,19 +20,19 @@ class UserType extends AbstractType
         $builder
              ->add('username', TextType::class, array(
                'label' => 'label.username',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
              ->add('email', EmailType::class, array(
                'label' => 'label.email',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
              ->add('firstName', TextType::class, array(
                'label' => 'label.firstName',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
              ->add('lastName', TextType::class, array(
                'label' => 'label.lastName',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
              // ->add('language', ChoiceType::class, array('choices' => $options['languages'],
              //    'label' => 'label.language',
@@ -46,8 +46,8 @@ class UserType extends AbstractType
              //                       return 'role.'.strtolower(str_replace('ROLE_','',$value));
              //                       },
              //    'expanded' => true, 'multiple' => true, 'mapped' => true,
-             //    'choice_translation_domain' => 'SWUserBundle',
-             //    'translation_domain' => 'SWUserBundle',))
+             //    'choice_translation_domain' => 'StewieUserBundle',
+             //    'translation_domain' => 'StewieUserBundle',))
              ->add('userRole', EntityType::class, array(
                    'class' => 'StewieUserBundle:Role',
                    'query_builder' => function (EntityRepository $er) {
@@ -58,17 +58,17 @@ class UserType extends AbstractType
                    // 'choices_as_values' => true,
                    'label' => 'label.role',
                    'expanded' => true, 'multiple' => true,
-                   'translation_domain' => 'SWUserBundle',
+                   'translation_domain' => 'StewieUserBundle',
                    'choice_translation_domain' => 'Roles',
                  ))
 
             // ->add('imageFile', FileType::class, array(
             //       'label' => 'label.logo',
             //       'required' => false,
-            //       'translation_domain' => 'SWUserBundle',))
+            //       'translation_domain' => 'StewieUserBundle',))
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',
-             'translation_domain' => 'SWUserBundle',
+             'translation_domain' => 'StewieUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;
     }

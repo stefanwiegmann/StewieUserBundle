@@ -1,5 +1,5 @@
 {% extends '@StewieUser/default/layout.html.twig' %}
-{% trans_default_domain 'SWUserBundle' %}
+{% trans_default_domain 'StewieUserBundle' %}
 
 {% block filterTitle %}{{ 'header.filter'|trans }}{% endblock filterTitle %}
 
@@ -12,7 +12,7 @@
 {% block pageTitle %}{{ 'header.list'|trans }}{% endblock pageTitle %}
 {% block pageMenu %}
   {% if stewie_user_register %}
-    <a href="{{ path('stewie_user_register') }}" class="btn btn-primary" role="button">{{ 'header.register'|trans }}</a>
+    <a href="{{ path('stewie_user_invite') }}" class="btn btn-primary" role="button">{{ 'label.invite'|trans }}</a>
   {% endif %}
 {% endblock pageMenu %}
 

@@ -16,19 +16,19 @@ class RegisterType extends AbstractType
         $builder
              ->add('email', EmailType::class, array(
                'label' => 'label.email',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
              ->add('firstName', TextType::class, array(
                'label' => 'label.firstName',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
              ->add('lastName', TextType::class, array(
                'label' => 'label.lastName',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('submit', SubmitType::class, array('label' => 'label.register',
-             'translation_domain' => 'SWUserBundle',
+             'translation_domain' => 'StewieUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;
     }

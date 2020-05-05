@@ -20,12 +20,12 @@ class CreateType extends AbstractType
         $builder
              ->add('name', TextType::class, array(
                'label' => 'label.name',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('description', TextType::class, array(
                'label' => 'label.description',
-               'translation_domain' => 'SWUserBundle',
+               'translation_domain' => 'StewieUserBundle',
              ))
 
              ->add('groupRoles', EntityType::class, array(
@@ -38,12 +38,12 @@ class CreateType extends AbstractType
                    // 'choices_as_values' => true,
                    'label' => 'label.role',
                    'expanded' => true, 'multiple' => true,
-                   'translation_domain' => 'SWUserBundle',
+                   'translation_domain' => 'StewieUserBundle',
                    'choice_translation_domain' => 'Roles',
                  ))
 
              ->add('submit', SubmitType::class, array('label' => 'label.create',
-             'translation_domain' => 'SWUserBundle',
+             'translation_domain' => 'StewieUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;
     }

@@ -28,12 +28,12 @@ class RoleType extends AbstractType
                   // 'choices_as_values' => true,
                   'label' => 'label.role',
                   'expanded' => true, 'multiple' => true,
-                  'translation_domain' => 'SWUserBundle',
+                  'translation_domain' => 'StewieUserBundle',
                   'choice_translation_domain' => 'Roles',
                 ))
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',
-             'translation_domain' => 'SWUserBundle',
+             'translation_domain' => 'StewieUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;
     }

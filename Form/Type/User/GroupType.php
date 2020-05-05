@@ -28,11 +28,11 @@ class GroupType extends AbstractType
                   // 'choices_as_values' => true,
                   'label' => 'label.group_s',
                   'expanded' => true, 'multiple' => true,
-                  'translation_domain' => 'SWUserBundle',
+                  'translation_domain' => 'StewieUserBundle',
                 ))
 
              ->add('submit', SubmitType::class, array('label' => 'label.update',
-             'translation_domain' => 'SWUserBundle',
+             'translation_domain' => 'StewieUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;
     }

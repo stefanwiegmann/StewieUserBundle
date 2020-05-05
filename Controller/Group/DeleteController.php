@@ -33,7 +33,7 @@ class DeleteController extends AbstractController
     // $form = $this->createForm(DeleteType::class, $group);
     $form = $this->createFormBuilder($group)
             ->add('submit', SubmitType::class, array('label' => 'label.delete',
-            'translation_domain' => 'SWUserBundle',
+            'translation_domain' => 'StewieUserBundle',
             'attr'=> array('class'=>'btn-danger'),))
             ->getForm();
 
@@ -53,10 +53,10 @@ class DeleteController extends AbstractController
     return $this->render('@StewieUser/default/remove.html.twig', [
         'title' => $translator->trans('confirmation.delete', [
           '%subject%' => $group->getName()
-          ], 'SWUserBundle'),
-        'text' => $translator->trans('confirmation.group.delete', [], 'SWUserBundle'),
+          ], 'StewieUserBundle'),
+        'text' => $translator->trans('confirmation.group.delete', [], 'StewieUserBundle'),
         'header1' => $group->getName(),
-        'header2' => $translator->trans('header.group.delete', [], 'SWUserBundle'),
+        'header2' => $translator->trans('header.group.delete', [], 'StewieUserBundle'),
         'form' => $form->createView(),
     ]);
 

@@ -25,12 +25,12 @@ class ResetType extends AbstractType
                 // 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
                 'mapped' => false,
-                'translation_domain' => 'SWUserBundle',
-                'first_options'  => ['label' => 'label.password.first', 'translation_domain' => 'SWUserBundle'],
-                'second_options' => ['label' => 'label.password.second', 'translation_domain' => 'SWUserBundle'],
+                'translation_domain' => 'StewieUserBundle',
+                'first_options'  => ['label' => 'label.password.first', 'translation_domain' => 'StewieUserBundle'],
+                'second_options' => ['label' => 'label.password.second', 'translation_domain' => 'StewieUserBundle'],
             ])
             ->add('submit', SubmitType::class, array('label' => 'label.reset.password',
-            'translation_domain' => 'SWUserBundle',
+            'translation_domain' => 'StewieUserBundle',
             'attr'=> array('class'=>'btn-primary'),))
         ;
     }
