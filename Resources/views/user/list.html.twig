@@ -58,6 +58,9 @@
        {{ group.name }}{% if not loop.last %},{% endif %}
     {% endfor %}</td>
   <td>
+    {% if item.lastLogin %}
+       {{ item.lastLogin|format_datetime('medium', 'short', locale= locale) }}
+    {% endif %}
   </td>
   <td>
   </td>

@@ -42,9 +42,13 @@ class ListController extends AbstractController
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
         $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
 
+// dump($this->getUser()->getLastLogin());
+dump($request);
+
       return $this->render('@StewieUser/user/list.html.twig', [
           'userList' => $pagination,
           'page' => $page,
+          'locale' => $request->getLocale()
       ]);
     }
 

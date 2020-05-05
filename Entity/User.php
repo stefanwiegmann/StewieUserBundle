@@ -100,6 +100,11 @@ class User implements UserInterface
     private $tokenDate;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $lastLogin;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User", inversedBy="invited")
      */
     private $inviter;
@@ -544,6 +549,18 @@ class User implements UserInterface
                 $invited->setInviter(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(?\DateTimeInterface $lastLogin): self
+    {
+        $this->lastLogin = $lastLogin;
 
         return $this;
     }
