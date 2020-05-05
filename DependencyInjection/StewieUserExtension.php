@@ -25,7 +25,6 @@ class StewieUserExtension extends Extension
         // define parameters
         $container->setParameter('stewie_user.register', $config['register']);
         $container->setParameter('stewie_user.max_rows', $config['max_rows']);
-        $container->setParameter('stewie_user.set_from', $config['set_from']);
         $container->setParameter('stewie_user.from_name', $config['from_name']);
         $container->setParameter('stewie_user.from_email', $config['from_email']);
 

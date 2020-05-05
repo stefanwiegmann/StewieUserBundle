@@ -5,15 +5,13 @@ namespace Stewie\UserBundle\Controller\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-// use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Stewie\UserBundle\Form\Type\User\InviteType;
 use Stewie\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Stewie\UserBundle\Service\AvatarGenerator;
+use Stewie\UserBundle\Service\MailGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 
 class InviteController extends AbstractController
@@ -21,7 +19,7 @@ class InviteController extends AbstractController
     /**
     * @Route("/user/invite", name="stewie_user_invite")
     */
-    public function register(Request $request, UserPasswordEncoderInterface $encoder, MailerInterface $mailer, AvatarGenerator $avatarGenerator)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, AvatarGenerator $avatarGenerator, MailGenerator $mailGenerator)
     {
 
       //create new user
@@ -57,29 +55,11 @@ class InviteController extends AbstractController
           $em->flush();
 
           // send email
-          $email = (new Email())
-           ->to($user->getEmail())
-           ->subject('Your Invitation')
-           ->text($this->renderView(
-                       '@StewieUser/emails/invitation.txt.twig', array(
-                          'name' => $user->getFirstName().' '.$user->getLastName(),
-                          'token' => $user->getToken(),
-                          'inviter' => $this->getUser()->getUsername()
-                       )),
-             )
-           ->html($this->renderView(
-                       '@StewieUser/emails/invitation.html.twig', array(
-                          'name' => $user->getFirstName().' '.$user->getLastName(),
-                          'token' => $user->getToken(),
-                          'inviter' => $this->getUser()->getUsername()
-                       ))
-                     );
-
-          $mailer->send($email);
+          $mailGenerator->invite($user);
 
           $this->addFlash(
             'success',
-            'A invitation was emailed to '.$user->getEmail().'!'
+            'An invitation was emailed to '.$user->getEmail().'!'
             );
 
           return $this->redirectToRoute('home');
