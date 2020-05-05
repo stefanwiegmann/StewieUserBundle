@@ -33,3 +33,6 @@ Make sure to update your database:
 $ php bin/console make:migration
 $ php bin/console doctrine:migrations:migrate
 ```
+
+## And next?
+[Setup](setup.md)

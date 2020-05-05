@@ -3,6 +3,8 @@ Setup
 
 ## Bundle Configuration
 
+### Automatic Configuration
+
 Open a command console, enter your project directory and execute the
 following command to copy over bundle configuration:
 
@@ -10,44 +12,11 @@ following command to copy over bundle configuration:
 $ bin/console stewie:user:configuration
 ```
 
-This will create `config/packages/stewie-user.yaml`, add folders under `uploads/.../...` for Avatars and add them to the projects `.gitignore`. Make sure to review these files and locations.
+Pick which part to auto-configure. This will create `config/packages/stewie-user.yaml`, `config/routes/stewie-user.yaml`, add lines to `config/services.yaml` and add folders under `var/stewie/user-bundle/...` for Avatars. Make sure to review these files and locations. `config/packages/security.yaml` will need manual configuration as per below.
 
 ### Manual Configuration
 
-Register services for the bundle in the `config/services.yaml` file of your project:
-
-```php
-// config/services.yaml
-
-// ...
-services:
-
-// ...
-
-  Stewie\UserBundle\:
-      resource: '@StewieUserBundle/*/*'
-      exclude: '@StewieUserBundle/{Entity}'
-      tags: ['controller.service_arguments']
-      autowire: true
-
-```
-
-Register routes:
-
-```php
-// config/routes.yaml
-// ...
-stefanwiegmann_user:
-    resource: "@StewieUserBundle/Controller/"
-    type:     annotation
-    prefix:   "{_locale}/"
-    defaults:
-      _locale: en
-    requirements:
-      _locale: en|de
-```
-
-Add minimum security configuration
+#### Add minimum security configuration
 
 ```php
 // config/security.yaml
@@ -90,10 +59,40 @@ security:
         // ...
 ```
 
-### Setup
+#### Register services for the bundle in the `config/services.yaml` file of your project
 
-Open a command console, enter your project directory and execute the
-following commands to
+```php
+// config/services.yaml
+
+// ...
+services:
+
+// ...
+
+###> stewie/user-bundle ###
+    Stewie\UserBundle\:
+        resource: '@StewieUserBundle/*/*'
+        exclude: '@StewieUserBundle/{Entity}'
+        tags: ['controller.service_arguments']
+        autowire: true
+###< stewie/user-bundle ###
+
+```
+
+#### Register routes
+
+```php
+// config/routes/stewie-user.yaml
+// ...
+stewie_user:
+    resource: "@StewieUserBundle/Controller/"
+    type:     annotation
+    prefix:   "{_locale}/"
+    defaults:
+      _locale: en
+    requirements:
+      _locale: en|de
+```
 
 #### fill minimal user data
 
