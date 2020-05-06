@@ -14,6 +14,10 @@ use Stewie\UserBundle\Service\AvatarGenerator;
 use Stewie\UserBundle\Service\MailGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 
+/**
+  * @IsGranted("ROLE_USER_USER_INVITE")
+  */
+
 class InviteController extends AbstractController
 {
     /**

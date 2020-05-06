@@ -17,10 +17,10 @@
         "description": "Can view a role and its assigned users and groups.",
         "sort": 2002
       },
-    "ROLE_USER_USER_CREATE": {
-        "name": "ROLE_USER_USER_CREATE",
+    "ROLE_USER_USER_INVITE": {
+        "name": "ROLE_USER_USER_INVITE",
         "bundle": "UserBundle",
-        "description": "Can create/register a new user, but not edit or delete.",
+        "description": "Can invite a new user, but not edit or delete.",
         "sort": 2011
       },
     "ROLE_USER_USER_DELETE": {

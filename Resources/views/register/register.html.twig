@@ -1,48 +1,74 @@
 {% extends '@StewieUser/default/layout.html.twig' %}
 {% trans_default_domain 'StewieUserBundle' %}
 
-{% block main %}
-<br>
-<div class="row justify-content-md-center">
-    <div class="col-md-6">
-      <div class="container-fluid">
-        <h1 class="h3 mb-3 font-weight-normal">{{ 'header.register'|trans }}</h1>
+{% block menuBlock %}{% endblock menuBlock %}
+{% block filterBlock %}{% endblock filterBlock %}
+{% block pageTitle %}
+    <p></p>
+    {{ 'header.register'|trans }}
+    <p></p>
+{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
 
-      <!-- actual form -->
-      {{ form_start(form) }}
+{% block content %}
 
-          <div class="form-group row">
-            <div class="col-sm-4 col-form-label">
-              <strong>{{ 'label.fullName'|trans }}</strong>
+    <div class="container-fluid">
+
+        {{ form_start(form) }}
+
+        <div class="row"><!-- name row -->
+
+            <div class="col-md-auto col-form-label">
+                <strong>{{ 'label.fullName'|trans }}</strong>
             </div>
-            <div class="col-sm-auto">
-              {{ form_errors(form.firstName) }}
-              {{ form_widget(form.firstName, {'attr': {'placeholder': 'label.firstName'} }) }}
-            </div>
-            <div class="col-sm-auto">
-              {{ form_errors(form.lastName) }}
-              {{ form_widget(form.lastName, {'attr': {'placeholder': 'label.lastName'} }) }}
-            </div>
-          </div>
 
-          <div class="form-group row">
-            <div class="col-sm-4 col-form-label">
-              <strong>{{ form_label(form.email) }}</strong>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-auto">
+                {{ form_errors(form.firstName) }}
+                {{ form_widget(form.firstName, {'attr': {'placeholder': 'label.firstName'} }) }}
             </div>
-            <div class="col-sm-8">
-              {{ form_errors(form.email) }}
-              {{ form_widget(form.email) }}
+
+            <div class="col-md-auto">
+                {{ form_errors(form.lastName) }}
+                {{ form_widget(form.lastName, {'attr': {'placeholder': 'label.lastName'} }) }}
             </div>
-          </div>
 
-          <br>
-          <div class="row justify-content-md-center">
-            {{ form_widget(form.submit) }}
-          </div>
+        </div><!-- name row -->
 
+        <br>
 
-      {{ form_end(form) }}
+        <div class="row"><!-- email row -->
+
+            <div class="col-md-auto">
+                <strong>{{ form_label(form.email) }}</strong>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email) }}
+            </div>
+
+        </div><!-- email row -->
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-md-auto">
+                {{ form_widget(form.submit) }}
+            </div>
+
+        </div>
+
+        {{ form_end(form) }}
+
     </div>
-  </div>
-</div>
-{% endblock main %}
+
+{% endblock content %}

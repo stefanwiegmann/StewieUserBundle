@@ -11,7 +11,7 @@
 
 {% block pageTitle %}{{ 'header.list'|trans }}{% endblock pageTitle %}
 {% block pageMenu %}
-  {% if stewie_user_register %}
+  {% if is_granted('ROLE_USER_USER_INVITE') %}
     <a href="{{ path('stewie_user_invite') }}" class="btn btn-primary" role="button">{{ 'label.invite'|trans }}</a>
   {% endif %}
 {% endblock pageMenu %}

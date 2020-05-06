@@ -14,7 +14,7 @@
           "2": "ROLE_USER_GROUP_CREATE",
           "3": "ROLE_USER_GROUP_EDIT",
           "4": "ROLE_USER_GROUP_VIEW",
-          "5": "ROLE_USER_USER_CREATE",
+          "5": "ROLE_USER_USER_INVITE",
           "6": "ROLE_USER_USER_EDIT",
           "7": "ROLE_USER_USER_VIEW"
         }
