@@ -10,9 +10,9 @@ stewie_user:
         after_logout: 'logout'
 
 # settings for dependencies
-# twig:
-#     globals:
-#         stewie_user_register: true
+twig:
+    globals:
+        stewie_user_register: true
 
 stof_doctrine_extensions:
     orm:

@@ -42,8 +42,8 @@ class UserController extends AbstractController
       $this->getQuery($roleObject), /* query NOT result */
       $request->query->getInt('page', $page)/*page number*/,
             // 10/*limit per page*/
-            $this->getParameter('max_rows')/*limit per page*/
-            // $this->container->getParameter('max_rows')/*limit per page*/
+            $this->getParameter('stewie_user.max_rows')/*limit per page*/
+            // $this->container->getParameter('stewie_user.max_rows')/*limit per page*/
         );
         // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
         $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
