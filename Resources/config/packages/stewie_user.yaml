@@ -11,6 +11,9 @@ stewie_user:
 
 # settings for dependencies
 twig:
+    # debug: '%kernel.debug%'
+    # strict_variables: '%kernel.debug%'
+    form_themes: ['bootstrap_4_layout.html.twig']
     globals:
         stewie_user_register: true
 
