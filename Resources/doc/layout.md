@@ -5,9 +5,9 @@ Layout
 
 This bundle is tested with and requires
 
-- jquery-3.4.1
+- jquery-3.5.1
 - popper-1.16.0
-- bootstrap-4.4.1
+- bootstrap-4.5.0
 - fontawesome-free-5.13.0
 
 Make sure to include in your project.
