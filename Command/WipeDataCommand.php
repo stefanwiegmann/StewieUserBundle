@@ -6,117 +6,134 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+// use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
+use Doctrine\ORM\EntityManagerInterface;
 
 class WipeDataCommand extends Command
 {
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'stewie:user:wipe-data';
 
-    private $container;
+    private $em;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(EntityManagerInterface $em)
     {
         parent::__construct();
-        $this->container = $container;
+        $this->em = $em;
     }
 
     protected function configure()
     {
-      $this
-          // the short description shown while running "php bin/console list"
-          ->setDescription('Wipes all data for UserBundle.')
+        $this
+            // the short description shown while running "php bin/console list"
+            ->setDescription('Wipes all data for UserBundle.')
 
-          // the full command description shown when running the command with
-          // the "--help" option
-          ->setHelp('This command allows you to wipe users, roles and groups')
+            // the full command description shown when running the command with
+            // the "--help" option
+            ->setHelp('This command allows you to wipe users, roles and groups')
 
-          // add all or only static groups
-          ->addOption('all')
-      ;
+            // add all or only static groups
+            ->addOption('all')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-      $em = $this->container->get('doctrine')->getManager();
+        // wipe users
+        $output->writeln('Wiping users:');
+        $repo = $this->em->getRepository('StewieUserBundle:User');
+        $users = $repo->findAll();
 
-      // wipe users
-      $output->writeln('Wiping users:');
-      $repo = $em->getRepository('StewieUserBundle:User');
-      $users = $repo->findAll();
+        $progressBar = new ProgressBar($output, count($users));
+        $progressBar->start();
 
-      $progressBar = new ProgressBar($output, count($users));
-      $progressBar->start();
+        foreach ($users as &$item){
 
-      foreach ($users as &$item){
-
-        $em->remove($item);
-        $progressBar->advance();
+            $this->em->remove($item);
+            $progressBar->advance();
         }
 
-      $em->flush();
-      $progressBar->finish();
-      $output->writeln('');
+        $this->em->flush();
+        $progressBar->finish();
+        $output->writeln('');
 
-      // wipe groups
-      $output->writeln('Wiping groups:');
-      $repo = $em->getRepository('StewieUserBundle:Group');
-      $groups = $repo->findAll();
+        // wipe groups
+        $output->writeln('Wiping groups:');
+        $repo = $this->em->getRepository('StewieUserBundle:Group');
+        $groups = $repo->findAll();
 
-      $progressBar = new ProgressBar($output, count($groups));
-      $progressBar->start();
+        $progressBar = new ProgressBar($output, count($groups));
+        $progressBar->start();
 
-      foreach ($groups as &$item){
+        foreach ($groups as &$item){
 
-        $em->remove($item);
-        $progressBar->advance();
+            $this->em->remove($item);
+            $progressBar->advance();
         }
 
-      $em->flush();
-      $progressBar->finish();
-      $output->writeln('');
+        $this->em->flush();
+        $progressBar->finish();
+        $output->writeln('');
 
-      // wipe roles
-      $output->writeln('Wiping roles:');
-      $repo = $em->getRepository('StewieUserBundle:Role');
-      $roles = $repo->findAll();
+        // wipe roles
+        $output->writeln('Wiping roles:');
+        $repo = $this->em->getRepository('StewieUserBundle:Role');
+        $roles = $repo->findAll();
 
-      $progressBar = new ProgressBar($output, count($roles));
-      $progressBar->start();
+        $progressBar = new ProgressBar($output, count($roles));
+        $progressBar->start();
 
-      foreach ($roles as &$item){
+        foreach ($roles as &$item){
 
-        $em->remove($item);
-        $progressBar->advance();
+            $this->em->remove($item);
+            $progressBar->advance();
         }
 
-      $em->flush();
-      $progressBar->finish();
-      $output->writeln('');
+        $this->em->flush();
+        $progressBar->finish();
+        $output->writeln('');
 
-      // wipe status
-      $output->writeln('Wiping status:');
-      $repo = $em->getRepository('StewieUserBundle:Status');
-      $status = $repo->findAll();
+        // wipe status
+        $output->writeln('Wiping status:');
+        $repo = $this->em->getRepository('StewieUserBundle:Status');
+        $status = $repo->findAll();
 
-      $progressBar = new ProgressBar($output, count($status));
-      $progressBar->start();
+        $progressBar = new ProgressBar($output, count($status));
+        $progressBar->start();
 
-      foreach ($status as &$item){
+        foreach ($status as &$item){
 
-        $em->remove($item);
-        $progressBar->advance();
+            $this->em->remove($item);
+            $progressBar->advance();
         }
 
-      $em->flush();
-      $progressBar->finish();
-      $output->writeln('');
+        $this->em->flush();
+        $progressBar->finish();
+        $output->writeln('');
 
-      // end of script
-      $output->writeln('All data wiped!');
+        // wipe logs
+        $output->writeln('Wiping logs:');
+        $repo = $this->em->getRepository('StewieUserBundle:UserLogEntry');
+        $logs = $repo->findAll();
 
-      return 1;
+        $progressBar = new ProgressBar($output, count($logs));
+        $progressBar->start();
+
+        foreach ($logs as &$item){
+
+            $this->em->remove($item);
+            $progressBar->advance();
+        }
+
+        $this->em->flush();
+        $progressBar->finish();
+        $output->writeln('');
+
+        // end of script
+        $output->writeln('All data wiped!');
+
+        return 1;
     }
 }

@@ -105,12 +105,12 @@ class User implements UserInterface
     private $lastLogin;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User", inversedBy="invited")
+     * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User", inversedBy="invited", cascade={"persist", "remove"})
      */
     private $inviter;
 
     /**
-     * @ORM\OneToMany(targetEntity="Stewie\UserBundle\Entity\User", mappedBy="inviter")
+     * @ORM\OneToMany(targetEntity="Stewie\UserBundle\Entity\User", mappedBy="inviter", cascade={"persist", "remove"})
      */
     private $invited;
 

@@ -5,22 +5,23 @@ namespace Stewie\UserBundle\Repository;
 use Stewie\UserBundle\Entity\Group;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+// use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 class GroupRepository extends ServiceEntityRepository
 {
-    private $container;
+    private $em;
 
-    public function __construct(ContainerInterface $container, ManagerRegistry $registry)
+    public function __construct(EntityManagerInterface $em, ManagerRegistry $registry)
     {
         parent::__construct($registry, Group::class);
-        $this->container = $container;
+        $this->em = $em;
     }
 
     public function refreshRoles($group){
 
-      $em = $this->container->get('doctrine')->getManager();
-      $userRepo = $em->getRepository('StewieUserBundle:User');
+      // $em = $this->container->get('doctrine')->getManager();
+      $userRepo = $this->em->getRepository('StewieUserBundle:User');
 
       // get users assigned to group and refresh
       foreach ($group->getUsers() as &$user){
@@ -36,8 +37,8 @@ class GroupRepository extends ServiceEntityRepository
 
     public function updateUser($user){
 
-      $em = $this->container->get('doctrine')->getManager();
-      $groupRepo = $em->getRepository('StewieUserBundle:Group');
+      // $em = $this->container->get('doctrine')->getManager();
+      $groupRepo = $this->em->getRepository('StewieUserBundle:Group');
 
       $groups = $groupRepo->findAll();
 
@@ -47,18 +48,18 @@ class GroupRepository extends ServiceEntityRepository
         // remove user from old groups
         if ($group->getUsers()->contains($user) && !$user->getGroups()->contains($group)) {
             $group->removeUser($user);
-            $em->persist($group);
+            $this->em->persist($group);
           }
 
         // add user to new groups
         elseif (!$group->getUsers()->contains($user) && $user->getGroups()->contains($group)) {
             $group->addUser($user);
-            $em->persist($group);
+            $this->em->persist($group);
           }
 
         }
 
-      $em->flush();
+      $this->em->flush();
 
       return true;
 
