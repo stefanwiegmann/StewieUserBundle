@@ -30,13 +30,13 @@ class FillDataCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-      $statusCommand = $this->getApplication()->find('stewie:user:fill-status');
-      $roleCommand = $this->getApplication()->find('stewie:user:fill-roles');
-      $groupCommand = $this->getApplication()->find('stewie:user:fill-groups');
-      $userCommand = $this->getApplication()->find('stewie:user:fill-users');
-      // $noInput = new ArrayInput();
+        $commands = array();
+        array_push($commands, 'stewie:user:fill-status');
+        array_push($commands, 'stewie:user:fill-roles');
+        array_push($commands, 'stewie:user:fill-groups');
+        array_push($commands, 'stewie:user:fill-users');
 
-      if($input->getOption('all')){
+        if($input->getOption('all')){
 
             $arguments = [
                 '--all'  => true,
@@ -44,23 +44,24 @@ class FillDataCommand extends Command
 
             $outputText = 'All data filled!';
 
-    }else{
+        }else{
 
-          $arguments = [
-              '--all'  => false,
-          ];
+            $arguments = [
+                '--all'  => false,
+            ];
 
-          $outputText = 'Static data filled!';
-    }
+            $outputText = 'Static data filled!';
+        }
 
-      $commandInput = new ArrayInput($arguments);
+        $commandInput = new ArrayInput($arguments);
 
-      $returnCode = $statusCommand->run($commandInput, $output);
-      $returnCode = $roleCommand->run($commandInput, $output);
-      $returnCode = $groupCommand->run($commandInput, $output);
-      $returnCode = $userCommand->run($commandInput, $output);
-      $output->writeln('All data filled!');
+        // run all commands
+        foreach ($commands as &$command) {
+            $runCommand = $this->getApplication()->find($command);
+            $returnCode = $runCommand->run($commandInput, $output);
+        }
+        $output->writeln($outputText);
 
-      return 1;
+        return 1;
     }
 }
