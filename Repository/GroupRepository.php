@@ -18,22 +18,22 @@ class GroupRepository extends ServiceEntityRepository
         $this->em = $em;
     }
 
-    public function refreshRoles($group){
-
-      // $em = $this->container->get('doctrine')->getManager();
-      $userRepo = $this->em->getRepository('StewieUserBundle:User');
-
-      // get users assigned to group and refresh
-      foreach ($group->getUsers() as &$user){
-
-        // set all roles
-        $userRepo->refreshRoles($user);
-
-        }
-
-      return true;
-
-    }
+    // public function refreshRoles($group){
+    //
+    //   // $em = $this->container->get('doctrine')->getManager();
+    //   $userRepo = $this->em->getRepository('StewieUserBundle:User');
+    //
+    //   // get users assigned to group and refresh
+    //   foreach ($group->getUsers() as &$user){
+    //
+    //     // set all roles
+    //     $userRepo->refreshRoles($user);
+    //
+    //     }
+    //
+    //   return true;
+    //
+    // }
 
     public function updateUser($user){
 

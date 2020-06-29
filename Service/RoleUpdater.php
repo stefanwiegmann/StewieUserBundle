@@ -19,7 +19,7 @@ class RoleUpdater extends AbstractController
         // parent::__construct();
         $this->em = $em;
     }
-    
+
     public function assignAdmins(){
 
         $roleRepo = $this->em->getRepository('StewieUserBundle:Role');
@@ -40,6 +40,59 @@ class RoleUpdater extends AbstractController
 
         $this->em->persist($group);
         $this->em->flush();
+
+        // update all user in group
+        foreach ($group->getUsers() as &$user){
+            $this->updateUser($user);
+        }
+
+        return 1;
+    }
+
+    public function updateUser($user){
+
+        $roleList = array();
+
+        // get roles assigned to user
+        foreach ($user->getUserRoles() as &$role){
+
+            array_push($roleList, $role->getName());
+            }
+
+        // get roles assigned to any group of this user
+        foreach ($user->getGroups() as &$group){
+
+            foreach ($group->getGroupRoles() as &$role){
+
+                array_push($roleList, $role->getName());
+
+            }
+
+        }
+
+        // set all unique roles
+        $uniqueRoles = array();
+
+        foreach (array_unique($roleList) as &$role){
+
+            array_push($uniqueRoles, $role);
+
+        }
+
+        $user->setRoles($uniqueRoles);
+
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return true;
+    }
+
+    public function updateGroup($group){
+        
+        // update all user in group
+        foreach ($group->getUsers() as &$user){
+            $this->updateUser($user);
+        }
 
         return 1;
     }

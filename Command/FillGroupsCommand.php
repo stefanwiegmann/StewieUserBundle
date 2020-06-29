@@ -13,6 +13,7 @@ use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityManagerInterface;
 use Stewie\UserBundle\Service\PathFinder;
+use Stewie\UserBundle\Service\RoleUpdater;
 
 class FillGroupsCommand extends Command
 {
@@ -22,13 +23,15 @@ class FillGroupsCommand extends Command
     private $em;
     private $pathFinder;
     private $avatarGenerator;
+    private $roleUpdater;
 
-    public function __construct(EntityManagerInterface $em, PathFinder $pathFinder, AvatarGenerator $avatarGenerator)
+    public function __construct(EntityManagerInterface $em, PathFinder $pathFinder, AvatarGenerator $avatarGenerator, RoleUpdater $roleUpdater)
     {
         parent::__construct();
         $this->em = $em;
         $this->pathFinder = $pathFinder;
         $this->avatarGenerator = $avatarGenerator;
+        $this->roleUpdater = $roleUpdater;
     }
 
     protected function configure()
@@ -94,6 +97,8 @@ class FillGroupsCommand extends Command
 
                 $this->em->persist($group);
                 $this->em->flush();
+
+                $this->roleUpdater->updateGroup($group);
 
                 $progressBar->advance();
                 // $output->writeln('Group '.$group->getName().' created or updated!');

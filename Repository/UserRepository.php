@@ -13,42 +13,42 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function refreshRoles($user){
-      $em = $this->getEntityManager();
-
-      $roles = array();
-
-      // get roles assigned to user
-      foreach ($user->getUserRoles() as &$role){
-
-        array_push($roles, $role->getName());
-        }
-
-      // get roles assigned to any group of this user
-      foreach ($user->getGroups() as &$group){
-
-        foreach ($group->getGroupRoles() as &$role){
-
-          array_push($roles, $role->getName());
-
-          }
-
-        }
-
-      // set all unique roles
-      $uniqueRoles = array();
-      foreach (array_unique($roles) as &$role){
-
-        array_push($uniqueRoles, $role);
-
-        }
-
-      $user->setRoles($uniqueRoles);
-
-      $em->persist($user);
-      $em->flush();
-
-      return true;
-
-    }
+    // public function refreshRoles($user){
+    //   $em = $this->getEntityManager();
+    //
+    //   $roles = array();
+    //
+    //   // get roles assigned to user
+    //   foreach ($user->getUserRoles() as &$role){
+    //
+    //     array_push($roles, $role->getName());
+    //     }
+    //
+    //   // get roles assigned to any group of this user
+    //   foreach ($user->getGroups() as &$group){
+    //
+    //     foreach ($group->getGroupRoles() as &$role){
+    //
+    //       array_push($roles, $role->getName());
+    //
+    //       }
+    //
+    //     }
+    //
+    //   // set all unique roles
+    //   $uniqueRoles = array();
+    //   foreach (array_unique($roles) as &$role){
+    //
+    //     array_push($uniqueRoles, $role);
+    //
+    //     }
+    //
+    //   $user->setRoles($uniqueRoles);
+    //
+    //   $em->persist($user);
+    //   $em->flush();
+    //
+    //   return true;
+    //
+    // }
 }

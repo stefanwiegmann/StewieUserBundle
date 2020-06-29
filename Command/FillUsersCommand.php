@@ -14,7 +14,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
-// use Doctrine\Common\Collections\ArrayCollection;
+use Stewie\UserBundle\Service\RoleUpdater;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class FillUsersCommand extends Command
 {
@@ -25,14 +26,16 @@ class FillUsersCommand extends Command
     private $passwordEncoder;
     private $avatarGenerator;
     private $pathFinder;
+    private $roleUpdater;
 
-    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, AvatarGenerator $avatarGenerator, PathFinder $pathFinder)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, AvatarGenerator $avatarGenerator, PathFinder $pathFinder, RoleUpdater $roleUpdater)
     {
         parent::__construct();
         $this->em = $em;
         $this->passwordEncoder = $passwordEncoder;
         $this->avatarGenerator = $avatarGenerator;
         $this->pathFinder = $pathFinder;
+        $this->roleUpdater = $roleUpdater;
     }
 
     protected function configure()
@@ -81,7 +84,17 @@ class FillUsersCommand extends Command
                     $user = new User;
                 }else{
                     // or remove all UserRoles
-                    $user->clearAssociations();
+                    // $user->clearAssociations();
+
+                     foreach ($user->getGroups() as &$group){
+                         $group->removeUser($user);
+                     }
+
+                    foreach ($user->getUserRoles() as &$role){
+                        $role->removeUser($user);
+                    }
+
+                    $user->setRoles = new ArrayCollection();
                 }
 
                 // set values
@@ -104,9 +117,10 @@ class FillUsersCommand extends Command
                 }
 
                 // persist
-                $repo->refreshRoles($user);
                 $this->em->persist($user);
                 $this->em->flush();
+
+                $this->roleUpdater->updateUser($user);
 
                 $progressBar->advance();
             }

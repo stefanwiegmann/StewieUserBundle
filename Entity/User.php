@@ -236,12 +236,12 @@ class User implements UserInterface
         $this->usernameCanonical = strtolower($this->username);
     }
 
-     public function clearAssociations()
-     {
-         $this->roles = new ArrayCollection();
-         $this->groups = new ArrayCollection();
-         $this->userRoles = new ArrayCollection();
-     }
+     // public function clearAssociations()
+     // {
+     //     $this->roles = new ArrayCollection();
+     //     $this->groups = new ArrayCollection();
+     //     $this->userRoles = new ArrayCollection();
+     // }
 
     public function getId(): ?int
     {
