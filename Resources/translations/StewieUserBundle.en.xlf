@@ -673,5 +673,71 @@
         <target>Invite User</target>
       </segment>
     </unit>
+    <unit id="b2syEs8" name="role.name.role_allowed_to_switch">
+      <segment>
+        <source>role.name.role_allowed_to_switch</source>
+        <target>Switch User</target>
+      </segment>
+    </unit>
+    <unit id="vAQpOU8" name="role.name.role_user_role_edit">
+      <segment>
+        <source>role.name.role_user_role_edit</source>
+        <target>Edit User Role</target>
+      </segment>
+    </unit>
+    <unit id="SUd0BA8" name="role.name.role_user_role_view">
+      <segment>
+        <source>role.name.role_user_role_view</source>
+        <target>View User Role</target>
+      </segment>
+    </unit>
+    <unit id="o0_8FKE" name="role.name.role_user_user_invite">
+      <segment>
+        <source>role.name.role_user_user_invite</source>
+        <target>Invite User</target>
+      </segment>
+    </unit>
+    <unit id="VJlKf4l" name="role.name.role_user_user_delete">
+      <segment>
+        <source>role.name.role_user_user_delete</source>
+        <target>Delete User</target>
+      </segment>
+    </unit>
+    <unit id="opEqbbo" name="role.name.role_user_user_edit">
+      <segment>
+        <source>role.name.role_user_user_edit</source>
+        <target>Edit User</target>
+      </segment>
+    </unit>
+    <unit id="i8exLK7" name="role.name.role_user_user_view">
+      <segment>
+        <source>role.name.role_user_user_view</source>
+        <target>View User</target>
+      </segment>
+    </unit>
+    <unit id="emqjEB_" name="role.name.role_user_group_create">
+      <segment>
+        <source>role.name.role_user_group_create</source>
+        <target>Create User Group</target>
+      </segment>
+    </unit>
+    <unit id="aRPih5I" name="role.name.role_user_group_delete">
+      <segment>
+        <source>role.name.role_user_group_delete</source>
+        <target>Delete  User Group</target>
+      </segment>
+    </unit>
+    <unit id="VAAaO36" name="role.name.role_user_group_edit">
+      <segment>
+        <source>role.name.role_user_group_edit</source>
+        <target>Edit User Group</target>
+      </segment>
+    </unit>
+    <unit id="QUDdR1c" name="role.name.role_user_group_view">
+      <segment>
+        <source>role.name.role_user_group_view</source>
+        <target>View User Group</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

@@ -70,6 +70,7 @@ class FillRolesCommand extends Command
             $role->setName($item['name']);
             $role->setSort($item['sort']);
             $role->setDescription($item['description']);
+            $role->setTranslationDomain($item['translationDomain']);
             $role->setAvatarName($this->avatarGenerator->create($role));
 
             $this->em->persist($role);

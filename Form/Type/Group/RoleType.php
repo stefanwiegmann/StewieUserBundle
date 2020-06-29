@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityRepository;
 // use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 // use Symfony\Component\Form\Extension\Core\Type\DateType;
 // use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 

@@ -42,6 +42,11 @@ class Role
     private $translationKey;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $translationDomain;
+
+    /**
      * @Gedmo\Versioned
      * @ORM\Column(type="string", length=255)
      */
@@ -170,6 +175,7 @@ class Role
 
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
     public function setCanonical()
     {
@@ -330,6 +336,18 @@ class Role
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getTranslationDomain(): ?string
+    {
+        return $this->translationDomain;
+    }
+
+    public function setTranslationDomain(string $translationDomain): self
+    {
+        $this->translationDomain = $translationDomain;
 
         return $this;
     }

@@ -7,28 +7,22 @@
         <target>Switch User</target>
       </segment>
     </unit>
-    <unit id="L7VJ0kB" name="name.role_user_role_create">
-      <segment>
-        <source>name.role_user_role_create</source>
-        <target>Create Role</target>
-      </segment>
-    </unit>
     <unit id="lbuBEUi" name="name.role_user_role_edit">
       <segment>
         <source>name.role_user_role_edit</source>
-        <target>Edit Role</target>
+        <target>Edit User Role</target>
       </segment>
     </unit>
     <unit id="YdDvzpc" name="name.role_user_role_view">
       <segment>
         <source>name.role_user_role_view</source>
-        <target>View Role</target>
+        <target>View User Role</target>
       </segment>
     </unit>
-    <unit id="5xJoOCM" name="name.role_user_user_create">
+    <unit id="vby1_RB" name="name.role_user_user_invite">
       <segment>
-        <source>name.role_user_user_create</source>
-        <target>Create User</target>
+        <source>name.role_user_user_invite</source>
+        <target>Invite User</target>
       </segment>
     </unit>
     <unit id="KrxpESH" name="name.role_user_user_delete">
@@ -52,25 +46,25 @@
     <unit id="R2pG0d5" name="name.role_user_group_create">
       <segment>
         <source>name.role_user_group_create</source>
-        <target>Create Group</target>
+        <target>Create User Group</target>
       </segment>
     </unit>
     <unit id="v5nAkhv" name="name.role_user_group_delete">
       <segment>
         <source>name.role_user_group_delete</source>
-        <target>Delete Group</target>
+        <target>Delete User Group</target>
       </segment>
     </unit>
     <unit id="DLAj_eO" name="name.role_user_group_edit">
       <segment>
         <source>name.role_user_group_edit</source>
-        <target>Edit Group</target>
+        <target>Edit User Group</target>
       </segment>
     </unit>
     <unit id="vcBSddK" name="name.role_user_group_view">
       <segment>
         <source>name.role_user_group_view</source>
-        <target>View Group</target>
+        <target>View User Group</target>
       </segment>
     </unit>
   </file>
