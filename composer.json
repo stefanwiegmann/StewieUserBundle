@@ -25,7 +25,7 @@
         "symfony/yaml": "5.3.*",
         "antishov/doctrine-extensions-bundle": "^1.4",
         "knplabs/knp-paginator-bundle": "^5.1",
-        "sensio/framework-extra-bundle": "^5.1",
+        "sensio/framework-extra-bundle": "^6.1",
         "liip/imagine-bundle": "^2.3",
         "vich/uploader-bundle": "^1.13",
         "twig/intl-extra": "^3.0"
