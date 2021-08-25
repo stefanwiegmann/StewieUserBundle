@@ -15,6 +15,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 // use Stewie\UserBundle\Entity\User;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
 
 class RequestController extends AbstractController
 {
@@ -56,6 +57,8 @@ class RequestController extends AbstractController
           // send email
           $email = (new Email())
            ->to($user->getEmail())
+           // ->from($this->getParameter('stewie_user.from_email'))
+           ->from(Address::create(''.$this->getParameter('stewie_user.from_name').' <'.$this->getParameter('stewie_user.from_email').'>'))
            ->subject('Your Password Request')
            ->text($this->renderView(
                        '@StewieUser/emails/request.txt.twig',
