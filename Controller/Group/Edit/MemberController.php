@@ -5,10 +5,10 @@ namespace Stewie\UserBundle\Controller\Group\Edit;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-// use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
+use Stewie\UserBundle\Form\Type\User\AddUserType;
 
 /**
   * @IsGranted("ROLE_USER_GROUP_EDIT")
@@ -34,6 +34,30 @@ class MemberController extends AbstractController
       $repo = $em->getRepository('StewieUserBundle:Group');
       $group = $repo->findOneBySlug($slug);
 
+      // create form
+      $form = $this->createForm(AddUserType::class);
+
+      // handle form
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+          $userRepo = $em->getRepository('StewieUserBundle:User');
+          $user = $userRepo->findOneById($form->get('userAutoId')->getData());
+
+          // add user
+          $group->addUser($user);
+          $em->persist($group);
+          $em->flush();
+
+          $this->addFlash(
+              'success',
+              'User was added!'
+              );
+
+          return $this->redirectToRoute('stewie_user_group_edit_member', array('slug' => $slug));
+        }
+
       //get data and paginate
       $pagination = $this->paginator->paginate(
       $this->getQuery($group), /* query NOT result */
@@ -41,13 +65,14 @@ class MemberController extends AbstractController
             // 10/*limit per page*/
             $this->getParameter('stewie_user.max_rows')/*limit per page*/
         );
-        // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
+        
         $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
 
       return $this->render('@StewieUser/group/edit/member.html.twig', [
           'group' => $group,
           'memberList' => $pagination,
           'page' => $page,
+          'form' => $form->createView(),
       ]);
     }
 

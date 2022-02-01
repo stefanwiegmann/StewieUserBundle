@@ -7,7 +7,7 @@
 {% block pageMenu %}
 {{ form_start(form) }}
     {{ form_widget(form.submit) }}
-    <a href="{#{ path('stewie_user_group_delete', {'username': user.username}) }#}" class="btn btn-danger" role="button">{{ 'label.delete'|trans }}</a>
+    <a href="{{ path('stewie_user_user_delete', {'username': user.username}) }}" class="btn btn-danger" role="button">{{ 'label.delete'|trans }}</a>
 {% endblock pageMenu %}
 
 {% block content %}

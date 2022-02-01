@@ -739,5 +739,53 @@
         <target>View User Group</target>
       </segment>
     </unit>
+    <unit id="_orotqB" name="vich_uploader.form_label.delete_confirm">
+      <segment>
+        <source>vich_uploader.form_label.delete_confirm</source>
+        <target>Delete</target>
+      </segment>
+    </unit>
+    <unit id="NDQ12Hd" name="header.group.remove.user">
+      <segment>
+        <source>header.group.remove.user</source>
+        <target>Remove user from group</target>
+      </segment>
+    </unit>
+    <unit id="5GPZO3C" name="title.user.delete">
+      <segment>
+        <source>title.user.delete</source>
+        <target>Delete user</target>
+      </segment>
+    </unit>
+    <unit id="TPnwZnt" name="text.user.delete">
+      <segment>
+        <source>text.user.delete</source>
+        <target>You are about to delete user "%subject%"!</target>
+      </segment>
+    </unit>
+    <unit id="ie5xQMN" name="title.group.delete">
+      <segment>
+        <source>title.group.delete</source>
+        <target>Delete group</target>
+      </segment>
+    </unit>
+    <unit id=".iQH7jl" name="text.group.delete">
+      <segment>
+        <source>text.group.delete</source>
+        <target>You are about to delete group "%subject%"!</target>
+      </segment>
+    </unit>
+    <unit id="JWALpYK" name="label.add_user">
+      <segment>
+        <source>label.add_user</source>
+        <target>Add user</target>
+      </segment>
+    </unit>
+    <unit id="YLRPtLu" name="label.startTyping">
+      <segment>
+        <source>label.startTyping</source>
+        <target>Start typing to search</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

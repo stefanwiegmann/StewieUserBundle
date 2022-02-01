@@ -64,8 +64,7 @@ class RemoveController extends AbstractController
           '%subject%' => $userObject->getUsername(),
           '%object%' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles')
           ], 'StewieUserBundle'),
-        'title' => $translator->trans($roleObject->getTranslationKey(), [], 'Roles'),
-        'mutedTitle' => $translator->trans('header.role.remove', [], 'StewieUserBundle'),
+        'title' => $translator->trans('header.role.remove', [], 'StewieUserBundle'),
         'form' => $form->createView(),
     ]);
 

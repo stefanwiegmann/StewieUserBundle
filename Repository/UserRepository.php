@@ -51,4 +51,32 @@ class UserRepository extends ServiceEntityRepository
     //   return true;
     //
     // }
+
+    public function queryByAnyName($name, $user)
+    {
+
+        $query = $this->createQueryBuilder("u")
+            ->select('u.id AS value, u.fullNameUsername AS text')
+            // ->leftjoin('a.useragency', 'c')
+            // ->groupBy('a.id')
+            // ->distinct(true)
+            // ->where('a.agencyName = :name')
+            ->where('LOCATE(:name, u.firstName) > 0')
+            ->setParameter('name', $name);
+
+        $query->orWhere('LOCATE(:name, u.lastName) > 0')
+        ->setParameter('name', $name);
+
+        $query->orWhere('LOCATE(:name, u.username) > 0')
+        ->setParameter('name', $name);
+
+        return $query;
+    }
+
+    public function findByAnyName($name, $user)
+    {
+        return $this->queryByAnyName($name, $user)
+            ->getQuery()
+            ->getResult();
+    }
 }

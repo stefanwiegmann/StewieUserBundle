@@ -1,0 +1,43 @@
+<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
+
+<script type="text/javascript">
+
+    var user_auto_path = '{{ path('stewie_user_user_autocomplete') }}';
+    var form = '{{ form.vars.id }}';
+    var formUserId = '{{ form.vars.id }}[userAutoId]';
+
+    // disable submission of autocomplete fields
+    // $('.filter_agency_auto').removeAttribute('name');
+    document.getElementById('{{ form.vars.id }}_userAuto').removeAttribute('name');
+
+    $('.form_user_auto').autoComplete({
+        // var path = "{#{ path('appBundle_agentname_autocomplete') }#}";
+        // path: path,
+        resolver:'ajax',
+        // valueKey:'value',
+        events: {
+            search:function (qry, callback) {
+                $.ajax(
+                    // 'http://localhost/sp/nyc/list.json',
+                    // '/sp/app_dev.php/en/agency/autocomplete',
+                    user_auto_path,
+                    {
+                        data: {'qry': qry}
+                    }
+                ).done(function (res) {
+                    // alert(path);
+                    var data = JSON.parse(res);
+                    callback(data.results);
+                    // alert(data.results);
+                });
+            }
+        }
+    });
+
+    // set hidden fields to values
+    $('.form_user_auto').on('autocomplete.select', function (evt, item) {
+        oFormObject = document.forms[form];
+        oFormObject.elements[formUserId].value = item.value;
+    });
+
+</script>

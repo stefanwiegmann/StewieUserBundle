@@ -1,6 +1,6 @@
 <?php
 
-namespace Stewie\UserBundle\Controller\Group;
+namespace Stewie\UserBundle\Controller\User;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,59 +8,62 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-// use Stewie\UserBundle\Form\Type\Group\DeleteType;
+// use Stewie\WikiBundle\Form\Type\Group\DeleteType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
-  * @IsGranted("ROLE_USER_GROUP_DELETE")
+  * @IsGranted("ROLE_USER_USER_DELETE")
   */
 
 class DeleteController extends AbstractController
 {
   /**
-  * @Route("/user/group/delete/{slug}", name="stewie_user_group_delete")
+  * @Route("/user/user/delete/{username}", name="stewie_user_user_delete")
   */
-  public function deleteAction($slug, Request $request, TranslatorInterface $translator)
+  public function deleteAction($username, Request $request, TranslatorInterface $translator)
   {
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $repo = $em->getRepository('StewieUserBundle:Group');
-    $group = $repo->findOneBySlug($slug);
+    $repo = $em->getRepository('StewieUserBundle:User');
+    $user = $repo->findOneByUsername($username);
 
     // create form
-    // $form = $this->createForm(DeleteType::class, $group);
-    $form = $this->createFormBuilder($group)
-            ->add('submit', SubmitType::class, array('label' => 'label.delete',
-            'translation_domain' => 'StewieUserBundle',
-            'attr'=> array('class'=>'btn-danger'),))
+    $form = $this->createFormBuilder($user)
+
+            ->add('submit', SubmitType::class, array(
+                'label' => 'label.delete',
+                'translation_domain' => 'StewieUserBundle',
+                'attr'=> array('class'=>'btn-danger'),
+            ))
+
             ->getForm();
 
     // handle form
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-        $group = $form->getData();
+        $user = $form->getData();
 
         // save user
-        $em->remove($group);
+        $em->remove($user);
         $em->flush();
 
         $this->addFlash(
             'success',
-            'Group was deleted!'
+            'User was deleted!'
             );
 
-        return $this->redirectToRoute('stewie_user_group_list');
+        return $this->redirectToRoute('stewie_user_list');
       }
 
     return $this->render('@StewieUser/card/dangerForm.html.twig', [
-        'title' => $translator->trans('title.group.delete', [], 'StewieUserBundle'),
-        'text' => $translator->trans('text.group.delete', [
-            '%subject%' => $group->getName()
+        'title' => $translator->trans('title.user.delete', [], 'StewieUserBundle'),
+        'text' => $translator->trans('text.user.delete', [
+            '%subject%' => $user->getUsername()
             ], 'StewieUserBundle'),
-        'group' => $group,
+        'user' => $user,
         'form' => $form->createView(),
     ]);
 

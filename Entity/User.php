@@ -78,6 +78,11 @@ class User implements UserInterface
     private $emailCanonical;
 
     /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $fullNameUsername;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Stewie\UserBundle\Entity\Role", inversedBy="users")
      * @ORM\JoinTable(name="stewie_user_user_role")
      */
@@ -234,6 +239,7 @@ class User implements UserInterface
     {
         $this->emailCanonical = strtolower($this->email);
         $this->usernameCanonical = strtolower($this->username);
+        $this->fullNameUsername = sprintf(' %s %s (%s)',$this->firstName,$this->lastName, $this->username);
     }
 
      // public function clearAssociations()
@@ -561,6 +567,18 @@ class User implements UserInterface
     public function setLastLogin(?\DateTimeInterface $lastLogin): self
     {
         $this->lastLogin = $lastLogin;
+
+        return $this;
+    }
+
+    public function getFullNameUsername(): ?string
+    {
+        return $this->fullNameUsername;
+    }
+
+    public function setFullNameUsername(string $fullNameUsername): self
+    {
+        $this->fullNameUsername = $fullNameUsername;
 
         return $this;
     }

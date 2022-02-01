@@ -6,6 +6,8 @@
 {% block pageTitle %}<small class="text-muted">{{ 'header.group.edit'|trans }}</small> {{ group.name }}{% endblock pageTitle %}
 {% block pageMenu %}
 
+    {% embed '@StewieUser/user/form/addUser.html.twig' %}{% endembed %}
+
 {% endblock pageMenu %}
 
 {% block content %}
@@ -62,3 +64,10 @@
       {{ knp_pagination_render(memberList) }}
 
 {% endblock content %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    {% embed '@StewieUser/user/utils/userAutoComplete.html.twig' %}{% endembed %}
+
+{% endblock javascripts %}

@@ -62,8 +62,7 @@ class RemoveController extends AbstractController
           '%subject%' => $userObject->getUsername(),
           '%object%' => $groupObject->getName()
           ], 'StewieUserBundle'),
-        'title' => $groupObject->getName(),
-        'mutedTitle' => $translator->trans('header.group.remove', [], 'StewieUserBundle'),
+        'title' => $translator->trans('header.group.remove.user', [], 'StewieUserBundle'),
         'form' => $form->createView(),
     ]);
 
