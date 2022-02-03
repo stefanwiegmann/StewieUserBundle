@@ -50,6 +50,9 @@ class MemberController extends AbstractController
           $em->persist($group);
           $em->flush();
 
+          // update roles for that user
+          $userRepo->refreshRoles($user);
+
           $this->addFlash(
               'success',
               'User was added!'
@@ -65,7 +68,7 @@ class MemberController extends AbstractController
             // 10/*limit per page*/
             $this->getParameter('stewie_user.max_rows')/*limit per page*/
         );
-        
+
         $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
 
       return $this->render('@StewieUser/group/edit/member.html.twig', [

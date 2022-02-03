@@ -5,7 +5,8 @@
 
 {% block pageTitle %}<small class="text-muted">{{ 'header.role.edit'|trans }}</small> {{ role.translationKey|trans({}, 'Roles') }}{% endblock pageTitle %}
 {% block pageMenu %}
-  <a href="{{ app.request.headers.get('referer') }}" class="btn btn-link" role="button">{{ 'label.back'|trans }}</a>
+{{ form_start(form) }}
+    {{ form_widget(form.submit) }}
 {% endblock pageMenu %}
 
 {% block content %}
@@ -23,34 +24,20 @@
       </li>
     </ul>
 
-<br>
-<!-- actual table -->
+    <br>
 
-<table class="table table-striped">
-<thead> <tr>
-  <th>{{ knp_pagination_sortable(groupList, '#', 'g.id') }}</th>
-  <th>{{ knp_pagination_sortable(groupList, 'label.name'|trans, 'g.name') }}
-    {% if groupList.isSorted('g.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
-  </th>
-  <th>{{ 'label.actions'|trans }}</th>
-</tr> </thead>
-{% for item in groupList %}
-<tr>
-  <td>{{ item.id }}
-    {% if vich_uploader_asset(item, 'avatarFile') %}
-      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('stewie_user_thumb_filter') }}" alt="{{ 'label.avatar'|trans }}" />
-    {% endif %}
-  </td>
-  <td>{{ item.name }}</td>
-  <td>
-    {% if is_granted('ROLE_USER_ROLE_EDIT') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.remove'|trans }}" href="{{ path('stewie_user_role_remove_group', {'role': role.id, 'group': item.id}) }}"><i class="fas fa-trash"></i></a>
-    {% endif %}
-  </td>
-</tr>
-{% endfor %}
-</table>
-{# display navigation #}
-      {{ knp_pagination_render(groupList) }}
+    <!-- actual form -->
 
+        <div class="form-group row">
+          <div class="col-sm-2 col-form-label">
+            <strong>{{ form_label(form.groups) }}</strong>
+          </div>
+          <div class="col-sm-10">
+            {{ form_errors(form.groups) }}
+            {{ form_widget(form.groups) }}
+          </div>
+        </div>
+
+
+    {{ form_end(form) }}
 {% endblock content %}

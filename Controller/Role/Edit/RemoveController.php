@@ -47,7 +47,7 @@ class RemoveController extends AbstractController
 
     if ($form->isSubmitted() && $form->isValid()) {
         // remove userRole
-        $userObject->removeUserRole($roleObject);
+        $userObject->removeUserRoles($roleObject);
 
         // save user
         $em->persist($userObject);

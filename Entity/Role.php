@@ -255,7 +255,7 @@ class Role
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->addUserRole($this);
+            $user->addUserRoles($this);
         }
 
         return $this;
@@ -265,7 +265,7 @@ class Role
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
-            $user->removeUserRole($this);
+            $user->removeUserRoles($this);
         }
 
         return $this;

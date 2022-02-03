@@ -5,7 +5,9 @@
 
 {% block pageTitle %}<small class="text-muted">{{ 'header.role.edit'|trans }}</small> {{ role.translationKey|trans({}, 'Roles') }}{% endblock pageTitle %}
 {% block pageMenu %}
-  <a href="{{ app.request.headers.get('referer') }}" class="btn btn-link" role="button">{{ 'label.back'|trans }}</a>
+
+    {% embed '@StewieUser/user/form/addUser.html.twig' %}{% endembed %}
+
 {% endblock pageMenu %}
 
 {% block content %}
@@ -62,3 +64,10 @@
       {{ knp_pagination_render(userList) }}
 
 {% endblock content %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    {% embed '@StewieUser/user/utils/userAutoComplete.html.twig' %}{% endembed %}
+
+{% endblock javascripts %}

@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Knp\Component\Pager\PaginatorInterface;
+use Stewie\UserBundle\Form\Type\Role\GroupType;
 
 /**
   * @IsGranted("ROLE_USER_ROLE_EDIT")
@@ -16,57 +16,86 @@ use Knp\Component\Pager\PaginatorInterface;
 
 class GroupController extends AbstractController
 {
-    private $paginator;
-
-    public function __construct(PaginatorInterface $paginator)
-    {
-        $this->paginator = $paginator;
-    }
-
     /**
-    * @Route("/user/role/edit/group/{slug}/{page}", defaults={"role": 0, "page": 1}
-    *     , requirements={"page": "\d+"}, name="stewie_user_role_edit_group")
+    * @Route("/user/role/edit/group/{slug}", name="stewie_user_role_edit_group")
     */
-    public function list($slug, $page, Request $request)
+    public function groups($slug, Request $request)
     {
-      // get filter data
-      // if($role > 0){
-        $repository = $this->getDoctrine()
-          ->getRepository('StewieUserBundle:Role');
-        $roleObject = $repository->findOneBySlug($slug);
-      // }
+      //get user
+      $em = $this->container->get('doctrine')->getManager();
+      $repo = $em->getRepository('StewieUserBundle:Role');
+      $role = $repo->findOneBySlug($slug);
 
-      //get data and paginate
-      // $paginator  = $this->get('knp_paginator');
-      $pagination = $this->paginator->paginate(
-      $this->getQuery($roleObject), /* query NOT result */
-      $request->query->getInt('page', $page)/*page number*/,
-            // 10/*limit per page*/
-            $this->getParameter('stewie_user.max_rows')/*limit per page*/
-            // $this->container->getParameter('stewie_user.max_rows')/*limit per page*/
-        );
-        // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
-        $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
+      // create form
+      $form = $this->createForm(GroupType::class, $role);
+
+      // handle form
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $role = $form->getData();
+
+          // update groups
+          $groupRepo = $em->getRepository('StewieUserBundle:Group');
+          $groupRepo->updateRole($role);
+
+          // save user
+          $em->persist($role);
+          $em->flush();
+
+          // update affected user roles
+          // $repo->refreshRoles($group);
+
+          return $this->redirectToRoute('stewie_user_role_edit_group', ['slug' => $slug]);
+        }
 
       return $this->render('@StewieUser/role/edit/group.html.twig', [
-          'role' => $roleObject,
-          'groupList' => $pagination,
-          'page' => $page,
+          'role' => $role,
+          'form' => $form->createView(),
       ]);
     }
 
-    public function getQuery($roleObject){
-
-        $repository = $this->getDoctrine()
-          ->getRepository('StewieUserBundle:Group');
-
-        $query = $repository->createQueryBuilder('g')
-          ->andWhere(':roles MEMBER OF g.groupRoles')
-          ->setParameter('roles', $roleObject)
-          ->orderBy('g.id', 'ASC');
-
-          return $query
-            ->getQuery();
-
-    }
+    //
+    // public function list($slug, Request $request)
+    // {
+    //   // get filter data
+    //   // if($role > 0){
+    //     $repository = $this->getDoctrine()
+    //       ->getRepository('StewieUserBundle:Role');
+    //     $roleObject = $repository->findOneBySlug($slug);
+    //   // }
+    //
+    //   //get data and paginate
+    //   // $paginator  = $this->get('knp_paginator');
+    //   $pagination = $this->paginator->paginate(
+    //   $this->getQuery($roleObject), /* query NOT result */
+    //   $request->query->getInt('page', $page)/*page number*/,
+    //         // 10/*limit per page*/
+    //         $this->getParameter('stewie_user.max_rows')/*limit per page*/
+    //         // $this->container->getParameter('stewie_user.max_rows')/*limit per page*/
+    //     );
+    //     // $pagination->setTemplate('@SWUser/User/pagination.html.twig');
+    //     $pagination->setTemplate('@StewieUser/default/pagination.html.twig');
+    //
+    //   return $this->render('@StewieUser/role/edit/group.html.twig', [
+    //       'role' => $roleObject,
+    //       'groupList' => $pagination,
+    //       'page' => $page,
+    //   ]);
+    // }
+    //
+    // public function getQuery($roleObject){
+    //
+    //     $repository = $this->getDoctrine()
+    //       ->getRepository('StewieUserBundle:Group');
+    //
+    //     $query = $repository->createQueryBuilder('g')
+    //       ->andWhere(':roles MEMBER OF g.groupRoles')
+    //       ->setParameter('roles', $roleObject)
+    //       ->orderBy('g.id', 'ASC');
+    //
+    //       return $query
+    //         ->getQuery();
+    //
+    // }
 }

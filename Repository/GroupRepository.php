@@ -18,22 +18,22 @@ class GroupRepository extends ServiceEntityRepository
         $this->em = $em;
     }
 
-    // public function refreshRoles($group){
-    //
-    //   // $em = $this->container->get('doctrine')->getManager();
-    //   $userRepo = $this->em->getRepository('StewieUserBundle:User');
-    //
-    //   // get users assigned to group and refresh
-    //   foreach ($group->getUsers() as &$user){
-    //
-    //     // set all roles
-    //     $userRepo->refreshRoles($user);
-    //
-    //     }
-    //
-    //   return true;
-    //
-    // }
+    public function refreshRoles($group){
+
+      // $em = $this->container->get('doctrine')->getManager();
+      $userRepo = $this->em->getRepository('StewieUserBundle:User');
+
+      // get users assigned to group and refresh
+      foreach ($group->getUsers() as &$user){
+
+        // set all roles
+        $userRepo->refreshRoles($user);
+
+        }
+
+      return true;
+
+    }
 
     public function updateUser($user){
 
@@ -56,6 +56,39 @@ class GroupRepository extends ServiceEntityRepository
             $group->addUser($user);
             $this->em->persist($group);
           }
+
+        }
+
+      $this->em->flush();
+
+      return true;
+
+    }
+
+    public function updateRole($role){
+
+      // $em = $this->container->get('doctrine')->getManager();
+      $groupRepo = $this->em->getRepository('StewieUserBundle:Group');
+
+      $groups = $groupRepo->findAll();
+
+      // remove roles from these groups
+      foreach ($groups as &$group){
+
+        // remove user from old groups
+        if ($group->getGroupRoles()->contains($role) && !$role->getGroups()->contains($group)) {
+            $group->removeGroupRole($role);
+            $this->em->persist($group);
+          }
+
+        // add roles to new groups
+        elseif (!$group->getGroupRoles()->contains($role) && $role->getGroups()->contains($group)) {
+            $group->addGroupRole($role);
+            $this->em->persist($group);
+          }
+
+        // update group user
+        $this->refreshRoles($group);
 
         }
 

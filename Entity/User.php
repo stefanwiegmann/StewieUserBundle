@@ -246,7 +246,7 @@ class User implements UserInterface
      // {
      //     $this->roles = new ArrayCollection();
      //     $this->groups = new ArrayCollection();
-     //     $this->userRoles = new ArrayCollection();
+     //     $this->userRole = new ArrayCollection();
      // }
 
     public function getId(): ?int
@@ -373,24 +373,24 @@ class User implements UserInterface
     /**
      * @return Collection|Role[]
      */
-    public function getUserRole(): Collection
+    public function getUserRoles(): Collection
     {
-        return $this->userRole;
+        return $this->userRoles;
     }
 
-    public function addUserRole(Role $userRole): self
+    public function addUserRoles(Role $userRole): self
     {
-        if (!$this->userRole->contains($userRole)) {
-            $this->userRole[] = $userRole;
+        if (!$this->userRoles->contains($userRole)) {
+            $this->userRoles[] = $userRole;
         }
 
         return $this;
     }
 
-    public function removeUserRole(Role $userRole): self
+    public function removeUserRoles(Role $userRole): self
     {
-        if ($this->userRole->contains($userRole)) {
-            $this->userRole->removeElement($userRole);
+        if ($this->userRoles->contains($userRole)) {
+            $this->userRoles->removeElement($userRole);
         }
 
         return $this;
@@ -470,14 +470,6 @@ class User implements UserInterface
         $this->emailCanonical = $emailCanonical;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|Role[]
-     */
-    public function getUserRoles(): Collection
-    {
-        return $this->userRoles;
     }
 
     public function getCreated(): ?\DateTimeInterface

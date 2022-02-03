@@ -44,6 +44,7 @@ class RemoveController extends AbstractController
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
+        
         // remove user from group
         $groupObject->removeUser($userObject);
 
@@ -68,44 +69,44 @@ class RemoveController extends AbstractController
 
   }
 
-  /**
-  * @Route("/user/group/remove/member", name="stewie_user_group_remove_member")
-  */
-  public function memberAction(Request $request)
-  {
-
-    if($request->isXmlHttpRequest()) {
-
-      $groupId   = $request->request->get('groupId');
-      $userId   = $request->request->get('userId');
-
-      $groupRepo = $this->getDoctrine()
-        ->getRepository('StewieUserBundle:Group');
-      $group = $groupRepo->findOneById($groupId);
-
-      $userRepo = $this->getDoctrine()
-        ->getRepository('StewieUserBundle:User');
-      $user = $userRepo->findOneById($userId);
-
-      $em = $this->getDoctrine()->getManager();
-      $user->removeGroup($group);
-      $em->persist($user);
-      $em->flush();
-
-      // refresh roles for that user
-      $userRepo->refreshRoles($user);
-
-      $this->addFlash(
-        'success',
-        $user->getUsername().' was removed from Group '.$group->getName().'!'
-        );
-
-      $response = array("code" => 100, "success" => true, "groupId" => $groupId, "userId" => $userId);
-      return new Response(json_encode($response));
-
-    } else {
-      return $this->redirectToRoute('stewie_user_group_list');
-    }
-  }
+  // /**
+  // * @Route("/user/group/remove/member", name="stewie_user_group_remove_member")
+  // */
+  // public function memberAction(Request $request)
+  // {
+  //
+  //   if($request->isXmlHttpRequest()) {
+  //
+  //     $groupId   = $request->request->get('groupId');
+  //     $userId   = $request->request->get('userId');
+  //
+  //     $groupRepo = $this->getDoctrine()
+  //       ->getRepository('StewieUserBundle:Group');
+  //     $group = $groupRepo->findOneById($groupId);
+  //
+  //     $userRepo = $this->getDoctrine()
+  //       ->getRepository('StewieUserBundle:User');
+  //     $user = $userRepo->findOneById($userId);
+  //
+  //     $em = $this->getDoctrine()->getManager();
+  //     $user->removeGroup($group);
+  //     $em->persist($user);
+  //     $em->flush();
+  //
+  //     // refresh roles for that user
+  //     $userRepo->refreshRoles($user);
+  //
+  //     $this->addFlash(
+  //       'success',
+  //       $user->getUsername().' was removed from Group '.$group->getName().'!'
+  //       );
+  //
+  //     $response = array("code" => 100, "success" => true, "groupId" => $groupId, "userId" => $userId);
+  //     return new Response(json_encode($response));
+  //
+  //   } else {
+  //     return $this->redirectToRoute('stewie_user_group_list');
+  //   }
+  // }
 
 }
