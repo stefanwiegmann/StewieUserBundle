@@ -42,7 +42,7 @@ class UserRepository extends ServiceEntityRepository
         array_push($uniqueRoles, $role);
 
         }
-    
+
       $user->setRoles($uniqueRoles);
 
       $em->persist($user);
@@ -78,5 +78,40 @@ class UserRepository extends ServiceEntityRepository
         return $this->queryByAnyName($name, $user)
             ->getQuery()
             ->getResult();
+    }
+
+    public function inheritedAndAssignedRoles($user)
+    {
+
+        $em = $this->getEntityManager();
+
+        $roles = array();
+
+        // get roles assigned to user
+        foreach ($user->getUserRoles() as &$role){
+
+          array_push($roles, $role->getTranslationKey());
+          }
+
+        // get roles assigned to any group of this user
+        foreach ($user->getGroups() as &$group){
+
+          foreach ($group->getGroupRoles() as &$role){
+
+            array_push($roles, $role->getTranslationKey());
+
+            }
+
+          }
+
+        // keep only unique roles in new array
+        $uniqueRoles = array();
+        foreach (array_unique($roles) as &$role){
+
+          array_push($uniqueRoles, $role);
+
+          }
+
+        return $uniqueRoles;
     }
 }

@@ -44,7 +44,12 @@
   <div class="col-sm-2">
   </div>
   <div class="col-sm-10">
-    <small class="text-muted">The following roles are already inherited through group memberships.</small>
+    <small class="text-muted">These are all roles this user inherited:
+        {% for role in allRoles %}
+            {{ role|trans({},'Roles') }}
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+    </small>
   </div>
 </div>
 

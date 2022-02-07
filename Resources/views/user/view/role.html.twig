@@ -41,4 +41,17 @@
 {# display navigation #}
       {{ knp_pagination_render(roleList) }}
 
+
+      <!-- show inherited roles -->
+      <div class=" row">
+        <div class="col">
+          <small class="text-muted">These are all roles this user inherited:
+              {% for role in allRoles %}
+                  {{ role|trans({},'Roles') }}
+                  {% if not loop.last %}, {% endif %}
+              {% endfor %}
+          </small>
+        </div>
+      </div>
+
 {% endblock content %}

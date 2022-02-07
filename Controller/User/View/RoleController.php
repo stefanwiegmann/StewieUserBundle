@@ -47,6 +47,7 @@ class RoleController extends AbstractController
 
       return $this->render('@StewieUser/user/view/role.html.twig', [
           'user' => $user,
+          'allRoles' => $repo->inheritedAndAssignedRoles($user),
           'roleList' => $pagination,
           'page' => $page,
       ]);

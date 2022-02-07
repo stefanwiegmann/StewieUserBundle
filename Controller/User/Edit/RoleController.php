@@ -47,6 +47,7 @@ class RoleController extends AbstractController
 
       return $this->render('@StewieUser/user/edit/role.html.twig', [
           'user' => $user,
+          'allRoles' => $repo->inheritedAndAssignedRoles($user),
           'form' => $form->createView(),
       ]);
     }
