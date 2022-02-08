@@ -226,6 +226,28 @@ class User implements UserInterface
 
     }
 
+    /**
+     * Checks if the user is inheriting one of the roles in the given array
+     *
+     * @return Boolean
+     */
+    public function inheritedRole($element)
+    {
+        // Foreach group this user has
+        foreach($this->getGroups() as $group)
+        {
+            // Foreach role this group has
+            foreach($group->getGroupRoles() as $role)
+            {
+                    if($element == $role->getName()){
+                        return true;
+                    }
+            }
+        }
+
+        return false;
+    }
+
     public function getSlug(): ?string
     {
         return $this->usernameCanonical;

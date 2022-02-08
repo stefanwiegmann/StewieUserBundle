@@ -67,5 +67,119 @@
         <target>View User Group</target>
       </segment>
     </unit>
+    <unit id="YGrpJv3" name="name.role_allowed_to_switch_inherited">
+      <segment>
+        <source>name.role_allowed_to_switch_inherited</source>
+        <target>Switch User (*)</target>
+      </segment>
+    </unit>
+    <unit id="huNPF2B" name="name.role_user_role_edit_inherited">
+      <segment>
+        <source>name.role_user_role_edit_inherited</source>
+        <target>Edit User (*)</target>
+      </segment>
+    </unit>
+    <unit id=".ZNycnJ" name="name.role_user_role_view_inherited">
+      <segment>
+        <source>name.role_user_role_view_inherited</source>
+        <target>View User (*)</target>
+      </segment>
+    </unit>
+    <unit id="B9nuJjG" name="name.role_user_user_invite_inherited">
+      <segment>
+        <source>name.role_user_user_invite_inherited</source>
+        <target>Invite User (*)</target>
+      </segment>
+    </unit>
+    <unit id="toOP.2r" name="name.role_user_user_delete_inherited">
+      <segment>
+        <source>name.role_user_user_delete_inherited</source>
+        <target>Delete User (*)</target>
+      </segment>
+    </unit>
+    <unit id="g9MeSXH" name="name.role_user_user_edit_inherited">
+      <segment>
+        <source>name.role_user_user_edit_inherited</source>
+        <target>Edit User (*)</target>
+      </segment>
+    </unit>
+    <unit id="hDqcQmi" name="name.role_user_user_view_inherited">
+      <segment>
+        <source>name.role_user_user_view_inherited</source>
+        <target>View User (*)</target>
+      </segment>
+    </unit>
+    <unit id="y_kOHip" name="name.role_user_group_create_inherited">
+      <segment>
+        <source>name.role_user_group_create_inherited</source>
+        <target>Create User Group (*)</target>
+      </segment>
+    </unit>
+    <unit id=".vpt4RU" name="name.role_user_group_delete_inherited">
+      <segment>
+        <source>name.role_user_group_delete_inherited</source>
+        <target>Delete User Group (*)</target>
+      </segment>
+    </unit>
+    <unit id="uPl5SpH" name="name.role_user_group_edit_inherited">
+      <segment>
+        <source>name.role_user_group_edit_inherited</source>
+        <target>Edit User Group (*)</target>
+      </segment>
+    </unit>
+    <unit id="uVtdym8" name="name.role_user_group_view_inherited">
+      <segment>
+        <source>name.role_user_group_view_inherited</source>
+        <target>View User Group (*)</target>
+      </segment>
+    </unit>
+    <unit id="U0T_1Yh" name="name.role_wiki_space_edit_inherited">
+      <segment>
+        <source>name.role_wiki_space_edit_inherited</source>
+        <target>Edit Wiki Space (*)</target>
+      </segment>
+    </unit>
+    <unit id="mJrQdyD" name="name.role_wiki_space_view_inherited">
+      <segment>
+        <source>name.role_wiki_space_view_inherited</source>
+        <target>View Wiki Space (*)</target>
+      </segment>
+    </unit>
+    <unit id="Ky5QsZy" name="name.role_wiki_space_create_inherited">
+      <segment>
+        <source>name.role_wiki_space_create_inherited</source>
+        <target>Create Wiki Space (*)</target>
+      </segment>
+    </unit>
+    <unit id="sj7uOYl" name="name.role_wiki_space_delete_inherited">
+      <segment>
+        <source>name.role_wiki_space_delete_inherited</source>
+        <target>Delete Wiki Space (*)</target>
+      </segment>
+    </unit>
+    <unit id="gXYDk25" name="name.role_wiki_page_edit_inherited">
+      <segment>
+        <source>name.role_wiki_page_edit_inherited</source>
+        <target>Edit Wiki Page (*)</target>
+      </segment>
+    </unit>
+    <unit id="iMWavuC" name="name.role_wiki_page_view_inherited">
+      <segment>
+        <source>name.role_wiki_page_view_inherited</source>
+        <target>View Wiki Page (*)</target>
+      </segment>
+    </unit>
+    <unit id="AiZyox5" name="name.role_wiki_page_create_inherited">
+      <segment>
+        <source>name.role_wiki_page_create_inherited</source>
+        <target>Create Wiki Page (*)</target>
+      </segment>
+    </unit>
+    <unit id="EZQ_GPj" name="name.role_wiki_page_delete_inherited">
+      <segment>
+        <source>name.role_wiki_page_delete_inherited</source>
+        <target>Delete Wiki Page (*)</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

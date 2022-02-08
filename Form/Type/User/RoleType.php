@@ -7,6 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Stewie\UserBundle\Entity\Role;
 use Doctrine\ORM\EntityRepository;
+use Stewie\UserBundle\Entity\User;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 // use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -17,14 +19,23 @@ class RoleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $user = $options['data'];
+
         $builder
             ->add('userRoles', EntityType::class, array(
                   'class' => 'StewieUserBundle:Role',
-                  'query_builder' => function (EntityRepository $er) {
+                  'query_builder' => function (EntityRepository $er){
                       return $er->createQueryBuilder('r')
                           ->orderBy('r.sort', 'ASC');
                   },
-                  'choice_label' => 'translationKey',
+                  // 'choice_label' => 'translationKey',
+                  'choice_label' => function($userRoles) use ($user) {
+                      if($user->inheritedRole($userRoles->getName())){
+                          return $userRoles->getTranslationKey() . '_inherited';
+                          }else{
+                              return $userRoles->getTranslationKey();
+                              }
+                  },
                   // 'choices_as_values' => true,
                   'label' => 'label.role',
                   'expanded' => true, 'multiple' => true,
@@ -36,5 +47,13 @@ class RoleType extends AbstractType
              'translation_domain' => 'StewieUserBundle',
              'attr'=> array('class'=>'btn-primary'),))
         ;
+    }
+
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => User::class,
+        ]);
     }
 }
