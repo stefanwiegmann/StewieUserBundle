@@ -32,7 +32,9 @@
     {% endif %}
   </td>
   <td>{{ item.sort }}</td>
-  <td>{{ item.translationKey|trans({}, 'Roles') }}</td>
+  <td>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_user_role_view_detail', {'slug': item.slug}) }}">{{ item.translationKey|trans({}, 'Roles') }}</a>
+  </td>
   <td>{{ item.name }}</td>
   <td>{{ item.description }}</td>
   <td>{{ item.groups|length }} {{ 'label.group_s'|trans }}</td>

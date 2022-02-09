@@ -787,5 +787,23 @@
         <target>Start typing to search</target>
       </segment>
     </unit>
+    <unit id="t.66Aya" name="label.group.edit">
+      <segment>
+        <source>label.group.edit</source>
+        <target>Edit Group</target>
+      </segment>
+    </unit>
+    <unit id="nKjHTK." name="label.role.edit">
+      <segment>
+        <source>label.role.edit</source>
+        <target>Edit Role</target>
+      </segment>
+    </unit>
+    <unit id="VhJrMCG" name="label.user.edit">
+      <segment>
+        <source>label.user.edit</source>
+        <target>Edit User</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

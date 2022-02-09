@@ -4,7 +4,11 @@
 {% block filterBlock %}{% endblock filterBlock %}
 
 {% block pageTitle %}<small class="text-muted">{{ 'header.user.view'|trans }}</small> {{ user.username }}{% endblock pageTitle %}
-{% block pageMenu %}{% endblock pageMenu %}
+{% block pageMenu %}
+  {% if is_granted('ROLE_USER_USER_EDIT') %}
+    <a href="{{ path('stewie_user_user_edit_detail', {'username': user.username}) }}" class="btn btn-primary" role="button">{{ 'label.user.edit'|trans }}</a>
+  {% endif %}
+{% endblock pageMenu %}
 
 {% block content %}
 

@@ -4,7 +4,11 @@
 {% block filterBlock %}{% endblock filterBlock %}
 
 {% block pageTitle %}<small class="text-muted">{{ 'header.role.view'|trans }}</small> {{ role.translationKey|trans({}, 'Roles') }}{% endblock pageTitle %}
-{% block pageMenu %}{% endblock pageMenu %}
+{% block pageMenu %}
+  {% if is_granted('ROLE_USER_ROLE_EDIT') %}
+    <a href="{{ path('stewie_user_role_edit_detail', {'slug': role.slug}) }}" class="btn btn-primary" role="button">{{ 'label.role.edit'|trans }}</a>
+  {% endif %}
+{% endblock pageMenu %}
 
 {% block content %}
 

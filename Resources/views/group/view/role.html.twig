@@ -5,7 +5,9 @@
 
 {% block pageTitle %}<small class="text-muted">{{ 'header.group.view'|trans }}</small> {{ group.name }}{% endblock pageTitle %}
 {% block pageMenu %}
-
+  {% if is_granted('ROLE_USER_GROUP_EDIT') %}
+    <a href="{{ path('stewie_user_group_edit_role', {'slug': group.slug}) }}" class="btn btn-primary" role="button">{{ 'label.group.edit'|trans }}</a>
+  {% endif %}
 {% endblock pageMenu %}
 
 {% block content %}
