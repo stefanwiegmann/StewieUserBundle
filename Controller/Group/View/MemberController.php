@@ -9,6 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
+use Stewie\UserBundle\Entity\Group;
+use Stewie\UserBundle\Entity\User;
+
 
 /**
   * @IsGranted("ROLE_USER_GROUP_VIEW")
@@ -31,7 +34,7 @@ class MemberController extends AbstractController
     {
       //get group
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieUserBundle:Group');
+      $repo = $em->getRepository(Group::Class);
       $group = $repo->findOneBySlug($slug);
 
       //get data and paginate
@@ -53,8 +56,8 @@ class MemberController extends AbstractController
 
     public function getQuery($group){
 
-        $repository = $this->getDoctrine()
-          ->getRepository('StewieUserBundle:User');
+        $repository = $this->container->get('doctrine')->getManager()
+          ->getRepository(User::Class);
 
         $query = $repository->createQueryBuilder('u')
           ->andWhere(':groups MEMBER OF u.groups')

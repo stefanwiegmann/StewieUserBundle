@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Stewie\UserBundle\Form\Type\Group\DetailType;
 use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
+use Stewie\UserBundle\Entity\Group;
 
 /**
   * @IsGranted("ROLE_USER_GROUP_EDIT")
@@ -25,7 +26,7 @@ class DetailController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieUserBundle:Group');
+      $repo = $em->getRepository(Group::Class);
       $group = $repo->findOneBySlug($slug);
 
       // create form

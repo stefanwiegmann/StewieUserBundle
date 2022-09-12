@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
 use Stewie\UserBundle\Form\Type\User\AddUserType;
+use Stewie\UserBundle\Entity\Group;
+use Stewie\UserBundle\Entity\User;
 
 /**
   * @IsGranted("ROLE_USER_GROUP_EDIT")
@@ -31,7 +33,7 @@ class MemberController extends AbstractController
     {
       //get group
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieUserBundle:Group');
+      $repo = $em->getRepository(Group::Class);
       $group = $repo->findOneBySlug($slug);
 
       // create form
@@ -42,7 +44,7 @@ class MemberController extends AbstractController
 
       if ($form->isSubmitted() && $form->isValid()) {
 
-          $userRepo = $em->getRepository('StewieUserBundle:User');
+          $userRepo = $em->getRepository(User::Class);
           $user = $userRepo->findOneById($form->get('userAutoId')->getData());
 
           // add user
@@ -78,19 +80,18 @@ class MemberController extends AbstractController
           'form' => $form->createView(),
       ]);
     }
-
     public function getQuery($group){
 
-        $repository = $this->getDoctrine()
-          ->getRepository('StewieUserBundle:User');
+      $repository = $this->container->get('doctrine')->getManager()
+        ->getRepository(User::Class);
 
-        $query = $repository->createQueryBuilder('u')
-          ->andWhere(':groups MEMBER OF u.groups')
-          ->setParameter('groups', $group)
-          ->orderBy('u.id', 'ASC');
+      $query = $repository->createQueryBuilder('u')
+        ->andWhere(':groups MEMBER OF u.groups')
+        ->setParameter('groups', $group)
+        ->orderBy('u.id', 'ASC');
 
-          return $query
-            ->getQuery();
+        return $query
+          ->getQuery();
 
-    }
+  }
 }

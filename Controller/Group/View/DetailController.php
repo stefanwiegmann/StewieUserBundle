@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 // use Stewie\UserBundle\Form\Type\Group\DetailType;
+use Stewie\UserBundle\Entity\Group;
 
 /**
   * @IsGranted("ROLE_USER_GROUP_VIEW")
@@ -23,7 +24,7 @@ class DetailController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieUserBundle:Group');
+      $repo = $em->getRepository(Group::Class);
       $group = $repo->findOneBySlug($slug);
 
       return $this->render('@StewieUser/group/view/detail.html.twig', [
