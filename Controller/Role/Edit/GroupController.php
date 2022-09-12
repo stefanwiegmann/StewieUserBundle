@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Stewie\UserBundle\Form\Type\Role\GroupType;
+use Stewie\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\Group;
 
 /**
   * @IsGranted("ROLE_USER_ROLE_EDIT")
@@ -23,7 +25,7 @@ class GroupController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieUserBundle:Role');
+      $repo = $em->getRepository(Role::Class);
       $role = $repo->findOneBySlug($slug);
 
       // create form
@@ -36,7 +38,7 @@ class GroupController extends AbstractController
           $role = $form->getData();
 
           // update groups
-          $groupRepo = $em->getRepository('StewieUserBundle:Group');
+          $groupRepo = $em->getRepository(Group::Class);
           $groupRepo->updateRole($role);
 
           // save user

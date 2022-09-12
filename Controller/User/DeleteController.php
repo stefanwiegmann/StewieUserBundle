@@ -26,7 +26,7 @@ class DeleteController extends AbstractController
   {
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $repo = $em->getRepository('StewieUserBundle:User');
+    $repo = $em->getRepository(User::Class);
     $user = $repo->findOneByUsername($username);
 
     // create form

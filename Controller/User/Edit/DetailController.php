@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Stewie\UserBundle\Form\Type\User\DetailType;
 use Stewie\UserBundle\Service\AvatarGenerator;
 use Symfony\Component\HttpFoundation\File\File;
+use Stewie\UserBundle\Entity\User;
 
 /**
   * @IsGranted("ROLE_USER_USER_EDIT")
@@ -26,7 +27,7 @@ class DetailController extends AbstractController
 
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieUserBundle:User');
+      $repo = $em->getRepository(User::Class);
       $user = $repo->findOneByUsername($username);
 
       // create form

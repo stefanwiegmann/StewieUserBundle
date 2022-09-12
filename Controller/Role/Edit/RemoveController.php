@@ -12,6 +12,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Stewie\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\User;
+use Stewie\UserBundle\Entity\Group;
 
 /**
   * @IsGranted("ROLE_USER_ROLE_EDIT")
@@ -26,12 +29,12 @@ class RemoveController extends AbstractController
   {
     //get role
     $em = $this->container->get('doctrine')->getManager();
-    $roleRepo = $em->getRepository('StewieUserBundle:Role');
+    $roleRepo = $em->getRepository(Role::Class);
     $roleObject = $roleRepo->findOneById($role);
 
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $userRepo = $em->getRepository('StewieUserBundle:User');
+    $userRepo = $em->getRepository(User::Class);
     $userObject = $userRepo->findOneById($user);
 
     // create form
@@ -77,12 +80,12 @@ class RemoveController extends AbstractController
     {
       //get role
       $em = $this->container->get('doctrine')->getManager();
-      $roleRepo = $em->getRepository('StewieUserBundle:Role');
+      $roleRepo = $em->getRepository(Role::Class);
       $roleObject = $roleRepo->findOneById($role);
 
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $groupRepo = $em->getRepository('StewieUserBundle:Group');
+      $groupRepo = $em->getRepository(Group::Class);
       $groupObject = $groupRepo->findOneById($group);
 
       // create form

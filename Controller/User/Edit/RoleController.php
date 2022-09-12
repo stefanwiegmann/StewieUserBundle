@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Stewie\UserBundle\Form\Type\User\RoleType;
+use Stewie\UserBundle\Entity\User;
 
 /**
   * @IsGranted("ROLE_USER_USER_EDIT")
@@ -23,7 +24,7 @@ class RoleController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieUserBundle:User');
+      $repo = $em->getRepository(User::Class);
       $user = $repo->findOneByUsername($username);
 
       // create form

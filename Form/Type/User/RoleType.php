@@ -23,7 +23,7 @@ class RoleType extends AbstractType
 
         $builder
             ->add('userRoles', EntityType::class, array(
-                  'class' => 'StewieUserBundle:Role',
+                  'class' => Role::Class,
                   'query_builder' => function (EntityRepository $er){
                       return $er->createQueryBuilder('r')
                           ->orderBy('r.sort', 'ASC');

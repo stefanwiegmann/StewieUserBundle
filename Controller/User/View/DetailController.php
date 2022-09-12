@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Stewie\UserBundle\Entity\User;
 // use Stewie\UserBundle\Form\Type\User\DetailType;
 
 /**
@@ -23,7 +24,7 @@ class DetailController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieUserBundle:User');
+      $repo = $em->getRepository(User::Class);
       $user = $repo->findOneByUsername($username);
 
       return $this->render('@StewieUser/user/view/detail.html.twig', [

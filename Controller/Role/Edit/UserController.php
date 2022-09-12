@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
 use Stewie\UserBundle\Form\Type\User\AddUserType;
+use Stewie\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\User;
 
 /**
   * @IsGranted("ROLE_USER_ROLE_EDIT")
@@ -33,7 +35,7 @@ class UserController extends AbstractController
       // get filter data
       // if($role > 0){
       $em = $this->container->get('doctrine')->getManager();
-      $repository = $em->getRepository('StewieUserBundle:Role');
+      $repository = $em->getRepository(Role::Class);
       $roleObject = $repository->findOneBySlug($slug);
       // }
 
@@ -87,7 +89,7 @@ class UserController extends AbstractController
     public function getQuery($roleObject){
 
         $repository = $this->getDoctrine()
-          ->getRepository('StewieUserBundle:User');
+          ->getRepository(User::Class);
 
         $query = $repository->createQueryBuilder('u')
           ->andWhere(':roles MEMBER OF u.userRoles')

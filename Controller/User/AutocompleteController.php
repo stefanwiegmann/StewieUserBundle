@@ -28,7 +28,7 @@ class AutocompleteController extends AbstractController
 
             $qry = $request->query->get('qry');
             $em = $this->container->get('doctrine')->getManager();
-            $repository = $em->getRepository('StewieUserBundle:User');
+            $repository = $em->getRepository(User::Class);
             $results = $repository->findByAnyName($qry, $this->getUser());
 
             $response = array("results" => $results);

@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\Persistence\ManagerRegistry;
+use Stewie\UserBundle\Entity\Role;
 
 /**
   * @IsGranted("ROLE_USER_ROLE_VIEW")
@@ -27,12 +29,12 @@ class ListController extends AbstractController
     * @Route("/user/role/list/{page}", defaults={"page": 1}
     *     , requirements={"page": "\d+"}, name="stewie_user_role_list")
     */
-    public function list($page, Request $request)
+    public function list(ManagerRegistry $doctrine, $page, Request $request)
     {
       //get data and paginate
       // $paginator  = $this->get('knp_paginator');
       $pagination = $this->paginator->paginate(
-      $this->getQuery(), /* query NOT result */
+      $this->getQuery($doctrine), /* query NOT result */
       $request->query->getInt('page', $page)/*page number*/,
             // 10/*limit per page*/
             $this->getParameter('stewie_user.max_rows')/*limit per page*/
@@ -47,10 +49,9 @@ class ListController extends AbstractController
       ]);
     }
 
-    public function getQuery(){
+    public function getQuery($doctrine){
 
-        $repository = $this->getDoctrine()
-          ->getRepository('StewieUserBundle:Role');
+        $repository = $doctrine->getRepository(Role::Class);
 
         $query = $repository->createQueryBuilder('r')
           ->orderBy('r.sort', 'ASC');

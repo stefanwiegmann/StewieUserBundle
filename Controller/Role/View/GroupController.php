@@ -9,6 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
+use Stewie\UserBundle\Entity\Group;
+use Doctrine\Persistence\ManagerRegistry;
+use Stewie\UserBundle\Entity\Role;
 
 /**
   * @IsGranted("ROLE_USER_ROLE_VIEW")
@@ -27,19 +30,18 @@ class GroupController extends AbstractController
     * @Route("/user/role/view/group/{slug}/{page}", defaults={"role": 0, "page": 1}
     *     , requirements={"page": "\d+"}, name="stewie_user_role_view_group")
     */
-    public function list($slug, $page, Request $request)
+    public function list(ManagerRegistry $doctrine, $slug, $page, Request $request)
     {
       // get filter data
       // if($role > 0){
-        $repository = $this->getDoctrine()
-          ->getRepository('StewieUserBundle:Role');
+        $repository = $doctrine->getRepository(Role::Class);
         $roleObject = $repository->findOneBySlug($slug);
       // }
 
       //get data and paginate
       // $paginator  = $this->get('knp_paginator');
       $pagination = $this->paginator->paginate(
-      $this->getQuery($roleObject), /* query NOT result */
+      $this->getQuery($roleObject, $doctrine), /* query NOT result */
       $request->query->getInt('page', $page)/*page number*/,
             // 10/*limit per page*/
             $this->getParameter('stewie_user.max_rows')/*limit per page*/
@@ -55,10 +57,9 @@ class GroupController extends AbstractController
       ]);
     }
 
-    public function getQuery($roleObject){
+    public function getQuery($roleObject, $doctrine){
 
-        $repository = $this->getDoctrine()
-          ->getRepository('StewieUserBundle:Group');
+        $repository = $doctrine->getRepository(Group::Class);
 
         $query = $repository->createQueryBuilder('g')
           ->andWhere(':roles MEMBER OF g.groupRoles')
