@@ -49,7 +49,7 @@ class FillRolesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // $em = $this->container->get('doctrine')->getManager();
-        $repo = $this->em->getRepository('StewieUserBundle:Role');
+        $repo = $this->em->getRepository(Role::Class);
 
         $contents = file_get_contents($this->pathFinder->getBundlePath().'Resources/data/roles.json');
         $contents = utf8_encode($contents);

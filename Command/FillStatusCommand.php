@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Stewie\UserBundle\Entity\Status;
+// use Stewie\UserBundle\Entity\User;
 // use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -45,7 +46,7 @@ class FillStatusCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // $em = $this->container->get('doctrine')->getManager();
-        $repo = $this->em->getRepository('StewieUserBundle:Status');
+        $repo = $this->em->getRepository(Status::Class);
 
         $contents = file_get_contents($this->pathFinder->getBundlePath().'Resources/data/status.json');
         $contents = utf8_encode($contents);
