@@ -10,6 +10,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Doctrine\ORM\EntityManagerInterface;
+use Stewie\UserBundle\Entity\Group;
+use Stewie\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\User;
+use Stewie\UserBundle\Entity\Status;
+use Stewie\UserBundle\Entity\UserLogEntry;
 
 class WipeDataCommand extends Command
 {
@@ -43,7 +48,7 @@ class WipeDataCommand extends Command
     {
         // wipe users
         $output->writeln('Wiping users:');
-        $repo = $this->em->getRepository('StewieUserBundle:User');
+        $repo = $this->em->getRepository(User::Class);
         $users = $repo->findAll();
 
         $progressBar = new ProgressBar($output, count($users));
@@ -61,7 +66,7 @@ class WipeDataCommand extends Command
 
         // wipe groups
         $output->writeln('Wiping groups:');
-        $repo = $this->em->getRepository('StewieUserBundle:Group');
+        $repo = $this->em->getRepository(Group::Class);
         $groups = $repo->findAll();
 
         $progressBar = new ProgressBar($output, count($groups));
@@ -79,7 +84,7 @@ class WipeDataCommand extends Command
 
         // wipe roles
         $output->writeln('Wiping roles:');
-        $repo = $this->em->getRepository('StewieUserBundle:Role');
+        $repo = $this->em->getRepository(Role::Class);
         $roles = $repo->findAll();
 
         $progressBar = new ProgressBar($output, count($roles));
@@ -97,7 +102,7 @@ class WipeDataCommand extends Command
 
         // wipe status
         $output->writeln('Wiping status:');
-        $repo = $this->em->getRepository('StewieUserBundle:Status');
+        $repo = $this->em->getRepository(Status::Class);
         $status = $repo->findAll();
 
         $progressBar = new ProgressBar($output, count($status));
@@ -115,7 +120,7 @@ class WipeDataCommand extends Command
 
         // wipe logs
         $output->writeln('Wiping logs:');
-        $repo = $this->em->getRepository('StewieUserBundle:UserLogEntry');
+        $repo = $this->em->getRepository(UserLogEntry::Class);
         $logs = $repo->findAll();
 
         $progressBar = new ProgressBar($output, count($logs));
