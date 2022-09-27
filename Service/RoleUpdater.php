@@ -7,8 +7,8 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 // use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
-// use Stewie\UserBundle\Entity\Role;
-// use Stewie\UserBundle\Entity\User;
+use Stewie\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\Group;
 
 class RoleUpdater extends AbstractController
 {
@@ -22,8 +22,8 @@ class RoleUpdater extends AbstractController
 
     public function assignAdmins(){
 
-        $roleRepo = $this->em->getRepository('StewieUserBundle:Role');
-        $groupRepo = $this->em->getRepository('StewieUserBundle:Group');
+        $roleRepo = $this->em->getRepository(Role::Class);
+        $groupRepo = $this->em->getRepository(Group::Class);
 
         $roles = $roleRepo->findAll();
         $group = $groupRepo->findOneByName('App Admin');
