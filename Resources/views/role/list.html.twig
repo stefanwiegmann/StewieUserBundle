@@ -40,9 +40,9 @@
   <td>{{ item.groups|length }} {{ 'label.group_s'|trans }}</td>
   <td>{{ item.users|length }} {{ 'label.user_s'|trans }}</td>
   <td class="text-center">
-    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_user_role_view_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
+    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_user_role_view_detail', {'slug': item.slug}) }}"><i class="bi bi-eyeglasses"></i></a>
     {% if is_granted('ROLE_USER_ROLE_EDIT') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_user_role_edit_detail', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_user_role_edit_detail', {'slug': item.slug}) }}"><i class="bi bi-pencil-square"></i></a>
     {% endif %}
   </td>
 </tr>

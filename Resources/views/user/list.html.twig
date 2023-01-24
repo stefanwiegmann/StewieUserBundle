@@ -64,14 +64,14 @@
   </td>
   <td class="text-center">
 
-    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_user_user_view_detail', {'username': item.username}) }}"><i class="far fa-eye"></i></a>
+    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_user_user_view_detail', {'username': item.username}) }}"><i class="bi bi-eyeglasses"></i></a>
 
     {% if is_granted('ROLE_USER_USER_EDIT') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_user_user_edit_detail', {'username': item.username}) }}"><i class="far fa-edit"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_user_user_edit_detail', {'username': item.username}) }}"><i class="bi bi-pencil-square"></i></a>
     {% endif %}
     <!-- impersonate? -->
     {% if is_granted('ROLE_ALLOWED_TO_SWITCH') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.impersonate'|trans }}" href="{{ path('home', {'_switch_user': item.username }) }}"><i class="fas fa-people-arrows"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.impersonate'|trans }}" href="{{ path('home', {'_switch_user': item.username }) }}"><i class="bi bi-arrow-left-right"></i></a>
     {% endif %}
   </td>
 </tr>
