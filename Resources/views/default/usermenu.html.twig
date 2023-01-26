@@ -1,20 +1,20 @@
-<ul class="navbar-nav mr-auto my-2 my-lg-0">
+<ul class="navbar-nav">
   {% if is_granted('ROLE_USER') %}
   <li class="nav-item dropdown">
-     <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-display="static" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
         {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
           {{ app.user.username }}
         {% else %}
 
           {% if vich_uploader_asset(app.user, 'avatarFile') %}
-            <img src="{{ vich_uploader_asset(app.user, 'avatarFile') | imagine_filter('stewie_user_thumb_filter') }}" alt="{{ app.user.username }}"  class="rounded-lg"/>
+            <img src="{{ vich_uploader_asset(app.user, 'avatarFile') | imagine_filter('stewie_user_thumb_filter') }}" alt="{{ app.user.username }}"  class="rounded-3"/>
           {% else %}
-            <i class="fas fa-user"></i>
+            <i class="bi bi-person-circle"></i>
           {% endif %}
 
         {% endif %}
      </a>
-     <div class="dropdown-menu dropdown-menu-md-right">
+     <div class="dropdown-menu">
        <h6 class="dropdown-header">{{ 'header.usermenu'|trans({}, 'StewieUserBundle') }}</h6>
        <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">{{ app.user.username }}</a>
        <div class="dropdown-divider"></div>
@@ -24,13 +24,13 @@
           <a class="dropdown-item" href="{{ path('home', {'_switch_user': '_exit'}) }}">{{ 'label.impersonate.exit'|trans({}, 'StewieUserBundle') }}</a>
        {% endif %}
        <div class="dropdown-divider"></div>
-       <a class="dropdown-item" href="{{ path('stewie_user_logout') }}">{{ 'label.logout'|trans({}, 'StewieUserBundle') }} <span class="sr-only">(current)</span></a>
+       <a class="dropdown-item" href="{{ path('stewie_user_logout') }}">{{ 'label.logout'|trans({}, 'StewieUserBundle') }}</a>
 
      </div>
    </li>
   {% else %}
-    <li class="nav-item">
-      <a class="nav-link" href="{{ path('stewie_user_login') }}">{{ 'label.login'|trans({}, 'StewieUserBundle') }} <span class="sr-only">(current)</span></a>
+    <li class="nav-item class="d-flex"">
+      <a class="nav-link" href="{{ path('stewie_user_login') }}">{{ 'label.login'|trans({}, 'StewieUserBundle') }}</a>
     </li>
   {% endif %}
 </ul>
